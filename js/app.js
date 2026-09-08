@@ -274,6 +274,19 @@ function setupCaseStudyModals() {
         delivContainer.appendChild(li);
       });
 
+      // GitHub Code Link
+      const githubLinkEl = document.getElementById('modalGithubLink');
+      if (githubLinkEl) {
+        if (data.githubUrl) {
+          githubLinkEl.href = data.githubUrl;
+          githubLinkEl.classList.remove('hidden');
+          githubLinkEl.classList.add('inline-flex');
+        } else {
+          githubLinkEl.classList.add('hidden');
+          githubLinkEl.classList.remove('inline-flex');
+        }
+      }
+
       // Show Modal
       modal.classList.remove('hidden');
       modal.classList.add('flex');

@@ -1042,7 +1042,7 @@
                 <a href="https://linkedin.com/in/rishi21" target="_blank" rel="noopener noreferrer" class="tech-pill hover:border-sky-400 hover:text-sky-300">
                   <span>LinkedIn Profile</span> ↗
                 </a>
-                <a href="https://github.com/rishi21" target="_blank" rel="noopener noreferrer" class="tech-pill hover:border-sky-400 hover:text-sky-300">
+                <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="tech-pill hover:border-sky-400 hover:text-sky-300">
                   <span>GitHub Repositories</span> ↗
                 </a>
                 <a href="https://www.upwork.com" target="_blank" rel="noopener noreferrer" class="tech-pill hover:border-emerald-400 hover:text-emerald-300">
@@ -1190,9 +1190,17 @@
       <!-- Modal Bottom CTA -->
       <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
         <span class="text-xs text-slate-400">Need a similar data solution implemented for your team?</span>
-        <a href="#contact" onclick="document.getElementById('modalCloseBtn').click();" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold text-sm text-center transition-all">
-          Discuss This Solution →
-        </a>
+        <div class="flex items-center gap-3 w-full sm:w-auto">
+          <a id="modalGithubLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs text-center border border-slate-700 transition-all flex items-center justify-center gap-1.5">
+            <span>View GitHub Code</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+          <a href="#contact" onclick="document.getElementById('modalCloseBtn').click();" class="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold text-xs sm:text-sm text-center transition-all">
+            Discuss This Solution →
+          </a>
+        </div>
       </div>
 
     </div>
