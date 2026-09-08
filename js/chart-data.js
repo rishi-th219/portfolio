@@ -137,7 +137,7 @@ const caseStudiesData = {
     problem: "The client operated a growing DTC e-commerce store with transaction logs spread across PostgreSQL, Shopify exports, and marketing CSVs. Executive reporting required 10+ hours of manual Excel wrangling each Monday, data definitions differed between departments, and leadership lacked visibility into customer cohort retention and high-value customer churn.",
     solution: "Architected a scalable, production-grade ELT data pipeline: \n1. Containerized Apache Airflow orchestrating scheduled daily extraction and loading.\n2. Built modular dbt transformations modeling raw tables into clean Star-Schema marts (dim_customers, dim_products, fact_orders).\n3. Engineered customer RFM (Recency, Frequency, Monetary) segmentation and 12-month cohort retention matrices.\n4. Delivered an interactive Power BI Executive Cockpit with automated refresh, drill-downs, and automated margin alerting.",
     stack: ["PostgreSQL", "dbt Core", "Apache Airflow", "Docker", "Power BI", "DAX", "Python"],
-    githubUrl: "https://github.com/rishi21",
+    githubUrl: "https://github.com/rishi-th219/ecommerce-elt-local",
     deliverables: [
       "Containerized Docker + Airflow orchestration pipeline",
       "Production dbt models with 40+ schema & integrity tests",
@@ -205,7 +205,7 @@ const caseStudiesData = {
     problem: "Physical blockages in mmWave 5G networks cause sudden 30 dB signal crashes within milliseconds. Standard network protocol triggers are reactive and rely on countdown timers, leading to high radio link failures (RLFs) and dropped video or telemetry feeds.",
     solution: "Engineered a proactive predictive decision system: a GRU temporal encoder compresses signal fading history; a Denoising Diffusion Probabilistic Model (DDPM/DDIM) forecasts 50 realistic potential future signal trajectories; an explainable Random Forest policy engine calculates probability of failure to trigger proactive handovers before the connection drops.",
     stack: ["Python", "PyTorch", "Diffusion Models (DDPM)", "GRU", "Random Forest", "SMOTE+Tomek", "Pandas"],
-    githubUrl: "https://github.com/rishi21",
+    githubUrl: "https://github.com/rishi-th219/Proactive-Handover-Prediction-in-5G-using-Diffusion-Models",
     deliverables: [
       "End-to-end ML training & simulation pipeline",
       "Edge-deployable inference benchmark with dual-masking loss",
