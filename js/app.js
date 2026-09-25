@@ -59,10 +59,10 @@ function setupCaseStudyModals() {
       metricsContainer.innerHTML = "";
       data.metrics.forEach(m => {
         const div = document.createElement("div");
-        div.className = "p-3 bg-amber-50/70 dark:bg-slate-900/90 border border-amber-200/80 dark:border-slate-800 rounded-xl text-center";
+        div.className = "p-3 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl text-center";
         div.innerHTML = `
-          <div class="text-xs text-amber-800/80 dark:text-slate-400 font-medium uppercase font-mono">${m.label}</div>
-          <div class="text-lg font-bold text-amber-600 dark:text-yellow-400 font-mono mt-0.5">${m.value}</div>
+          <div class="text-[11px] text-neutral-500 dark:text-neutral-400 font-normal uppercase tracking-wider font-mono">${m.label}</div>
+          <div class="text-base sm:text-lg font-medium text-neutral-900 dark:text-neutral-100 font-mono mt-0.5">${m.value}</div>
         `;
         metricsContainer.appendChild(div);
       });
@@ -82,11 +82,9 @@ function setupCaseStudyModals() {
       delivContainer.innerHTML = "";
       data.deliverables.forEach(d => {
         const li = document.createElement("li");
-        li.className = "flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300";
+        li.className = "flex items-start gap-2.5 text-sm text-neutral-600 dark:text-neutral-300 font-normal";
         li.innerHTML = `
-          <svg class="w-4 h-4 text-emerald-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
+          <span class="text-neutral-400 dark:text-neutral-500 mt-0.5 select-none font-mono">→</span>
           <span>${d}</span>
         `;
         delivContainer.appendChild(li);
@@ -163,19 +161,19 @@ function setupContactForm() {
         const originalText = copyEmailBtn.innerHTML;
         copyEmailBtn.innerHTML = `
           <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono">
+            <div class="w-8 h-8 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 flex items-center justify-center font-mono text-xs">
               ✓
             </div>
             <div>
-              <div class="text-xs text-slate-400">Email Address</div>
-              <div class="text-sm font-semibold text-emerald-400 font-mono">${targetEmail}</div>
+              <div class="text-xs text-neutral-500 dark:text-neutral-400">Email Address</div>
+              <div class="text-sm font-medium text-neutral-900 dark:text-neutral-100 font-mono">${targetEmail}</div>
             </div>
           </div>
-          <span class="text-xs text-emerald-400 font-mono">Copied!</span>
+          <span class="text-xs text-neutral-600 dark:text-neutral-400 font-mono">Copied</span>
         `;
         setTimeout(() => {
           copyEmailBtn.innerHTML = originalText;
-        }, 2500);
+        }, 2200);
       });
     });
   }
@@ -198,11 +196,9 @@ ${message}`);
       if (feedbackEl) {
         feedbackEl.classList.remove("hidden");
         feedbackEl.innerHTML = `
-          <div class="p-4 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-500/30 rounded-xl text-emerald-800 dark:text-emerald-300 text-sm flex items-center gap-3">
-            <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            <div>Opening your email client... You can also email directly at <strong>${targetEmail}</strong>.</div>
+          <div class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl text-neutral-700 dark:text-neutral-300 text-xs sm:text-sm flex items-center gap-3">
+            <span class="font-mono text-neutral-500">→</span>
+            <div>Opening your email client... You can also email directly to <span class="font-mono text-neutral-900 dark:text-neutral-100">${targetEmail}</span>.</div>
           </div>
         `;
       }
