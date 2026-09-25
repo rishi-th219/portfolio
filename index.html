@@ -61,10 +61,10 @@
 
       <!-- Desktop Nav Links -->
       <nav class="hidden md:flex items-center gap-6 text-xs sm:text-sm font-normal text-neutral-600 dark:text-neutral-400">
-        <a href="#about" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">About</a>
+        <a href="#skills" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Skills</a>
         <a href="#experience" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Experience</a>
         <a href="#projects" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Projects</a>
-        <a href="#skills" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Skills</a>
+        <a href="#about" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">About</a>
         <a href="#contact" class="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">Contact</a>
       </nav>
 
@@ -108,10 +108,10 @@
 
     <!-- Mobile Dropdown -->
     <div id="mobileMenu" class="hidden md:hidden bg-white/95 dark:bg-[#0f0f0f]/95 border-b border-neutral-200 dark:border-neutral-800 px-5 py-4 space-y-3.5">
-      <a href="#about" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white text-sm">About</a>
+      <a href="#skills" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white text-sm">Skills</a>
       <a href="#experience" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white text-sm">Experience</a>
       <a href="#projects" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white text-sm">Projects</a>
-      <a href="#skills" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white text-sm">Skills</a>
+      <a href="#about" class="mobile-nav-link block text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white text-sm">About</a>
       <div class="pt-3 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
         <a href="#contact" class="mobile-nav-link text-sm font-medium text-neutral-900 dark:text-neutral-100">Get in touch →</a>
         <button id="themeToggleBtnMobile" aria-label="Toggle theme" class="px-2.5 py-1.5 rounded-md text-xs font-mono bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700">
@@ -218,6 +218,74 @@
         </div>
 
       </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS MATRIX -->
+    <section id="skills" class="py-12 sm:py-16 border-b border-neutral-200 dark:border-neutral-800/80">
+      
+      <div class="max-w-3xl mb-8">
+        <div class="text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1.5">Competencies</div>
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+          Tools & Technical Arsenal
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="minimal-card p-5">
+          <div class="text-neutral-900 dark:text-neutral-100 font-mono text-xs font-medium uppercase tracking-wider mb-3">
+            BI & Analytics
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-normal">
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Power BI Desktop & Service</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Advanced DAX & Power Query</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Oracle Analytics Cloud (OAC)</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Inventory & ABC/VED Modeling</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Advanced Excel</li>
+          </ul>
+        </div>
+
+        <div class="minimal-card p-5">
+          <div class="text-neutral-900 dark:text-neutral-100 font-mono text-xs font-medium uppercase tracking-wider mb-3">
+            Data Engineering
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-normal">
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> dbt Core (Staging/Marts)</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Apache Airflow (Docker DAGs)</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Kimball Star Schema Modeling</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Slowly Changing Dims (SCD2)</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Schema & Assertion Testing</li>
+          </ul>
+        </div>
+
+        <div class="minimal-card p-5">
+          <div class="text-neutral-900 dark:text-neutral-100 font-mono text-xs font-medium uppercase tracking-wider mb-3">
+            Databases & SQL
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-normal">
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> PostgreSQL</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> MariaDB / MySQL</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Oracle Database</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Window Functions & CTEs</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Query Tuning & Indexing</li>
+          </ul>
+        </div>
+
+        <div class="minimal-card p-5">
+          <div class="text-neutral-900 dark:text-neutral-100 font-mono text-xs font-medium uppercase tracking-wider mb-3">
+            Python & ML
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-normal">
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Python, Pandas, NumPy</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> PyTorch & Scikit-learn</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Resampling (SMOTE+Tomek)</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Diffusion Models & GRUs</li>
+            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Random Forest & XGBoost</li>
+          </ul>
+        </div>
+
+      </div>
+
     </section>
 
     <!-- ABOUT SECTION -->
@@ -517,74 +585,6 @@
 
     </section>
 
-    <!-- TECHNICAL SKILLS MATRIX -->
-    <section id="skills" class="py-12 sm:py-16 border-b border-neutral-200 dark:border-neutral-800/80">
-      
-      <div class="max-w-3xl mb-8">
-        <div class="text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1.5">Competencies</div>
-        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-          Tools & Technical Arsenal
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        
-        <div class="minimal-card p-5">
-          <div class="text-neutral-900 dark:text-neutral-100 font-mono text-xs font-medium uppercase tracking-wider mb-3">
-            BI & Analytics
-          </div>
-          <ul class="space-y-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-normal">
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Power BI Desktop & Service</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Advanced DAX & Power Query</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Oracle Analytics Cloud (OAC)</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Inventory & ABC/VED Modeling</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Advanced Excel</li>
-          </ul>
-        </div>
-
-        <div class="minimal-card p-5">
-          <div class="text-neutral-900 dark:text-neutral-100 font-mono text-xs font-medium uppercase tracking-wider mb-3">
-            Data Engineering
-          </div>
-          <ul class="space-y-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-normal">
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> dbt Core (Staging/Marts)</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Apache Airflow (Docker DAGs)</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Kimball Star Schema Modeling</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Slowly Changing Dims (SCD2)</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Schema & Assertion Testing</li>
-          </ul>
-        </div>
-
-        <div class="minimal-card p-5">
-          <div class="text-neutral-900 dark:text-neutral-100 font-mono text-xs font-medium uppercase tracking-wider mb-3">
-            Databases & SQL
-          </div>
-          <ul class="space-y-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-normal">
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> PostgreSQL</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> MariaDB / MySQL</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Oracle Database</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Window Functions & CTEs</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Query Tuning & Indexing</li>
-          </ul>
-        </div>
-
-        <div class="minimal-card p-5">
-          <div class="text-neutral-900 dark:text-neutral-100 font-mono text-xs font-medium uppercase tracking-wider mb-3">
-            Python & ML
-          </div>
-          <ul class="space-y-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-normal">
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Python, Pandas, NumPy</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> PyTorch & Scikit-learn</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Resampling (SMOTE+Tomek)</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Diffusion Models & GRUs</li>
-            <li class="flex items-center gap-2"><span class="text-neutral-400">●</span> Random Forest & XGBoost</li>
-          </ul>
-        </div>
-
-      </div>
-
-    </section>
-
     <!-- CONTACT SECTION -->
     <section id="contact" class="py-12 sm:py-16">
       
@@ -695,10 +695,10 @@
       </div>
 
       <div class="flex flex-wrap items-center gap-5">
-        <a href="#about" class="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors">About</a>
+        <a href="#skills" class="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors">Skills</a>
         <a href="#experience" class="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors">Experience</a>
         <a href="#projects" class="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors">Projects</a>
-        <a href="#skills" class="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors">Skills</a>
+        <a href="#about" class="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors">About</a>
         <a href="#contact" class="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors">Contact</a>
         <a href="#" class="hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors font-mono">Top ↑</a>
       </div>
