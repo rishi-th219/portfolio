@@ -1,6 +1,7 @@
 // Portfolio Logic for Rishi Thakur - Data Analyst & Aspiring Data Engineer
 
 document.addEventListener("DOMContentLoaded", () => {
+  setupThemeToggle();
   setupProjectFilters();
   setupCaseStudyModals();
   setupMobileMenu();
@@ -14,12 +15,8 @@ function setupProjectFilters() {
 
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      filterBtns.forEach(b => {
-        b.classList.remove("active", "bg-sky-400", "text-slate-950");
-        b.classList.add("bg-slate-800", "text-slate-300");
-      });
-      btn.classList.add("active", "bg-sky-400", "text-slate-950");
-      btn.classList.remove("bg-slate-800", "text-slate-300");
+      filterBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
 
       const filter = btn.dataset.filter;
       projectCards.forEach(card => {
@@ -62,10 +59,10 @@ function setupCaseStudyModals() {
       metricsContainer.innerHTML = "";
       data.metrics.forEach(m => {
         const div = document.createElement("div");
-        div.className = "p-3 bg-slate-900/90 border border-slate-800 rounded-xl text-center";
+        div.className = "p-3 bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-xl text-center";
         div.innerHTML = `
-          <div class="text-xs text-slate-400 font-medium uppercase font-mono">${m.label}</div>
-          <div class="text-lg font-bold text-sky-400 font-mono mt-0.5">${m.value}</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase font-mono">${m.label}</div>
+          <div class="text-lg font-bold text-sky-600 dark:text-sky-400 font-mono mt-0.5">${m.value}</div>
         `;
         metricsContainer.appendChild(div);
       });
@@ -85,7 +82,7 @@ function setupCaseStudyModals() {
       delivContainer.innerHTML = "";
       data.deliverables.forEach(d => {
         const li = document.createElement("li");
-        li.className = "flex items-start gap-2 text-sm text-slate-300";
+        li.className = "flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300";
         li.innerHTML = `
           <svg class="w-4 h-4 text-emerald-400 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -201,8 +198,8 @@ ${message}`);
       if (feedbackEl) {
         feedbackEl.classList.remove("hidden");
         feedbackEl.innerHTML = `
-          <div class="p-4 bg-emerald-950/60 border border-emerald-500/30 rounded-xl text-emerald-300 text-sm flex items-center gap-3">
-            <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="p-4 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-500/30 rounded-xl text-emerald-800 dark:text-emerald-300 text-sm flex items-center gap-3">
+            <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
             <div>Opening your email client... You can also email directly at <strong>${targetEmail}</strong>.</div>
@@ -211,4 +208,35 @@ ${message}`);
       }
     });
   }
+}
+
+// Theme Toggle Functionality (Light / Dark Mode)
+function setupThemeToggle() {
+  const toggleBtns = [
+    document.getElementById("themeToggleBtn"),
+    document.getElementById("themeToggleBtnMobile")
+  ].filter(Boolean);
+
+  function applyTheme(isDark) {
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }
+
+  toggleBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const isCurrentlyDark = document.documentElement.classList.contains("dark");
+      applyTheme(!isCurrentlyDark);
+    });
+  });
+
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (!localStorage.getItem("theme")) {
+      applyTheme(e.matches);
+    }
+  });
 }
