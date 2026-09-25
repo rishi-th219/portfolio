@@ -59,10 +59,10 @@ function setupCaseStudyModals() {
       metricsContainer.innerHTML = "";
       data.metrics.forEach(m => {
         const div = document.createElement("div");
-        div.className = "p-3 bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-xl text-center";
+        div.className = "p-3 bg-amber-50/70 dark:bg-slate-900/90 border border-amber-200/80 dark:border-slate-800 rounded-xl text-center";
         div.innerHTML = `
-          <div class="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase font-mono">${m.label}</div>
-          <div class="text-lg font-bold text-sky-600 dark:text-sky-400 font-mono mt-0.5">${m.value}</div>
+          <div class="text-xs text-amber-800/80 dark:text-slate-400 font-medium uppercase font-mono">${m.label}</div>
+          <div class="text-lg font-bold text-amber-600 dark:text-yellow-400 font-mono mt-0.5">${m.value}</div>
         `;
         metricsContainer.appendChild(div);
       });
