@@ -1,24 +1,24 @@
-/* Modern Data Intelligence Theme Styles */
+/* Modern Clean Technical Portfolio - Rishi Thakur */
 :root {
-  --bg-dark: #070a13;
-  --bg-card: rgba(18, 24, 38, 0.75);
-  --bg-card-hover: rgba(26, 36, 56, 0.85);
+  --bg-dark: #090d16;
+  --bg-card: rgba(15, 23, 42, 0.7);
+  --bg-card-hover: rgba(22, 33, 58, 0.8);
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-accent: rgba(56, 189, 248, 0.3);
+  --border-accent: rgba(56, 189, 248, 0.25);
   --primary-cyan: #38bdf8;
   --primary-indigo: #6366f1;
   --primary-emerald: #10b981;
-  --text-main: #f1f5f9;
+  --text-main: #f8fafc;
   --text-muted: #94a3b8;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #070a13;
+  background: #090d16;
 }
 ::-webkit-scrollbar-thumb {
   background: #1e293b;
@@ -28,18 +28,18 @@
   background: #334155;
 }
 
-/* Ambient glow backgrounds */
+/* Subdued Ambient glow backgrounds */
 .ambient-glow {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(140px);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.35;
+  opacity: 0.12;
 }
 
 .glow-cyan {
-  background: radial-gradient(circle, #0ea5e9 0%, rgba(14, 165, 233, 0) 70%);
+  background: radial-gradient(circle, #38bdf8 0%, rgba(56, 189, 248, 0) 70%);
 }
 
 .glow-indigo {
@@ -50,24 +50,22 @@
   background: radial-gradient(circle, #10b981 0%, rgba(16, 185, 129, 0) 70%);
 }
 
-/* Glassmorphism Cards */
+/* Clean Cards */
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  background: var(--bg-card-hover);
   border-color: var(--border-accent);
-  box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
 }
 
 .glass-nav {
-  background: rgba(7, 10, 19, 0.85);
+  background: rgba(9, 13, 22, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
@@ -78,7 +76,7 @@
   font-size: 0.75rem;
   padding: 0.25rem 0.65rem;
   border-radius: 9999px;
-  background: rgba(30, 41, 59, 0.7);
+  background: rgba(30, 41, 59, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: #94a3b8;
   font-weight: 500;
@@ -91,7 +89,7 @@
 .tech-pill:hover {
   color: #38bdf8;
   border-color: rgba(56, 189, 248, 0.3);
-  background: rgba(56, 189, 248, 0.1);
+  background: rgba(56, 189, 248, 0.08);
 }
 
 /* Pulse badge for availability */
@@ -105,21 +103,21 @@
 }
 
 .pulse-indicator::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -2px;
   left: -2px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: rgba(16, 185, 129, 0.6);
-  animation: pulse-ring 1.8s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  background-color: rgba(16, 185, 129, 0.5);
+  animation: pulse-ring 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 @keyframes pulse-ring {
-  0% { transform: scale(0.8); opacity: 0.9; }
-  80% { transform: scale(2.2); opacity: 0; }
-  100% { transform: scale(2.4); opacity: 0; }
+  0% { transform: scale(0.8); opacity: 0.8; }
+  80% { transform: scale(2.0); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
 }
 
 /* Modal styles */
@@ -130,25 +128,34 @@
 
 /* Metric number highlight */
 .metric-value {
-  font-family: 'JetBrains Mono', monospace, ui-monospace;
+  font-family: "JetBrains Mono", monospace, ui-monospace;
   letter-spacing: -0.02em;
 }
 
-/* Grid background pattern */
-.bg-grid-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-
 /* Active tab styling */
-.tab-btn.active {
-  background-color: #0284c7;
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
-}
-
-.filter-btn.active {
+.project-filter-btn.active {
   background-color: #38bdf8;
   color: #0f172a;
   font-weight: 600;
+}
+
+/* Experience Timeline Components */
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #0284c7;
+  border: 3px solid #0f172a;
+  position: absolute;
+  left: -7px;
+  top: 6px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
 }
