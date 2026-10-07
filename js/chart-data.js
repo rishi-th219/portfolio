@@ -1,75 +1,105 @@
-// Technical case studies and architecture code for Rishi Thakur
+// Verified Technical Case Studies & Data Architectures for Rishi Thakur
+// Grounded directly in official enterprise experience and academic research
 
-// Full Case Studies detailed metadata for modal popups
 const caseStudiesData = {
-  ecommerce: {
-    badge: "DATA ENGINEERING & ANALYTICS",
-    title: "End-to-End E-Commerce ELT & Customer Intelligence Platform",
-    subtitle: "Built an automated data pipeline using dbt, Airflow, and PostgreSQL to model customer cohorts and RFM segments in Power BI.",
-    clientType: "Engineering Project / E-Commerce Retail",
-    timeline: "Architecture & Implementation",
+  healthbi: {
+    badge: "BUSINESS INTELLIGENCE & DATA INTEGRATION",
+    title: "Statewide Healthcare Attendance & Performance Analytics",
+    subtitle: "Architected an executive 6-page Power BI dashboard suite across 33 districts and 1,000+ facilities with automated SQL/ETL biometric-to-payroll identity resolution.",
+    clientType: "CHiPS • Dept. of Health & Family Welfare, Govt. of Chhattisgarh",
+    timeline: "06/2025 – 03/2026",
+    pipeline: "AEBAS Biometrics → Automated SQL Identity Resolution → State Treasury Payroll → Kimball Star Schema → Power BI DAX → Executive Policy Decision",
     metrics: [
-      { label: "Pipeline Runtime", value: "85% faster" },
-      { label: "Frequency", value: "Daily Automated" },
-      { label: "Data Quality", value: "40+ dbt Tests" },
-      { label: "Segmentation", value: "6 RFM Tiers" }
+      { label: "Districts Monitored", value: "33 Districts" },
+      { label: "Drill-Down Depth", value: "4-Tier Hierarchy" },
+      { label: "Risk Tiers", value: "3-Tier Compliance Model" },
+      { label: "Dashboard Scope", value: "6 Executive Pages" }
     ],
-    problem: "Raw transactional data was siloed across operational PostgreSQL tables, e-commerce exports, and marketing CSV files. Business reporting was manual, slow, and lacked consistent definitions, preventing clear visibility into customer cohort retention and lifetime value.",
-    solution: "1. Containerized Apache Airflow in Docker to orchestrate scheduled daily data ingestion.\n2. Built modular dbt transformation layers (staging, intermediate, and marts) implementing a clean Kimball Star Schema (dim_customers, dim_products, fact_orders).\n3. Engineered customer RFM (Recency, Frequency, Monetary) quantiles and 12-month cohort retention matrices.\n4. Connected the data marts to Power BI with automated refresh and dynamic DAX measures.",
-    stack: ["PostgreSQL", "dbt Core", "Apache Airflow", "Docker", "Power BI", "DAX", "Python"],
-    githubUrl: "https://github.com/rishi-th219/ecommerce-elt-local",
+    problem: "Statewide healthcare facilities (1,000+ health centers, hospitals, and administrative offices across 33 districts) faced severe attendance tracking gaps and doctor service bond non-compliance. Biometric attendance (AEBAS) records were disconnected from State Treasury payroll files and NIC e-Hospital OPD systems, making it impossible for the Department Secretary to verify actual field presence, assess clinical coverage, or detect financial leakage.",
+    solution: "1. Problem Decomposition & Leadership Alignment: Partnered directly with the Department Secretary to deconstruct statewide operational bottlenecks into 3 progressive, data-driven initiatives with measurable compliance benchmarks.\n2. Automated SQL Identity Resolution: Engineered complex SQL pipelines (multi-way joins, CTEs, string normalization, and window functions) bridging AEBAS biometric IDs with State Treasury payroll records, resolving discrepancies for bonded doctors.\n3. 3-Tier Defaulter Risk Model: Uncovered systemic compliance gaps by categorizing personnel into Non-Joiners, Formal-Only Registrants, and Attendance Defaulters, providing immediate visibility into salary disbursement vs. physical attendance.\n4. Star Schema Modeling & DAX: Designed a performant Kimball Star Schema in MariaDB connecting to Power BI, with custom DAX measures for attendance rates, rolling 30-day work hours, and missed login rates across a 4-tier hierarchy (District → Facility → Designation → Employee).\n5. Cross-Department Schema Reconciliation: Integrated multi-source data across MariaDB, State Treasury, and National NextGen e-Hospital OPD systems, collaborating with NIC engineers to reconcile heterogeneous schemas into a unified reporting layer.",
+    stack: ["Power BI", "DAX", "Advanced SQL", "MariaDB", "OracleDB", "Kimball Star Schema", "Power Query", "Excel", "Data Validation"],
+    githubUrl: "",
     deliverables: [
-      "Containerized Docker + Airflow DAG orchestration pipeline",
-      "Production dbt models with 40+ schema & integrity tests",
-      "Kimball Star Schema data mart tables in PostgreSQL",
-      "Interactive Power BI executive dashboard with cohort drill-downs"
+      "Executive 6-page interactive Power BI dashboard suite with 4-tier drill-down hierarchy",
+      "Automated SQL/ETL identity resolution pipeline reconciling biometric IDs with payroll records",
+      "Performant Kimball Star Schema data model with custom DAX time-intelligence measures",
+      "3-tier defaulter risk model and weekly executive exception summaries for the Department Secretary",
+      "Cross-department schema reconciliation specs with NIC engineers for NextGen e-Hospital OPD data",
+      "Comprehensive UAT validation protocols and operational data integrity controls"
+    ]
+  },
+
+  supply_chain: {
+    badge: "INVENTORY & PROCUREMENT ANALYTICS",
+    title: "Essential Drug Inventory & Supply Chain Analytics",
+    subtitle: "Executed multi-dimensional ABC, VED, and SDE inventory matrix modeling in OracleDB and Oracle Analytics Cloud to prevent critical hospital stockouts across 5 sub-departments.",
+    clientType: "CHiPS • Dept. of Health & Family Welfare, Govt. of Chhattisgarh",
+    timeline: "06/2025 – 03/2026",
+    pipeline: "Essential Drug Catalogs → OracleDB Aggregations → ABC / VED / SDE Matrix → Oracle Analytics Cloud (OAC) → Procurement Allocation",
+    metrics: [
+      { label: "Departments", value: "5 Sub-Departments" },
+      { label: "Framework", value: "ABC / VED / SDE Matrix" },
+      { label: "Database Engine", value: "OracleDB" },
+      { label: "BI Platform", value: "Oracle Analytics Cloud" }
+    ],
+    problem: "Procurement teams across 5 healthcare sub-departments struggled to balance pharmaceutical expenditure with life-saving medication availability. Without structured inventory categorization, high-cost non-critical drugs consumed disproportionate budget while essential life-saving drugs experienced localized hospital stockouts.",
+    solution: "1. Multi-Dimensional Categorization: Implemented composite ABC (annual consumption value), VED (Vital, Essential, Desirable criticality), and SDE (Scarce, Difficult, Easy procurement availability) categorization frameworks on statewide drug catalogs.\n2. SQL Data Aggregation: Wrote advanced Oracle SQL queries aggregating multi-year batch consumption, lead times, safety stocks, and reorder triggers across regional medical warehouses.\n3. Oracle Analytics Cloud (OAC) Dashboards: Built interactive executive scorecards visualizing stock levels, consumption velocity, and procurement lead times with automated color-coded risk alerts.\n4. Decision Support: Delivered actionable procurement recommendations enabling leadership to optimize buffer stock allocations and negotiate consolidated vendor orders.",
+    stack: ["OracleDB", "Oracle Analytics Cloud (OAC)", "SQL", "ABC/VED/SDE Analysis", "Advanced Excel", "Data Modeling"],
+    githubUrl: "",
+    deliverables: [
+      "Composite ABC/VED/SDE inventory classification matrix for statewide drug catalogs",
+      "Interactive Oracle Analytics Cloud (OAC) dashboard suite with automated stockout alerts",
+      "Optimized SQL aggregation scripts for warehouse lead times and consumption velocity",
+      "Executive procurement advisory report presented to health department administrators"
     ]
   },
 
   telco5g: {
     badge: "PREDICTIVE ML & RESEARCH",
-    title: "Proactive 5G mmWave Handover Prediction System",
-    subtitle: "Built a generative Diffusion Model + Random Forest pipeline replacing reactive countdown timers with 97.64% failure prevention.",
-    clientType: "M.Tech Thesis Research / Telecom Telemetry",
-    timeline: "Academic R&D Project",
+    title: "Proactive 5G mmWave Handover Prediction via Diffusion Models",
+    subtitle: "M.Tech Thesis at IIIT Naya Raipur: Built a GRU-conditioned Denoising Diffusion Probabilistic Model (DDPM/DDIM) achieving a 97.64% F1-score on connection failure prediction.",
+    clientType: "IIIT Naya Raipur • M.Tech CSE Thesis",
+    timeline: "08/2024 – Present (Ongoing Thesis)",
+    pipeline: "Radio Telemetry Telemetry → GRU Temporal Encoder → DDPM / DDIM Trajectory Generation → SMOTE+Tomek Balancing → Random Forest Policy → Proactive Handover",
     metrics: [
       { label: "F1-Score", value: "97.64%" },
-      { label: "Trajectories", value: "50 Paths" },
       { label: "Class Imbalance", value: "98:2 Ratio" },
-      { label: "Inference", value: "Edge-Ready" }
+      { label: "Trajectories", value: "50 Paths" },
+      { label: "Framework", value: "PyTorch + DDPM" }
     ],
-    problem: "In 5G mmWave networks, physical obstacles cause sudden signal drops within milliseconds. Standard network protocols are reactive—they wait for degradation and rely on countdown timers (TTT), leading to frequent radio link failures.",
-    solution: "1. Encoded historical signal telemetry using a GRU memory network to compress temporal fading trends.\n2. Conditioned a Denoising Diffusion Probabilistic Model (DDPM/DDIM) to forecast 50 distinct realistic future signal trajectories.\n3. Handled severe 98:2 real-world class imbalance using a hybrid SMOTE + Tomek Links pipeline.\n4. Implemented an explainable Random Forest policy engine that votes on simulated trajectories to trigger proactive handovers before connection drops.",
-    stack: ["Python", "PyTorch", "Diffusion Models (DDPM)", "GRU", "Random Forest", "SMOTE+Tomek", "Pandas"],
+    problem: "In 5G millimeter-wave (mmWave) networks, line-of-sight signal paths are vulnerable to sudden physical blockages (buildings, foliage, human mobility) causing rapid signal degradation within milliseconds. Standard network protocols rely on reactive countdown timers (Time-To-Trigger / TTT), resulting in frequent Radio Link Failures (RLF) and severe throughput drops.",
+    solution: "1. Spatiotemporal Feature Modeling: Processed high-dimensional radio telemetry sequences using a Gated Recurrent Unit (GRU) encoder to extract temporal fading patterns.\n2. Generative Trajectory Diffusion: Conditioned a Denoising Diffusion Probabilistic Model (DDPM with accelerated DDIM sampling) on historical signals to generate 50 plausible future signal degradation trajectories.\n3. Extreme Class Imbalance Remediation: Handled the severe 98:2 normal-to-failure telemetry ratio using an integrated SMOTE + Tomek Links sampling strategy.\n4. Predictive Policy Classifier: Designed an explainable Random Forest ensemble that evaluates forecasted diffusion trajectories to initiate proactive handovers prior to connection collapse, reaching 97.64% F1-score.",
+    stack: ["Python", "PyTorch", "Diffusion Models (DDPM/DDIM)", "GRU", "Random Forest", "SMOTE + Tomek", "Scikit-Learn", "NumPy", "Pandas"],
     githubUrl: "https://github.com/rishi-th219/Proactive-Handover-Prediction-in-5G-using-Diffusion-Models",
     deliverables: [
-      "End-to-end Python / PyTorch training and simulation pipeline",
-      "Custom dual-masking loss implementation (cell & time-point)",
-      "Technical research paper and performance validation benchmarks"
+      "Complete PyTorch simulation and diffusion training framework",
+      "Custom dual-masking loss implementation (cell & time-point spatial masking)",
+      "Formal academic thesis documentation and comparative benchmark reports",
+      "Ablation studies proving superiority over traditional reactive LSTM and ARIMA baselines"
     ]
   },
 
   textnlp: {
     badge: "NLP & APPLIED MACHINE LEARNING",
-    title: "High-Precision AI vs. Human Text Detection Engine",
-    subtitle: "Built hybrid Deep Learning (Bi-LSTM + Transformer + 1D-CNN) and BERT + XGBoost pipelines achieving 99% precision.",
-    clientType: "Natural Language Processing R&D",
-    timeline: "Applied ML Project",
+    title: "Dual-Engine AI vs. Human Text Classification Pipeline",
+    subtitle: "Benchmarked dense BERT + XGBoost embeddings against a hybrid Bi-LSTM/CNN/Transformer architecture on massive text corpora, achieving 99% Precision and 98% Recall.",
+    clientType: "Applied Machine Learning & NLP",
+    timeline: "Applied NLP Project",
+    pipeline: "Raw Text Corpus → Tokenization & Cleansing → BERT [CLS] 768-D Embeddings ∥ Bi-LSTM + Transformer + CNN → XGBoost Classifier → High-Precision Detection",
     metrics: [
       { label: "Precision", value: "99.0%" },
       { label: "Recall", value: "98.0%" },
       { label: "F1-Score", value: "98.5%" },
-      { label: "Vocabulary", value: "20,000 Words" }
+      { label: "Embedding Dim", value: "768-D (BERT)" }
     ],
-    problem: "With the proliferation of LLM-generated text, detection tools often suffer from high False Positive rates—falsely penalizing human writers while missing subtle repetitive robotic phrasing.",
-    solution: "1. Lightweight Baseline: Extracted dense 768-dimensional contextual embeddings from pre-trained BERT [CLS] tokens paired with XGBoost for low-latency scoring.\n2. Deep Learning Hybrid: Built an architecture combining trainable word embeddings, Bidirectional LSTM (analyzing sentence flow), Multi-Head Attention Transformer Blocks (global coherence), and a 1D-CNN (automated n-gram scanning for robotic syntax).\n3. Incorporated Early Stopping, Dropout (0.5), and ReduceLROnPlateau scheduling to ensure robust generalization.",
-    stack: ["Python", "TensorFlow / Keras", "BERT", "XGBoost", "Bi-LSTM", "Transformers", "1D-CNN"],
+    problem: "The rapid adoption of generative Large Language Models has made detecting synthetic text crucial for academic integrity and content authenticity. Existing commercial detectors suffer from unacceptable False Positive rates—falsely penalizing human writers while failing to capture nuanced structural patterns.",
+    solution: "1. Pre-trained Contextual Baseline: Extracted 768-dimensional contextual sentence embeddings from pre-trained BERT [CLS] representations, paired with an optimized XGBoost gradient-boosted classifier for low-latency inference.\n2. Deep Learning Hybrid Engine: Designed a multi-stage neural architecture incorporating custom word embeddings, Bidirectional LSTM (sequential syntactic flow), Multi-Head Self-Attention Transformer blocks (global semantic coherence), and 1D-Convolutional layers (local n-gram anomaly detection).\n3. Regularization & Optimization: Applied spatial dropout (0.5), early stopping, and ReduceLROnPlateau learning rate decay to eliminate overfitting and ensure cross-domain generalization.",
+    stack: ["Python", "TensorFlow / Keras", "BERT", "XGBoost", "Bi-LSTM", "Transformers", "1D-CNN", "Scikit-Learn"],
     githubUrl: "",
     deliverables: [
-      "Data preprocessing, normalization, and tokenization modules",
-      "Dual model training scripts with cross-validation",
-      "Performance evaluation report with confusion matrix & ROC curves"
+      "Modular text preprocessing, tokenization, and vectorization pipelines",
+      "End-to-end training and inference scripts with stratified cross-validation",
+      "Comparative performance report including ROC-AUC curves and confusion matrices"
     ]
   }
 };
-

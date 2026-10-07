@@ -1,108 +1,171 @@
-/* Minimalist Editorial Portfolio - Rishi Thakur */
+/* ==========================================================================
+   RISHI THAKUR — ANALYTICAL PRODUCT DESIGN SYSTEM
+   Editorial Minimalist & Command Center Aesthetics
+   ========================================================================== */
 
-/* Light Mode Variables: Minimalist Monochrome & Warm White */
+/* --------------------------------------------------------------------------
+   1. Theme Variables & Tokens
+   -------------------------------------------------------------------------- */
 :root {
+  /* Light Mode: Crisp Paper & Technical Slate */
   --bg-main: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-surface-hover: #f1f5f9;
   --bg-card: #ffffff;
-  --bg-card-hover: #fafafa;
-  --border-subtle: #e5e7eb;
-  --border-hover: #111827;
-  --glass-nav-bg: rgba(255, 255, 255, 0.9);
-  --tech-pill-bg: #f4f4f5;
-  --tech-pill-border: #e4e4e7;
-  --tech-pill-text: #27272a;
-  --text-main: #111827;
-  --text-muted: #6b7280;
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --border-hover: #0284c7;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-faint: #94a3b8;
+  --accent-cyan: #0284c7;
+  --accent-cyan-bg: rgba(2, 132, 199, 0.08);
+  --accent-cyan-border: rgba(2, 132, 199, 0.25);
+  --code-bg: #f8fafc;
+  --glass-nav-bg: rgba(255, 255, 255, 0.88);
+  --grid-line: rgba(15, 23, 42, 0.04);
 }
 
-/* Dark Mode Variables: True Neutral Deep Obsidian / Charcoal (No Blue, No Indigo) */
 .dark {
-  --bg-main: #0a0a0a;
-  --bg-card: #141414;
-  --bg-card-hover: #1a1a1a;
-  --border-subtle: #262626;
-  --border-hover: #525252;
-  --glass-nav-bg: rgba(10, 10, 10, 0.9);
-  --tech-pill-bg: #1c1c1c;
-  --tech-pill-border: #2a2a2a;
-  --tech-pill-text: #d4d4d8;
-  --text-main: #f4f4f5;
-  --text-muted: #a1a1aa;
+  /* Dark Mode: Neutral Deep Obsidian & Precision Cyan */
+  --bg-main: #080a0d;
+  --bg-surface: #0f141c;
+  --bg-surface-hover: #151c27;
+  --bg-card: #11161f;
+  --border-subtle: #1f2733;
+  --border-strong: #2a3545;
+  --border-hover: #38bdf8;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-faint: #64748b;
+  --accent-cyan: #38bdf8;
+  --accent-cyan-bg: rgba(56, 189, 248, 0.08);
+  --accent-cyan-border: rgba(56, 189, 248, 0.25);
+  --code-bg: #0d1117;
+  --glass-nav-bg: rgba(8, 10, 13, 0.88);
+  --grid-line: rgba(255, 255, 255, 0.035);
 }
 
-/* Base Typography & Defaults */
+/* --------------------------------------------------------------------------
+   2. Base Typography & Defaults
+   -------------------------------------------------------------------------- */
 html {
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  letter-spacing: -0.011em;
+  letter-spacing: -0.012em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code, pre, .font-mono {
   font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  letter-spacing: -0.02em;
 }
 
-/* Minimal Scrollbar */
+/* Engineering Subtle Background Grid */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+/* --------------------------------------------------------------------------
+   3. Custom Scrollbar
+   -------------------------------------------------------------------------- */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-main);
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d8;
+  background: #cbd5e1;
   border-radius: 9999px;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #202731;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1aa;
+  background: #94a3b8;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #334155;
 }
 
-/* Minimal Surface Cards */
-.minimal-card {
+/* --------------------------------------------------------------------------
+   4. Surface Cards & Analytical Borders
+   -------------------------------------------------------------------------- */
+.analytic-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 1rem;
-  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  border-radius: 0.875rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.minimal-card:hover {
+.analytic-card:hover {
   border-color: var(--border-hover);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
 }
 
+.dark .analytic-card:hover {
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.4);
+}
+
+/* Glass Navigation Bar */
 .glass-nav {
   background: var(--glass-nav-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-subtle);
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Minimalist Tech tag pill */
+/* --------------------------------------------------------------------------
+   5. Technical Badges & Tech Pills
+   -------------------------------------------------------------------------- */
 .tech-pill {
   font-size: 0.75rem;
   font-family: "IBM Plex Mono", monospace;
-  padding: 0.2rem 0.55rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 0.375rem;
-  background: var(--tech-pill-bg);
-  border: 1px solid var(--tech-pill-border);
-  color: var(--tech-pill-text);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
   font-weight: 400;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   transition: all 0.15s ease;
+  line-height: 1.25;
 }
 
 .tech-pill:hover {
-  border-color: var(--text-main);
+  border-color: var(--accent-cyan);
+  color: var(--text-main);
 }
 
-/* Pulse indicator (understated) */
+.accent-pill {
+  background: var(--accent-cyan-bg);
+  border: 1px solid var(--accent-cyan-border);
+  color: var(--accent-cyan);
+}
+
+/* Section Monospace Index Label (e.g., 01 / CAPABILITIES) */
+.section-index {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+/* Status Indicator Dot */
 .pulse-indicator {
   position: relative;
   display: inline-block;
@@ -130,59 +193,136 @@ code, pre, .font-mono {
   100% { transform: scale(2.2); opacity: 0; }
 }
 
-/* Modal styles */
-.modal-backdrop {
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+/* --------------------------------------------------------------------------
+   6. Data Pipeline Visualizer Components
+   -------------------------------------------------------------------------- */
+.data-pipeline-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.625rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
 }
 
-.dark .modal-backdrop {
-  background: rgba(0, 0, 0, 0.75);
+.pipeline-step {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.375rem;
+  color: var(--text-main);
+  white-space: nowrap;
 }
 
-/* Minimalist filter buttons */
+.pipeline-arrow {
+  color: var(--accent-cyan);
+  user-select: none;
+  font-size: 0.8rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. Filter Buttons
+   -------------------------------------------------------------------------- */
 .project-filter-btn {
-  background-color: #f4f4f5;
-  color: #52525b;
-  border: 1px solid #e4e4e7;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-weight: 500;
+  background-color: var(--bg-surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 0.5rem;
   transition: all 0.15s ease;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .project-filter-btn:hover {
-  background-color: #e4e4e7;
-  color: #18181b;
-}
-
-.dark .project-filter-btn {
-  background-color: #171717;
-  color: #a1a1aa;
-  border: 1px solid #262626;
-}
-
-.dark .project-filter-btn:hover {
-  background-color: #212121;
-  color: #ffffff;
+  border-color: var(--border-strong);
+  color: var(--text-main);
 }
 
 .project-filter-btn.active {
-  background-color: #18181b !important;
-  color: #ffffff !important;
-  border-color: #18181b !important;
+  background-color: var(--text-main) !important;
+  color: var(--bg-main) !important;
+  border-color: var(--text-main) !important;
 }
 
 .dark .project-filter-btn.active {
-  background-color: #f4f4f5 !important;
-  color: #0a0a0a !important;
-  border-color: #f4f4f5 !important;
+  background-color: #f1f5f9 !important;
+  color: #080a0d !important;
+  border-color: #f1f5f9 !important;
 }
 
-/* Responsive utilities */
+/* --------------------------------------------------------------------------
+   8. Modal Backdrops & Containers
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.dark .modal-backdrop {
+  background: rgba(0, 0, 0, 0.82);
+}
+
+/* --------------------------------------------------------------------------
+   9. Code Card (Interactive Profile Editor Mock)
+   -------------------------------------------------------------------------- */
+.code-container {
+  background: var(--code-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.dark .code-header {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Syntax Highlighting Tokens */
+.syn-kw { color: #f43f5e; } /* keywords: def, class, return */
+.syn-var { color: #38bdf8; } /* variables */
+.syn-str { color: #10b981; } /* strings */
+.syn-num { color: #fbbf24; } /* numbers */
+.syn-comment { color: #64748b; font-style: italic; } /* comments */
+
+.dark .syn-kw { color: #fb7185; }
+.dark .syn-var { color: #38bdf8; }
+.dark .syn-str { color: #34d399; }
+.dark .syn-num { color: #fcd34d; }
+.dark .syn-comment { color: #64748b; }
+
+/* --------------------------------------------------------------------------
+   10. Responsiveness & Touch Targets
+   -------------------------------------------------------------------------- */
 @media (max-width: 640px) {
   .hero-heading {
-    font-size: 2.125rem;
-    line-height: 1.2;
+    font-size: 2.15rem;
+    line-height: 1.18;
   }
+}
+
+/* Ensure accessible tap targets on mobile */
+button, a {
+  touch-action: manipulation;
 }
