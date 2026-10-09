@@ -3,12 +3,12 @@
 
 const caseStudiesData = {
   healthbi: {
-    badge: "BUSINESS INTELLIGENCE & DATA INTEGRATION",
+    badge: "SQL ENGINEERING & BUSINESS INTELLIGENCE",
     title: "Statewide Healthcare Attendance & Performance Analytics",
-    subtitle: "Architected an executive 6-page Power BI dashboard suite across 33 districts and 1,000+ facilities with automated SQL/ETL biometric-to-payroll identity resolution.",
+    subtitle: "Architected an executive 6-page Power BI dashboard suite across 33 districts and 1,000+ facilities with automated SQL/ETL biometric-to-payroll identity resolution and Advanced Excel operational auditing.",
     clientType: "CHiPS • Dept. of Health & Family Welfare, Govt. of Chhattisgarh",
     timeline: "06/2025 – 03/2026",
-    pipeline: "AEBAS Biometrics → Automated SQL Identity Resolution → State Treasury Payroll → Kimball Star Schema → Power BI DAX → Executive Policy Decision",
+    pipeline: "AEBAS Biometrics → Automated SQL Identity Resolution → State Treasury Payroll → Kimball Star Schema → Advanced Excel Auditing → Power BI DAX → Executive Policy Decision",
     metrics: [
       { label: "Districts Monitored", value: "33 Districts" },
       { label: "Drill-Down Depth", value: "4-Tier Hierarchy" },
@@ -16,12 +16,13 @@ const caseStudiesData = {
       { label: "Dashboard Scope", value: "6 Executive Pages" }
     ],
     problem: "Statewide healthcare facilities (1,000+ health centers, hospitals, and administrative offices across 33 districts) faced severe attendance tracking gaps and doctor service bond non-compliance. Biometric attendance (AEBAS) records were disconnected from State Treasury payroll files and NIC e-Hospital OPD systems, making it impossible for the Department Secretary to verify actual field presence, assess clinical coverage, or detect financial leakage.",
-    solution: "1. Problem Decomposition & Leadership Alignment: Partnered directly with the Department Secretary to deconstruct statewide operational bottlenecks into 3 progressive, data-driven initiatives with measurable compliance benchmarks.\n2. Automated SQL Identity Resolution: Engineered complex SQL pipelines (multi-way joins, CTEs, string normalization, and window functions) bridging AEBAS biometric IDs with State Treasury payroll records, resolving discrepancies for bonded doctors.\n3. 3-Tier Defaulter Risk Model: Uncovered systemic compliance gaps by categorizing personnel into Non-Joiners, Formal-Only Registrants, and Attendance Defaulters, providing immediate visibility into salary disbursement vs. physical attendance.\n4. Star Schema Modeling & DAX: Designed a performant Kimball Star Schema in MariaDB connecting to Power BI, with custom DAX measures for attendance rates, rolling 30-day work hours, and missed login rates across a 4-tier hierarchy (District → Facility → Designation → Employee).\n5. Cross-Department Schema Reconciliation: Integrated multi-source data across MariaDB, State Treasury, and National NextGen e-Hospital OPD systems, collaborating with NIC engineers to reconcile heterogeneous schemas into a unified reporting layer.",
-    stack: ["Power BI", "DAX", "Advanced SQL", "MariaDB", "OracleDB", "Kimball Star Schema", "Power Query", "Excel", "Data Validation"],
+    solution: "1. Automated SQL Identity Resolution: Engineered complex SQL pipelines (multi-way joins, CTEs, string normalization, and window functions) bridging AEBAS biometric IDs with State Treasury payroll records, resolving discrepancies for bonded doctors.\n2. Cross-Department Schema Reconciliation: Integrated multi-source data across MariaDB, State Treasury, and National NextGen e-Hospital OPD systems, collaborating with NIC engineers to reconcile heterogeneous schemas into a unified reporting layer.\n3. Advanced Excel Operational Auditing: Developed multi-tab analytical Excel workbooks powered by Power Query (M), dynamic arrays (XLOOKUP, INDEX/MATCH), and Power Pivot data models to cross-validate district-level biometric logs with Treasury payroll files, enabling rapid ad-hoc scenario modeling and executive exception tracking.\n4. Star Schema Modeling & DAX: Designed a performant Kimball Star Schema in MariaDB connecting to Power BI, with custom DAX measures for attendance rates, rolling 30-day work hours, and missed login rates across a 4-tier hierarchy (District → Facility → Designation → Employee).\n5. 3-Tier Defaulter Risk Model: Uncovered systemic compliance gaps by categorizing personnel into Non-Joiners, Formal-Only Registrants, and Attendance Defaulters, providing immediate visibility into salary disbursement vs. physical attendance.",
+    stack: ["Advanced SQL", "MariaDB", "OracleDB", "Advanced Excel", "Power Query (M)", "Power Pivot", "Power BI", "DAX", "Kimball Star Schema", "Data Validation"],
     githubUrl: "",
     deliverables: [
       "Executive 6-page interactive Power BI dashboard suite with 4-tier drill-down hierarchy",
       "Automated SQL/ETL identity resolution pipeline reconciling biometric IDs with payroll records",
+      "Multi-tab Advanced Excel auditing workbooks (Power Query, Dynamic Arrays, Power Pivot) cross-validating payroll vs attendance",
       "Performant Kimball Star Schema data model with custom DAX time-intelligence measures",
       "3-tier defaulter risk model and weekly executive exception summaries for the Department Secretary",
       "Cross-department schema reconciliation specs with NIC engineers for NextGen e-Hospital OPD data",
@@ -30,12 +31,12 @@ const caseStudiesData = {
   },
 
   supply_chain: {
-    badge: "INVENTORY & PROCUREMENT ANALYTICS",
+    badge: "SQL INVENTORY & SCENARIO ANALYTICS",
     title: "Essential Drug Inventory & Supply Chain Analytics",
-    subtitle: "Executed multi-dimensional ABC, VED, and SDE inventory matrix modeling in OracleDB and Oracle Analytics Cloud to prevent critical hospital stockouts across 5 sub-departments.",
+    subtitle: "Executed multi-dimensional ABC, VED, and SDE inventory matrix modeling in OracleDB, Advanced Excel, and Oracle Analytics Cloud to prevent critical hospital stockouts across 5 sub-departments.",
     clientType: "CHiPS • Dept. of Health & Family Welfare, Govt. of Chhattisgarh",
     timeline: "06/2025 – 03/2026",
-    pipeline: "Essential Drug Catalogs → OracleDB Aggregations → ABC / VED / SDE Matrix → Oracle Analytics Cloud (OAC) → Procurement Allocation",
+    pipeline: "Essential Drug Catalogs → Oracle SQL Aggregations → ABC / VED / SDE Matrix → Advanced Excel Scenario Models → Oracle Analytics Cloud (OAC) → Procurement Allocation",
     metrics: [
       { label: "Departments", value: "5 Sub-Departments" },
       { label: "Framework", value: "ABC / VED / SDE Matrix" },
@@ -43,13 +44,14 @@ const caseStudiesData = {
       { label: "BI Platform", value: "Oracle Analytics Cloud" }
     ],
     problem: "Procurement teams across 5 healthcare sub-departments struggled to balance pharmaceutical expenditure with life-saving medication availability. Without structured inventory categorization, high-cost non-critical drugs consumed disproportionate budget while essential life-saving drugs experienced localized hospital stockouts.",
-    solution: "1. Multi-Dimensional Categorization: Implemented composite ABC (annual consumption value), VED (Vital, Essential, Desirable criticality), and SDE (Scarce, Difficult, Easy procurement availability) categorization frameworks on statewide drug catalogs.\n2. SQL Data Aggregation: Wrote advanced Oracle SQL queries aggregating multi-year batch consumption, lead times, safety stocks, and reorder triggers across regional medical warehouses.\n3. Oracle Analytics Cloud (OAC) Dashboards: Built interactive executive scorecards visualizing stock levels, consumption velocity, and procurement lead times with automated color-coded risk alerts.\n4. Decision Support: Delivered actionable procurement recommendations enabling leadership to optimize buffer stock allocations and negotiate consolidated vendor orders.",
-    stack: ["OracleDB", "Oracle Analytics Cloud (OAC)", "SQL", "ABC/VED/SDE Analysis", "Advanced Excel", "Data Modeling"],
+    solution: "1. SQL Data Aggregation: Wrote advanced Oracle SQL queries aggregating multi-year batch consumption, lead times, safety stocks, and reorder triggers across regional medical warehouses.\n2. Multi-Dimensional Categorization: Implemented composite ABC (annual consumption value), VED (Vital, Essential, Desirable criticality), and SDE (Scarce, Difficult, Easy procurement availability) categorization frameworks on statewide drug catalogs.\n3. Advanced Excel Scenario Modeling: Constructed dynamic Excel financial and operational workbooks featuring sensitivity tables, Pivot Tables, and automated reorder threshold models to evaluate lead-time variability and procurement buffer stocks.\n4. Oracle Analytics Cloud (OAC) Dashboards: Built interactive executive scorecards visualizing stock levels, consumption velocity, and procurement lead times with automated color-coded risk alerts.\n5. Decision Support: Delivered actionable procurement recommendations enabling leadership to optimize buffer stock allocations and negotiate consolidated vendor orders.",
+    stack: ["OracleDB", "Advanced SQL", "Advanced Excel (Scenario Modeling)", "Power Query", "Oracle Analytics Cloud (OAC)", "ABC/VED/SDE Analysis", "Data Modeling"],
     githubUrl: "",
     deliverables: [
       "Composite ABC/VED/SDE inventory classification matrix for statewide drug catalogs",
-      "Interactive Oracle Analytics Cloud (OAC) dashboard suite with automated stockout alerts",
+      "Dynamic Excel scenario modeling workbooks with sensitivity tables and automated stockout alerts",
       "Optimized SQL aggregation scripts for warehouse lead times and consumption velocity",
+      "Interactive Oracle Analytics Cloud (OAC) dashboard suite with automated procurement alerts",
       "Executive procurement advisory report presented to health department administrators"
     ]
   },
@@ -60,7 +62,7 @@ const caseStudiesData = {
     subtitle: "M.Tech Thesis at IIIT Naya Raipur: Built a GRU-conditioned Denoising Diffusion Probabilistic Model (DDPM/DDIM) achieving a 97.64% F1-score on connection failure prediction.",
     clientType: "IIIT Naya Raipur • M.Tech CSE Thesis",
     timeline: "08/2024 – Present (Ongoing Thesis)",
-    pipeline: "Radio Telemetry Telemetry → GRU Temporal Encoder → DDPM / DDIM Trajectory Generation → SMOTE+Tomek Balancing → Random Forest Policy → Proactive Handover",
+    pipeline: "Radio Telemetry → GRU Temporal Encoder → DDPM / DDIM Trajectory Generation → SMOTE+Tomek Balancing → Random Forest Policy → Proactive Handover",
     metrics: [
       { label: "F1-Score", value: "97.64%" },
       { label: "Class Imbalance", value: "98:2 Ratio" },
