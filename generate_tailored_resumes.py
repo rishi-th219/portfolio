@@ -480,13 +480,13 @@ def generate_all():
         else:
             print(f"Error converting {base_name}:", res.stderr)
             
-    # Also create default Rishi_Thakur_Resume.pdf from Data Analyst
-    src = "/home/rishi21/Desktop/Jobhunt/portfolio/assets/Rishi_Thakur_Data_Analyst_Resume.pdf"
+    # Also create default Rishi_Thakur_Resume.pdf from SQL Developer
+    src = "/home/rishi21/Desktop/Jobhunt/portfolio/assets/Rishi_Thakur_SQL_Developer_Resume.pdf"
     dst = "/home/rishi21/Desktop/Jobhunt/portfolio/assets/Rishi_Thakur_Resume.pdf"
     if os.path.exists(src):
         with open(src, "rb") as f_in, open(dst, "wb") as f_out:
             f_out.write(f_in.read())
-        print("Updated default Rishi_Thakur_Resume.pdf")
+        print("Updated default Rishi_Thakur_Resume.pdf from SQL Developer")
 
 if __name__ == '__main__':
     generate_all()
