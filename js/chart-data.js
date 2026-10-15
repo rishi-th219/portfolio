@@ -105,3 +105,194 @@ const caseStudiesData = {
     ]
   }
 };
+
+// Verified Full-Text Tailored Resume Suite Data
+const resumesData = {
+  "data_analyst": {
+    "track": "TRACK 01",
+    "badge": "PRIMARY FOCUS",
+    "role": "Data Analyst",
+    "title": "Data Analyst | Business Intelligence & Analytics Engineering",
+    "summary": "Results-oriented Data Analyst experienced in developing automated data pipelines, dimensional data models, Advanced Excel analytical workbooks, and enterprise Power BI dashboards from end to end. Proven background resolving multi-source data discrepancies across state-scale public healthcare databases, authoring SQL/ETL identity-resolution workflows, and translating complex operational KPIs into high-impact analytical tools that drive executive decision-making. Backed by M.Tech (CSE), GATE (CS) qualification, and advanced proficiency in SQL, Power BI, Advanced Excel (Power Query, Pivot Tables, Scenario Modeling), and Python.",
+    "skills": [
+      "<strong>Advanced Excel & BI: </strong>Advanced Excel (XLOOKUP, INDEX/MATCH, Dynamic Arrays, Complex Nested Formulas, Pivot Tables, Power Pivot, Data Modeling, Power Query / M ETL, What-If Scenario Analysis, VBA / Macros, Executive KPI Dashboards, Conditional Formatting), Microsoft Power BI, DAX (Measures, Time Intelligence), Oracle Analytics Cloud (OAC), KPI Scorecards",
+      "<strong>Databases & Querying: </strong>Advanced SQL (T-SQL, MySQL, MariaDB, OracleDB) \u2014 Complex Multi-Table Joins, CTEs, Window Functions (ROW_NUMBER, RANK, LEAD/LAG), Subqueries, Aggregations, Relational Database Design, Query Execution Plan Tuning",
+      "<strong>Data Modeling & ETL: </strong>Dimensional Modeling (Kimball Star Schema), Multi-Source ETL Pipelines, Identity Resolution Algorithms, Heterogeneous Schema Reconciliation, Data Validation & Cleansing, Data Integrity Controls",
+      "<strong>Analytics & Programming: </strong>Python (Pandas, NumPy, Scikit-learn), Inventory Analysis (ABC/VED/SDE), Metric & Dimension Definition, Root Cause Analysis, Trend & Variance Analysis, UAT Protocols, Technical Documentation"
+    ],
+    "exp_role": "Data Analyst & BI Developer Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
+    "exp_bullets": [
+      "<strong>Statewide BI Dashboard Architecture: </strong>Architected an executive 6-page statewide Power BI attendance dashboard across 33 districts, structuring 4-tier top-down drill-downs (District \u2192 Facility \u2192 Designation \u2192 Employee) with custom DAX measures tracking avg. work hours, attendance %, and missed logins.",
+      "<strong>Advanced Excel Auditing & Operational Analysis: </strong>Developed multi-tab analytical Excel workbooks powered by Power Query, dynamic arrays (XLOOKUP, INDEX/MATCH), and Power Pivot data models to cross-validate district-level biometric logs with Treasury payroll files, enabling rapid ad-hoc scenario modeling and executive exception tracking.",
+      "<strong>Automated SQL/ETL Identity Resolution: </strong>Engineered an automated SQL/ETL pipeline mapping AEBAS biometric attendance IDs to State Treasury payroll records, closing a critical cross-departmental tracking gap and categorizing bonded doctors into 3 actionable compliance tiers.",
+      "<strong>Cross-Department Schema Reconciliation: </strong>Integrated multi-source data across MariaDB, State Treasury, and National NextGen e-Hospital OPD systems, collaborating with NIC engineers to reconcile heterogeneous modular schemas into a unified reporting layer.",
+      "<strong>Supply Chain & Inventory Analytics: </strong>Conducted ABC, VED, and SDE inventory categorization analysis on essential drug catalogs in OracleDB, deploying interactive dashboards to Oracle Analytics Cloud (OAC) to guide statewide procurement decisions across 5 sub-departments."
+    ],
+    "projects": [
+      {
+        "name": "Proactive 5G Handover Prediction (Diffusion Models)",
+        "tools": "Python, PyTorch, GRU, DDPM, Scikit-learn",
+        "tag": "M.Tech Thesis \u2014 Predictive Analytics",
+        "bullets": [
+          "Developed a GRU-conditioned diffusion model (DDPM/DDIM) to forecast radio signal degradation from multivariate spatiotemporal telemetry; addressed 98:2 class imbalance via <strong>SMOTE + Tomek Links</strong> and attained a <strong>97.64% F1-score</strong> on failure classification."
+        ]
+      },
+      {
+        "name": "AI vs. Human Text Classification Pipeline",
+        "tools": "Python, BERT, XGBoost, Bi-LSTM, Transformers",
+        "tag": "Applied Machine Learning & NLP",
+        "bullets": [
+          "Designed and benchmarked dual NLP pipelines (BERT + XGBoost and hybrid Bi-LSTM/CNN/Transformer architecture) on large corpora, optimizing decision boundaries to achieve <strong>99% Precision</strong> and <strong>98% Recall</strong>."
+        ]
+      }
+    ],
+    "certs": [
+      "<strong>Microsoft Power BI Desktop for Business Intelligence (Udemy)</strong>  |  <strong>Qualified GATE (CS), 2024</strong>",
+      "<strong>SQL for Beginners & Database Design (Udemy)</strong>  |  <strong>IELTS Academic: 7.5 Band Score</strong>",
+      "<strong>Python for Data Science, AI & Development (Coursera)</strong>  |  <strong>Machine Learning (NPTEL)</strong>"
+    ],
+    "pdf": "tailoring/Rishi_Thakur_Data_Analyst_Resume.pdf",
+    "docx": "tailoring/Rishi_Thakur_Data_Analyst_Resume.docx",
+    "md": "tailoring/Rishi_Thakur_Data_Analyst_Resume.md"
+  },
+  "business_analyst": {
+    "track": "TRACK 02",
+    "badge": "STRATEGIC & OPS",
+    "role": "Business Analyst",
+    "title": "Business Analyst | SQL Developer & Analytics Engineering",
+    "summary": "Business Analyst and SQL Developer with expertise in business problem decomposition, advanced relational database querying, Advanced Excel scenario modeling, and executive leadership alignment. Proven track record partnering directly with the Department Secretary to deconstruct complex statewide operational bottlenecks into 3 structured, data-driven initiatives across 33 districts. Experienced in authoring advanced SQL workflows (CTEs, window functions, schema reconciliation), building dynamic financial/operational models in Excel, and deploying interactive Power BI dashboards that drive data-backed policy decisions.",
+    "skills": [
+      "<strong>Business & Strategy Analytics: </strong>Business Problem Decomposition, Risk & Defaulter Segmentation, Root Cause Analysis, Hypothesis Testing, Metric & KPI Definition, Operational Strategy, Impact Measurement, Executive Decision Support",
+      "<strong>Advanced Excel & Financial Modeling: </strong>Advanced Excel (XLOOKUP, INDEX/MATCH, Dynamic Arrays, Complex Nested Formulas, Pivot Tables, Power Pivot, Power Query ETL, What-If Scenario Analysis, Sensitivity Matrices, Financial Modeling, VBA & Macros), Executive Dashboards",
+      "<strong>Databases & Querying: </strong>Advanced SQL (Complex Multi-Table Joins, CTEs, Window Functions, Subqueries, Aggregations), MySQL, MariaDB, OracleDB, T-SQL, Query Optimization, Relational Database Design",
+      "<strong>Data Modeling & BI: </strong>Schema Reconciliation across Heterogeneous Sources, Identity Resolution, Multi-Source ETL Pipelines, Dimensional Modeling (Star Schema), Microsoft Power BI (DAX, Drill-downs), Oracle Analytics Cloud (OAC), UAT Protocols"
+    ],
+    "exp_role": "Business Analyst & SQL Developer Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
+    "exp_bullets": [
+      "<strong>Problem Decomposition & Leadership Alignment: </strong>Partnered directly with the Department Secretary to deconstruct complex statewide attendance and doctor service bond compliance issues across 33 districts into 3 progressive, data-driven initiatives with defined metrics.",
+      "<strong>Risk & Defaulter Segmentation: </strong>Uncovered systemic compliance gaps by conceptualizing a 3-tier defaulter risk model for bonded personnel (Non-Joiners, Formal-Only Registrants, and Attendance Defaulters), mapping State Treasury payroll data to track financial leakage.",
+      "<strong>Operational Financial Modeling & Excel Analytics: </strong>Built executive scenario modeling workbooks in Advanced Excel combining Power Query ETL and dynamic sensitivity matrices to evaluate payroll discrepancies and bonded doctor compliance rates across 33 districts.",
+      "<strong>Advanced SQL Querying & Identity Resolution: </strong>Authored complex SQL pipelines (multi-way joins, CTEs, window functions) bridging AEBAS biometric attendance IDs with State Treasury payroll records, resolving name and designation discrepancies for bonded doctors.",
+      "<strong>Executive Dashboards & Decision Support: </strong>Architected an executive 6-page Power BI dashboard with top-down drill-downs (District \u2192 Facility \u2192 Designation \u2192 Individual) tracking core KPIs, enabling leadership to enforce data-backed policy actions across 5 sub-departments."
+    ],
+    "projects": [
+      {
+        "name": "Proactive Risk Prediction & AI Decision Engine",
+        "tools": "Python, PyTorch, Scikit-learn",
+        "tag": "Predictive Risk Analytics",
+        "bullets": [
+          "Engineered an automated proactive decision framework replacing reactive delay-based protocols to predict high-impact system failures before occurrence using multivariate temporal telemetry, attaining a <strong>97.64% F1-score</strong> and handling 98:2 class imbalance via <strong>SMOTE + Tomek Links</strong>."
+        ]
+      },
+      {
+        "name": "Anomalous Content & Text Classification System",
+        "tools": "Python, BERT, XGBoost",
+        "tag": "Applied Analytics",
+        "bullets": [
+          "Built and benchmarked dual classification pipelines (BERT + XGBoost and Deep Hybrid Neural Networks) to isolate synthetic and anomalous patterns across large corpora, optimizing decision thresholds to achieve <strong>99% Precision</strong> and <strong>98% Recall</strong>."
+        ]
+      }
+    ],
+    "certs": [
+      "<strong>SQL for Beginners & Database Design (Udemy)</strong>  |  <strong>Microsoft Power BI Desktop for Business Intelligence (Udemy)</strong>",
+      "<strong>Python for Data Science, AI & Development (Coursera)</strong>  |  <strong>Qualified GATE (CS), 2024</strong>  |  <strong>IELTS Academic: 7.5 Band Score</strong>"
+    ],
+    "pdf": "tailoring/Rishi_Thakur_Business_Analyst_Resume.pdf",
+    "docx": "tailoring/Rishi_Thakur_Business_Analyst_Resume.docx",
+    "md": "tailoring/Rishi_Thakur_Business_Analyst_Resume.md"
+  },
+  "sql_developer": {
+    "track": "TRACK 03",
+    "badge": "DATABASE ENGINEERING",
+    "role": "SQL Developer",
+    "title": "SQL Developer | Database Engineering & Analytics",
+    "summary": "High-performing SQL Developer and Database Specialist experienced in relational database design, complex analytical querying, and enterprise data reconciliation across state-scale architectures. Proven background engineering high-throughput SQL pipelines (multi-table joins, recursive CTEs, window functions, execution plan optimization) across MariaDB, OracleDB, and MySQL for 33 districts and 1,000+ facilities at CHiPS. Skilled in dimensional Star Schema architecture, multi-source ETL identity resolution, and Advanced Excel data auditing to deliver verified, high-integrity analytical data layers.",
+    "skills": [
+      "<strong>Databases & Querying: </strong>Advanced SQL (T-SQL, MySQL, MariaDB, OracleDB, PostgreSQL) \u2014 Complex Multi-Table Joins, Recursive CTEs, Window Functions (ROW_NUMBER, RANK, DENSE_RANK, LEAD/LAG), Subqueries, Aggregations, Execution Plan Tuning, Indexing Strategies, Stored Procedures & Triggers",
+      "<strong>Data Modeling & ETL: </strong>Dimensional Modeling (Kimball Star Schema, Fact & Dimension Tables, SCD Types), Multi-Source ETL Pipelines, Identity Resolution Algorithms, Heterogeneous Schema Reconciliation, Data Integrity Controls, Data Cleansing",
+      "<strong>Advanced Excel & BI: </strong>Advanced Excel (XLOOKUP, INDEX/MATCH, Dynamic Arrays, Nested Logic, Pivot Tables, Power Pivot Data Modeling, Power Query M-code, Scenario Modeling, VBA & Macros), Microsoft Power BI (DAX Measures, Time Intelligence), Oracle Analytics Cloud (OAC)",
+      "<strong>Programming & Quality: </strong>Python (Pandas, NumPy, Scikit-learn), Automated Data Validation Pipelines, UAT Testing Protocols, Relational Schema DDL/DML Design, Git, Technical Documentation & Audit Trails"
+    ],
+    "exp_role": "SQL Developer & Data Analyst Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
+    "exp_bullets": [
+      "<strong>Automated SQL/ETL Identity Resolution: </strong>Engineered an automated SQL/ETL pipeline utilizing complex multi-table CTEs, string normalization, and window functions to bridge disparate AEBAS biometric attendance IDs with State Treasury payroll records, resolving cross-departmental tracking gaps and categorizing doctors into 3 compliance tiers.",
+      "<strong>Heterogeneous Schema Reconciliation: </strong>Collaborated directly with National Informatics Centre (NIC) database engineers to reconcile disparate relational schemas across MariaDB attendance engines, State Treasury databases, and National NextGen e-Hospital OPD systems into a unified dimensional data mart.",
+      "<strong>Dimensional Modeling & Performance Tuning: </strong>Designed and maintained performant Kimball Star Schema fact and dimension tables; optimized long-running analytical queries through indexed staging views and CTE refactoring, reducing data extraction latencies for executive BI reporting.",
+      "<strong>Supply Chain & Inventory SQL Workflows: </strong>Authored advanced Oracle SQL queries aggregating multi-year batch consumption, lead times, safety stocks, and reorder triggers on essential drug catalogs in OracleDB; performed multi-dimensional ABC, VED, and SDE matrix classification deployed across 5 sub-departments.",
+      "<strong>Advanced Excel Data Auditing & Validation: </strong>Built automated Excel auditing workbooks leveraging Power Query, dynamic array formulas, and Pivot Tables to cross-verify SQL database extracts against field submissions, ensuring 100% data fidelity for executive review by the Department Secretary."
+    ],
+    "projects": [
+      {
+        "name": "Proactive Risk Prediction & Decision Engine",
+        "tools": "Python, PyTorch, Scikit-learn",
+        "tag": "M.Tech Thesis \u2014 Predictive ML",
+        "bullets": [
+          "Engineered an automated proactive decision framework replacing reactive delay-based protocols using multivariate temporal telemetry; handled 98:2 class imbalance via <strong>SMOTE + Tomek Links</strong> and attained a <strong>97.64% F1-score</strong> on failure classification."
+        ]
+      },
+      {
+        "name": "Anomalous Content & Text Classification System",
+        "tools": "Python, BERT, XGBoost, Transformers",
+        "tag": "Applied Machine Learning & NLP",
+        "bullets": [
+          "Built and benchmarked dual classification pipelines (BERT + XGBoost and Deep Hybrid Neural Networks) to isolate synthetic and anomalous patterns across large corpora, optimizing decision thresholds to achieve <strong>99% Precision</strong> and <strong>98% Recall</strong>."
+        ]
+      }
+    ],
+    "certs": [
+      "<strong>SQL for Beginners & Database Design (Udemy)</strong>  |  <strong>Qualified GATE (CS), 2024</strong>",
+      "<strong>Microsoft Power BI Desktop for Business Intelligence (Udemy)</strong>  |  <strong>IELTS Academic: 7.5 Band Score</strong>",
+      "<strong>Python for Data Science, AI & Development (Coursera)</strong>  |  <strong>Machine Learning (NPTEL)</strong>"
+    ],
+    "pdf": "tailoring/Rishi_Thakur_SQL_Developer_Resume.pdf",
+    "docx": "tailoring/Rishi_Thakur_SQL_Developer_Resume.docx",
+    "md": "tailoring/Rishi_Thakur_SQL_Developer_Resume.md"
+  },
+  "powerbi_developer": {
+    "track": "TRACK 04",
+    "badge": "BI ARCHITECTURE",
+    "role": "Power BI Developer",
+    "title": "Data Analyst | Power BI Developer & Business Intelligence",
+    "summary": "Results-oriented Data Analyst and Power BI Developer experienced in designing end-to-end business intelligence solutions, dimensional data models, Advanced Excel analytical workbooks, and automated SQL/ETL pipelines. Proven track record architecting enterprise-scale interactive Power BI dashboards across 33 districts, establishing multi-level DAX-powered drill-down hierarchies, and reconciling multi-source datasets across MariaDB, State Treasury, and OracleDB. Skilled in conducting inventory analytics (ABC/VED/SDE), developing complex DAX measures, and delivering actionable visual insights.",
+    "skills": [
+      "<strong>BI & Data Visualization: </strong>Microsoft Power BI, DAX (Calculated Columns, Measures, Time Intelligence, Compliance Ratios), Power Query (M Language ETL), Oracle Analytics Cloud (OAC), Dynamic KPI Scorecards, Row-Level Security, Interactive Drill-Throughs",
+      "<strong>Advanced Excel & Modeling: </strong>Advanced Excel (XLOOKUP, INDEX/MATCH, Dynamic Arrays, Nested Logic, Pivot Tables, Power Pivot Data Modeling, Scenario Modeling, VBA/Macros), Executive Reporting",
+      "<strong>Databases & Querying: </strong>Advanced SQL (Complex Multi-Table Joins, CTEs, Window Functions, Subqueries, Aggregations), MySQL, MariaDB, OracleDB, T-SQL, Query Optimization, Relational Database Design",
+      "<strong>Data Modeling & Analytics: </strong>Dimensional Modeling (Kimball Star Schema), Schema Reconciliation across Heterogeneous Sources, Identity Resolution, Multi-Source ETL Pipelines, Inventory Analysis (ABC/VED/SDE), Data Integrity Controls, UAT Protocols"
+    ],
+    "exp_role": "Data Analyst & BI Developer Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
+    "exp_bullets": [
+      "<strong>Enterprise Power BI Dashboard Architecture: </strong>Architected an executive 6-page statewide Power BI attendance dashboard across 33 districts with 4-tier top-down drill-downs (District \u2192 Facility \u2192 Designation \u2192 Employee), custom DAX measures, and dynamic KPI cards tracking avg. work hours, attendance %, and missed logins.",
+      "<strong>Advanced DAX & Star Schema Modeling: </strong>Engineered a performant Star Schema data model with custom DAX time-intelligence and compliance-ratio measures, optimizing data refreshes and interactive filtering across large MariaDB employee datasets with full drill-through capability.",
+      "<strong>Multi-Source SQL/ETL Pipeline: </strong>Developed automated SQL identity-resolution workflows mapping AEBAS biometric attendance IDs to State Treasury payroll codes, closing a critical cross-departmental tracking gap and categorizing bonded doctors into 3 actionable compliance tiers.",
+      "<strong>Supply Chain & Inventory Analytics: </strong>Conducted ABC, VED, and SDE inventory categorization analysis on essential drug catalogs in OracleDB, deploying interactive dashboards to Oracle Analytics Cloud (OAC) to guide statewide procurement decisions across 5 sub-departments.",
+      "<strong>Advanced Excel Auditing & Reconciliation: </strong>Created multi-source Excel validation models with Power Query and Power Pivot to verify database extract parity, eliminating discrepancies before publishing to Power BI Service."
+    ],
+    "projects": [
+      {
+        "name": "Proactive 5G Handover Prediction (Diffusion Models)",
+        "tools": "Python, PyTorch, GRU, DDPM, Scikit-learn",
+        "tag": "M.Tech Thesis \u2014 Predictive Analytics",
+        "bullets": [
+          "Developed a GRU-conditioned diffusion model (DDPM/DDIM) to forecast radio signal degradation from multivariate spatiotemporal telemetry; addressed 98:2 class imbalance via <strong>SMOTE + Tomek Links</strong> and attained a <strong>97.64% F1-score</strong> on failure classification."
+        ]
+      },
+      {
+        "name": "AI vs. Human Text Classification Pipeline",
+        "tools": "Python, BERT, XGBoost, Bi-LSTM, Transformers",
+        "tag": "Applied Machine Learning & NLP",
+        "bullets": [
+          "Designed and benchmarked dual NLP pipelines (BERT + XGBoost and hybrid Bi-LSTM/CNN/Transformer architecture) on large corpora, optimizing decision boundaries to achieve <strong>99% Precision</strong> and <strong>98% Recall</strong>."
+        ]
+      }
+    ],
+    "certs": [
+      "<strong>Microsoft Power BI Desktop for Business Intelligence (Udemy)</strong>  |  <strong>Qualified GATE (CS), 2024</strong>",
+      "<strong>SQL for Beginners & Database Design (Udemy)</strong>  |  <strong>IELTS Academic: 7.5 Band Score</strong>",
+      "<strong>Python for Data Science, AI & Development (Coursera)</strong>  |  <strong>Machine Learning (NPTEL)</strong>"
+    ],
+    "pdf": "tailoring/Rishi_Thakur_PowerBI_Developer_Resume.pdf",
+    "docx": "tailoring/Rishi_Thakur_PowerBI_Developer_Resume.docx",
+    "md": "tailoring/Rishi_Thakur_PowerBI_Developer_Resume.md"
+  }
+};

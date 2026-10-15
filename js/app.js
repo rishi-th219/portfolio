@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupThemeToggle();
   setupProjectFilters();
   setupCaseStudyModals();
+  setupResumeModal();
   setupMobileMenu();
   setupContactForm();
   setupBackToTop();
@@ -306,3 +307,183 @@ function setupBackToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
+
+// 7. Interactive Resume Modal Engine
+function setupResumeModal() {
+  const modal = document.getElementById("resumeModal");
+  const closeBtn = document.getElementById("resumeModalCloseBtn");
+  const triggerBtns = document.querySelectorAll(".view-resume-btn");
+  const tabBtns = document.querySelectorAll(".resume-tab-btn");
+
+  if (!modal) return;
+
+  const renderResume = (key) => {
+    const data = typeof resumesData !== "undefined" ? resumesData[key] : null;
+    if (!data) return;
+
+    // Update active tab styling
+    tabBtns.forEach(btn => {
+      const isMatch = btn.dataset.resumeTab === key;
+      if (isMatch) {
+        btn.className = "resume-tab-btn px-2.5 py-1 rounded text-xs font-mono transition-colors border bg-slate-900 text-white border-slate-900 dark:bg-slate-100 dark:text-slate-950 dark:border-slate-100 font-semibold";
+      } else {
+        btn.className = "resume-tab-btn px-2.5 py-1 rounded text-xs font-mono transition-colors border bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700/80 hover:text-slate-900 dark:hover:text-white";
+      }
+    });
+
+    // Update header
+    const setEl = (id, text) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text || "";
+    };
+    setEl("resumeModalBadge", `${data.track} • ${data.badge}`);
+    setEl("resumeModalRole", data.role);
+    setEl("resumeModalTitle", data.title);
+
+    const dlBtn = document.getElementById("resumeModalDownloadBtn");
+    if (dlBtn) {
+      dlBtn.href = data.pdf;
+      dlBtn.download = data.pdf.split("/").pop();
+    }
+    const rawBtn = document.getElementById("resumeModalRawBtn");
+    if (rawBtn) rawBtn.href = data.pdf;
+
+    const mdBtn = document.getElementById("resumeModalMdBtn");
+    if (mdBtn) mdBtn.href = data.md;
+
+    // Render body
+    const bodyEl = document.getElementById("resumeModalBody");
+    if (bodyEl) {
+      bodyEl.innerHTML = `
+        <!-- Professional Summary -->
+        <div class="space-y-2">
+          <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1 flex items-center justify-between">
+            <span>Professional Summary</span>
+            <span class="text-[11px] font-mono text-slate-400 font-normal">Executive Overview</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">${data.summary}</p>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="space-y-2">
+          <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1">
+            Technical Skills
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            ${data.skills.map(sk => `<li class="flex items-start gap-2"><span class="text-sky-600 dark:text-sky-400 font-mono select-none mt-0.5">•</span><span>${sk}</span></li>`).join("")}
+          </ul>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="space-y-3">
+          <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1 flex items-center justify-between">
+            <span>Professional Experience</span>
+            <span class="text-[11px] font-mono text-slate-400 font-normal">CHiPS (Govt. of Chhattisgarh)</span>
+          </div>
+          <div class="space-y-1">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs sm:text-sm font-semibold text-slate-950 dark:text-white">
+              <span>${data.exp_role}</span>
+              <span class="text-xs font-mono font-normal text-slate-500">06/2025 – 03/2026</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs text-slate-500 italic">
+              <span>Dept. of Health & Family Welfare, Govt. of Chhattisgarh</span>
+              <span>Raipur, India</span>
+            </div>
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 pt-1">
+            ${data.exp_bullets.map(b => `<li class="flex items-start gap-2"><span class="text-sky-600 dark:text-sky-400 font-mono select-none mt-0.5">•</span><span>${b}</span></li>`).join("")}
+          </ul>
+        </div>
+
+        <!-- Key Projects -->
+        <div class="space-y-3">
+          <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1">
+            Key Projects
+          </div>
+          <div class="space-y-3">
+            ${data.projects.map(proj => `
+              <div class="space-y-1.5 p-3 rounded-lg bg-slate-50 dark:bg-slate-900/40 border border-slate-200/80 dark:border-slate-800/80">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs sm:text-sm">
+                  <div>
+                    <span class="font-semibold text-slate-950 dark:text-white">${proj.name}</span>
+                    <span class="text-slate-400"> | </span>
+                    <span class="italic text-slate-600 dark:text-slate-400 font-mono text-xs">${proj.tools}</span>
+                  </div>
+                  <span class="text-[11px] font-mono font-medium text-sky-600 dark:text-sky-400">${proj.tag}</span>
+                </div>
+                <ul class="space-y-1 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                  ${proj.bullets.map(b => `<li class="flex items-start gap-2"><span class="text-slate-400 select-none">•</span><span>${b}</span></li>`).join("")}
+                </ul>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+
+        <!-- Education & Certifications -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+          <div class="space-y-2">
+            <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1">
+              Education
+            </div>
+            <div class="space-y-2 text-xs">
+              <div>
+                <div class="font-semibold text-slate-950 dark:text-white">M.Tech in Computer Science & Engineering</div>
+                <div class="text-slate-600 dark:text-slate-400">IIIT Naya Raipur <span class="font-semibold text-slate-800 dark:text-slate-200">(CGPA: 7.90)</span></div>
+                <div class="text-slate-400 font-mono">08/2024 – 07/2026</div>
+              </div>
+              <div class="pt-1">
+                <div class="font-semibold text-slate-950 dark:text-white">B.Tech in Computer Science & Engineering</div>
+                <div class="text-slate-600 dark:text-slate-400">Amity University Chhattisgarh <span class="font-semibold text-slate-800 dark:text-slate-200">(CGPA: 7.71)</span></div>
+                <div class="text-slate-400 font-mono">08/2019 – 06/2023</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1">
+              Certifications & Qualifications
+            </div>
+            <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+              ${data.certs.map(c => `<li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-mono">✓</span><span>${c}</span></li>`).join("")}
+            </ul>
+          </div>
+        </div>
+      `;
+    }
+  };
+
+  triggerBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const key = btn.dataset.resume || "data_analyst";
+      renderResume(key);
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const tabKey = btn.dataset.resumeTab;
+      if (tabKey) renderResume(tabKey);
+    });
+  });
+
+  const closeModal = () => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "auto";
+  };
+
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+}
+
