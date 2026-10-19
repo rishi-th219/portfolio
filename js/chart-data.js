@@ -103,6 +103,34 @@ const caseStudiesData = {
       "End-to-end training and inference scripts with stratified cross-validation",
       "Comparative performance report including ROC-AUC curves and confusion matrices"
     ]
+  },
+
+  career_ops_bot: {
+    badge: "AUTOMATION PIPELINES & ATS ENGINEERING",
+    title: "Career-Ops: Autonomous Job Acquisition & ATS Auto-Apply Pipeline",
+    subtitle: "Zero-manual-intervention Python pipeline: multi-channel ATS/API discovery, automated link liveness auditing, dependency-free OpenXML spreadsheet generation, and headless Playwright auto-submission with role-matched resume selection.",
+    clientType: "Personal Engineering Project • Open Source (career-ops-bot)",
+    timeline: "2026",
+    pipeline: "Direct ATS & Remote APIs ∥ Crawl4AI Web Scrapers → Multi-Tier Liveness & Expiry Cleaner → Dependency-Free OpenXML ETL → Role-Matched Resume Selector → Headless Playwright Auto-Apply → Screenshot Audit Trail",
+    metrics: [
+      { label: "Active ATS Discovery", value: "55+ Sources" },
+      { label: "Discovery Channels", value: "5 Ingestion Engines" },
+      { label: "Spreadsheet Engine", value: "Pure Python Stdlib (Zero-Dep OpenXML)" },
+      { label: "Resume Routing", value: "4-Track Dynamic Matching" }
+    ],
+    problem: "Navigating tech job searches manually is plagued by high friction: commercial job boards are flooded with stale or closed postings that waste hours, applicant tracking systems (Greenhouse, Lever, Ashby, SmartRecruiters) require redundant data re-entry across complex Single-Page Apps (SPAs) with custom non-standard dropdowns, and traditional job scrapers fail to dynamically match specialized resumes (SQL Developer, Power BI, Business Analyst, Data Analyst) to specific role requirements.",
+    solution: "1. Multi-Channel Ingestion Engine: Built a unified discovery suite combining direct, zero-token REST API scanners for Greenhouse, Lever, Ashby, SmartRecruiters, Jobicy, and Remotive, paired with Crawl4AI headless stealth crawlers for complex SPAs (Naukri, Instahyre) and startup scrapers for Hacker News and Y Combinator directories.\n2. Multi-Tier Link Liveness & Expiry Cleaner: Engineered an automated verification daemon that checks direct ATS board APIs first, then falls back to fast HTTP header checks and regex body inspection across 20+ expiration patterns (e.g., 'job is no longer available', 'applications closed', 'position filled'). Automatically archives dead postings to ensure 100% active pipeline fidelity.\n3. Dependency-Free OpenXML Spreadsheet Engine: Developed a pure Python standard library spreadsheet compiler using zipfile and raw OpenXML generation (opportunities_manager.py) that builds, styles, and indexes opportunities.xlsx and opportunities.csv with custom typography, column widths, and hyperlinks without third-party dependencies.\n4. Dynamic Role-Matched Resume Selector: Engineered a keyword pattern-matching router that analyzes incoming job titles and automatically attaches the corresponding ATS-optimized PDF resume (SQL Developer, Power BI Developer, Business Analyst, or Data Analyst) directly from the tailoring archive.\n5. Headless Playwright Auto-Apply Bot: Automated application submission via Playwright with stealth anti-bot evasion arguments, automatically populating core fields, resolving custom React-select comboboxes, answering screening questions, uploading resumes, and archiving visual proof screenshots in output/confirmations/.\n6. Intelligent Form Autofill & Tailoring Assistant: Created a 1-click headed browser assistant that scrapes live JD text directly from the active posting DOM, dynamically drafts tailored answers to open-ended screening questions grounded in candidate narrative facts, and leaves the browser open for human-in-the-loop review.\n7. Daemon Scheduling & Tracking: Automated the entire discovery-clean-apply cycle with Linux cron scheduling (install_cron.sh), logging every run to status-log.tsv and updating applications.md for end-to-end recruitment pipeline analytics.",
+    stack: ["Python", "Playwright", "Crawl4AI", "OpenXML (Pure Python)", "REST APIs", "Regex Engine", "BeautifulSoup", "Bash / Cron", "Git"],
+    githubUrl: "https://github.com/rishi-th219/career-ops-bot",
+    deliverables: [
+      "Master pipeline orchestrator (job_pipeline.py) supporting individual tools or 100% autonomous execution",
+      "Direct ATS API and remote tech ingestion modules scanning 55+ active employer endpoints",
+      "Concurrent link liveness auditor (clean_expired_jobs.py) with automated dead-link archiving",
+      "Pure-Python OpenXML spreadsheet engine (opportunities_manager.py) generating styled .xlsx workbooks",
+      "Headless Playwright auto-apply runner (auto_apply_bot.py) with anti-bot evasion and visual screenshot audit trails",
+      "Intelligent browser autofill assistant (autofill_assistant.py) with dynamic JD text extraction and response drafting",
+      "Linux cron daemon automation (install_cron.sh) and Markdown/TSV application tracking ledger"
+    ]
   }
 };
 
