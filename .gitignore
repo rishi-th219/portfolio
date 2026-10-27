@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .lo_profile/
 .DS_Store
+*.tar.gz
+*.sha256
+skills_backup/
