@@ -1,0 +1,24 @@
+What I did in my internship at CHiPS -
+
+I was posted under the secretary of the health and family welfare department of the govt of chhattisgarh as a data analyst intern.
+
+
+1. The first task that was alloted to me was analyzing and monitoring the attendance of the employees. So to tackle that - i prepared a dashboard using powerBI and mariaDB as the data source. I prepared a dashboard wherein i had two ovweview pages showing the important KPIs like average working hours, employees present atleast once, missed out times, and etc. The dashboard had 6 pages - two overview pages and the other 4 were in a top-down approach - district -> facility -> designation -> employee level. The main challenges faced while making this dashboard was the inconsistency in data like employee names, and also designations were duplicate. Also employees were not all the same - since this was the health department. some emps were regulars, some were contractuals and some were from the national health mission.
+
+2. Second task was to focus on a subset of people - bonded doctors. These are basically students studying in govt medical colleges who have to give mandatory service in the CG govt's health facilities after they finish their studies. 2 years for UG and 3 years for PG students. These people are posted in PHCs, CHCs, SHCs, CHs, DH, medical colleges under CH govt in the 33 districts. The issue with these doctors is that they dont eve join if not given their preferred location. They are paid but then dont go to the appointed facility. SO I had to now pull data from the treasury of cg govt to properly trace these people, . These bonded doctors fell into three defaulter categories - i. those who didn't even join. ii. who joined formally but didn't register in their appointed facility iii. those who joined their appointed facility but are eiher not logging attendance or have improper attendance.
+
+
+3. Third task - Now that bonded doctors are being monitored, it was time to again shift focus on all the doctors again. So the solution was making an end to end doctor monitoring dashboard. this would include a doctor's attendance, their OPDs, incentives they get. To achieve this we already had half the data - attendance from step 1, incentive data from step 2(treasurry), and the OPD data was called from the Govt of India's next gen e-hospital initiative. Mapping all these 3 things would result in an end to end doctor performance dashboard alongwith their already existing attendance.
+
+
+Health department has 5 sub-departments -
+1. DHS
+2. DME
+3. CGMSCL
+4 Ayush
+5. CFD
+Look up these then proceed
+
+The tasks were incremental and not separate. Task 1 involved gathering data from  DHS. The data was AEBAS - adhaar enabled attendance system
+Task 2 involved linking the data in task 1 with the data feom the treasury. Here we mapped attendanceID (emp_id from AEBAS) with emp_code from treasury
+Task 3 involved linking data from next-gen e-hospital to the data from task1 and task2 combined. This was the most difficult task as there was no possible way to run a script and link them. This was because nextgen e-hospital follows a modular development approach. The project is maintained and developed by NIC so each module is developed by a different NIC - so different backends but same frontend framework.

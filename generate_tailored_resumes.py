@@ -2,6 +2,7 @@ import zipfile
 import xml.sax.saxutils as saxutils
 import os
 import subprocess
+import shutil
 
 def escape(text):
     return saxutils.escape(text)
@@ -437,43 +438,109 @@ power_bi_config = {
     ]
 }
 
+# Config 5: SUPPLY CHAIN ANALYST RESUME
+supply_chain_analyst_config = {
+    "title_line": "Supply Chain Analyst | Inventory Optimization & BI Analytics",
+    "summary": "Analytical and detail-oriented M.Tech Computer Science graduate (CGPA 7.90) with hands-on experience in supply chain data analytics, inventory optimization, and KPI dashboard design. Proven track record engineering automated ETL pipelines, reconciling heterogeneous data sources across 33 districts, and delivering executive-level BI dashboards (Power BI, Oracle Analytics Cloud) that translate complex operational data into actionable improvement plans. Strong foundation in Advanced SQL, Python, Advanced Excel, and quantitative methods applied to real-world public sector supply chain operations.",
+    "skills": [
+        [("Supply Chain Analytics & Optimization: ", True), ("Inventory Analysis (ABC, VED, SDE Classification), Materials Planning, Demand-Supply Alignment, KPI Management & Reporting, Root Cause Analysis, Process Improvement, Exception Tracking", False)],
+        [("Business Intelligence & Visualization: ", True), ("Microsoft Power BI, DAX (Measures, Time Intelligence), Oracle Analytics Cloud (OAC), Executive KPI Dashboards, Multi-Level Drill-Downs (District → Facility → Individual), Data Storytelling", False)],
+        [("Databases & Analytical Tools: ", True), ("Advanced SQL (T-SQL, MySQL, MariaDB, OracleDB) — Multi-Table Joins, CTEs, Window Functions, Stored Queries; Advanced Excel (XLOOKUP, INDEX/MATCH, Dynamic Arrays, Pivot Tables, Power Query M-ETL, Scenario Modeling)", False)],
+        [("Data Engineering & ETL: ", True), ("Multi-Source ETL Pipelines, Identity Resolution Algorithms, Heterogeneous Schema Reconciliation, Data Validation & Cleansing, Data Integrity Controls, Data Mart Design, UAT Protocols", False)],
+        [("Quantitative Methods & Programming: ", True), ("Python (Pandas, NumPy, Scikit-learn), Predictive Modeling, Time-Series Analysis, Uncertainty Quantification, Hypothesis Testing, Evaluation Metrics (F1, Precision/Recall, ROC-AUC), Git", False)]
+    ],
+    "exp_role": "Data Analyst & Analytics Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
+    "exp_bullets": [
+        [("Inventory Optimization & Supply Chain Analytics: ", True), ("Conducted quantitative inventory analysis (ABC, VED, and SDE classification) on essential drug catalogs (EDL/Non-EDL) in OracleDB and deployed interactive analytical dashboards on Oracle Analytics Cloud (OAC) to optimize the state medical supply chain (CGMSCL), improving materials availability and mitigating stock-out risks.", False)],
+        [("Materials & Operational KPI Dashboards: ", True), ("Architected an executive 6-page statewide monitoring dashboard in Power BI with 4-tier top-down dimensional drill-downs (District → Facility → Designation → Employee) across 33 districts, tracking operational KPIs, attendance rates, and exception metrics to drive leadership decisions.", False)],
+        [("Data Integrity & Automated ETL: ", True), ("Engineered an automated SQL/ETL identity-resolution pipeline linking AEBAS biometric attendance IDs to State Treasury payroll records, closing cross-departmental tracking gaps and categorizing non-compliance into 3 actionable tiers to plug administrative leakages.", False)],
+        [("Cross-Functional Data Reconciliation: ", True), ("Collaborated with National Informatics Centre (NIC) data engineering teams to reconcile disparate, heterogeneous schemas across NextGen e-Hospital OPD clinical systems, MariaDB attendance logs, and Treasury databases into a unified performance data mart, guaranteeing data integrity across reports.", False)],
+        [("Process Improvement & Technical Specifications: ", True), ("Resolved complex operational data anomalies (duplicate designations, naming discrepancies, contract mismatches) and authored end-to-end technical specifications, data-validation pipelines, and UAT protocols, presenting findings directly to the Department Secretary.", False)]
+    ],
+    "projects": [
+        {
+            "name": "Predictive Analytics & Probabilistic Risk Modeling",
+            "tools": "Python, PyTorch, Scikit-learn",
+            "tag": "M.Tech Thesis — Quantitative Forecasting",
+            "bullets": [
+                [("Architected an end-to-end predictive framework coupling temporal telemetry with probabilistic simulation of 50 future trajectories for uncertainty-aware decision support; resolved 98:2 class imbalance via ", False), ("SMOTE + Tomek Links", True), (" and attained a ", False), ("97.64% F1-score", True), (" on failure prediction.", False)]
+            ]
+        },
+        {
+            "name": "Automated Content & Text Classification Pipeline",
+            "tools": "Python, BERT, XGBoost, Transformers",
+            "tag": "Applied Analytics & Pattern Recognition",
+            "bullets": [
+                [("Designed an end-to-end classification system with stratified sampling, data normalization, and sequence processing across a 20,000-token corpus, attaining ", False), ("99% Precision", True), (" and ", False), ("98% Recall", True), (" on held-out evaluation benchmarks.", False)]
+            ]
+        }
+    ],
+    "certs": [
+        [("Microsoft Power BI Desktop for Business Intelligence (Udemy)", True), ("  |  ", False), ("Qualified GATE (CS), 2024", True)],
+        [("Python for Data Science, AI & Development (Coursera)", True), ("  |  ", False), ("Machine Learning (NPTEL)", True)]
+    ]
+}
+
+def find_libreoffice():
+    # 1. Search in PATH
+    for name in ["libreoffice", "soffice"]:
+        found = shutil.which(name)
+        if found:
+            return found
+    # 2. Search common Windows locations
+    win_paths = [
+        r"C:\Program Files\LibreOffice\program\soffice.exe",
+        r"C:\Program Files (x86)\LibreOffice\program\soffice.exe",
+        os.path.expandvars(r"%LOCALAPPDATA%\Programs\LibreOffice\program\soffice.exe"),
+    ]
+    for p in win_paths:
+        if os.path.isfile(p):
+            return p
+    return "libreoffice"
+
 def generate_all():
     targets = [
         ("Rishi_Thakur_SQL_Developer_Resume", sql_dev_config),
         ("Rishi_Thakur_Data_Analyst_Resume", data_analyst_config),
         ("Rishi_Thakur_Business_Analyst_Resume", business_analyst_config),
-        ("Rishi_Thakur_PowerBI_Developer_Resume", power_bi_config)
+        ("Rishi_Thakur_PowerBI_Developer_Resume", power_bi_config),
+        ("Rishi_Thakur_Supply_Chain_Analyst_Resume", supply_chain_analyst_config)
     ]
     
-    out_dirs = [
-        "/home/rishi21/Desktop/Jobhunt/portfolio/tailoring",
-        "/home/rishi21/Desktop/Jobhunt/portfolio/assets"
-    ]
+    script_dir = os.path.abspath(os.path.dirname(__file__))
+    tailoring_dir = os.path.join(script_dir, "tailoring")
+    assets_dir = os.path.join(script_dir, "assets")
+    lo_profile = os.path.join(script_dir, ".lo_profile")
     
-    lo_profile = "/home/rishi21/Desktop/Jobhunt/portfolio/.lo_profile"
+    os.makedirs(tailoring_dir, exist_ok=True)
+    os.makedirs(assets_dir, exist_ok=True)
     os.makedirs(lo_profile, exist_ok=True)
+    
+    lo_bin = find_libreoffice()
+    # Normalize lo_profile for LibreOffice file URI
+    lo_profile_uri = "file:///" + lo_profile.replace("\\", "/").lstrip("/")
     
     for base_name, cfg in targets:
         xml = build_resume_xml(cfg)
-        docx_path = f"/home/rishi21/Desktop/Jobhunt/portfolio/tailoring/{base_name}.docx"
+        docx_path = os.path.join(tailoring_dir, f"{base_name}.docx")
         save_docx(xml, docx_path)
         print(f"Generated DOCX: {docx_path}")
         
         # Convert to PDF in tailoring directory
         cmd = [
-            "libreoffice",
-            f"-env:UserInstallation=file://{lo_profile}",
+            lo_bin,
+            f"-env:UserInstallation={lo_profile_uri}",
             "--headless",
             "--convert-to", "pdf",
             docx_path,
-            "--outdir", "/home/rishi21/Desktop/Jobhunt/portfolio/tailoring"
+            "--outdir", tailoring_dir
         ]
         res = subprocess.run(cmd, capture_output=True, text=True)
         if res.returncode == 0:
-            print(f"Converted PDF: /home/rishi21/Desktop/Jobhunt/portfolio/tailoring/{base_name}.pdf")
+            pdf_src = os.path.join(tailoring_dir, f"{base_name}.pdf")
+            print(f"Converted PDF: {pdf_src}")
             # Also copy to assets
-            pdf_src = f"/home/rishi21/Desktop/Jobhunt/portfolio/tailoring/{base_name}.pdf"
-            pdf_dst = f"/home/rishi21/Desktop/Jobhunt/portfolio/assets/{base_name}.pdf"
+            pdf_dst = os.path.join(assets_dir, f"{base_name}.pdf")
             with open(pdf_src, "rb") as f_in, open(pdf_dst, "wb") as f_out:
                 f_out.write(f_in.read())
             print(f"Synced to assets: {pdf_dst}")
@@ -481,8 +548,8 @@ def generate_all():
             print(f"Error converting {base_name}:", res.stderr)
             
     # Also create default Rishi_Thakur_Resume.pdf from SQL Developer
-    src = "/home/rishi21/Desktop/Jobhunt/portfolio/assets/Rishi_Thakur_SQL_Developer_Resume.pdf"
-    dst = "/home/rishi21/Desktop/Jobhunt/portfolio/assets/Rishi_Thakur_Resume.pdf"
+    src = os.path.join(assets_dir, "Rishi_Thakur_SQL_Developer_Resume.pdf")
+    dst = os.path.join(assets_dir, "Rishi_Thakur_Resume.pdf")
     if os.path.exists(src):
         with open(src, "rb") as f_in, open(dst, "wb") as f_out:
             f_out.write(f_in.read())
