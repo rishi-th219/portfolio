@@ -26,7 +26,7 @@ The entire workspace consists of 4 primary components:
 
 | Project | Location | Remote URL / Branch | Critical Assets / Role |
 | :--- | :--- | :--- | :--- |
-| **`portfolio`** | `Jobhunt/portfolio/` | `https://github.com/rishi-th219/portfolio.git` (`main`) | • Live portfolio website hosted on GitHub Pages: `https://rishi-th219.github.io/portfolio/`<br>• Interactive Chart.js skill radar & GitHub activity calendar<br>• Public downloadable resume assets (`assets/`)<br>• **Primary tailoring hub** (`tailoring/`) containing 9+ role-tailored resumes and generator scripts |
+| **`portfolio`** | `Jobhunt/portfolio/` | `https://github.com/rishi-th219/portfolio.git` (`main`) | • Live portfolio website hosted on GitHub Pages: `https://rishi-th219.github.io/portfolio/`<br>• Interactive Chart.js skill radar & GitHub activity calendar<br>• Public downloadable resume assets (`assets/`)<br>• Interactive AI persona twin & architecture visualizer |
 | **`Bot` (`career-ops-bot`)** | `Jobhunt/Bot/` | `https://github.com/rishi-th219/career-ops-bot.git` (`main`) | • Automated multi-platform job scraper & application bot (Playwright Chromium)<br>• Opportunity tracker (`opportunities.xlsx`, `opportunities.csv`)<br>• Candidate profile matcher (`config/profile.yml`, `config_loader.py`)<br>• Skills folder (`.agents/skills/career-ops/`) |
 | **`Projects/ecommerce-elt-local`** | `Jobhunt/Projects/ecommerce-elt-local/` | `https://github.com/rishi-th219/ecommerce-elt-local.git` (`main`) | • Production-grade containerized ELT warehouse (MSSQL 2025, Postgres 16, dbt, Airflow, Metabase)<br>• 213 automated dbt tests<br>• Master interview study guide (`PROJECT_STUDY_GUIDE.md`)<br>• Local configs: `.env`, `dbt/profiles.yml` |
 | **`MatchAnnotator`** | `Jobhunt/MatchAnnotator/` | *Local Only* | • Football data analytics interview handbooks and masterclass docs (`.docx`, `.md`, `.pdf`) |
@@ -185,7 +185,7 @@ AGY on Windows automatically discovers custom skills located in:
 
 All skills have been pre-packaged and preserved in:
 - `Jobhunt/.gemini/skills/`
-- `Jobhunt/portfolio/tailoring/skills_backup/`
+- `C:/Users/Rishi/Desktop/tailoring/skills_backup/` (External offline local archive)
 
 ### The 10 Primary Custom Skills:
 1. **`career-ops`** (`Bot/.agents/skills/career-ops/`): Automated job pipeline, scraping, opportunity deduplication, and application tracking.
@@ -245,12 +245,12 @@ In **EVERY** resume, the **Technical Skills** section must contain a prominent A
 
 ### Master Resume Generator Script
 The master generator is located at:
-`Jobhunt/portfolio/tailoring/generate_all_ai_tailored_resumes.py` (and `Jobhunt/portfolio/generate_tailored_resumes.py`).
+`C:/Users/Rishi/Desktop/tailoring/generate_all_ai_tailored_resumes.py` (Resumes are compiled offline and synced to `assets/` via `sync_tailored_resumes.py`).
 Both scripts are cross-platform compatible and automatically discover LibreOffice on Windows (`C:\Program Files\LibreOffice\program\soffice.exe`) as well as Linux.
 
 To recompile all tailored resumes:
 ```powershell
-cd $HOME\Desktop\Jobhunt\portfolio\tailoring
+cd C:\Users\Rishi\Desktop\tailoring
 python generate_all_ai_tailored_resumes.py
 ```
 
@@ -297,7 +297,6 @@ The portfolio website is live at `https://rishi-th219.github.io/portfolio/`.
 ### Structure:
 - `index.html`: Single-page responsive portfolio with Dark/Light theme, interactive skills radar (Chart.js), project showcase, and dynamic GitHub contribution calendar.
 - `assets/`: Contains public PDF mirrors downloadable by recruiters.
-- `tailoring/`: Private working folder containing source drafts, notes, and generated PDFs.
 
 ### Testing Locally on Windows:
 ```powershell
@@ -332,7 +331,7 @@ soffice --headless --version
 python -c "import playwright, pypdf, fitz, PIL; print('Python packages OK!')"
 
 # 4. Test resume generation (1-page compliance)
-cd $HOME\Desktop\Jobhunt\portfolio\tailoring
+cd C:\Users\Rishi\Desktop\tailoring
 python generate_all_ai_tailored_resumes.py
 
 # 5. Check Git remotes

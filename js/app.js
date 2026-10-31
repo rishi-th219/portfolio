@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
   setupContactForm();
   setupBackToTop();
+  setupArchitectureExplorer();
+  setupAiChatAssistant();
 });
 
 // 1. Project Category Filter Engine
@@ -486,4 +488,255 @@ function setupResumeModal() {
     }
   });
 }
+
+// 8. Interactive Architecture Pipeline Explorer (Inspired by santifer/cv-santiago)
+function setupArchitectureExplorer() {
+  const tabs = document.querySelectorAll(".arch-tab-btn");
+  const container = document.getElementById("architectureExplorerContent");
+  if (!container || typeof architecturesData === "undefined") return;
+
+  const renderArch = (key) => {
+    const data = architecturesData[key];
+    if (!data) return;
+
+    tabs.forEach(t => {
+      if (t.dataset.arch === key) {
+        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 shadow-sm";
+      } else {
+        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+      }
+    });
+
+    container.innerHTML = `
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+          <div>
+            <span class="text-[11px] font-mono text-sky-600 dark:text-sky-400 font-semibold tracking-wider uppercase">${data.badge}</span>
+            <h4 class="text-base sm:text-lg font-semibold text-slate-950 dark:text-white mt-0.5">${data.title}</h4>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 max-w-md font-normal leading-relaxed">${data.description}</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 pt-2">
+          ${data.steps.map((st, i) => `
+            <div class="arch-node p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-2 relative group">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono">
+                  <span class="text-sky-600 dark:text-sky-400 font-bold">${st.num}</span>
+                  <span class="text-[10px] uppercase tracking-wider text-slate-400">${st.label}</span>
+                </div>
+                <h5 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mt-1">${st.title}</h5>
+                <div class="text-[11px] font-mono text-slate-500 mt-0.5 italic">${st.tech}</div>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal pt-1">${st.detail}</p>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  };
+
+  tabs.forEach(t => {
+    t.addEventListener("click", () => renderArch(t.dataset.arch));
+  });
+
+  // Initial render
+  renderArch("health_bi");
+}
+
+// 9. Interactive AI Persona Chat Twin (Inspired by santifer/cv-santiago "Ask Santi")
+function setupAiChatAssistant() {
+  const modal = document.getElementById("aiChatModal");
+  const openBtns = [
+    document.getElementById("openAiChatBtn"),
+    document.getElementById("heroOpenAiChatBtn"),
+    document.getElementById("navOpenAiChatBtn"),
+    document.getElementById("mobileOpenAiChatBtn")
+  ].filter(Boolean);
+  const closeBtn = document.getElementById("aiChatCloseBtn");
+  const form = document.getElementById("aiChatForm");
+  const input = document.getElementById("aiChatInput");
+  const messagesBox = document.getElementById("aiChatMessages");
+  const chipBtns = document.querySelectorAll(".ai-prompt-chip");
+  const clearBtn = document.getElementById("aiChatClearBtn");
+
+  if (!modal || !messagesBox) return;
+
+  const openChat = (initialQuery = null) => {
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    document.body.style.overflow = "hidden";
+    if (input) {
+      setTimeout(() => input.focus(), 150);
+      if (initialQuery) {
+        input.value = initialQuery;
+        handleSubmit();
+      }
+    }
+  };
+
+  const closeChat = () => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "auto";
+  };
+
+  openBtns.forEach(b => b.addEventListener("click", () => openChat()));
+  if (closeBtn) closeBtn.addEventListener("click", closeChat);
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeChat();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) closeChat();
+  });
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      messagesBox.innerHTML = `
+        <div class="flex items-start gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xs font-mono shrink-0 select-none font-bold">
+            RT
+          </div>
+          <div class="chat-bubble-bot p-3.5 sm:p-4 max-w-[88%] sm:max-w-[80%] text-xs sm:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+            <p class="leading-relaxed">
+              Hi! I'm <strong>Rishi Thakur's AI Twin</strong>, inspired by interactive AI portfolios like Santiago's.
+              I have zero-hallucination ground truth access to Rishi's actual background, M.Tech thesis, CHiPS enterprise experience, and 7 tailored resume tracks.
+            </p>
+            <p class="text-slate-500 text-xs">
+              Tap any prompt below or type your question:
+            </p>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  const appendMessage = (sender, content) => {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = `flex ${sender === "user" ? "justify-end" : "justify-start"} items-start gap-2.5`;
+
+    if (sender === "user") {
+      msgDiv.innerHTML = `
+        <div class="chat-bubble-user p-3 sm:p-3.5 max-w-[85%] sm:max-w-[75%] text-xs sm:text-sm text-slate-800 dark:text-slate-200">
+          ${escapeHtml(content)}
+        </div>
+      `;
+    } else {
+      msgDiv.innerHTML = `
+        <div class="w-7 h-7 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xs font-mono shrink-0 select-none font-bold">
+          RT
+        </div>
+        <div class="chat-bubble-bot p-3.5 sm:p-4 max-w-[88%] sm:max-w-[80%] text-xs sm:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+          <div class="prose-content leading-relaxed">${formatMarkdown(content)}</div>
+          <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span>Rishi AI Twin • Verified Ground Truth</span>
+            <button type="button" class="copy-chat-btn hover:text-sky-600 dark:hover:text-sky-400 cursor-pointer">Copy</button>
+          </div>
+        </div>
+      `;
+      const copyBtn = msgDiv.querySelector(".copy-chat-btn");
+      if (copyBtn) {
+        copyBtn.addEventListener("click", () => {
+          navigator.clipboard.writeText(content);
+          copyBtn.textContent = "Copied!";
+          setTimeout(() => (copyBtn.textContent = "Copy"), 2000);
+        });
+      }
+    }
+
+    messagesBox.appendChild(msgDiv);
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+  };
+
+  const showTypingIndicator = () => {
+    const ind = document.createElement("div");
+    ind.id = "aiTypingIndicator";
+    ind.className = "flex justify-start items-center gap-2 text-xs font-mono text-slate-400 pl-9 py-2";
+    ind.innerHTML = `
+      <span class="typing-dot"></span>
+      <span class="typing-dot"></span>
+      <span class="typing-dot"></span>
+      <span class="ml-1 text-[11px]">Rishi AI is formulating response...</span>
+    `;
+    messagesBox.appendChild(ind);
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+  };
+
+  const removeTypingIndicator = () => {
+    const ind = document.getElementById("aiTypingIndicator");
+    if (ind) ind.remove();
+  };
+
+  const getKnowledgeResponse = (query) => {
+    const q = query.toLowerCase().trim();
+    if (typeof aiKnowledgeBase === "undefined") {
+      return "Hi! I am Rishi's AI Twin. I can answer questions about Rishi's enterprise experience at CHiPS, his 5G mmWave diffusion thesis, his SQL & Power BI architectures, or help you choose the right tailored resume.";
+    }
+
+    let bestMatch = null;
+    let maxHits = 0;
+
+    for (const item of aiKnowledgeBase) {
+      let hits = 0;
+      for (const kw of item.keywords) {
+        if (q.includes(kw)) hits++;
+      }
+      if (hits > maxHits) {
+        maxHits = hits;
+        bestMatch = item.response;
+      }
+    }
+
+    if (bestMatch && maxHits > 0) {
+      return bestMatch;
+    }
+
+    return "Thank you for asking! I am Rishi Thakur's verified AI persona. Rishi is an **M.Tech CSE graduate from IIIT Naya Raipur (GATE CS Qualified, IELTS 7.5)** with enterprise experience at **CHiPS (Dept. of Health, Govt. of Chhattisgarh)** across 33 districts.\n\nHe specializes in **Advanced SQL, MariaDB, OracleDB, Advanced Excel, Kimball Star Schema, and Power BI DAX**.\n\nYou can ask me specific questions like:\n• *'Tell me about your CHiPS / Health Department work across 33 districts'*\n• *'How does your 5G mmWave diffusion model work?'*\n• *'What is your SQL & Power BI stack?'*\n• *'Which tailored resume should I download?'*\n\nOr feel free to email Rishi directly at **[rishi_th219@proton.me](mailto:rishi_th219@proton.me)** or call **[+91 8109830219](tel:+918109830219)**!";
+  };
+
+  const handleSubmit = () => {
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = "";
+    appendMessage("user", text);
+    showTypingIndicator();
+
+    setTimeout(() => {
+      removeTypingIndicator();
+      const ans = getKnowledgeResponse(text);
+      appendMessage("bot", ans);
+    }, 450);
+  };
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      handleSubmit();
+    });
+  }
+
+  chipBtns.forEach(c => {
+    c.addEventListener("click", () => {
+      const prompt = c.dataset.prompt;
+      if (prompt) {
+        openChat(prompt);
+      }
+    });
+  });
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+}
+
+function formatMarkdown(text) {
+  let formatted = text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 hover:underline font-medium">$1</a>')
+    .replace(/\n• (.*?)(?=\n|$)/g, '<li class="flex items-start gap-1.5 pt-0.5"><span class="text-sky-600 dark:text-sky-400 font-mono">•</span><span>$1</span></li>')
+    .replace(/\n\n/g, '<br><br>');
+  return formatted;
+}
+
 

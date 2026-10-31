@@ -1,6 +1,7 @@
 # 📊 Rishi Thakur — Senior Data & BI Analyst Portfolio
+> High-performance, production-grade portfolio inspired by [`santifer/cv-santiago`](https://github.com/santifer/cv-santiago) featuring an **Interactive AI Twin ("Ask Rishi AI")**, **System Architecture Visualizer**, **7 Offline Multi-Skill Tailored Resumes**, and **GEO/LLM Ingestion (`llms.txt`)**.
 
-A high-converting, interactive portfolio website engineered specifically for freelancing and client acquisition. Unlike typical data science portfolios that show static screenshots, this portfolio includes **live interactive BI dashboards**, a **freelance scope & rate estimator**, and deep-dive case studies covering **Power BI, SQL, dbt, Apache Airflow, and Machine Learning**.
+Hosted live on GitHub Pages: **[https://rishi-th219.github.io/portfolio/](https://rishi-th219.github.io/portfolio/)**
 
 ---
 
@@ -10,85 +11,60 @@ Run a local web server in this directory:
 
 ```bash
 # Using Python
-python3 -m http.server 3000
-
-# OR using Node / npx
-npx serve .
+python -m http.server 3000
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🌟 Key Features
+## 🌟 Key Features (Inspired by `cv-santiago`)
 
-1. **Live Interactive BI Dashboard Engine**:
-   - Prospects can interact with real-time KPI metrics, line graphs, and category breakdowns across 3 domains:
-     - 🛒 **E-Commerce & Cohort Retention** (GMV, AOV, Funnel)
-     - 🏥 **Healthcare & Workforce Capacity** (33 Districts, Attendance compliance)
-     - 📦 **Inventory & Supply Chain Analytics** (Multi-criteria ABC/VED matrix)
-   - Powered by Chart.js with responsive dark-mode aesthetics.
+1. **Interactive AI Persona Chat Twin ("Ask Rishi AI")**:
+   - First-person interactive conversational assistant grounded in verified facts with **zero AI hallucinations**.
+   - Recruiters and engineering leaders can ask direct questions or use 1-click suggested prompts covering:
+     - 🏥 33-district healthcare biometric & payroll SQL reconciliation at CHiPS
+     - 📡 5G mmWave diffusion model M.Tech thesis (97.64% F1-score)
+     - 🛠️ Advanced SQL, MariaDB, OracleDB, Power BI DAX & Advanced Excel stack
+     - 🤖 Career-Ops autonomous job hunting bot
+     - 📄 Role-specific tailored resume guidance
+     - 💼 Availability & relocation (Bengaluru / Hybrid / Remote)
+   - Features real-time typing animation, copy answer button, and preset chips.
 
-2. **Client-Centric Freelance Offerings**:
-   - Executive & KPI BI Dashboards (Power BI, DAX, Tableau, Looker Studio)
-   - Automated SQL & Modern ELT Pipelines (PostgreSQL, dbt Core, Apache Airflow)
-   - Customer Retention & E-Commerce Analytics (RFM Segmentation, Cohort LTV)
-   - Inventory & Supply Chain Optimization (ABC/VED/SDE)
-   - Messy Excel to Automated BI Migration
-   - Query Tuning & Database Performance Audits
+2. **System Architecture & Data Pipeline Explorer**:
+   - Interactive, tabbed pipeline visualizer breaking down multi-stage telemetry, dataflow, algorithms, and SQL transformations across 4 flagship systems:
+     - *Statewide Healthcare Attendance & Payroll Intelligence* (AEBAS → SQL Identity Resolution → Kimball Star Schema → Power BI Suite)
+     - *Proactive 5G mmWave Handover Prediction* (RF Telemetry → GRU Encoder → DDPM/DDIM 50 Trajectories → SMOTE+Tomek → Random Forest)
+     - *Career-Ops Autonomous Job Acquisition* (55+ Direct ATS APIs → Concurrent Liveness Cleaner → Pure Python OpenXML → Headless Playwright)
+     - *Essential Drug Multi-Criteria ABC/VED/SDE Matrix* (Oracle SQL Aggregations → Multi-Criteria Matrix → Excel Scenarios → OAC Alerts)
 
-3. **In-Depth Case Studies with Interactive Modals**:
-   - *Case Study 1*: Modern E-Commerce ELT & Retention Engine (Airflow + dbt + Postgres + Power BI)
-   - *Case Study 2*: Statewide Healthcare Workforce Intelligence (33 Districts, Identity Resolution)
-   - *Case Study 3*: Pharmaceutical Supply Chain Multi-Criteria ABC/VED Optimization
-   - *Case Study 4*: Proactive 5G mmWave Handover Predictive System (97.64% F1-score)
+3. **7 ATS-Optimized Tailored Resumes**:
+   - **No runtime generation on the site**: Resumes are pre-compiled and served directly from `assets/`.
+   - 7 specialized tracks with direct PDF download (↓), in-tab preview (↗), and interactive in-browser modal (👁):
+     1. **Data Analyst** (`Rishi_Thakur_Data_Analyst_Resume.pdf`)
+     2. **Business Analyst** (`Rishi_Thakur_Business_Analyst_Resume.pdf`)
+     3. **SQL Developer** (`Rishi_Thakur_SQL_Developer_Resume.pdf`)
+     4. **Power BI Data Analyst** (`Rishi_Thakur_PowerBI_Data_Analyst_Resume.pdf`)
+     5. **Data Scientist** (`Rishi_Thakur_Data_Science_Resume.pdf`)
+     6. **Machine Learning Engineer** (`Rishi_Thakur_ML_Engineer_Resume.pdf`)
+     7. **MIS Analyst** (`Rishi_Thakur_MIS_Analyst_Resume.pdf`)
 
-4. **Interactive Freelance Project Estimator**:
-   - Lets prospects select project type, number of data sources, and timeline urgency.
-   - Calculates estimated budget and delivery timeline on the fly.
-   - "Request This Exact Scope" button auto-populates the inquiry form.
+4. **Generative Engine Optimization (GEO) & LLM Ingestion**:
+   - [`llms.txt`](file:///c:/Users/Rishi/Desktop/Jobhunt/portfolio/llms.txt) and [`llms-full.txt`](file:///c:/Users/Rishi/Desktop/Jobhunt/portfolio/llms-full.txt) at the root for instant, clean ingestion by LLMs and AI search engines (Perplexity, ChatGPT Search, Claude, Gemini, Antigravity).
+   - Rich JSON-LD schema markup (`Person`, `ProfilePage`, `KnowsAbout`) in HTML `<head>`.
 
-5. **Direct Lead Capture & Contact**:
-   - One-click copy email button.
-   - Direct mailto link generator with auto-formatted project specifications.
-   - Direct links to LinkedIn, GitHub, and Upwork.
-
----
-
-## 🌐 1-Click Free Deployment Guide
-
-### Option 1: GitHub Pages (Recommended — 100% Free)
-1. Initialize git and push to a new GitHub repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: Freelance Data Analyst Portfolio"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/portfolio.git
-   git push -u origin main
-   ```
-2. In your GitHub repository:
-   - Go to **Settings** → **Pages**.
-   - Under **Build and deployment** → **Branch**, select `main` and folder `/ (root)`.
-   - Click **Save**.
-3. Your portfolio is live at `https://YOUR_USERNAME.github.io/portfolio/`!
-
-### Option 2: Vercel (Instant Deploy)
-1. Install Vercel CLI: `npm i -g vercel` (or link your GitHub repo on [vercel.com](https://vercel.com)).
-2. Run:
-   ```bash
-   vercel
-   ```
-3. Follow the 10-second prompt to deploy live with HTTPS and custom domain support.
+5. **Live System Telemetry & Command Center Aesthetics**:
+   - Editorial minimalist dark/light design tokens (Neutral Deep Obsidian & Precision Cyan).
+   - Live system status badge: `● ONLINE • Immediate Joiner • Zero-Fabrication Verified`.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Markup & Styling**: HTML5, Tailwind CSS (via CDN), Google Fonts (Inter + JetBrains Mono)
-- **Visuals & Charts**: Chart.js (Responsive Canvas API)
-- **Architecture**: Zero-build static architecture (blazingly fast, zero dependency lock-in, hostable anywhere)
-- **Design Tokens**: Deep Slate (#070a13), Electric Cyan (#38bdf8), Indigo (#6366f1), Emerald (#10b981)
+- **Markup & Styling**: HTML5, Tailwind CSS, Google Fonts (Plus Jakarta Sans + IBM Plex Mono)
+- **Architecture**: Zero-build pure static architecture (instant CDN delivery, hostable on any static provider)
+- **Design Tokens**: Obsidian Black (`#080a0d`), Technical Slate (`#0f141c`), Precision Cyan (`#38bdf8`), Emerald (`#10b981`)
+- **Asset Sync Tool**: `sync_tailored_resumes.py` (mirrors compiled PDFs to `assets/`)
 
 ---
 
@@ -96,13 +72,17 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ```text
 portfolio/
-├── index.html           # Main high-conversion portfolio page
+├── index.html                  # Main portfolio application with AI Chat & Architecture visualizer
+├── llms.txt                    # Standardized markdown summary for AI agents and crawlers
+├── llms-full.txt               # Exhaustive technical knowledge base for LLM search engines
+├── sync_tailored_resumes.py    # Python helper script to sync PDFs to assets/
 ├── css/
-│   └── styles.css       # Custom glassmorphic styling, ambient glow, animations
+│   └── styles.css              # Editorial glassmorphic styling, chat terminal tokens, animations
 ├── js/
-│   ├── app.js           # Core UI logic, chart rendering, modals, estimator
-│   └── chart-data.js    # Interactive chart datasets and case study details
-├── assets/              # Optional folder for profile headshot, screenshots, resume PDF
-├── README.md            # Project documentation & deployment guide
-└── FREELANCE_PLAYBOOK.md # Actionable step-by-step strategy to land your first 3 paying clients
+│   ├── app.js                  # UI engine, AI twin chat handler, architecture explorer, modals
+│   └── chart-data.js           # Verified case studies, architecture pipelines, knowledge base
+├── assets/                     # Public PDF mirrors for all 7 tailored tracks
+├── HANDOVER.md                 # Migration runbook & ground truth profile specifications
+├── FREELANCE_PLAYBOOK.md        # Client acquisition & freelance consulting strategy
+└── README.md                   # Repository documentation
 ```
