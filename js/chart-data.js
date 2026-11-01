@@ -134,6 +134,10 @@ const caseStudiesData = {
   }
 };
 
+// Robust alias mappings for case study modal identifiers
+caseStudiesData.drugmatrix = caseStudiesData.supply_chain;
+caseStudiesData.career_ops = caseStudiesData.career_ops_bot;
+
 // Verified Full-Text Tailored Resume Suite Data
 const resumesData = {
   "data_analyst": {
@@ -477,7 +481,14 @@ const resumesData = {
   }
 };
 
+
 // Interactive Architecture Pipeline Data (Inspired by santifer/cv-santiago)
+// Robust alias mappings
+caseStudiesData.drugmatrix = caseStudiesData.supply_chain;
+caseStudiesData.career_ops = caseStudiesData.career_ops_bot;
+resumesData.data_scientist = resumesData.data_science;
+resumesData.powerbi_data_analyst = resumesData.powerbi_developer;
+
 const architecturesData = {
   health_bi: {
     title: "Statewide Healthcare Biometric-to-Payroll Intelligence",
@@ -648,6 +659,7 @@ const architecturesData = {
     ]
   }
 };
+
 
 // Ground-Truth Knowledge Base for "Ask Rishi AI" (Santiago CV-inspired interactive chat assistant)
 const aiKnowledgeBase = [

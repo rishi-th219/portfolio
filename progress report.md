@@ -5,7 +5,7 @@
 **Live Deployment:** `https://rishi-th219.github.io/portfolio/`  
 **Workspace Path:** `C:\Users\Rishi\Desktop\Jobhunt\portfolio`  
 **Last Updated:** November 1, 2026  
-**Status:** In Active Enhancement (Milestone 12 Completed • Ultra-Compact Text-Reduced Portfolio Live)
+**Status:** In Active Enhancement (Milestone 13 Completed • Balanced Minimal Architecture & Case Study Modals Live)
 
 ---
 
@@ -264,6 +264,27 @@ Taking architectural cues from Santiago Fernández's AI CV (`https://github.com/
      - Entire page now renders in **under 1,000 vertical pixels**, fitting virtually within a single screen view or at most one gentle scroll.
   3. **Automated Tailoring Synchronization:**
      - Detected 7 freshly recompiled PDF resumes in `C:\Users\Rishi\Desktop\tailoring\` and automatically synced all updated editions into `portfolio/assets/`.
+
+---
+
+### Milestone 13: Case Study Modal Key Fix & Balanced Minimal Architecture
+* **User Directive:**
+  > "case study buttons aren't working of 02 and 04. And dont make the portfolio so much dropdowns. keep the essential in front, tho minimal and the things required in depth using dropdpwns"
+* **Root Cause & Technical Fixes:**
+  1. **Case Study Buttons Fix (Projects 02 & 04):**
+     - Diagnosed key mismatch between `index.html` and `caseStudiesData` in [`js/chart-data.js`](file:///c:/Users/Rishi/Desktop/Jobhunt/portfolio/js/chart-data.js):
+       - Project 02 button was passing `drugmatrix`, whereas `caseStudiesData` had `supply_chain`.
+       - Project 04 button was passing `career_ops`, whereas `caseStudiesData` had `career_ops_bot`.
+     - Also diagnosed `data-resume="data_scientist"` vs `resumesData["data_science"]`.
+     - Added robust alias mappings in `caseStudiesData` and `resumesData` and synchronized all HTML `data-study` and `data-resume` attributes. Verified with automated regression script.
+  2. **Balanced Minimal Architecture (Essentials in Front, Depth in Modals):**
+     - **Removed dropdown fatigue:** Eliminated nested `<details>` that forced visitors to click just to see basic project summaries or track names.
+     - **Projects in Front:** All 4 projects are rendered as clean, minimal cards in a 2x2 grid with title, category badge, 1-2 sentence summary, and tech pills visible immediately. The in-depth pipeline, problem, and deliverables remain cleanly accessible via the `[View Case Study ↗]` modal.
+     - **Curated Resumes in Front:** Replaced the clunky HTML `<select>` with a **7-Track Minimal Grid in front** (Data Analyst, Business Analyst, SQL Dev, Power BI, Data Science, ML Engineer, MIS Analyst). Each track card displays the role title, focus, and direct `[ATS 👁]` and `[PDF ↓]` buttons right there.
+     - **Experience:** Role, organization, dates, location, core summary, and tech pills visible upfront, with an optional collapsible toggle for granular ministerial reporting deliverables.
+     - **Skills & Academics:** Clean, minimal high-density cards visible in front with zero clutter.
+  3. **Automated Tailoring Sync:**
+     - Detected 7 freshly modified PDF resumes in `C:\Users\Rishi\Desktop\tailoring\` and automatically updated them in `portfolio/assets/`.
 
 ---
 
