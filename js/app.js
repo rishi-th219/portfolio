@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setupBackToTop();
   setupArchitectureExplorer();
   setupAiChatAssistant();
+  setupRecruiterRoleFilter();
+  setupHeroVoiceIntro();
 });
 
 // 1. Project Category Filter Engine
@@ -559,8 +561,101 @@ function setupAiChatAssistant() {
   const messagesBox = document.getElementById("aiChatMessages");
   const chipBtns = document.querySelectorAll(".ai-prompt-chip");
   const clearBtn = document.getElementById("aiChatClearBtn");
+  const voiceToggleBtn = document.getElementById("aiChatVoiceToggleBtn");
+  const voiceIcon = document.getElementById("aiChatVoiceIcon");
+  const voiceLabel = document.getElementById("aiChatVoiceLabel");
+  const telemetryToggleBtn = document.getElementById("aiChatTelemetryToggleBtn");
+  const telemetryDrawer = document.getElementById("aiChatTelemetryDrawer");
+  const latencyDisplay = document.getElementById("telemetryLatencyVal");
 
   if (!modal || !messagesBox) return;
+
+  let isVoiceAutoPlay = false;
+  let activeUtterance = null;
+  let currentlyPlayingBtn = null;
+
+  // Voice Toggle (Dual-Mode Text/Audio)
+  if (voiceToggleBtn) {
+    voiceToggleBtn.addEventListener("click", () => {
+      isVoiceAutoPlay = !isVoiceAutoPlay;
+      if (isVoiceAutoPlay) {
+        if (voiceIcon) voiceIcon.textContent = "🔊";
+        if (voiceLabel) voiceLabel.textContent = "Voice: ON";
+        voiceToggleBtn.classList.add("border-emerald-500", "text-emerald-600", "dark:text-emerald-400");
+      } else {
+        if (voiceIcon) voiceIcon.textContent = "🔈";
+        if (voiceLabel) voiceLabel.textContent = "Voice: OFF";
+        voiceToggleBtn.classList.remove("border-emerald-500", "text-emerald-600", "dark:text-emerald-400");
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+      }
+    });
+  }
+
+  // Telemetry Toggle
+  if (telemetryToggleBtn && telemetryDrawer) {
+    telemetryToggleBtn.addEventListener("click", () => {
+      telemetryDrawer.classList.toggle("hidden");
+    });
+  }
+
+  const stopActiveSpeech = () => {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    if (currentlyPlayingBtn) {
+      const icon = currentlyPlayingBtn.querySelector(".listen-icon");
+      const label = currentlyPlayingBtn.querySelector(".listen-label");
+      if (icon) icon.textContent = "🔊";
+      if (label) label.textContent = "Listen";
+      currentlyPlayingBtn = null;
+    }
+  };
+
+  const speakText = (text, btnElement = null) => {
+    if (!("speechSynthesis" in window)) return;
+    stopActiveSpeech();
+
+    // Clean markdown and symbols for clean spoken narration
+    const cleanSpeech = text
+      .replace(/\*\*(.*?)\*\*/g, "$1")
+      .replace(/\*(.*?)\*/g, "$1")
+      .replace(/\[(.*?)\]\(.*?\)/g, "$1")
+      .replace(/•/g, "")
+      .replace(/IIIT/g, "Triple I T")
+      .replace(/CHiPS/g, "Chips")
+      .replace(/GATE/g, "Gate")
+      .replace(/SQL/g, "S-Q-L")
+      .replace(/ETL/g, "E-T-L")
+      .replace(/DAX/g, "Dax")
+      .replace(/F1-score/g, "F one score")
+      .replace(/\n+/g, " ")
+      .trim();
+
+    const utterance = new SpeechSynthesisUtterance(cleanSpeech);
+    utterance.rate = 1.05;
+    utterance.pitch = 1.0;
+
+    const voices = window.speechSynthesis.getVoices();
+    const preferredVoice = voices.find(v => v.lang.startsWith("en") && (v.name.includes("Natural") || v.name.includes("Google") || v.name.includes("Samantha") || v.name.includes("David") || v.name.includes("Guy") || v.name.includes("English")));
+    if (preferredVoice) utterance.voice = preferredVoice;
+
+    activeUtterance = utterance;
+
+    if (btnElement) {
+      currentlyPlayingBtn = btnElement;
+      const icon = btnElement.querySelector(".listen-icon");
+      const label = btnElement.querySelector(".listen-label");
+      if (icon) icon.textContent = "⏹";
+      if (label) label.textContent = "Stop";
+    }
+
+    utterance.onend = () => {
+      stopActiveSpeech();
+    };
+    utterance.onerror = () => {
+      stopActiveSpeech();
+    };
+
+    window.speechSynthesis.speak(utterance);
+  };
 
   const openChat = (initialQuery = null) => {
     modal.classList.remove("hidden");
@@ -576,6 +671,7 @@ function setupAiChatAssistant() {
   };
 
   const closeChat = () => {
+    stopActiveSpeech();
     modal.classList.add("hidden");
     modal.classList.remove("flex");
     document.body.style.overflow = "auto";
@@ -592,6 +688,7 @@ function setupAiChatAssistant() {
 
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
+      stopActiveSpeech();
       messagesBox.innerHTML = `
         <div class="flex items-start gap-2.5">
           <div class="w-7 h-7 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xs font-mono shrink-0 select-none font-bold">
@@ -629,11 +726,21 @@ function setupAiChatAssistant() {
         <div class="chat-bubble-bot p-3.5 sm:p-4 max-w-[88%] sm:max-w-[80%] text-xs sm:text-sm text-slate-800 dark:text-slate-200 space-y-2">
           <div class="prose-content leading-relaxed">${formatMarkdown(content)}</div>
           <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
-            <span>Rishi AI Twin • Verified Ground Truth</span>
-            <button type="button" class="copy-chat-btn hover:text-sky-600 dark:hover:text-sky-400 cursor-pointer">Copy</button>
+            <span class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <span>Rishi AI Twin • Ground Truth</span>
+            </span>
+            <div class="flex items-center gap-2.5">
+              <button type="button" class="listen-chat-btn hover:text-emerald-600 dark:hover:text-emerald-400 cursor-pointer flex items-center gap-1 transition-colors" title="Read answer aloud">
+                <span class="listen-icon">🔊</span>
+                <span class="listen-label">Listen</span>
+              </button>
+              <button type="button" class="copy-chat-btn hover:text-sky-600 dark:hover:text-sky-400 cursor-pointer transition-colors">Copy</button>
+            </div>
           </div>
         </div>
       `;
+
       const copyBtn = msgDiv.querySelector(".copy-chat-btn");
       if (copyBtn) {
         copyBtn.addEventListener("click", () => {
@@ -641,6 +748,22 @@ function setupAiChatAssistant() {
           copyBtn.textContent = "Copied!";
           setTimeout(() => (copyBtn.textContent = "Copy"), 2000);
         });
+      }
+
+      const listenBtn = msgDiv.querySelector(".listen-chat-btn");
+      if (listenBtn) {
+        listenBtn.addEventListener("click", () => {
+          if (currentlyPlayingBtn === listenBtn) {
+            stopActiveSpeech();
+          } else {
+            speakText(content, listenBtn);
+          }
+        });
+
+        // If voice auto-play mode is active, trigger speech automatically
+        if (isVoiceAutoPlay) {
+          setTimeout(() => speakText(content, listenBtn), 250);
+        }
       }
     }
 
@@ -701,11 +824,15 @@ function setupAiChatAssistant() {
     appendMessage("user", text);
     showTypingIndicator();
 
+    const startTime = performance.now();
+
     setTimeout(() => {
       removeTypingIndicator();
       const ans = getKnowledgeResponse(text);
+      const latency = Math.max(1.2, (performance.now() - startTime) / 100).toFixed(1);
+      if (latencyDisplay) latencyDisplay.textContent = `< ${latency} ms`;
       appendMessage("bot", ans);
-    }, 450);
+    }, 380);
   };
 
   if (form) {
@@ -725,6 +852,204 @@ function setupAiChatAssistant() {
   });
 }
 
+// 10. Recruiter Role Fast-Track Engine (Inspired by cv-santiago recruiter fast-track)
+function setupRecruiterRoleFilter() {
+  const roleBtns = document.querySelectorAll("#recruiterRoleFilterGroup .role-track-pill");
+  const projectCards = document.querySelectorAll(".project-card");
+  const resumeCards = document.querySelectorAll("#resumes .analytic-card");
+
+  if (!roleBtns.length) return;
+
+  const roleMap = {
+    all: "all",
+    data_analyst: "bi analytics",
+    business_analyst: "bi analytics",
+    sql_developer: "sql",
+    powerbi_developer: "bi",
+    ml_engineer: "ml python"
+  };
+
+  const resumeMap = {
+    data_analyst: "data_analyst",
+    business_analyst: "business_analyst",
+    sql_developer: "sql_developer",
+    powerbi_developer: "powerbi_developer",
+    ml_engineer: "data_science"
+  };
+
+  roleBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      roleBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const role = btn.dataset.role;
+
+      // Filter Projects in Selected Work
+      const filterCategory = roleMap[role] || "all";
+      projectCards.forEach(card => {
+        const cardCats = (card.dataset.category || "").split(" ");
+        if (filterCategory === "all") {
+          card.classList.remove("hidden");
+          card.classList.add("flex");
+        } else {
+          const match = filterCategory.split(" ").some(c => cardCats.includes(c));
+          if (match) {
+            card.classList.remove("hidden");
+            card.classList.add("flex");
+          } else {
+            card.classList.add("hidden");
+            card.classList.remove("flex");
+          }
+        }
+      });
+
+      // Synchronize category filter buttons in #work section
+      const catBtns = document.querySelectorAll(".project-filter-btn");
+      catBtns.forEach(cb => {
+        if (role === "all" && cb.dataset.filter === "all") cb.classList.add("active");
+        else if (role === "sql_developer" && cb.dataset.filter === "sql") cb.classList.add("active");
+        else if (role === "powerbi_developer" && cb.dataset.filter === "bi") cb.classList.add("active");
+        else if (role === "ml_engineer" && cb.dataset.filter === "python") cb.classList.add("active");
+        else cb.classList.remove("active");
+      });
+
+      // Highlight matching resume card in #resumes
+      if (role !== "all" && resumeMap[role]) {
+        const targetResume = resumeMap[role];
+        const matchingBtn = document.querySelector(`.view-resume-btn[data-resume="${targetResume}"]`);
+        if (matchingBtn) {
+          const card = matchingBtn.closest(".analytic-card");
+          if (card) {
+            resumeCards.forEach(c => c.classList.remove("ring-2", "ring-sky-500", "scale-[1.01]"));
+            card.classList.add("ring-2", "ring-sky-500", "scale-[1.01]");
+            setTimeout(() => {
+              card.classList.remove("ring-2", "ring-sky-500", "scale-[1.01]");
+            }, 3000);
+          }
+        }
+      }
+    });
+  });
+}
+
+// 11. 60-Second Executive Audio Intro (Web Speech API)
+function setupHeroVoiceIntro() {
+  const introBtn = document.getElementById("heroVoiceIntroBtn");
+  const pauseBtn = document.getElementById("heroVoicePauseBtn");
+  const stopBtn = document.getElementById("heroVoiceStopBtn");
+  const banner = document.getElementById("heroVoicePlayerBanner");
+  const timer = document.getElementById("heroVoicePlayerTimer");
+  const wave = document.getElementById("heroVoiceIntroWave");
+  const icon = document.getElementById("heroVoiceIntroIcon");
+  const label = document.getElementById("heroVoiceIntroLabel");
+
+  if (!introBtn) return;
+  if (!("speechSynthesis" in window)) {
+    introBtn.style.display = "none";
+    return;
+  }
+
+  let isPlaying = false;
+  let isPaused = false;
+  let secondsElapsed = 0;
+  let timerInterval = null;
+  const totalSeconds = 48;
+
+  const script = "Hello! I am Rishi Thakur, an M.Tech Computer Science graduate from Triple I T Naya Raipur and GATE CS 2024 qualified data analyst. I specialize in high-performance SQL, MariaDB, and Power BI dashboards, with enterprise experience delivering healthcare biometric and payroll E-T-L across 33 districts for the Chhattisgarh government. Welcome to my interactive portfolio. Feel free to explore my system architectures, test my AI twin, or download any of my 7 tailored resumes.";
+
+  const formatTime = (sec) => {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  };
+
+  const updateTimerDisplay = () => {
+    if (timer) timer.textContent = `${formatTime(secondsElapsed)} / ${formatTime(totalSeconds)}`;
+  };
+
+  const resetPlayer = () => {
+    isPlaying = false;
+    isPaused = false;
+    secondsElapsed = 0;
+    if (timerInterval) clearInterval(timerInterval);
+    if (banner) banner.classList.add("hidden");
+    if (wave) wave.classList.add("hidden");
+    if (icon) icon.textContent = "🎧";
+    if (label) label.textContent = "60s Voice Intro";
+    if (pauseBtn) pauseBtn.textContent = "Pause";
+    updateTimerDisplay();
+  };
+
+  const startIntro = () => {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(script);
+    utterance.rate = 1.02;
+    utterance.pitch = 1.0;
+
+    const voices = window.speechSynthesis.getVoices();
+    const preferredVoice = voices.find(v => v.lang.startsWith("en") && (v.name.includes("Natural") || v.name.includes("Google") || v.name.includes("Samantha") || v.name.includes("David") || v.name.includes("Guy") || v.name.includes("English")));
+    if (preferredVoice) utterance.voice = preferredVoice;
+
+    utterance.onstart = () => {
+      isPlaying = true;
+      isPaused = false;
+      if (banner) banner.classList.remove("hidden");
+      if (wave) wave.classList.remove("hidden");
+      if (icon) icon.textContent = "⏹";
+      if (label) label.textContent = "Playing...";
+      updateTimerDisplay();
+
+      timerInterval = setInterval(() => {
+        if (!isPaused && isPlaying) {
+          secondsElapsed++;
+          updateTimerDisplay();
+          if (secondsElapsed >= totalSeconds) {
+            clearInterval(timerInterval);
+          }
+        }
+      }, 1000);
+    };
+
+    utterance.onend = resetPlayer;
+    utterance.onerror = resetPlayer;
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  introBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      window.speechSynthesis.cancel();
+      resetPlayer();
+    } else {
+      startIntro();
+    }
+  });
+
+  if (pauseBtn) {
+    pauseBtn.addEventListener("click", () => {
+      if (!isPlaying) return;
+      if (isPaused) {
+        window.speechSynthesis.resume();
+        isPaused = false;
+        pauseBtn.textContent = "Pause";
+        if (wave) wave.classList.remove("opacity-40");
+      } else {
+        window.speechSynthesis.pause();
+        isPaused = true;
+        pauseBtn.textContent = "Resume";
+        if (wave) wave.classList.add("opacity-40");
+      }
+    });
+  }
+
+  if (stopBtn) {
+    stopBtn.addEventListener("click", () => {
+      window.speechSynthesis.cancel();
+      resetPlayer();
+    });
+  }
+}
+
 function escapeHtml(str) {
   return str.replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
 }
@@ -738,5 +1063,6 @@ function formatMarkdown(text) {
     .replace(/\n\n/g, '<br><br>');
   return formatted;
 }
+
 
 

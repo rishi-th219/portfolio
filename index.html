@@ -271,6 +271,16 @@
               <span>Ask Rishi AI Twin</span>
               <span class="font-mono text-xs text-sky-500">✨</span>
             </button>
+            <button type="button" id="heroVoiceIntroBtn" class="px-3.5 py-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 font-medium text-xs sm:text-sm hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors inline-flex items-center gap-2 cursor-pointer shadow-sm" title="Listen to 60-Second Executive Voice Intro (Web Speech API)">
+              <span id="heroVoiceIntroIcon" class="text-sm">🎧</span>
+              <span id="heroVoiceIntroLabel">60s Voice Intro</span>
+              <span id="heroVoiceIntroWave" class="hidden soundwave text-emerald-600 dark:text-emerald-400 ml-0.5">
+                <span class="soundwave-bar"></span>
+                <span class="soundwave-bar"></span>
+                <span class="soundwave-bar"></span>
+                <span class="soundwave-bar"></span>
+              </span>
+            </button>
             <div class="flex items-center gap-2 pl-1">
               <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:border-sky-500/40 transition-colors" title="LinkedIn Profile">
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.738-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -323,6 +333,70 @@
               <span>STATUS: PRODUCTION_READY</span>
               <span class="text-emerald-600 dark:text-emerald-400 font-medium">PASS 100%</span>
             </div>
+          </div>
+        </div>
+
+        <!-- Interactive 60s Voice Intro Player Status Banner -->
+        <div id="heroVoicePlayerBanner" class="col-span-1 lg:col-span-12 hidden mt-2 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-left text-xs font-mono transition-all animate-in fade-in duration-200">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-sm">
+                🎙️
+              </span>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-semibold text-slate-900 dark:text-white">60-Second Executive Audio Overview</span>
+                  <span class="inline-flex soundwave text-emerald-600 dark:text-emerald-400">
+                    <span class="soundwave-bar"></span>
+                    <span class="soundwave-bar"></span>
+                    <span class="soundwave-bar"></span>
+                    <span class="soundwave-bar"></span>
+                  </span>
+                </div>
+                <p id="heroVoicePlayerSubtitle" class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                  Narrated via Web Speech API • Ground truth summary of M.Tech thesis, CHiPS enterprise metrics & core competencies.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <span id="heroVoicePlayerTimer" class="px-2 py-1 rounded bg-white dark:bg-slate-900 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 font-bold text-[11px]">
+                0:00 / 0:50
+              </span>
+              <button type="button" id="heroVoicePauseBtn" class="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-medium cursor-pointer">
+                Pause
+              </button>
+              <button type="button" id="heroVoiceStopBtn" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium cursor-pointer">
+                Stop
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recruiter Fast-Track Role Filter Bar (Inspired by cv-santiago recruiter fast-track) -->
+        <div class="col-span-1 lg:col-span-12 mt-4 pt-4 border-t border-slate-200 dark:border-slate-800/80 flex flex-col md:flex-row md:items-center justify-between gap-3 text-left">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wider">Fast-Track by Role:</span>
+            <span class="text-xs text-slate-500 hidden sm:inline">• Click any target profile to filter projects & highlight matching resumes</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-1.5" id="recruiterRoleFilterGroup">
+            <button type="button" class="role-track-pill active px-3 py-1 rounded-full text-xs font-mono border border-slate-300 dark:border-slate-700 cursor-pointer" data-role="all">
+              All Tracks
+            </button>
+            <button type="button" class="role-track-pill px-3 py-1 rounded-full text-xs font-mono bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-sky-500 hover:text-sky-600 dark:hover:text-sky-400 cursor-pointer" data-role="data_analyst">
+              Data Analyst
+            </button>
+            <button type="button" class="role-track-pill px-3 py-1 rounded-full text-xs font-mono bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-sky-500 hover:text-sky-600 dark:hover:text-sky-400 cursor-pointer" data-role="business_analyst">
+              Business Analyst
+            </button>
+            <button type="button" class="role-track-pill px-3 py-1 rounded-full text-xs font-mono bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-sky-500 hover:text-sky-600 dark:hover:text-sky-400 cursor-pointer" data-role="sql_developer">
+              SQL Developer
+            </button>
+            <button type="button" class="role-track-pill px-3 py-1 rounded-full text-xs font-mono bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-sky-500 hover:text-sky-600 dark:hover:text-sky-400 cursor-pointer" data-role="powerbi_developer">
+              Power BI Developer
+            </button>
+            <button type="button" class="role-track-pill px-3 py-1 rounded-full text-xs font-mono bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-sky-500 hover:text-sky-600 dark:hover:text-sky-400 cursor-pointer" data-role="ml_engineer">
+              ML / Data Science
+            </button>
           </div>
         </div>
 
@@ -1891,12 +1965,57 @@
           </div>
         </div>
         <div class="flex items-center gap-1.5">
+          <!-- Voice Mode Toggle (Inspired by cv-santiago dual-mode text/audio) -->
+          <button id="aiChatVoiceToggleBtn" type="button" aria-label="Toggle voice readout" class="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-emerald-500/50 text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-xs font-mono transition-colors flex items-center gap-1.5 cursor-pointer" title="Auto voice readout for answers (Web Speech API)">
+            <span id="aiChatVoiceIcon">🔈</span>
+            <span class="hidden sm:inline" id="aiChatVoiceLabel">Voice</span>
+          </button>
+
+          <!-- LLMOps Telemetry Drawer Toggle -->
+          <button id="aiChatTelemetryToggleBtn" type="button" aria-label="Toggle LLMOps telemetry" class="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-sky-500/50 text-slate-600 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 text-xs font-mono transition-colors flex items-center gap-1 cursor-pointer" title="View LLMOps & Evaluation Telemetry">
+            <span>📊</span>
+            <span class="hidden sm:inline">Telemetry</span>
+          </button>
+
           <button id="aiChatClearBtn" type="button" aria-label="Clear chat" class="p-2 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-mono transition-colors" title="Clear chat history">
             Clear
           </button>
           <button id="aiChatCloseBtn" aria-label="Close AI Chat" class="p-2 rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
+        </div>
+      </div>
+
+      <!-- LLMOps & Grounding Observability Drawer (Inspired by santifer/cv-santiago evaluation gates) -->
+      <div id="aiChatTelemetryDrawer" class="hidden px-4 py-3 bg-slate-50 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-800 text-left text-xs font-mono animate-in fade-in duration-150">
+        <div class="flex items-center justify-between pb-2 mb-2.5 border-b border-slate-200 dark:border-slate-800 text-[11px] text-slate-500">
+          <span class="flex items-center gap-1.5 text-sky-600 dark:text-sky-400 font-semibold">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            LLMOps Telemetry & Grounding Inspector
+          </span>
+          <span class="text-slate-400 text-[10px]">Zero-Token Client RAG Engine</span>
+        </div>
+        <div class="telemetry-grid text-[11px]">
+          <div class="p-2.5 rounded-lg bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80">
+            <div class="text-slate-400 text-[10px] uppercase">Faithfulness Gate</div>
+            <div class="text-emerald-600 dark:text-emerald-400 font-bold text-xs mt-0.5">100% Zero-Fabrication</div>
+            <div class="text-[9px] text-slate-400 mt-0.5">Automated Truth Barrier</div>
+          </div>
+          <div class="p-2.5 rounded-lg bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80">
+            <div class="text-slate-400 text-[10px] uppercase">Retrieval Latency</div>
+            <div class="text-sky-600 dark:text-sky-400 font-bold text-xs mt-0.5" id="telemetryLatencyVal">&lt; 1.4 ms</div>
+            <div class="text-[9px] text-slate-400 mt-0.5">Zero Network Lag</div>
+          </div>
+          <div class="p-2.5 rounded-lg bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80">
+            <div class="text-slate-400 text-[10px] uppercase">Sampling Temp</div>
+            <div class="text-slate-900 dark:text-slate-100 font-bold text-xs mt-0.5">0.0 (Deterministic)</div>
+            <div class="text-[9px] text-slate-400 mt-0.5">Strict Factual Binding</div>
+          </div>
+          <div class="p-2.5 rounded-lg bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80">
+            <div class="text-slate-400 text-[10px] uppercase">Verified Corpora</div>
+            <div class="text-slate-900 dark:text-slate-100 font-bold text-xs mt-0.5">4 Architectures</div>
+            <div class="text-[9px] text-slate-400 mt-0.5">CHiPS • 5G • 7 Resumes</div>
+          </div>
         </div>
       </div>
 

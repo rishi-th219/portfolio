@@ -389,3 +389,52 @@ button, a {
   transform: translateY(-2px);
 }
 
+/* Soundwave Equalizer Animation (Inspired by cv-santiago voice mode) */
+.soundwave {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5px;
+  height: 13px;
+}
+.soundwave-bar {
+  display: block;
+  width: 2.5px;
+  height: 100%;
+  background-color: currentColor;
+  border-radius: 9999px;
+  animation: soundwave-jump 0.8s ease-in-out infinite alternate;
+}
+.soundwave-bar:nth-child(1) { animation-delay: 0.1s; height: 35%; }
+.soundwave-bar:nth-child(2) { animation-delay: 0.25s; height: 95%; }
+.soundwave-bar:nth-child(3) { animation-delay: 0.15s; height: 65%; }
+.soundwave-bar:nth-child(4) { animation-delay: 0.35s; height: 85%; }
+
+@keyframes soundwave-jump {
+  0% { transform: scaleY(0.25); }
+  100% { transform: scaleY(1); }
+}
+
+/* Fast-track Role Pill */
+.role-track-pill {
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.role-track-pill.active {
+  background-color: #0f172a;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.dark .role-track-pill.active {
+  background-color: #f1f5f9;
+  color: #080a0d !important;
+  border-color: #f1f5f9 !important;
+}
+
+/* Telemetry Drawer & Evaluation Metrics */
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+}
+
+
