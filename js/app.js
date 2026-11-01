@@ -1,4 +1,4 @@
-// Portfolio Interactivity Engine for Rishi Thakur
+// Rishi Thakur — Executive Portfolio Interactivity Engine
 // Data Analyst | Business Intelligence | SQL & Analytics Engineering
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -6,16 +6,47 @@ document.addEventListener("DOMContentLoaded", () => {
   setupProjectFilters();
   setupCaseStudyModals();
   setupResumeModal();
-  setupMobileMenu();
-  setupContactForm();
-  setupBackToTop();
   setupArchitectureExplorer();
-  setupAiChatAssistant();
-  setupRecruiterRoleFilter();
-  setupHeroVoiceIntro();
+  setupMobileMenu();
+  setupBackToTop();
+  setupContactForm();
 });
 
-// 1. Project Category Filter Engine
+// 1. Theme Toggle Engine (Dark / Light Mode)
+function setupThemeToggle() {
+  const toggleBtns = [
+    document.getElementById("themeToggleBtn"),
+    document.getElementById("themeToggleBtnMobileTop"),
+    document.getElementById("themeToggleBtnMobile")
+  ].filter(Boolean);
+
+  const getSavedTheme = () => {
+    const saved = localStorage.getItem("rishi-portfolio-theme");
+    if (saved) return saved;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  };
+
+  const applyTheme = (theme) => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("rishi-portfolio-theme", theme);
+  };
+
+  // Initialize theme
+  applyTheme(getSavedTheme());
+
+  toggleBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      applyTheme(isDark ? "light" : "dark");
+    });
+  });
+}
+
+// 2. Project Category Filter Engine
 function setupProjectFilters() {
   const filterBtns = document.querySelectorAll(".project-filter-btn");
   const projectCards = document.querySelectorAll(".project-card");
@@ -42,7 +73,7 @@ function setupProjectFilters() {
   });
 }
 
-// 2. Case Study Modal Engine
+// 3. Technical Case Study Modal Engine
 function setupCaseStudyModals() {
   const modal = document.getElementById("caseStudyModal");
   const closeBtn = document.getElementById("modalCloseBtn");
@@ -68,7 +99,7 @@ function setupCaseStudyModals() {
       setEl("modalTimeline", data.timeline);
       setEl("modalProblem", data.problem);
 
-      // Render Solution as formatted structured points
+      // Render Structured Solution Points
       const solutionEl = document.getElementById("modalSolution");
       if (solutionEl) {
         solutionEl.innerHTML = "";
@@ -77,13 +108,13 @@ function setupCaseStudyModals() {
           const cleanPoint = point.trim();
           if (!cleanPoint) return;
           const p = document.createElement("p");
-          p.className = "text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal";
+          p.className = "text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal";
           p.textContent = cleanPoint;
           solutionEl.appendChild(p);
         });
       }
 
-      // Render Pipeline Flow
+      // Render Pipeline Steps Flow
       const pipelineWrapper = document.getElementById("modalPipelineWrapper");
       const pipelineEl = document.getElementById("modalPipeline");
       if (pipelineWrapper && pipelineEl) {
@@ -91,72 +122,46 @@ function setupCaseStudyModals() {
           pipelineWrapper.classList.remove("hidden");
           const steps = data.pipeline.split("→").map(s => s.trim());
           pipelineEl.innerHTML = steps.map((step, idx) => `
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/80 text-xs font-mono text-neutral-800 dark:text-neutral-200">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-800 dark:text-slate-200">
               <span class="text-sky-600 dark:text-sky-400 font-semibold">${idx + 1}.</span> ${step}
             </span>
-            ${idx < steps.length - 1 ? '<span class="text-neutral-400 dark:text-neutral-600 font-mono text-xs select-none">→</span>' : ''}
+            ${idx < steps.length - 1 ? '<span class="text-slate-400 dark:text-slate-600 font-mono text-xs select-none">→</span>' : ''}
           `).join(" ");
         } else {
           pipelineWrapper.classList.add("hidden");
         }
       }
 
-      // Metrics container
-      const metricsContainer = document.getElementById("modalMetrics");
-      if (metricsContainer) {
-        metricsContainer.innerHTML = "";
-        (data.metrics || []).forEach(m => {
-          const div = document.createElement("div");
-          div.className = "p-3 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl text-center";
-          div.innerHTML = `
-            <div class="text-[11px] text-neutral-500 dark:text-neutral-400 font-normal uppercase tracking-wider font-mono">${m.label}</div>
-            <div class="text-base sm:text-lg font-medium text-neutral-900 dark:text-neutral-100 font-mono mt-0.5">${m.value}</div>
-          `;
-          metricsContainer.appendChild(div);
-        });
+      // Render Stack Pills
+      const stackEl = document.getElementById("modalStack");
+      if (stackEl && data.stack) {
+        stackEl.innerHTML = data.stack.map(tech => `
+          <span class="tech-pill">${tech}</span>
+        `).join("");
       }
 
-      // Tech Stack
-      const stackContainer = document.getElementById("modalStack");
-      if (stackContainer) {
-        stackContainer.innerHTML = "";
-        (data.stack || []).forEach(tech => {
-          const span = document.createElement("span");
-          span.className = "tech-pill text-xs";
-          span.textContent = tech;
-          stackContainer.appendChild(span);
-        });
-      }
-
-      // Deliverables
-      const delivContainer = document.getElementById("modalDeliverables");
-      if (delivContainer) {
-        delivContainer.innerHTML = "";
-        (data.deliverables || []).forEach(d => {
-          const li = document.createElement("li");
-          li.className = "flex items-start gap-2.5 text-sm text-neutral-600 dark:text-neutral-300 font-normal";
-          li.innerHTML = `
-            <span class="text-sky-600 dark:text-sky-400 mt-0.5 select-none font-mono">→</span>
-            <span>${d}</span>
-          `;
-          delivContainer.appendChild(li);
-        });
+      // Render Deliverables List
+      const delivEl = document.getElementById("modalDeliverables");
+      if (delivEl && data.deliverables) {
+        delivEl.innerHTML = data.deliverables.map(deliv => `
+          <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-normal">
+            <span class="text-sky-600 dark:text-sky-400 font-mono select-none font-semibold">✓</span>
+            <span>${deliv}</span>
+          </li>
+        `).join("");
       }
 
       // GitHub Code Link
-      const githubLinkEl = document.getElementById("modalGithubLink");
-      if (githubLinkEl) {
+      const gitLink = document.getElementById("modalGithubLink");
+      if (gitLink) {
         if (data.githubUrl) {
-          githubLinkEl.href = data.githubUrl;
-          githubLinkEl.classList.remove("hidden");
-          githubLinkEl.classList.add("inline-flex");
+          gitLink.href = data.githubUrl;
+          gitLink.classList.remove("hidden");
         } else {
-          githubLinkEl.classList.add("hidden");
-          githubLinkEl.classList.remove("inline-flex");
+          gitLink.classList.add("hidden");
         }
       }
 
-      // Show Modal
       modal.classList.remove("hidden");
       modal.classList.add("flex");
       document.body.style.overflow = "hidden";
@@ -173,303 +178,154 @@ function setupCaseStudyModals() {
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
   });
-
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-      closeModal();
-    }
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
   });
 }
 
-// 3. Mobile Navigation Menu
-function setupMobileMenu() {
-  const menuBtn = document.getElementById("mobileMenuBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
-  const mobileLinks = document.querySelectorAll(".mobile-nav-link");
-
-  if (!menuBtn || !mobileMenu) return;
-
-  menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-
-  mobileLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.add("hidden");
-    });
-  });
-
-  // Close when tapping outside
-  document.addEventListener("click", (e) => {
-    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-      mobileMenu.classList.add("hidden");
-    }
-  });
-}
-
-// 4. Contact Form & Clipboard Copy
-function setupContactForm() {
-  const form = document.getElementById("contactForm");
-  const copyEmailBtn = document.getElementById("copyEmailBtn");
-  const feedbackEl = document.getElementById("contactFeedback");
-  const targetEmail = "rishi_th219@proton.me";
-
-  if (copyEmailBtn) {
-    copyEmailBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(targetEmail).then(() => {
-        const originalContent = copyEmailBtn.innerHTML;
-        copyEmailBtn.innerHTML = `
-          <div class="flex items-center gap-2 font-mono text-xs text-sky-600 dark:text-sky-400">
-            <span>✓</span>
-            <span>Copied: ${targetEmail}</span>
-          </div>
-        `;
-        setTimeout(() => {
-          copyEmailBtn.innerHTML = originalContent;
-        }, 2200);
-      }).catch(() => {
-        // Fallback prompt
-        prompt("Copy email address:", targetEmail);
-      });
-    });
-  }
-
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("contactName")?.value || "";
-      const email = document.getElementById("contactEmail")?.value || "";
-      const role = document.getElementById("contactRole")?.value || "General Inquiry";
-      const message = document.getElementById("contactMessage")?.value || "";
-
-      const subject = encodeURIComponent(`[Portfolio Contact - ${role}] from ${name}`);
-      const body = encodeURIComponent(`Hi Rishi,\n\n${message}\n\nBest regards,\n${name}\n${email}`);
-
-      window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
-
-      if (feedbackEl) {
-        feedbackEl.classList.remove("hidden");
-        feedbackEl.innerHTML = `
-          <div class="p-3.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl text-neutral-700 dark:text-neutral-300 text-xs sm:text-sm flex items-center gap-3">
-            <span class="font-mono text-sky-600 dark:text-sky-400">→</span>
-            <div>Opening your email client... You can also email directly to <span class="font-mono text-neutral-900 dark:text-neutral-100 font-medium">${targetEmail}</span>.</div>
-          </div>
-        `;
-      }
-    });
-  }
-}
-
-// 5. Theme Toggle Functionality (Light / Dark Mode)
-function setupThemeToggle() {
-  const toggleBtns = [
-    document.getElementById("themeToggleBtn"),
-    document.getElementById("themeToggleBtnMobile"),
-    document.getElementById("themeToggleBtnMobileTop")
-  ].filter(Boolean);
-
-  function applyTheme(isDark) {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }
-
-  toggleBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const isCurrentlyDark = document.documentElement.classList.contains("dark");
-      applyTheme(!isCurrentlyDark);
-    });
-  });
-
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-    if (!localStorage.getItem("theme")) {
-      applyTheme(e.matches);
-    }
-  });
-}
-
-// 6. Smooth Scroll back to top
-function setupBackToTop() {
-  const backToTopBtn = document.getElementById("backToTopBtn");
-  if (!backToTopBtn) return;
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) {
-      backToTopBtn.classList.remove("opacity-0", "pointer-events-none");
-      backToTopBtn.classList.add("opacity-100");
-    } else {
-      backToTopBtn.classList.add("opacity-0", "pointer-events-none");
-      backToTopBtn.classList.remove("opacity-100");
-    }
-  });
-
-  backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
-// 7. Interactive Resume Modal Engine
+// 4. Curated 7-Track ATS Resume Modal Engine
 function setupResumeModal() {
   const modal = document.getElementById("resumeModal");
   const closeBtn = document.getElementById("resumeModalCloseBtn");
   const triggerBtns = document.querySelectorAll(".view-resume-btn");
   const tabBtns = document.querySelectorAll(".resume-tab-btn");
+  const modalTitle = document.getElementById("resumeModalTitle");
+  const modalBody = document.getElementById("resumeModalBody");
+  const pdfDownloadBtn = document.getElementById("resumeModalPdfBtn");
 
-  if (!modal) return;
+  if (!modal || !modalBody) return;
 
-  const renderResume = (key) => {
-    const data = typeof resumesData !== "undefined" ? resumesData[key] : null;
-    if (!data) return;
+  const renderResumeTrack = (trackKey) => {
+    if (typeof resumesData === "undefined" || !resumesData[trackKey]) return;
+    const r = resumesData[trackKey];
 
-    // Update active tab styling
-    tabBtns.forEach(btn => {
-      const isMatch = btn.dataset.resumeTab === key;
-      if (isMatch) {
-        btn.className = "resume-tab-btn px-2.5 py-1 rounded text-xs font-mono transition-colors border bg-slate-900 text-white border-slate-900 dark:bg-slate-100 dark:text-slate-950 dark:border-slate-100 font-semibold";
+    // Update active tab buttons
+    tabBtns.forEach(t => {
+      if (t.dataset.resumeTab === trackKey) {
+        t.className = "resume-tab-btn px-2.5 py-1 rounded text-xs font-mono transition-colors border bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 border-slate-900 dark:border-slate-100 shadow-sm cursor-pointer";
       } else {
-        btn.className = "resume-tab-btn px-2.5 py-1 rounded text-xs font-mono transition-colors border bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700/80 hover:text-slate-900 dark:hover:text-white";
+        t.className = "resume-tab-btn px-2.5 py-1 rounded text-xs font-mono transition-colors border bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-slate-400 cursor-pointer";
       }
     });
 
-    // Update header
-    const setEl = (id, text) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = text || "";
-    };
-    setEl("resumeModalBadge", `${data.track} • ${data.badge}`);
-    setEl("resumeModalRole", data.role);
-    setEl("resumeModalTitle", data.title);
-
-    const dlBtn = document.getElementById("resumeModalDownloadBtn");
-    if (dlBtn) {
-      dlBtn.href = data.pdf;
-      dlBtn.download = data.pdf.split("/").pop();
+    if (modalTitle) modalTitle.textContent = `${r.title} — ATS Resume`;
+    if (pdfDownloadBtn) {
+      pdfDownloadBtn.href = r.pdf;
+      pdfDownloadBtn.download = r.pdf.split("/").pop();
     }
-    const rawBtn = document.getElementById("resumeModalRawBtn");
-    if (rawBtn) rawBtn.href = data.pdf;
 
-    const mdBtn = document.getElementById("resumeModalMdBtn");
-    if (mdBtn) mdBtn.href = data.md;
+    // Render formatted ATS content
+    modalBody.innerHTML = `
+      <div class="space-y-6 max-w-3xl mx-auto">
+        <!-- Header -->
+        <div class="text-center pb-4 border-b border-slate-200 dark:border-slate-800">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">${r.header.name}</h2>
+          <div class="text-xs font-mono text-slate-600 dark:text-slate-400 mt-1 flex flex-wrap items-center justify-center gap-2">
+            <span>${r.header.location}</span>
+            <span>•</span>
+            <a href="mailto:${r.header.email}" class="text-sky-600 dark:text-sky-400 hover:underline">${r.header.email}</a>
+            <span>•</span>
+            <span>${r.header.phone}</span>
+          </div>
+          <div class="text-xs font-mono text-slate-500 mt-1 flex items-center justify-center gap-2">
+            <a href="${r.header.linkedin}" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn ↗</a>
+            <span>•</span>
+            <a href="${r.header.github}" target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub ↗</a>
+          </div>
+        </div>
 
-    // Render body
-    const bodyEl = document.getElementById("resumeModalBody");
-    if (bodyEl) {
-      bodyEl.innerHTML = `
         <!-- Professional Summary -->
         <div class="space-y-2">
-          <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1 flex items-center justify-between">
-            <span>Professional Summary</span>
-            <span class="text-[11px] font-mono text-slate-400 font-normal">Executive Overview</span>
-          </div>
-          <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">${data.summary}</p>
+          <h3 class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-bold border-b border-slate-200 dark:border-slate-800 pb-1">Professional Summary</h3>
+          <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">${r.summary}</p>
         </div>
 
         <!-- Technical Skills -->
         <div class="space-y-2">
-          <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1">
-            Technical Skills
-          </div>
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-            ${data.skills.map(sk => `<li class="flex items-start gap-2"><span class="text-sky-600 dark:text-sky-400 font-mono select-none mt-0.5">•</span><span>${sk}</span></li>`).join("")}
-          </ul>
-        </div>
-
-        <!-- Professional Experience -->
-        <div class="space-y-3">
-          <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1 flex items-center justify-between">
-            <span>Professional Experience</span>
-            <span class="text-[11px] font-mono text-slate-400 font-normal">CHiPS (Govt. of Chhattisgarh)</span>
-          </div>
-          <div class="space-y-1">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs sm:text-sm font-semibold text-slate-950 dark:text-white">
-              <span>${data.exp_role}</span>
-              <span class="text-xs font-mono font-normal text-slate-500">06/2025 – 03/2026</span>
-            </div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs text-slate-500 italic">
-              <span>Dept. of Health & Family Welfare, Govt. of Chhattisgarh</span>
-              <span>Raipur, India</span>
-            </div>
-          </div>
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 pt-1">
-            ${data.exp_bullets.map(b => `<li class="flex items-start gap-2"><span class="text-sky-600 dark:text-sky-400 font-mono select-none mt-0.5">•</span><span>${b}</span></li>`).join("")}
-          </ul>
-        </div>
-
-        <!-- Key Projects -->
-        <div class="space-y-3">
-          <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1">
-            Key Projects
-          </div>
-          <div class="space-y-3">
-            ${data.projects.map(proj => `
-              <div class="space-y-1.5 p-3 rounded-lg bg-slate-50 dark:bg-slate-900/40 border border-slate-200/80 dark:border-slate-800/80">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs sm:text-sm">
-                  <div>
-                    <span class="font-semibold text-slate-950 dark:text-white">${proj.name}</span>
-                    <span class="text-slate-400"> | </span>
-                    <span class="italic text-slate-600 dark:text-slate-400 font-mono text-xs">${proj.tools}</span>
-                  </div>
-                  <span class="text-[11px] font-mono font-medium text-sky-600 dark:text-sky-400">${proj.tag}</span>
-                </div>
-                <ul class="space-y-1 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                  ${proj.bullets.map(b => `<li class="flex items-start gap-2"><span class="text-slate-400 select-none">•</span><span>${b}</span></li>`).join("")}
-                </ul>
+          <h3 class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-bold border-b border-slate-200 dark:border-slate-800 pb-1">Technical Skills</h3>
+          <div class="grid grid-cols-1 gap-1 text-xs">
+            ${Object.entries(r.skills).map(([cat, skills]) => `
+              <div class="flex flex-col sm:flex-row sm:items-start gap-1 py-1 border-b border-slate-100 dark:border-slate-800/40">
+                <span class="font-mono text-slate-900 dark:text-slate-100 font-medium sm:w-44 shrink-0">${cat}:</span>
+                <span class="text-slate-600 dark:text-slate-400">${skills}</span>
               </div>
             `).join("")}
           </div>
         </div>
 
-        <!-- Education & Certifications -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
-          <div class="space-y-2">
-            <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1">
-              Education
-            </div>
-            <div class="space-y-2 text-xs">
-              <div>
-                <div class="font-semibold text-slate-950 dark:text-white">M.Tech in Computer Science & Engineering</div>
-                <div class="text-slate-600 dark:text-slate-400">IIIT Naya Raipur <span class="font-semibold text-slate-800 dark:text-slate-200">(CGPA: 7.90)</span></div>
-                <div class="text-slate-400 font-mono">08/2024 – 07/2026</div>
+        <!-- Experience -->
+        <div class="space-y-4">
+          <h3 class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-bold border-b border-slate-200 dark:border-slate-800 pb-1">Professional Experience</h3>
+          ${r.experience.map(exp => `
+            <div class="space-y-2 text-left">
+              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                <div>
+                  <span class="font-bold text-slate-900 dark:text-white text-sm">${exp.role}</span>
+                  <span class="text-xs font-mono text-sky-600 dark:text-sky-400 ml-1">@ ${exp.company}</span>
+                </div>
+                <span class="text-xs font-mono text-slate-500">${exp.timeline}</span>
               </div>
-              <div class="pt-1">
-                <div class="font-semibold text-slate-950 dark:text-white">B.Tech in Computer Science & Engineering</div>
-                <div class="text-slate-600 dark:text-slate-400">Amity University Chhattisgarh <span class="font-semibold text-slate-800 dark:text-slate-200">(CGPA: 7.71)</span></div>
-                <div class="text-slate-400 font-mono">08/2019 – 06/2023</div>
-              </div>
+              <ul class="space-y-1.5 pl-3">
+                ${exp.bullets.map(b => `
+                  <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
+                    <span class="text-slate-400 dark:text-slate-600 font-mono select-none">•</span>
+                    <span>${b}</span>
+                  </li>
+                `).join("")}
+              </ul>
             </div>
-          </div>
+          `).join("")}
+        </div>
 
-          <div class="space-y-2">
-            <div class="text-xs font-mono font-semibold text-slate-900 dark:text-slate-100 uppercase tracking-wider border-b border-slate-200 dark:border-slate-800 pb-1">
-              Certifications & Qualifications
+        <!-- Education -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-bold border-b border-slate-200 dark:border-slate-800 pb-1">Education</h3>
+          <div class="space-y-2 text-xs">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <div>
+                <span class="font-bold text-slate-900 dark:text-slate-100">${r.education.mtech.degree}</span>
+                <span class="text-slate-500 ml-1">(${r.education.mtech.institute})</span>
+              </div>
+              <div class="font-mono text-slate-500">
+                <span>${r.education.mtech.score}</span> • <span>${r.education.mtech.timeline}</span>
+              </div>
             </div>
-            <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
-              ${data.certs.map(c => `<li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-mono">✓</span><span>${c}</span></li>`).join("")}
-            </ul>
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <div>
+                <span class="font-bold text-slate-900 dark:text-slate-100">${r.education.btech.degree}</span>
+                <span class="text-slate-500 ml-1">(${r.education.btech.institute})</span>
+              </div>
+              <div class="font-mono text-slate-500">
+                <span>${r.education.btech.score}</span> • <span>${r.education.btech.timeline}</span>
+              </div>
+            </div>
           </div>
         </div>
-      `;
-    }
+
+        <!-- Certifications -->
+        <div class="space-y-2">
+          <h3 class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-bold border-b border-slate-200 dark:border-slate-800 pb-1">Certifications & Qualifications</h3>
+          <div class="text-xs text-slate-600 dark:text-slate-400 space-y-1">
+            ${r.certifications.map(c => `<div>• ${c}</div>`).join("")}
+          </div>
+        </div>
+      </div>
+    `;
   };
 
   triggerBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      const key = btn.dataset.resume || "data_analyst";
-      renderResume(key);
+      const track = btn.dataset.resume || "data_analyst";
+      renderResumeTrack(track);
       modal.classList.remove("hidden");
       modal.classList.add("flex");
       document.body.style.overflow = "hidden";
     });
   });
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const tabKey = btn.dataset.resumeTab;
-      if (tabKey) renderResume(tabKey);
+  tabBtns.forEach(tab => {
+    tab.addEventListener("click", () => {
+      renderResumeTrack(tab.dataset.resumeTab);
     });
   });
 
@@ -483,29 +339,27 @@ function setupResumeModal() {
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
   });
-
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-      closeModal();
-    }
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
   });
 }
 
-// 8. Interactive Architecture Pipeline Explorer (Inspired by santifer/cv-santiago)
+// 5. System Architecture Explorer Engine
 function setupArchitectureExplorer() {
+  const container = document.getElementById("archContentContainer");
   const tabs = document.querySelectorAll(".arch-tab-btn");
-  const container = document.getElementById("architectureExplorerContent");
-  if (!container || typeof architecturesData === "undefined") return;
+
+  if (!container || !tabs.length || typeof architectureData === "undefined") return;
 
   const renderArch = (key) => {
-    const data = architecturesData[key];
+    const data = architectureData[key];
     if (!data) return;
 
     tabs.forEach(t => {
       if (t.dataset.arch === key) {
-        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 shadow-sm";
+        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 shadow-sm cursor-pointer";
       } else {
-        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer";
       }
     });
 
@@ -520,7 +374,7 @@ function setupArchitectureExplorer() {
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 pt-2">
-          ${data.steps.map((st, i) => `
+          ${data.steps.map((st) => `
             <div class="arch-node p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-2 relative group">
               <div>
                 <div class="flex items-center justify-between text-xs font-mono">
@@ -546,523 +400,62 @@ function setupArchitectureExplorer() {
   renderArch("health_bi");
 }
 
-// 9. Interactive AI Persona Chat Twin (Inspired by santifer/cv-santiago "Ask Santi")
-function setupAiChatAssistant() {
-  const modal = document.getElementById("aiChatModal");
-  const openBtns = [
-    document.getElementById("openAiChatBtn"),
-    document.getElementById("heroOpenAiChatBtn"),
-    document.getElementById("navOpenAiChatBtn"),
-    document.getElementById("mobileOpenAiChatBtn")
-  ].filter(Boolean);
-  const closeBtn = document.getElementById("aiChatCloseBtn");
-  const form = document.getElementById("aiChatForm");
-  const input = document.getElementById("aiChatInput");
-  const messagesBox = document.getElementById("aiChatMessages");
-  const chipBtns = document.querySelectorAll(".ai-prompt-chip");
-  const clearBtn = document.getElementById("aiChatClearBtn");
-  const voiceToggleBtn = document.getElementById("aiChatVoiceToggleBtn");
-  const voiceIcon = document.getElementById("aiChatVoiceIcon");
-  const voiceLabel = document.getElementById("aiChatVoiceLabel");
-  const telemetryToggleBtn = document.getElementById("aiChatTelemetryToggleBtn");
-  const telemetryDrawer = document.getElementById("aiChatTelemetryDrawer");
-  const latencyDisplay = document.getElementById("telemetryLatencyVal");
+// 6. Mobile Menu Drawer
+function setupMobileMenu() {
+  const menuBtn = document.getElementById("mobileMenuBtn");
+  const menu = document.getElementById("mobileMenu");
+  const links = document.querySelectorAll(".mobile-nav-link");
 
-  if (!modal || !messagesBox) return;
+  if (!menuBtn || !menu) return;
 
-  let isVoiceAutoPlay = false;
-  let activeUtterance = null;
-  let currentlyPlayingBtn = null;
-
-  // Voice Toggle (Dual-Mode Text/Audio)
-  if (voiceToggleBtn) {
-    voiceToggleBtn.addEventListener("click", () => {
-      isVoiceAutoPlay = !isVoiceAutoPlay;
-      if (isVoiceAutoPlay) {
-        if (voiceIcon) voiceIcon.textContent = "🔊";
-        if (voiceLabel) voiceLabel.textContent = "Voice: ON";
-        voiceToggleBtn.classList.add("border-emerald-500", "text-emerald-600", "dark:text-emerald-400");
-      } else {
-        if (voiceIcon) voiceIcon.textContent = "🔈";
-        if (voiceLabel) voiceLabel.textContent = "Voice: OFF";
-        voiceToggleBtn.classList.remove("border-emerald-500", "text-emerald-600", "dark:text-emerald-400");
-        if (window.speechSynthesis) window.speechSynthesis.cancel();
-      }
-    });
-  }
-
-  // Telemetry Toggle
-  if (telemetryToggleBtn && telemetryDrawer) {
-    telemetryToggleBtn.addEventListener("click", () => {
-      telemetryDrawer.classList.toggle("hidden");
-    });
-  }
-
-  const stopActiveSpeech = () => {
-    if (window.speechSynthesis) window.speechSynthesis.cancel();
-    if (currentlyPlayingBtn) {
-      const icon = currentlyPlayingBtn.querySelector(".listen-icon");
-      const label = currentlyPlayingBtn.querySelector(".listen-label");
-      if (icon) icon.textContent = "🔊";
-      if (label) label.textContent = "Listen";
-      currentlyPlayingBtn = null;
-    }
+  const toggle = () => {
+    menu.classList.toggle("hidden");
   };
 
-  const speakText = (text, btnElement = null) => {
-    if (!("speechSynthesis" in window)) return;
-    stopActiveSpeech();
+  menuBtn.addEventListener("click", toggle);
+  links.forEach(l => l.addEventListener("click", () => menu.classList.add("hidden")));
+}
 
-    // Clean markdown and symbols for clean spoken narration
-    const cleanSpeech = text
-      .replace(/\*\*(.*?)\*\*/g, "$1")
-      .replace(/\*(.*?)\*/g, "$1")
-      .replace(/\[(.*?)\]\(.*?\)/g, "$1")
-      .replace(/•/g, "")
-      .replace(/IIIT/g, "Triple I T")
-      .replace(/CHiPS/g, "Chips")
-      .replace(/GATE/g, "Gate")
-      .replace(/SQL/g, "S-Q-L")
-      .replace(/ETL/g, "E-T-L")
-      .replace(/DAX/g, "Dax")
-      .replace(/F1-score/g, "F one score")
-      .replace(/\n+/g, " ")
-      .trim();
+// 7. Back-To-Top Button
+function setupBackToTop() {
+  const btn = document.getElementById("backToTopBtn");
+  if (!btn) return;
 
-    const utterance = new SpeechSynthesisUtterance(cleanSpeech);
-    utterance.rate = 1.05;
-    utterance.pitch = 1.0;
-
-    const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(v => v.lang.startsWith("en") && (v.name.includes("Natural") || v.name.includes("Google") || v.name.includes("Samantha") || v.name.includes("David") || v.name.includes("Guy") || v.name.includes("English")));
-    if (preferredVoice) utterance.voice = preferredVoice;
-
-    activeUtterance = utterance;
-
-    if (btnElement) {
-      currentlyPlayingBtn = btnElement;
-      const icon = btnElement.querySelector(".listen-icon");
-      const label = btnElement.querySelector(".listen-label");
-      if (icon) icon.textContent = "⏹";
-      if (label) label.textContent = "Stop";
-    }
-
-    utterance.onend = () => {
-      stopActiveSpeech();
-    };
-    utterance.onerror = () => {
-      stopActiveSpeech();
-    };
-
-    window.speechSynthesis.speak(utterance);
-  };
-
-  const openChat = (initialQuery = null) => {
-    modal.classList.remove("hidden");
-    modal.classList.add("flex");
-    document.body.style.overflow = "hidden";
-    if (input) {
-      setTimeout(() => input.focus(), 150);
-      if (initialQuery) {
-        input.value = initialQuery;
-        handleSubmit();
-      }
-    }
-  };
-
-  const closeChat = () => {
-    stopActiveSpeech();
-    modal.classList.add("hidden");
-    modal.classList.remove("flex");
-    document.body.style.overflow = "auto";
-  };
-
-  openBtns.forEach(b => b.addEventListener("click", () => openChat()));
-  if (closeBtn) closeBtn.addEventListener("click", closeChat);
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeChat();
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.classList.contains("hidden")) closeChat();
-  });
-
-  if (clearBtn) {
-    clearBtn.addEventListener("click", () => {
-      stopActiveSpeech();
-      messagesBox.innerHTML = `
-        <div class="flex items-start gap-2.5">
-          <div class="w-7 h-7 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xs font-mono shrink-0 select-none font-bold">
-            RT
-          </div>
-          <div class="chat-bubble-bot p-3.5 sm:p-4 max-w-[88%] sm:max-w-[80%] text-xs sm:text-sm text-slate-800 dark:text-slate-200 space-y-2">
-            <p class="leading-relaxed">
-              Hi! I'm <strong>Rishi Thakur's AI Twin</strong>, inspired by interactive AI portfolios like Santiago's.
-              I have zero-hallucination ground truth access to Rishi's actual background, M.Tech thesis, CHiPS enterprise experience, and 7 tailored resume tracks.
-            </p>
-            <p class="text-slate-500 text-xs">
-              Tap any prompt below or type your question:
-            </p>
-          </div>
-        </div>
-      `;
-    });
-  }
-
-  const appendMessage = (sender, content) => {
-    const msgDiv = document.createElement("div");
-    msgDiv.className = `flex ${sender === "user" ? "justify-end" : "justify-start"} items-start gap-2.5`;
-
-    if (sender === "user") {
-      msgDiv.innerHTML = `
-        <div class="chat-bubble-user p-3 sm:p-3.5 max-w-[85%] sm:max-w-[75%] text-xs sm:text-sm text-slate-800 dark:text-slate-200">
-          ${escapeHtml(content)}
-        </div>
-      `;
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      btn.classList.remove("hidden");
+      btn.classList.add("flex");
     } else {
-      msgDiv.innerHTML = `
-        <div class="w-7 h-7 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xs font-mono shrink-0 select-none font-bold">
-          RT
-        </div>
-        <div class="chat-bubble-bot p-3.5 sm:p-4 max-w-[88%] sm:max-w-[80%] text-xs sm:text-sm text-slate-800 dark:text-slate-200 space-y-2">
-          <div class="prose-content leading-relaxed">${formatMarkdown(content)}</div>
-          <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
-            <span class="flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-              <span>Rishi AI Twin • Ground Truth</span>
-            </span>
-            <div class="flex items-center gap-2.5">
-              <button type="button" class="listen-chat-btn hover:text-emerald-600 dark:hover:text-emerald-400 cursor-pointer flex items-center gap-1 transition-colors" title="Read answer aloud">
-                <span class="listen-icon">🔊</span>
-                <span class="listen-label">Listen</span>
-              </button>
-              <button type="button" class="copy-chat-btn hover:text-sky-600 dark:hover:text-sky-400 cursor-pointer transition-colors">Copy</button>
-            </div>
-          </div>
-        </div>
-      `;
-
-      const copyBtn = msgDiv.querySelector(".copy-chat-btn");
-      if (copyBtn) {
-        copyBtn.addEventListener("click", () => {
-          navigator.clipboard.writeText(content);
-          copyBtn.textContent = "Copied!";
-          setTimeout(() => (copyBtn.textContent = "Copy"), 2000);
-        });
-      }
-
-      const listenBtn = msgDiv.querySelector(".listen-chat-btn");
-      if (listenBtn) {
-        listenBtn.addEventListener("click", () => {
-          if (currentlyPlayingBtn === listenBtn) {
-            stopActiveSpeech();
-          } else {
-            speakText(content, listenBtn);
-          }
-        });
-
-        // If voice auto-play mode is active, trigger speech automatically
-        if (isVoiceAutoPlay) {
-          setTimeout(() => speakText(content, listenBtn), 250);
-        }
-      }
-    }
-
-    messagesBox.appendChild(msgDiv);
-    messagesBox.scrollTop = messagesBox.scrollHeight;
-  };
-
-  const showTypingIndicator = () => {
-    const ind = document.createElement("div");
-    ind.id = "aiTypingIndicator";
-    ind.className = "flex justify-start items-center gap-2 text-xs font-mono text-slate-400 pl-9 py-2";
-    ind.innerHTML = `
-      <span class="typing-dot"></span>
-      <span class="typing-dot"></span>
-      <span class="typing-dot"></span>
-      <span class="ml-1 text-[11px]">Rishi AI is formulating response...</span>
-    `;
-    messagesBox.appendChild(ind);
-    messagesBox.scrollTop = messagesBox.scrollHeight;
-  };
-
-  const removeTypingIndicator = () => {
-    const ind = document.getElementById("aiTypingIndicator");
-    if (ind) ind.remove();
-  };
-
-  const getKnowledgeResponse = (query) => {
-    const q = query.toLowerCase().trim();
-    if (typeof aiKnowledgeBase === "undefined") {
-      return "Hi! I am Rishi's AI Twin. I can answer questions about Rishi's enterprise experience at CHiPS, his 5G mmWave diffusion thesis, his SQL & Power BI architectures, or help you choose the right tailored resume.";
-    }
-
-    let bestMatch = null;
-    let maxHits = 0;
-
-    for (const item of aiKnowledgeBase) {
-      let hits = 0;
-      for (const kw of item.keywords) {
-        if (q.includes(kw)) hits++;
-      }
-      if (hits > maxHits) {
-        maxHits = hits;
-        bestMatch = item.response;
-      }
-    }
-
-    if (bestMatch && maxHits > 0) {
-      return bestMatch;
-    }
-
-    return "Thank you for asking! I am Rishi Thakur's verified AI persona. Rishi is an **M.Tech CSE graduate from IIIT Naya Raipur (GATE CS Qualified, IELTS 7.5)** with enterprise experience at **CHiPS (Dept. of Health, Govt. of Chhattisgarh)** across 33 districts.\n\nHe specializes in **Advanced SQL, MariaDB, OracleDB, Advanced Excel, Kimball Star Schema, and Power BI DAX**.\n\nYou can ask me specific questions like:\n• *'Tell me about your CHiPS / Health Department work across 33 districts'*\n• *'How does your 5G mmWave diffusion model work?'*\n• *'What is your SQL & Power BI stack?'*\n• *'Which tailored resume should I download?'*\n\nOr feel free to email Rishi directly at **[rishi_th219@proton.me](mailto:rishi_th219@proton.me)** or call **[+91 8109830219](tel:+918109830219)**!";
-  };
-
-  const handleSubmit = () => {
-    const text = input.value.trim();
-    if (!text) return;
-    input.value = "";
-    appendMessage("user", text);
-    showTypingIndicator();
-
-    const startTime = performance.now();
-
-    setTimeout(() => {
-      removeTypingIndicator();
-      const ans = getKnowledgeResponse(text);
-      const latency = Math.max(1.2, (performance.now() - startTime) / 100).toFixed(1);
-      if (latencyDisplay) latencyDisplay.textContent = `< ${latency} ms`;
-      appendMessage("bot", ans);
-    }, 380);
-  };
-
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      handleSubmit();
-    });
-  }
-
-  chipBtns.forEach(c => {
-    c.addEventListener("click", () => {
-      const prompt = c.dataset.prompt;
-      if (prompt) {
-        openChat(prompt);
-      }
-    });
-  });
-}
-
-// 10. Recruiter Role Fast-Track Engine (Inspired by cv-santiago recruiter fast-track)
-function setupRecruiterRoleFilter() {
-  const roleBtns = document.querySelectorAll("#recruiterRoleFilterGroup .role-track-pill");
-  const projectCards = document.querySelectorAll(".project-card");
-  const resumeCards = document.querySelectorAll("#resumes .analytic-card");
-
-  if (!roleBtns.length) return;
-
-  const roleMap = {
-    all: "all",
-    data_analyst: "bi analytics",
-    business_analyst: "bi analytics",
-    sql_developer: "sql",
-    powerbi_developer: "bi",
-    ml_engineer: "ml python"
-  };
-
-  const resumeMap = {
-    data_analyst: "data_analyst",
-    business_analyst: "business_analyst",
-    sql_developer: "sql_developer",
-    powerbi_developer: "powerbi_developer",
-    ml_engineer: "data_science"
-  };
-
-  roleBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      roleBtns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const role = btn.dataset.role;
-
-      // Filter Projects in Selected Work
-      const filterCategory = roleMap[role] || "all";
-      projectCards.forEach(card => {
-        const cardCats = (card.dataset.category || "").split(" ");
-        if (filterCategory === "all") {
-          card.classList.remove("hidden");
-          card.classList.add("flex");
-        } else {
-          const match = filterCategory.split(" ").some(c => cardCats.includes(c));
-          if (match) {
-            card.classList.remove("hidden");
-            card.classList.add("flex");
-          } else {
-            card.classList.add("hidden");
-            card.classList.remove("flex");
-          }
-        }
-      });
-
-      // Synchronize category filter buttons in #work section
-      const catBtns = document.querySelectorAll(".project-filter-btn");
-      catBtns.forEach(cb => {
-        if (role === "all" && cb.dataset.filter === "all") cb.classList.add("active");
-        else if (role === "sql_developer" && cb.dataset.filter === "sql") cb.classList.add("active");
-        else if (role === "powerbi_developer" && cb.dataset.filter === "bi") cb.classList.add("active");
-        else if (role === "ml_engineer" && cb.dataset.filter === "python") cb.classList.add("active");
-        else cb.classList.remove("active");
-      });
-
-      // Highlight matching resume card in #resumes
-      if (role !== "all" && resumeMap[role]) {
-        const targetResume = resumeMap[role];
-        const matchingBtn = document.querySelector(`.view-resume-btn[data-resume="${targetResume}"]`);
-        if (matchingBtn) {
-          const card = matchingBtn.closest(".analytic-card");
-          if (card) {
-            resumeCards.forEach(c => c.classList.remove("ring-2", "ring-sky-500", "scale-[1.01]"));
-            card.classList.add("ring-2", "ring-sky-500", "scale-[1.01]");
-            setTimeout(() => {
-              card.classList.remove("ring-2", "ring-sky-500", "scale-[1.01]");
-            }, 3000);
-          }
-        }
-      }
-    });
-  });
-}
-
-// 11. 60-Second Executive Audio Intro (Web Speech API)
-function setupHeroVoiceIntro() {
-  const introBtn = document.getElementById("heroVoiceIntroBtn");
-  const pauseBtn = document.getElementById("heroVoicePauseBtn");
-  const stopBtn = document.getElementById("heroVoiceStopBtn");
-  const banner = document.getElementById("heroVoicePlayerBanner");
-  const timer = document.getElementById("heroVoicePlayerTimer");
-  const wave = document.getElementById("heroVoiceIntroWave");
-  const icon = document.getElementById("heroVoiceIntroIcon");
-  const label = document.getElementById("heroVoiceIntroLabel");
-
-  if (!introBtn) return;
-  if (!("speechSynthesis" in window)) {
-    introBtn.style.display = "none";
-    return;
-  }
-
-  let isPlaying = false;
-  let isPaused = false;
-  let secondsElapsed = 0;
-  let timerInterval = null;
-  const totalSeconds = 48;
-
-  const script = "Hello! I am Rishi Thakur, an M.Tech Computer Science graduate from Triple I T Naya Raipur and GATE CS 2024 qualified data analyst. I specialize in high-performance SQL, MariaDB, and Power BI dashboards, with enterprise experience delivering healthcare biometric and payroll E-T-L across 33 districts for the Chhattisgarh government. Welcome to my interactive portfolio. Feel free to explore my system architectures, test my AI twin, or download any of my 7 tailored resumes.";
-
-  const formatTime = (sec) => {
-    const m = Math.floor(sec / 60);
-    const s = sec % 60;
-    return `${m}:${s < 10 ? '0' : ''}${s}`;
-  };
-
-  const updateTimerDisplay = () => {
-    if (timer) timer.textContent = `${formatTime(secondsElapsed)} / ${formatTime(totalSeconds)}`;
-  };
-
-  const resetPlayer = () => {
-    isPlaying = false;
-    isPaused = false;
-    secondsElapsed = 0;
-    if (timerInterval) clearInterval(timerInterval);
-    if (banner) banner.classList.add("hidden");
-    if (wave) wave.classList.add("hidden");
-    if (icon) icon.textContent = "🎧";
-    if (label) label.textContent = "60s Voice Intro";
-    if (pauseBtn) pauseBtn.textContent = "Pause";
-    updateTimerDisplay();
-  };
-
-  const startIntro = () => {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(script);
-    utterance.rate = 1.02;
-    utterance.pitch = 1.0;
-
-    const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(v => v.lang.startsWith("en") && (v.name.includes("Natural") || v.name.includes("Google") || v.name.includes("Samantha") || v.name.includes("David") || v.name.includes("Guy") || v.name.includes("English")));
-    if (preferredVoice) utterance.voice = preferredVoice;
-
-    utterance.onstart = () => {
-      isPlaying = true;
-      isPaused = false;
-      if (banner) banner.classList.remove("hidden");
-      if (wave) wave.classList.remove("hidden");
-      if (icon) icon.textContent = "⏹";
-      if (label) label.textContent = "Playing...";
-      updateTimerDisplay();
-
-      timerInterval = setInterval(() => {
-        if (!isPaused && isPlaying) {
-          secondsElapsed++;
-          updateTimerDisplay();
-          if (secondsElapsed >= totalSeconds) {
-            clearInterval(timerInterval);
-          }
-        }
-      }, 1000);
-    };
-
-    utterance.onend = resetPlayer;
-    utterance.onerror = resetPlayer;
-
-    window.speechSynthesis.speak(utterance);
-  };
-
-  introBtn.addEventListener("click", () => {
-    if (isPlaying) {
-      window.speechSynthesis.cancel();
-      resetPlayer();
-    } else {
-      startIntro();
+      btn.classList.add("hidden");
+      btn.classList.remove("flex");
     }
   });
 
-  if (pauseBtn) {
-    pauseBtn.addEventListener("click", () => {
-      if (!isPlaying) return;
-      if (isPaused) {
-        window.speechSynthesis.resume();
-        isPaused = false;
-        pauseBtn.textContent = "Pause";
-        if (wave) wave.classList.remove("opacity-40");
-      } else {
-        window.speechSynthesis.pause();
-        isPaused = true;
-        pauseBtn.textContent = "Resume";
-        if (wave) wave.classList.add("opacity-40");
-      }
-    });
-  }
-
-  if (stopBtn) {
-    stopBtn.addEventListener("click", () => {
-      window.speechSynthesis.cancel();
-      resetPlayer();
-    });
-  }
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 
-function escapeHtml(str) {
-  return str.replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+// 8. Contact Form Handler
+function setupContactForm() {
+  const form = document.getElementById("contactForm");
+  const statusMsg = document.getElementById("contactFormStatus");
+
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("senderName")?.value || "";
+    const email = document.getElementById("senderEmail")?.value || "";
+    const message = document.getElementById("senderMessage")?.value || "";
+
+    const mailtoLink = `mailto:rishi_th219@proton.me?subject=${encodeURIComponent("Portfolio Inquiry from " + name)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+    window.location.href = mailtoLink;
+
+    if (statusMsg) {
+      statusMsg.textContent = "Opening your email client to send message to rishi_th219@proton.me...";
+      statusMsg.classList.remove("hidden");
+      setTimeout(() => statusMsg.classList.add("hidden"), 5000);
+    }
+  });
 }
-
-function formatMarkdown(text) {
-  let formatted = text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 hover:underline font-medium">$1</a>')
-    .replace(/\n• (.*?)(?=\n|$)/g, '<li class="flex items-start gap-1.5 pt-0.5"><span class="text-sky-600 dark:text-sky-400 font-mono">•</span><span>$1</span></li>')
-    .replace(/\n\n/g, '<br><br>');
-  return formatted;
-}
-
-
-

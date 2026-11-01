@@ -100,22 +100,50 @@ Taking architectural cues from Santiago Fernández's AI CV (`https://github.com/
      - Synchronizes active category filter pills in `#work`.
      - Automatically highlights the matching targeted resume card in section `06 / TARGETED RESUMES` with an attention-focus spotlight animation.
 
+### Milestone 6: Complete Portfolio Redesign & Elimination of Gimmicky AI Bloat
+* **User Directive:** The user explicitly rejected the AI Twin / avatar chat and audio synthesis ("what is this AI twin you added? And the website' layout is fucked. redesign the whole website.").
+* **Root Cause:** Artificial chat widgets, soundwaves, telemetry boxes, and mock code editors cluttered the visual layout, pushed core content off-screen, broke responsive margins, and detracted from candidate credibility.
+* **Redesign Deliverables:**
+  1. **Purged All Artificial Chat/Voice Features:**
+     - Removed AI Chat Modal, floating buttons, prompt chips, typing indicators, speech synthesis, and telemetry drawers.
+     - Stripped all associated CSS and JavaScript handlers.
+  2. **Executive Redesigned Hero:**
+     - Removed lopsided 5-column python mockup and replaced it with a centered, commanding executive hero.
+     - High-visibility credentials badge: `● AVAILABLE FOR IMMEDIATE JOINING • BENGALURU (HYBRID / REMOTE)`.
+     - Direct coordinates: Email, Phone, LinkedIn, GitHub, Location, and GEO `llms.txt`.
+     - High-contrast, polished CTAs: `[Explore Selected Work ↓]`, `[Targeted Resumes (7 Tracks) 📄]`, and `[Get in Touch →]`.
+     - 4-metric impact ribbon: `33 Districts`, `4-Tier Drill-Down`, `97.64% F1-Score`, `7 ATS Resumes`.
+  3. **Refined Technical Competencies Grid:**
+     - 4 focused analytical pillars: SQL & Relational Engineering, Power BI & Star Schema, Advanced Excel & Decision Analytics, Python & Predictive Modeling.
+  4. **Pristine Selected Work Section:**
+     - Clean category filters (`All`, `Power BI`, `SQL Engineering`, `Machine Learning`, `Analytics`).
+     - 4 structured enterprise cards with in-depth technical modals.
+  5. **Interactive System Architecture Visualizer:**
+     - 4-tab timeline pipeline explorer with sequential operational stages.
+  6. **Curated 7-Track Resumes Hub:**
+     - Responsive grid of 7 ATS-optimized editions with in-browser ATS viewer (`👁`), direct PDF download (`↓`), new-tab view (`↗`), and Master Resume action bar.
+  7. **Clean Contact & Footers:**
+     - Unified direct inquiry cards, contact form, and footer.
+  8. **Zero Bloat:**
+     - Net reduction of over 1,600 lines of clutter across HTML, CSS, and JS.
+     - Clean responsive design on mobile, tablet, and desktop.
+
 ---
 
 ## 3. Current Workspace Structure
 
 ```
 portfolio/
-├── index.html                  # Main responsive portfolio with AI Chat, Voice Intro, Architectures, and Resumes
+├── index.html                  # Executive responsive portfolio (Projects, Capabilities, Pipelines, 7 Resumes, Contact)
 ├── progress report.md          # THIS FILE - Living progress & handover documentation
 ├── llms.txt                    # Standardized AI search summary
 ├── llms-full.txt               # Deep technical knowledge base for LLM search engines
 ├── sync_tailored_resumes.py    # Safe script to mirror PDFs from Desktop\tailoring\ to assets\
 ├── css/
-│   └── styles.css              # Editorial tokens, soundwaves, chat bubbles, telemetry grid, role pills
+│   └── styles.css              # Editorial tokens, minimalist cards, glass navigation, responsive grid
 ├── js/
-│   ├── app.js                  # UI controllers, AI Voice Twin, Telemetry inspector, Role Fast-Track
-│   └── chart-data.js           # Case studies, knowledge base ground truth, architecture step schemas
+│   ├── app.js                  # Clean UI controllers (Modals, Theme toggle, Project filters, Pipelines)
+│   └── chart-data.js           # Verified case studies, architecture schemas, and ATS resume content
 ├── assets/                     # 7 production tailored resumes + Master PDF
 ├── HANDOVER.md                 # System migration specifications & candidate background profile
 ├── FREELANCE_PLAYBOOK.md       # Strategy guide for consulting and freelance engagements
