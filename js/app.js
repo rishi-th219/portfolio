@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupProjectFilters();
   setupCaseStudyModals();
   setupResumeModal();
-  setupArchitectureExplorer();
   setupMobileMenu();
   setupBackToTop();
   setupContactForm();
@@ -345,63 +344,7 @@ function setupResumeModal() {
   });
 }
 
-// 5. System Architecture Explorer Engine
-function setupArchitectureExplorer() {
-  const container = document.getElementById("archContentContainer");
-  const tabs = document.querySelectorAll(".arch-tab-btn");
-
-  if (!container || !tabs.length || typeof architectureData === "undefined") return;
-
-  const renderArch = (key) => {
-    const data = architectureData[key];
-    if (!data) return;
-
-    tabs.forEach(t => {
-      if (t.dataset.arch === key) {
-        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-primary text-primary-foreground shadow-sm cursor-pointer";
-      } else {
-        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-secondary text-muted-foreground hover:text-foreground cursor-pointer";
-      }
-    });
-
-    container.innerHTML = `
-      <div class="space-y-5">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-3">
-          <div>
-            <span class="text-[11px] font-mono text-primary font-semibold tracking-wider uppercase">${data.badge}</span>
-            <h4 class="text-base sm:text-lg font-bold text-foreground mt-0.5">${data.title}</h4>
-          </div>
-          <p class="text-xs text-muted-foreground max-w-md font-normal leading-relaxed">${data.description}</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 pt-1">
-          ${data.steps.map((st) => `
-            <div class="arch-node p-3.5 flex flex-col justify-between space-y-2 relative group">
-              <div>
-                <div class="flex items-center justify-between text-xs font-mono">
-                  <span class="text-primary font-bold text-sm">${st.num}</span>
-                  <span class="text-[10px] uppercase tracking-wider text-muted-foreground">${st.label}</span>
-                </div>
-                <h5 class="text-xs sm:text-sm font-semibold text-foreground mt-1">${st.title}</h5>
-                <div class="text-[11px] font-mono text-muted-foreground mt-0.5 italic">${st.tech}</div>
-              </div>
-              <p class="text-xs text-muted-foreground leading-relaxed font-normal pt-1">${st.detail}</p>
-            </div>
-          `).join("")}
-        </div>
-      </div>
-    `;
-  };
-
-  tabs.forEach(t => {
-    t.addEventListener("click", () => renderArch(t.dataset.arch));
-  });
-
-  // Initial render
-  renderArch("health_bi");
-}
-
-// 6. Mobile Menu Drawer
+// 5. Mobile Menu Drawer
 function setupMobileMenu() {
   const menuBtn = document.getElementById("mobileMenuBtn");
   const menu = document.getElementById("mobileMenu");
@@ -417,7 +360,7 @@ function setupMobileMenu() {
   links.forEach(l => l.addEventListener("click", () => menu.classList.add("hidden")));
 }
 
-// 7. Back-To-Top Button
+// 6. Back-To-Top Button
 function setupBackToTop() {
   const btn = document.getElementById("backToTopBtn");
   if (!btn) return;
@@ -437,7 +380,7 @@ function setupBackToTop() {
   });
 }
 
-// 8. Contact Form Handler
+// 7. Contact Form Handler
 function setupContactForm() {
   const form = document.getElementById("contactForm");
   const statusMsg = document.getElementById("contactFormStatus");

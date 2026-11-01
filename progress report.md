@@ -170,6 +170,32 @@ Taking architectural cues from Santiago Fernández's AI CV (`https://github.com/
      - Preserved 100% factual accuracy (M.Tech CSE IIIT Naya Raipur 7.90 CGPA, GATE CS 2024, IELTS 7.5, CHiPS 33-district enterprise healthcare BI).
      - Kept private pipelines isolated (`tailoring/` never exposed). Added `logsfolio-v1.0.0/` to `.gitignore`.
 
+### Milestone 9: Removal of System Architectures Section & Automated Tailoring Scanner
+* **User Directives:**
+  1. "remove this." (Pointing to the broken/cluttered "03 / ARCHITECTURE — System Architectures" section in uploaded screenshot `media_1793531172126_d8611e91.png`).
+  2. "And yeah always scan the C:\Users\Rishi\Desktop\tailoring folder for newly made resumes and add them to the portfolio".
+* **Actions Taken:**
+  1. **Purged System Architectures Section:**
+     - Completely removed the `<section id="architectures">` markup from [`index.html`](file:///c:/Users/Rishi/Desktop/Jobhunt/portfolio/index.html).
+     - Removed the "Pipelines" navigation links from both desktop navbar and mobile drawer.
+     - Removed the "Pipeline Architecture →" CTA button from the Healthcare BI project card.
+     - Cleaned `setupArchitectureExplorer()` and related DOM listeners from [`js/app.js`](file:///c:/Users/Rishi/Desktop/Jobhunt/portfolio/js/app.js).
+     - Stripped `.arch-node` and related unused classes from [`css/styles.css`](file:///c:/Users/Rishi/Desktop/Jobhunt/portfolio/css/styles.css).
+  2. **Clean Section Renumbering:**
+     - `01 / EXPERIENCE` (Work Experience Timeline)
+     - `02 / PORTFOLIO` (Selected Case Studies & Projects)
+     - `03 / COMPETENCIES` (Core Technical Matrix)
+     - `04 / ACADEMICS` (Education Timeline & GATE/IELTS Credentials)
+     - `05 / RESUMES` (Curated 7-Track ATS Resumes & Master PDF)
+     - `06 / CONTACT` (Direct Channels & Inquiries)
+  3. **Enhanced Automated Tailoring Scanner ([`sync_tailored_resumes.py`](file:///c:/Users/Rishi/Desktop/Jobhunt/portfolio/sync_tailored_resumes.py)):**
+     - Upgraded the synchronization script with hash-based change detection.
+     - Automatically scans `C:\Users\Rishi\Desktop\tailoring\` for any `.pdf` files.
+     - Automatically mirrors all newly created or modified resumes to `portfolio/assets/`.
+     - Verified all 7 active tracks are in sync.
+  4. **Permanent Agent Policy:**
+     - Whenever the tailoring pipeline produces new resume editions in `C:\Users\Rishi\Desktop\tailoring\`, immediately run `python sync_tailored_resumes.py` and ensure the portfolio links to the new editions.
+
 ---
 
 ## 3. Current Workspace Structure

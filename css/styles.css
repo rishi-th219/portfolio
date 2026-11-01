@@ -379,22 +379,6 @@ code, pre, .font-mono {
   background: rgba(2, 8, 23, 0.85);
 }
 
-/* --------------------------------------------------------------------------
-   10. System Architecture Interactive Nodes
-   -------------------------------------------------------------------------- */
-.arch-node {
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  background-color: hsl(var(--secondary) / 0.5);
-  border: 1px solid hsl(var(--border));
-  border-radius: calc(var(--radius) - 2px);
-}
-
-.arch-node:hover, .arch-node.active {
-  border-color: hsl(var(--primary));
-  background-color: hsl(var(--primary) / 0.08);
-  transform: translateY(-2px);
-}
-
 /* Pulse status indicator */
 .pulse-indicator {
   position: relative;
