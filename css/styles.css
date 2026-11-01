@@ -424,3 +424,73 @@ code, pre, .font-mono {
 button, a {
   touch-action: manipulation;
 }
+
+/* ==========================================================================
+   Logsfolio Accordion & Click-Dropdown Components
+   ========================================================================== */
+.logsfolio-dropdown {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.logsfolio-dropdown:hover {
+  border-color: hsl(var(--border) / 0.9);
+}
+
+.logsfolio-dropdown[open] {
+  border-color: hsl(var(--primary) / 0.5);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+.logsfolio-dropdown-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  transition: background-color 0.15s ease;
+}
+
+.logsfolio-dropdown-summary::-webkit-details-marker {
+  display: none;
+}
+
+.logsfolio-dropdown-summary:hover {
+  background-color: hsl(var(--secondary) / 0.5);
+}
+
+.logsfolio-dropdown-chevron {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: hsl(var(--muted-foreground));
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.logsfolio-dropdown[open] .logsfolio-dropdown-chevron {
+  transform: rotate(180deg);
+  color: hsl(var(--primary));
+}
+
+.logsfolio-dropdown-content {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  border-top: 1px solid hsl(var(--border) / 0.6);
+  animation: dropdown-fade-in 0.2s ease-out;
+}
+
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

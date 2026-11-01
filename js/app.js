@@ -63,10 +63,8 @@ function setupProjectFilters() {
         const categories = (card.dataset.category || "").split(" ");
         if (filter === "all" || categories.includes(filter)) {
           card.classList.remove("hidden");
-          card.classList.add("flex");
         } else {
           card.classList.add("hidden");
-          card.classList.remove("flex");
         }
       });
     });

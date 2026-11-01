@@ -5,7 +5,7 @@
 **Live Deployment:** `https://rishi-th219.github.io/portfolio/`  
 **Workspace Path:** `C:\Users\Rishi\Desktop\Jobhunt\portfolio`  
 **Last Updated:** November 1, 2026  
-**Status:** In Active Enhancement (Milestone 10 Completed • Sensitive Data Sanitized & Synced)
+**Status:** In Active Enhancement (Milestone 11 Completed • Progressive Disclosure & Click-Dropdowns Live)
 
 ---
 
@@ -212,6 +212,37 @@ Taking architectural cues from Santiago Fernández's AI CV (`https://github.com/
      - Fully sanitized both AI crawler knowledge bases so external search engines and LLM indexers receive clean, enterprise-grade qualitative descriptions without exposing confidential telemetry.
   4. **Verification via Automated Scanner:**
      - Developed automated regex scanning scripts to verify 100% elimination of sensitive project figures across all public repository files while preserving authentic academic credentials (IIIT Naya Raipur M.Tech 7.90 CGPA, GATE CS 2024, IELTS 7.5 Band).
+
+---
+
+### Milestone 11: Progressive Disclosure & Click-Dropdown UX Architecture
+* **User Directive:**
+  > "some feedback -
+  > 1. The portfolio is too deep and users have to scroll too much. Make the page in a way that people click-dropdown and see.
+  > Better idea would be to shorten down the amount of content and not present it in the first go"
+* **UX Problem & Root Cause:**
+  - The previous layout dumped all content expanded upfront across 7 sections, resulting in an overwhelming page scroll depth exceeding 5,000 pixels.
+  - Visitors and recruiters had to scroll through heavy paragraphs, 4 tall stacked project cards, 4 large skill blocks, and 7 full resume cards before reaching the contact section.
+* **Architectural Overhaul (Progressive Disclosure & Collapsible Dropdowns):**
+  1. **Shortened Upfront Copy Across All Sections:**
+     - Summarized hero bio, experience, project cards, competencies, and tracks into concise, scannable 1-line headlines.
+  2. **Click-Dropdown Components (`.logsfolio-dropdown`):**
+     - Engineered accessible native HTML5 `<details>` and `<summary>` dropdown accordions with animated chevron rotation, smooth transitions, and high-contrast Logsfolio token styling in [`css/styles.css`](file:///c:/Users/Rishi/Desktop/Jobhunt/portfolio/css/styles.css).
+  3. **Experience Section (`#experience`):**
+     - Displays role, organization, dates, and a 1-sentence teaser upfront.
+     - A click-dropdown (`[View Key Deliverables & Technical Stack ▼]`) expands the 5 quantified impact bullets and tech badges on demand.
+  4. **Portfolio Projects (`#projects`):**
+     - Converted 4 massive stacked cards into 4 sleek dropdown rows with category tags, project titles, and 1-line teasers.
+     - Each card allows inline dropdown expansion of the problem, solution, deliverables, and tech stack, while preserving direct 1-click access to the full **Case Study Modal** (`[Case Study ↗]`).
+  5. **Competency Matrix (`#skills`):**
+     - Structured into a 2-column grid of 4 dropdown cards where top badges and high-level focus are visible upfront, and in-depth methodologies unfold on click.
+  6. **Education (`#education`):**
+     - Compact timeline with collapsible thesis and core coursework details.
+  7. **Targeted Resumes (`#resumes`):**
+     - Replaced 7 giant vertical cards with an **Interactive 7-Track Accordion List** (`name="resume-track"`). Upfront, all 7 tracks fit in a compact ~300px list; clicking any track drops down its overview with `[Read Online (ATS) 👁]`, `[Download PDF ↓]`, and `[Open in Tab ↗]`.
+  8. **Contact Section (`#contact`):**
+     - Side-by-side 2-column layout pairing direct channel cards with the quick inquiry form.
+* **Result:** Total vertical scroll depth reduced by **over 60%**, eliminating excessive scrolling while keeping 100% of the granular data immediately accessible via click-dropdowns.
 
 ---
 
