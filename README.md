@@ -1,5 +1,6 @@
 # 📊 Rishi Thakur — Senior Data & BI Analyst Portfolio
-> High-performance, production-grade portfolio inspired by [`santifer/cv-santiago`](https://github.com/santifer/cv-santiago) featuring an **Interactive AI Twin ("Ask Rishi AI")**, **System Architecture Visualizer**, **7 Offline Multi-Skill Tailored Resumes**, and **GEO/LLM Ingestion (`llms.txt`)**.
+
+Executive, high-performance portfolio featuring **Production Case Studies**, an **Interactive System Architecture Visualizer**, **7 Pre-Compiled ATS-Optimized Tailored Resumes**, and **GEO/LLM Ingestion (`llms.txt`)**.
 
 Hosted live on GitHub Pages: **[https://rishi-th219.github.io/portfolio/](https://rishi-th219.github.io/portfolio/)**
 
@@ -18,52 +19,44 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🌟 Key Features (Inspired by `cv-santiago`)
+## 🌟 Key Highlights
 
-1. **Interactive AI Persona Chat Twin ("Ask Rishi AI")**:
-   - First-person interactive conversational assistant grounded in verified facts with **zero AI hallucinations**.
-   - Recruiters and engineering leaders can ask direct questions or use 1-click suggested prompts covering:
-     - 🏥 33-district healthcare biometric & payroll SQL reconciliation at CHiPS
-     - 📡 5G mmWave diffusion model M.Tech thesis (97.64% F1-score)
-     - 🛠️ Advanced SQL, MariaDB, OracleDB, Power BI DAX & Advanced Excel stack
-     - 🤖 Career-Ops autonomous job hunting bot
-     - 📄 Role-specific tailored resume guidance
-     - 💼 Availability & relocation (Bengaluru / Hybrid / Remote)
-   - Features real-time typing animation, copy answer button, and preset chips.
+1. **Production Case Studies with In-Depth Technical Modals**:
+   - **Statewide Healthcare Attendance & Performance BI (CHiPS)**: 33 districts, 1,000+ facilities, automated MariaDB SQL identity resolution linking AEBAS attendance records to State Treasury payroll files, and an executive 6-page Power BI dashboard suite with a 4-tier drill-down hierarchy.
+   - **Essential Drug Multi-Criteria ABC/VED/SDE Matrix (CHiPS)**: Multi-dimensional inventory matrix in OracleDB and Advanced Excel preventing stockouts across 5 healthcare departments.
+   - **Proactive 5G mmWave Handover Prediction via Diffusion Models**: M.Tech CSE thesis at IIIT Naya Raipur achieving a 97.64% F1-score on connection failure prediction using PyTorch and DDPM/DDIM reverse diffusion.
+   - **Career-Ops Autonomous Job Acquisition Engine**: 55+ direct ATS API scanners, concurrent liveness cleaner, pure Python standard library OpenXML compiler, and stealth Playwright bot.
 
-2. **System Architecture & Data Pipeline Explorer**:
-   - Interactive, tabbed pipeline visualizer breaking down multi-stage telemetry, dataflow, algorithms, and SQL transformations across 4 flagship systems:
-     - *Statewide Healthcare Attendance & Payroll Intelligence* (AEBAS → SQL Identity Resolution → Kimball Star Schema → Power BI Suite)
-     - *Proactive 5G mmWave Handover Prediction* (RF Telemetry → GRU Encoder → DDPM/DDIM 50 Trajectories → SMOTE+Tomek → Random Forest)
-     - *Career-Ops Autonomous Job Acquisition* (55+ Direct ATS APIs → Concurrent Liveness Cleaner → Pure Python OpenXML → Headless Playwright)
-     - *Essential Drug Multi-Criteria ABC/VED/SDE Matrix* (Oracle SQL Aggregations → Multi-Criteria Matrix → Excel Scenarios → OAC Alerts)
+2. **Interactive System Architecture Explorer**:
+   - Tabbed visual pipeline explorer detailing the multi-stage operational dataflow (Ingestion → Normalization & Cleaning → Kimball Star Schema Warehouse → DAX Measures → Executive Decision Support).
 
-3. **7 ATS-Optimized Tailored Resumes**:
-   - **No runtime generation on the site**: Resumes are pre-compiled and served directly from `assets/`.
-   - 7 specialized tracks with direct PDF download (↓), in-tab preview (↗), and interactive in-browser modal (👁):
+3. **7 Pre-Compiled ATS-Optimized Tailored Resumes**:
+   - **Pre-compiled and verified offline**: Resumes are served directly from `assets/`.
+   - 7 specialized tracks with direct PDF download (↓), in-tab preview (↗), and interactive in-browser ATS modal (👁):
      1. **Data Analyst** (`Rishi_Thakur_Data_Analyst_Resume.pdf`)
      2. **Business Analyst** (`Rishi_Thakur_Business_Analyst_Resume.pdf`)
      3. **SQL Developer** (`Rishi_Thakur_SQL_Developer_Resume.pdf`)
-     4. **Power BI Data Analyst** (`Rishi_Thakur_PowerBI_Data_Analyst_Resume.pdf`)
+     4. **Power BI Developer** (`Rishi_Thakur_PowerBI_Data_Analyst_Resume.pdf`)
      5. **Data Scientist** (`Rishi_Thakur_Data_Science_Resume.pdf`)
      6. **Machine Learning Engineer** (`Rishi_Thakur_ML_Engineer_Resume.pdf`)
      7. **MIS Analyst** (`Rishi_Thakur_MIS_Analyst_Resume.pdf`)
+   - Executive **Master Resume** download action bar for general recruiter reviews.
 
 4. **Generative Engine Optimization (GEO) & LLM Ingestion**:
-   - [`llms.txt`](file:///c:/Users/Rishi/Desktop/Jobhunt/portfolio/llms.txt) and [`llms-full.txt`](file:///c:/Users/Rishi/Desktop/Jobhunt/portfolio/llms-full.txt) at the root for instant, clean ingestion by LLMs and AI search engines (Perplexity, ChatGPT Search, Claude, Gemini, Antigravity).
-   - Rich JSON-LD schema markup (`Person`, `ProfilePage`, `KnowsAbout`) in HTML `<head>`.
+   - [`llms.txt`](llms.txt) and [`llms-full.txt`](llms-full.txt) at the root for instant, clean ingestion by AI search engines (Perplexity, ChatGPT Search, Claude, Gemini).
+   - Rich JSON-LD schema markup (`Person`, `alumniOf`, `knowsAbout`) in HTML `<head>`.
 
-5. **Live System Telemetry & Command Center Aesthetics**:
-   - Editorial minimalist dark/light design tokens (Neutral Deep Obsidian & Precision Cyan).
-   - Live system status badge: `● ONLINE • Immediate Joiner • Zero-Fabrication Verified`.
+5. **Editorial Minimalist Tech Aesthetics**:
+   - Editorial minimalist dark/light design tokens (Neutral Deep Obsidian & Precision Cyan) with localStorage persistence.
+   - Clean, accessible typography (Plus Jakarta Sans + IBM Plex Mono).
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Markup & Styling**: HTML5, Tailwind CSS, Google Fonts (Plus Jakarta Sans + IBM Plex Mono)
-- **Architecture**: Zero-build pure static architecture (instant CDN delivery, hostable on any static provider)
-- **Design Tokens**: Obsidian Black (`#080a0d`), Technical Slate (`#0f141c`), Precision Cyan (`#38bdf8`), Emerald (`#10b981`)
+- **Architecture**: Zero-build pure static architecture (instant CDN delivery via GitHub Pages)
+- **Design Tokens**: Obsidian Black (`#080a0d`), Surface Slate (`#0f141c`), Precision Cyan (`#0284c7` / `#38bdf8`), Emerald (`#10b981`)
 - **Asset Sync Tool**: `sync_tailored_resumes.py` (mirrors compiled PDFs to `assets/`)
 
 ---
@@ -72,17 +65,18 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ```text
 portfolio/
-├── index.html                  # Main portfolio application with AI Chat & Architecture visualizer
+├── index.html                  # Executive portfolio application (Projects, Architectures, Capabilities, Resumes)
+├── progress report.md          # Persistent engineering progress & handover documentation
 ├── llms.txt                    # Standardized markdown summary for AI agents and crawlers
 ├── llms-full.txt               # Exhaustive technical knowledge base for LLM search engines
 ├── sync_tailored_resumes.py    # Python helper script to sync PDFs to assets/
 ├── css/
-│   └── styles.css              # Editorial glassmorphic styling, chat terminal tokens, animations
+│   └── styles.css              # Editorial minimalist tokens, modal backdrops, responsive grid
 ├── js/
-│   ├── app.js                  # UI engine, AI twin chat handler, architecture explorer, modals
-│   └── chart-data.js           # Verified case studies, architecture pipelines, knowledge base
-├── assets/                     # Public PDF mirrors for all 7 tailored tracks
+│   ├── app.js                  # UI controllers (Modals, theme toggle, project filters, architecture explorer)
+│   └── chart-data.js           # Verified case studies, architecture pipelines, and ATS resume content
+├── assets/                     # Public PDF mirrors for all 7 tailored tracks + Master Resume
 ├── HANDOVER.md                 # Migration runbook & ground truth profile specifications
-├── FREELANCE_PLAYBOOK.md        # Client acquisition & freelance consulting strategy
-└── README.md                   # Repository documentation
+├── FREELANCE_PLAYBOOK.md       # Strategy guide for consulting and freelance engagements
+└── README.md                   # Public repository documentation
 ```
