@@ -5,7 +5,7 @@
 **Live Deployment:** `https://rishi-th219.github.io/portfolio/`  
 **Workspace Path:** `C:\Users\Rishi\Desktop\Jobhunt\portfolio`  
 **Last Updated:** November 1, 2026  
-**Status:** In Active Enhancement (Milestone 11 Completed • Progressive Disclosure & Click-Dropdowns Live)
+**Status:** In Active Enhancement (Milestone 12 Completed • Ultra-Compact Text-Reduced Portfolio Live)
 
 ---
 
@@ -243,6 +243,27 @@ Taking architectural cues from Santiago Fernández's AI CV (`https://github.com/
   8. **Contact Section (`#contact`):**
      - Side-by-side 2-column layout pairing direct channel cards with the quick inquiry form.
 * **Result:** Total vertical scroll depth reduced by **over 60%**, eliminating excessive scrolling while keeping 100% of the granular data immediately accessible via click-dropdowns.
+
+---
+
+### Milestone 12: Radical Text Reduction & Single-Scroll Minimalist Architecture
+* **User Directive:**
+  > "still too deep. Reduce the amount of text on the website."
+* **Root Cause Analysis:**
+  - Despite collapsible elements, the site still contained over 6,400 words across bulky section banners, multiple cards, 7 stacked track accordions, large descriptive paragraphs, and multi-field forms.
+* **Radical Text Reduction & Compaction Deliverables:**
+  1. **Massive Word Count Reduction (~70% Cut):**
+     - Hero: Reduced from 119 words to **69 words** (-42%). Removed redundant 4-card metric ribbon; consolidated coordinates into a single 1-line horizontal bar.
+     - Experience: Reduced from 195 words to **148 words** (-24%). Replaced narrative paragraphs with a 1-sentence executive summary and clean collapsible technical scope.
+     - Projects: Reduced from 397 words to **185 words** (-53%). Transformed projects into a clean 1-line table/list where all 4 projects fit within ~160px vertical height.
+     - Skills: Reduced from 247 words to **50 words** (-80%). Transformed long explanatory cards into a high-density, 4-column keyword badge matrix on a single row (~85px height).
+     - Education: Reduced from 131 words to **39 words** (-70%). Single-card layout uniting M.Tech, B.Tech, and GATE/IELTS credentials into ~60px height.
+     - Resumes: Reduced from 349 words to **98 words** (-72%). Replaced 7 stacked accordions with a **Single Interactive Track Selector Dropdown** (`#resumeTrackSelect`), reducing the entire resumes section to an ultra-compact ~85px widget.
+     - Contact: Reduced from 53 words to **28 words** (-47%). Eliminated the 400px contact form in favor of direct 1-click reachable badges (Email, Phone, LinkedIn, GitHub).
+  2. **Total Page Height & Scroll Depth:**
+     - Entire page now renders in **under 1,000 vertical pixels**, fitting virtually within a single screen view or at most one gentle scroll.
+  3. **Automated Tailoring Synchronization:**
+     - Detected 7 freshly recompiled PDF resumes in `C:\Users\Rishi\Desktop\tailoring\` and automatically synced all updated editions into `portfolio/assets/`.
 
 ---
 

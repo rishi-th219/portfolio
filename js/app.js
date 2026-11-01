@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupProjectFilters();
   setupCaseStudyModals();
   setupResumeModal();
+  setupResumeTrackSelector();
   setupMobileMenu();
   setupBackToTop();
   setupContactForm();
@@ -339,6 +340,33 @@ function setupResumeModal() {
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+  });
+}
+
+// 4b. Interactive Resume Track Selector Dropdown
+function setupResumeTrackSelector() {
+  const select = document.getElementById("resumeTrackSelect");
+  if (!select || typeof resumesData === "undefined") return;
+
+  const titleEl = document.getElementById("trackTitle");
+  const descEl = document.getElementById("trackDesc");
+  const viewAtsBtn = document.getElementById("trackViewAtsBtn");
+  const pdfBtn = document.getElementById("trackPdfBtn");
+  const tabBtn = document.getElementById("trackTabBtn");
+
+  select.addEventListener("change", () => {
+    const key = select.value;
+    const r = resumesData[key];
+    if (!r) return;
+
+    if (titleEl) titleEl.textContent = `${r.role} Resume`;
+    if (descEl) descEl.textContent = r.summary || "";
+    if (viewAtsBtn) viewAtsBtn.dataset.resume = key;
+    if (pdfBtn) {
+      pdfBtn.href = r.pdf;
+      pdfBtn.download = r.pdf.split("/").pop();
+    }
+    if (tabBtn) tabBtn.href = r.pdf;
   });
 }
 

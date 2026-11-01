@@ -197,441 +197,218 @@
          BANNER / HERO SECTION (Logsfolio Style)
          ====================================================================== -->
         <!-- ======================================================================
-         HERO SECTION (Compact & Focused)
+         HERO SECTION (Ultra-Compact & Executive)
          ====================================================================== -->
-    <section id="home" class="container max-w-5xl mx-auto pt-20 pb-8 md:pt-28 md:pb-12 px-4 md:px-6">
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-10">
+    <section id="home" class="container max-w-4xl mx-auto pt-16 pb-6 md:pt-20 md:pb-8 px-4 md:px-6">
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
 
-        <!-- Left / Avatar Badge Card -->
-        <div class="w-full sm:w-2/3 lg:w-1/3 flex justify-center">
-          <div class="relative group">
-            <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-gradient-to-tr from-primary/20 via-primary/10 to-transparent p-1.5 shadow-xl transition-all duration-300">
-              <div class="w-full h-full rounded-full bg-card border border-border flex flex-col items-center justify-center p-4 text-center">
-                <span class="text-3xl sm:text-4xl font-mono font-extrabold text-primary tracking-tighter">RT</span>
-                <span class="text-xs font-mono font-medium text-muted-foreground mt-1">Data & Analytics</span>
-                <div class="flex items-center gap-1.5 mt-2 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-mono font-semibold">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span>Active Candidate</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- Avatar Monogram -->
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-primary/10 border border-primary/20 flex flex-col items-center justify-center shrink-0 shadow-sm">
+          <span class="text-2xl sm:text-3xl font-mono font-extrabold text-primary tracking-tighter">RT</span>
+          <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 mt-0.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Available
+          </span>
         </div>
 
-        <!-- Right / Bio & Identity -->
-        <div class="w-full lg:w-2/3 space-y-3.5 text-left">
-
-          <!-- Status Pill -->
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-medium">
-              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              AVAILABLE FOR IMMEDIATE HIRE • BENGALURU / REMOTE
-            </span>
-            <a href="llms.txt" target="_blank" rel="noopener noreferrer" class="badge-pill text-xs font-mono">
-              <span>GEO: llms.txt ↗</span>
-            </a>
-          </div>
-
-          <!-- Headline -->
-          <div class="space-y-1">
-            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-              Hey 👋, I'm <span class="text-primary">Rishi Thakur</span>
+        <!-- Identity & Bio -->
+        <div class="space-y-2 flex-1">
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+            <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+              Rishi Thakur
             </h1>
-            <p class="text-xs sm:text-sm font-mono font-medium text-primary/90">
-              DATA ANALYST • BUSINESS INTELLIGENCE • SQL & ANALYTICS ENGINEERING
-            </p>
+            <span class="text-xs font-mono text-muted-foreground select-none">•</span>
+            <span class="text-xs font-mono font-medium text-primary">Senior Data Analyst & SQL Developer</span>
+            <span class="text-xs font-mono text-muted-foreground select-none">•</span>
+            <a href="llms.txt" target="_blank" rel="noopener noreferrer" class="text-[11px] font-mono text-muted-foreground hover:text-primary">
+              llms.txt ↗
+            </a>
           </div>
 
-          <!-- Bio Paragraph (Shortened & Punchy) -->
-          <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
-            M.Tech Computer Science graduate from <span class="font-semibold text-foreground">IIIT Naya Raipur</span> (7.90 CGPA, GATE CS 2024, IELTS 7.5 Band) with enterprise data analytics experience at <span class="font-semibold text-foreground">CHiPS (Govt. of Chhattisgarh)</span> across statewide public healthcare operations. Specialized in SQL query optimization, Kimball Star Schema data warehouses, and executive Power BI suites.
+          <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-2xl">
+            M.Tech CSE from <strong class="text-foreground">IIIT Naya Raipur</strong> (7.90 CGPA, GATE CS 2024, IELTS 7.5 Band) with enterprise data analytics experience at <strong class="text-foreground">CHiPS (Govt. of Chhattisgarh)</strong>. Specialized in high-performance SQL query tuning, Kimball Star Schema dimensional modeling, and executive Power BI suites.
           </p>
 
-          <!-- Social Icon Buttons -->
-          <div class="flex flex-wrap items-center gap-2 pt-0.5">
-            <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="btn-icon" title="GitHub Profile">
-              <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <!-- Direct Coordinates Bar -->
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 pt-1 text-xs font-mono">
+            <a href="mailto:rishi_th219@proton.me" class="px-2.5 py-1 rounded-md bg-secondary text-foreground hover:text-primary border border-border transition-colors">
+              ✉ rishi_th219@proton.me
             </a>
-
-            <a href="https://linkedin.com/in/rishi-thakur-b665a4298" target="_blank" rel="noopener noreferrer" class="btn-icon" title="LinkedIn Profile">
-              <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.863z"/></svg>
+            <a href="tel:+918109830219" class="px-2.5 py-1 rounded-md bg-secondary text-foreground hover:text-primary border border-border transition-colors">
+              ☎ +91 8109830219
             </a>
-
-            <a href="mailto:rishi_th219@proton.me" class="btn-icon" title="Email Rishi Directly">
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <a href="https://linkedin.com/in/rishi-thakur-b665a4298" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-md bg-secondary text-foreground hover:text-primary border border-border transition-colors">
+              LinkedIn ↗
             </a>
-
-            <a href="tel:+918109830219" class="btn-icon" title="Phone Call">
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-md bg-secondary text-foreground hover:text-primary border border-border transition-colors">
+              GitHub ↗
             </a>
-
-            <span class="tech-mono-pill text-xs select-none">
-              <svg class="w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              Bengaluru, India
+            <span class="px-2 py-1 text-muted-foreground select-none">
+              📍 Bengaluru, India (Immediate Joiner)
             </span>
           </div>
+        </div>
 
-          <!-- Action Buttons -->
-          <div class="flex flex-wrap items-center gap-3 pt-2">
-            <a href="#projects" class="btn-primary text-xs">
-              <span>Explore Projects ↓</span>
-            </a>
-            <a href="#resumes" class="btn-secondary font-mono text-xs">
-              <span>Targeted Resumes (7 Tracks) 📄</span>
-            </a>
-            <a href="#contact" class="btn-outline text-xs">
-              <span>Get in Touch →</span>
-            </a>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Impact Highlights Ribbon (Compact Grid) -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 pt-8 mt-8 border-t border-border">
-        <div class="logsfolio-card p-4 text-left">
-          <div class="text-[11px] font-mono uppercase text-muted-foreground">Operational Scope</div>
-          <div class="text-xl sm:text-2xl font-bold text-foreground font-mono mt-0.5">Statewide</div>
-          <div class="text-xs text-muted-foreground">Public Healthcare Analytics</div>
-        </div>
-        <div class="logsfolio-card p-4 text-left">
-          <div class="text-[11px] font-mono uppercase text-muted-foreground">Analytics Hierarchy</div>
-          <div class="text-xl sm:text-2xl font-bold text-foreground font-mono mt-0.5">Multi-Tier</div>
-          <div class="text-xs text-muted-foreground">State → District → Staff</div>
-        </div>
-        <div class="logsfolio-card p-4 text-left">
-          <div class="text-[11px] font-mono uppercase text-muted-foreground">Predictive ML</div>
-          <div class="text-xl sm:text-2xl font-bold text-primary font-mono mt-0.5">High-Precision</div>
-          <div class="text-xs text-muted-foreground">5G mmWave Diffusion Model</div>
-        </div>
-        <div class="logsfolio-card p-4 text-left">
-          <div class="text-[11px] font-mono uppercase text-muted-foreground">Curated Resumes</div>
-          <div class="text-xl sm:text-2xl font-bold text-emerald-600 dark:text-emerald-400 font-mono mt-0.5">Role-Tailored</div>
-          <div class="text-xs text-muted-foreground">Pre-Compiled ATS Tracks</div>
-        </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         WORK EXPERIENCE SECTION (Compact & Collapsible Dropdown)
+         EXPERIENCE SECTION
          ====================================================================== -->
-    <section id="experience" class="container max-w-5xl mx-auto py-10 md:py-14 px-4 md:px-6 text-left">
-      <div class="space-y-1.5 mb-6">
+    <section id="experience" class="container max-w-4xl mx-auto py-5 px-4 md:px-6 text-left">
+      <div class="flex items-center justify-between mb-2">
         <span class="section-index">01 / EXPERIENCE</span>
-        <h2 class="font-bold text-2xl md:text-4xl tracking-tight text-foreground">
-          Work Experience
-        </h2>
+        <span class="text-xs font-mono text-muted-foreground">01/2024 – 06/2024</span>
       </div>
 
-      <div class="logsfolio-timeline">
-
-        <!-- Experience Item: CHiPS -->
-        <div class="logsfolio-timeline-item grid gap-1">
-          <div class="logsfolio-timeline-dot"></div>
-
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-            <h4 class="text-lg sm:text-xl font-bold text-foreground">
-              Data Analyst Intern @
-              <a href="https://chips.gov.in" target="_blank" rel="noopener noreferrer" class="ml-1 text-primary hover:underline inline-flex items-center gap-1">
+      <div class="logsfolio-card p-4 space-y-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+          <div>
+            <h3 class="text-sm sm:text-base font-bold text-foreground">
+              Data Analyst / BI Developer Intern @
+              <a href="https://chips.gov.in" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
                 CHiPS (Govt. of Chhattisgarh)
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
               </a>
-            </h4>
-            <div class="text-muted-foreground font-mono text-xs">
-              01/2024 – 06/2024
+            </h3>
+            <div class="text-xs text-muted-foreground font-mono">
+              Department of Health & Family Welfare • Raipur, India
             </div>
           </div>
-
-          <div class="text-muted-foreground font-mono text-xs flex flex-wrap items-center gap-2">
-            <span>Dept. of Health & Family Welfare</span>
-            <span>•</span>
-            <span>Raipur, India</span>
-          </div>
-
-          <p class="text-sm text-muted-foreground leading-relaxed mt-2">
-            Reconciled biometric attendance (AEBAS) and State Treasury payroll records across statewide public health facilities using automated SQL ETL pipelines, multi-tier compliance risk modeling, and executive Power BI suites.
-          </p>
-
-          <!-- Click-Dropdown for In-Depth Scope & Bullets -->
-          <details class="logsfolio-dropdown mt-3 group">
-            <summary class="logsfolio-dropdown-summary">
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-mono font-semibold text-primary">View Key Deliverables & Technical Stack</span>
-                <span class="text-[10px] font-mono text-muted-foreground px-2 py-0.5 rounded-full bg-secondary">Click to Dropdown</span>
-              </div>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </summary>
-            <div class="logsfolio-dropdown-content space-y-3 pt-3">
-              <ul class="text-muted-foreground text-sm list-disc pl-5 space-y-2 leading-relaxed">
-                <li>
-                  Architected an executive interactive Power BI dashboard suite monitoring attendance and payroll fidelity across statewide public health facilities, enabling leadership oversight.
-                </li>
-                <li>
-                  Engineered automated SQL identity resolution procedures in <strong class="text-foreground">MariaDB</strong> and <strong class="text-foreground">OracleDB</strong>, resolving employee identity discrepancies and payroll anomalies.
-                </li>
-                <li>
-                  Constructed multi-tab <strong class="text-foreground">Advanced Excel</strong> operational auditing workbooks utilizing Power Query (M), dynamic arrays (XLOOKUP, INDEX/MATCH), and Power Pivot to cross-validate district biometric logs with Treasury payroll files.
-                </li>
-                <li>
-                  Designed and implemented performant <strong class="text-foreground">Kimball Star Schema</strong> data models in MariaDB with custom DAX measures for attendance rates, rolling operational work hours, and late login metrics across a hierarchical drill-down.
-                </li>
-                <li>
-                  Formulated a multi-tier personnel compliance risk model (Non-Joiners, Formal-Only Registrants, and Attendance Defaulters) to identify salary disbursement discrepancies and optimize workforce allocation.
-                </li>
-              </ul>
-
-              <div class="flex flex-wrap gap-2 pt-2 border-t border-border/40">
-                <span class="badge-pill">Advanced SQL</span>
-                <span class="badge-pill">MariaDB</span>
-                <span class="badge-pill">OracleDB</span>
-                <span class="badge-pill">Power BI</span>
-                <span class="badge-pill">DAX Measures</span>
-                <span class="badge-pill">Kimball Star Schema</span>
-                <span class="badge-pill">Advanced Excel</span>
-                <span class="badge-pill">Power Query</span>
-              </div>
-            </div>
-          </details>
-
         </div>
 
-      </div>
-    </section>
+        <p class="text-xs text-muted-foreground leading-relaxed">
+          Reconciled biometric attendance (AEBAS) and State Treasury payroll records across statewide public health facilities using automated SQL ETL pipelines, Kimball Star Schema modeling, Advanced Excel audit models, and executive Power BI suites.
+        </p>
 
-    <!-- ======================================================================
-         MY PROJECTS SECTION (Compact Click-Dropdown List)
-         ====================================================================== -->
-    <section id="projects" class="container max-w-5xl mx-auto py-10 md:py-14 px-4 md:px-6 text-left">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
-        <div class="space-y-1.5">
-          <span class="section-index">02 / PORTFOLIO</span>
-          <h2 class="font-bold text-2xl md:text-4xl tracking-tight text-foreground">
-            My Projects
-          </h2>
-          <p class="text-xs text-muted-foreground">Click any project to dropdown details or open full case study</p>
-        </div>
-
-        <!-- Filter Buttons (Logsfolio Style) -->
-        <div class="flex flex-wrap items-center gap-1.5">
-          <button type="button" class="project-filter-btn active" data-filter="all">All</button>
-          <button type="button" class="project-filter-btn" data-filter="bi">Power BI</button>
-          <button type="button" class="project-filter-btn" data-filter="sql">SQL Engineering</button>
-          <button type="button" class="project-filter-btn" data-filter="ml">Machine Learning</button>
-          <button type="button" class="project-filter-btn" data-filter="analytics">Analytics</button>
-        </div>
-      </div>
-
-      <!-- Projects Dropdown List -->
-      <div class="space-y-3">
-
-        <!-- Project 1: CHiPS Healthcare BI -->
-        <details class="logsfolio-dropdown project-card group" data-category="bi sql analytics">
-          <summary class="logsfolio-dropdown-summary p-4 sm:p-5">
-            <div class="flex items-start sm:items-center gap-3.5 pr-2">
-              <div class="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-mono text-xs font-bold shrink-0">
-                01
-              </div>
-              <div>
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-mono font-bold text-primary uppercase">SQL & BI</span>
-                  <span class="text-[11px] font-mono text-muted-foreground">• CHiPS (Govt. of Chhattisgarh)</span>
-                </div>
-                <h3 class="text-base sm:text-lg font-bold text-foreground">
-                  Statewide Healthcare Attendance & Performance BI
-                </h3>
-                <p class="text-xs text-muted-foreground mt-0.5 line-clamp-1">
-                  Automated SQL/ETL identity resolution, Kimball Star Schema & executive Power BI reporting suite.
-                </p>
-              </div>
-            </div>
-            <div class="flex items-center gap-2.5 shrink-0">
-              <button type="button" class="view-case-study-btn btn-primary text-xs py-1 px-3" data-study="healthbi" onclick="event.stopPropagation()">
-                Case Study ↗
-              </button>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </div>
+        <!-- Click-Dropdown for Core Deliverables -->
+        <details class="group mt-2">
+          <summary class="cursor-pointer text-xs font-mono text-primary flex items-center gap-1 list-none hover:underline select-none">
+            <span>View Core Technical Deliverables & Stack</span>
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </summary>
-          <div class="logsfolio-dropdown-content space-y-3 pt-3">
-            <p class="text-sm text-muted-foreground leading-relaxed">
-              Architected an executive interactive Power BI dashboard suite across statewide public healthcare facilities. Bridged disconnected biometric attendance records with State Treasury payroll databases, enabling leadership to detect anomalies and verify staff presence.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-              <div class="space-y-1">
-                <span class="font-semibold text-foreground">Core Architecture:</span>
-                <p class="text-muted-foreground">Automated multi-way SQL joins, Kimball Star Schema conformed dimension tables, and Advanced Excel audit workbooks.</p>
-              </div>
-              <div class="space-y-1">
-                <span class="font-semibold text-foreground">Operational Impact:</span>
-                <p class="text-muted-foreground">Reconciled disparate backend databases and deployed multi-tier personnel compliance risk categorization.</p>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-border/40">
-              <span class="badge-pill">Advanced SQL</span>
+          <div class="pt-2 text-xs text-muted-foreground space-y-1.5 pl-3 border-l-2 border-primary/30 mt-1">
+            <p>• Automated SQL identity resolution across MariaDB & OracleDB, reconciling biometric IDs with State Treasury payroll records.</p>
+            <p>• Designed multi-tier personnel compliance risk classification model (Non-Joiners, Formal-Only, Attendance Defaulters) for ministry leadership.</p>
+            <p>• Built Kimball Star Schema architecture and executive Power BI suites with custom DAX measures for attendance rates and rolling work hours.</p>
+            <p>• Engineered multi-tab Advanced Excel auditing workbooks using Power Query (M) and dynamic arrays (XLOOKUP) for payroll cross-validation.</p>
+            <div class="flex flex-wrap gap-1 pt-1">
+              <span class="badge-pill">SQL</span>
               <span class="badge-pill">MariaDB</span>
+              <span class="badge-pill">OracleDB</span>
               <span class="badge-pill">Power BI</span>
-              <span class="badge-pill">DAX Measures</span>
+              <span class="badge-pill">DAX</span>
               <span class="badge-pill">Star Schema</span>
               <span class="badge-pill">Advanced Excel</span>
               <span class="badge-pill">Power Query</span>
             </div>
           </div>
         </details>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PROJECTS SECTION (Ultra-Compact List)
+         ====================================================================== -->
+    <section id="projects" class="container max-w-4xl mx-auto py-5 px-4 md:px-6 text-left">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+        <span class="section-index">02 / PORTFOLIO</span>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-1">
+          <button type="button" class="project-filter-btn active text-[11px] py-0.5 px-2.5" data-filter="all">All</button>
+          <button type="button" class="project-filter-btn text-[11px] py-0.5 px-2.5" data-filter="bi">Power BI</button>
+          <button type="button" class="project-filter-btn text-[11px] py-0.5 px-2.5" data-filter="sql">SQL</button>
+          <button type="button" class="project-filter-btn text-[11px] py-0.5 px-2.5" data-filter="ml">Machine Learning</button>
+          <button type="button" class="project-filter-btn text-[11px] py-0.5 px-2.5" data-filter="analytics">Analytics</button>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+
+        <!-- Project 1: Healthcare BI -->
+        <details class="logsfolio-dropdown project-card group" data-category="bi sql analytics">
+          <summary class="logsfolio-dropdown-summary py-2.5 px-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-2.5 pr-2">
+              <span class="text-xs font-mono font-bold text-primary">01</span>
+              <div>
+                <span class="text-xs sm:text-sm font-bold text-foreground">Statewide Healthcare Attendance & Performance BI</span>
+                <span class="hidden md:inline-flex badge-pill text-[10px] py-0 px-1.5 ml-1.5">Power BI • SQL • Star Schema</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <button type="button" class="view-case-study-btn btn-primary text-[11px] py-0.5 px-2.5 font-mono" data-study="healthbi" onclick="event.stopPropagation()">
+                Case Study ↗
+              </button>
+              <svg class="logsfolio-dropdown-chevron w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </div>
+          </summary>
+          <div class="logsfolio-dropdown-content py-2 px-3.5 text-xs text-muted-foreground leading-relaxed">
+            Automated SQL ETL identity resolution between AEBAS biometric attendance and State Treasury payroll across statewide public health facilities, paired with an executive hierarchical drill-down Power BI suite and multi-tier compliance risk model.
+          </div>
+        </details>
 
         <!-- Project 2: Essential Drug Inventory -->
         <details class="logsfolio-dropdown project-card group" data-category="sql analytics bi">
-          <summary class="logsfolio-dropdown-summary p-4 sm:p-5">
-            <div class="flex items-start sm:items-center gap-3.5 pr-2">
-              <div class="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-mono text-xs font-bold shrink-0">
-                02
-              </div>
+          <summary class="logsfolio-dropdown-summary py-2.5 px-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-2.5 pr-2">
+              <span class="text-xs font-mono font-bold text-primary">02</span>
               <div>
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-mono font-bold text-primary uppercase">Supply Chain</span>
-                  <span class="text-[11px] font-mono text-muted-foreground">• OracleDB & OAC</span>
-                </div>
-                <h3 class="text-base sm:text-lg font-bold text-foreground">
-                  Essential Drug Multi-Criteria ABC/VED/SDE Matrix
-                </h3>
-                <p class="text-xs text-muted-foreground mt-0.5 line-clamp-1">
-                  Multi-criteria pharmaceutical inventory matrix and Oracle Analytics Cloud scorecards.
-                </p>
+                <span class="text-xs sm:text-sm font-bold text-foreground">Essential Drug Inventory ABC/VED/SDE Matrix</span>
+                <span class="hidden md:inline-flex badge-pill text-[10px] py-0 px-1.5 ml-1.5">OracleDB • Advanced Excel • OAC</span>
               </div>
             </div>
-            <div class="flex items-center gap-2.5 shrink-0">
-              <button type="button" class="view-case-study-btn btn-primary text-xs py-1 px-3" data-study="drugmatrix" onclick="event.stopPropagation()">
+            <div class="flex items-center gap-2 shrink-0">
+              <button type="button" class="view-case-study-btn btn-primary text-[11px] py-0.5 px-2.5 font-mono" data-study="drugmatrix" onclick="event.stopPropagation()">
                 Case Study ↗
               </button>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              <svg class="logsfolio-dropdown-chevron w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </div>
           </summary>
-          <div class="logsfolio-dropdown-content space-y-3 pt-3">
-            <p class="text-sm text-muted-foreground leading-relaxed">
-              Designed a multi-criteria pharmaceutical inventory categorization matrix across clinical and operational directorates in OracleDB and Advanced Excel. Eliminated stockouts and prioritized critical drug procurement.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-              <div class="space-y-1">
-                <span class="font-semibold text-foreground">Classification Framework:</span>
-                <p class="text-muted-foreground">Composite matrix merging ABC (monetary consumption), VED (criticality), and SDE (procurement lead-time difficulty).</p>
-              </div>
-              <div class="space-y-1">
-                <span class="font-semibold text-foreground">Analytics Deployment:</span>
-                <p class="text-muted-foreground">Interactive scorecards in Oracle Analytics Cloud (OAC) with automated buffer threshold alerts.</p>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-border/40">
-              <span class="badge-pill">OracleDB</span>
-              <span class="badge-pill">Advanced Excel</span>
-              <span class="badge-pill">Oracle Analytics Cloud</span>
-              <span class="badge-pill">Inventory Modeling</span>
-              <span class="badge-pill">SQL</span>
-            </div>
+          <div class="logsfolio-dropdown-content py-2 px-3.5 text-xs text-muted-foreground leading-relaxed">
+            Multi-criteria pharmaceutical inventory classification merging ABC (consumption value), VED (vital criticality), and SDE (procurement lead time) in OracleDB and Advanced Excel, visualized via Oracle Analytics Cloud scorecards.
           </div>
         </details>
 
-        <!-- Project 3: 5G mmWave Handover Prediction -->
+        <!-- Project 3: 5G Handover -->
         <details class="logsfolio-dropdown project-card group" data-category="ml analytics">
-          <summary class="logsfolio-dropdown-summary p-4 sm:p-5">
-            <div class="flex items-start sm:items-center gap-3.5 pr-2">
-              <div class="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-mono text-xs font-bold shrink-0">
-                03
-              </div>
+          <summary class="logsfolio-dropdown-summary py-2.5 px-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-2.5 pr-2">
+              <span class="text-xs font-mono font-bold text-primary">03</span>
               <div>
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-mono font-bold text-primary uppercase">Deep Learning</span>
-                  <span class="text-[11px] font-mono text-muted-foreground">• M.Tech Thesis (IIIT-NR)</span>
-                </div>
-                <h3 class="text-base sm:text-lg font-bold text-foreground">
-                  Proactive 5G mmWave Handover Prediction via Diffusion Models
-                </h3>
-                <p class="text-xs text-muted-foreground mt-0.5 line-clamp-1">
-                  GRU-conditioned Denoising Diffusion Probabilistic Model (DDPM) in PyTorch.
-                </p>
+                <span class="text-xs sm:text-sm font-bold text-foreground">Proactive 5G mmWave Handover Prediction via Diffusion Models</span>
+                <span class="hidden md:inline-flex badge-pill text-[10px] py-0 px-1.5 ml-1.5">PyTorch • DDPM • GRU</span>
               </div>
             </div>
-            <div class="flex items-center gap-2.5 shrink-0">
-              <button type="button" class="view-case-study-btn btn-primary text-xs py-1 px-3" data-study="telco5g" onclick="event.stopPropagation()">
+            <div class="flex items-center gap-2 shrink-0">
+              <button type="button" class="view-case-study-btn btn-primary text-[11px] py-0.5 px-2.5 font-mono" data-study="telco5g" onclick="event.stopPropagation()">
                 Case Study ↗
               </button>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              <svg class="logsfolio-dropdown-chevron w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </div>
           </summary>
-          <div class="logsfolio-dropdown-content space-y-3 pt-3">
-            <p class="text-sm text-muted-foreground leading-relaxed">
-              Built a GRU-conditioned Denoising Diffusion Probabilistic Model (DDPM/DDIM) in PyTorch to forecast physical blockage and beam failure trajectories, achieving high-precision predictive fidelity under severe telemetry class imbalance.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-              <div class="space-y-1">
-                <span class="font-semibold text-foreground">Generative Model:</span>
-                <p class="text-muted-foreground">Diffusion reverse denoising generating forward-looking radio signal trajectories (RSRP, RSRQ, CINR).</p>
-              </div>
-              <div class="space-y-1">
-                <span class="font-semibold text-foreground">Imbalance Resolution:</span>
-                <p class="text-muted-foreground">Hybrid SMOTE + Tomek Links paired with explainable Random Forest policy classification.</p>
-              </div>
-            </div>
-            <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-border/40">
-              <div class="flex flex-wrap gap-1.5">
-                <span class="badge-pill">PyTorch</span>
-                <span class="badge-pill">Diffusion Models (DDPM)</span>
-                <span class="badge-pill">GRU</span>
-                <span class="badge-pill">SMOTE + Tomek</span>
-                <span class="badge-pill">Python</span>
-              </div>
-              <a href="https://github.com/rishi-th219/Proactive-Handover-Prediction-in-5G-using-Diffusion-Models" target="_blank" rel="noopener noreferrer" class="btn-outline text-xs py-1 px-2.5">
-                GitHub Repo ↗
-              </a>
-            </div>
+          <div class="logsfolio-dropdown-content py-2 px-3.5 text-xs text-muted-foreground leading-relaxed">
+            M.Tech thesis research: Built a spatio-temporal GRU encoder paired with a Denoising Diffusion Probabilistic Model (DDPM) in PyTorch to forecast radio degradation paths under severe telemetry class imbalance.
           </div>
         </details>
 
-        <!-- Project 4: Career-Ops Job Acquisition Engine -->
+        <!-- Project 4: Career-Ops -->
         <details class="logsfolio-dropdown project-card group" data-category="python analytics">
-          <summary class="logsfolio-dropdown-summary p-4 sm:p-5">
-            <div class="flex items-start sm:items-center gap-3.5 pr-2">
-              <div class="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-mono text-xs font-bold shrink-0">
-                04
-              </div>
+          <summary class="logsfolio-dropdown-summary py-2.5 px-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-2.5 pr-2">
+              <span class="text-xs font-mono font-bold text-primary">04</span>
               <div>
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-mono font-bold text-primary uppercase">Automation</span>
-                  <span class="text-[11px] font-mono text-muted-foreground">• Python & OpenXML</span>
-                </div>
-                <h3 class="text-base sm:text-lg font-bold text-foreground">
-                  Career-Ops Autonomous Job Acquisition Engine
-                </h3>
-                <p class="text-xs text-muted-foreground mt-0.5 line-clamp-1">
-                  Direct enterprise ATS polling daemon, concurrent link cleaners & pure Python OpenXML.
-                </p>
+                <span class="text-xs sm:text-sm font-bold text-foreground">Career-Ops Autonomous Job Acquisition Engine</span>
+                <span class="hidden md:inline-flex badge-pill text-[10px] py-0 px-1.5 ml-1.5">Python • Playwright • OpenXML</span>
               </div>
             </div>
-            <div class="flex items-center gap-2.5 shrink-0">
-              <button type="button" class="view-case-study-btn btn-primary text-xs py-1 px-3" data-study="career_ops" onclick="event.stopPropagation()">
+            <div class="flex items-center gap-2 shrink-0">
+              <button type="button" class="view-case-study-btn btn-primary text-[11px] py-0.5 px-2.5 font-mono" data-study="career_ops" onclick="event.stopPropagation()">
                 Case Study ↗
               </button>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              <svg class="logsfolio-dropdown-chevron w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </div>
           </summary>
-          <div class="logsfolio-dropdown-content space-y-3 pt-3">
-            <p class="text-sm text-muted-foreground leading-relaxed">
-              Built an automated discovery and ingestion engine polling direct enterprise ATS APIs, paired with concurrent HTTP liveness cleaners, pure Python OpenXML spreadsheet compiler, and stealth Playwright runner.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-              <div class="space-y-1">
-                <span class="font-semibold text-foreground">ATS Integrations:</span>
-                <p class="text-muted-foreground">Direct REST integrations across Greenhouse, Lever, Ashby, and SmartRecruiters with liveness auditing.</p>
-              </div>
-              <div class="space-y-1">
-                <span class="font-semibold text-foreground">Zero-Dependency Compiler:</span>
-                <p class="text-muted-foreground">Pure Python standard library OpenXML generator creating audit workbooks with zero pip dependencies.</p>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-border/40">
-              <span class="badge-pill">Python</span>
-              <span class="badge-pill">Playwright</span>
-              <span class="badge-pill">REST APIs</span>
-              <span class="badge-pill">OpenXML Compiler</span>
-              <span class="badge-pill">Automation</span>
-            </div>
+          <div class="logsfolio-dropdown-content py-2 px-3.5 text-xs text-muted-foreground leading-relaxed">
+            Python automation daemon polling direct enterprise ATS APIs (Greenhouse, Lever, Ashby), featuring concurrent link liveness cleaners, pure Python OpenXML spreadsheet generation, and stealth Playwright auto-submission.
           </div>
         </details>
 
@@ -639,597 +416,170 @@
     </section>
 
     <!-- ======================================================================
-         TECHNICAL SKILLS SECTION (2-Col Click-Dropdown Grid)
+         SKILLS SECTION (1-Row 4-Column Minimalist Grid)
          ====================================================================== -->
-    <section id="skills" class="container max-w-5xl mx-auto py-10 md:py-14 px-4 md:px-6 text-left">
-      <div class="space-y-1.5 mb-6">
+    <section id="skills" class="container max-w-4xl mx-auto py-5 px-4 md:px-6 text-left">
+      <div class="mb-2">
         <span class="section-index">03 / COMPETENCIES</span>
-        <h2 class="font-bold text-2xl md:text-4xl tracking-tight text-foreground">
-          Technical Skills
-        </h2>
-        <p class="text-xs text-muted-foreground">Click any competency pillar to dropdown tools and methodologies</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
 
-        <!-- Pillar 1: Relational Databases & SQL -->
-        <details class="logsfolio-dropdown group">
-          <summary class="logsfolio-dropdown-summary p-4">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-mono font-bold text-primary uppercase">Databases & Querying</span>
-                <span class="text-[10px] font-mono text-muted-foreground px-1.5 py-0.5 rounded bg-secondary">Core</span>
-              </div>
-              <h3 class="text-base font-bold text-foreground mt-0.5">
-                SQL & Relational Databases
-              </h3>
-              <p class="text-xs text-muted-foreground mt-0.5">
-                MariaDB, OracleDB, Window Functions, CTEs, Execution Plans
-              </p>
-            </div>
-            <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="logsfolio-dropdown-content space-y-2.5 pt-3">
-            <p class="text-xs text-muted-foreground leading-relaxed">
-              Advanced query optimization across MariaDB, OracleDB, MySQL, and PostgreSQL. Multi-table joins, complex CTE hierarchies, analytical window functions (ROW_NUMBER, DENSE_RANK, LEAD, LAG), query execution plan tuning, and cross-database schema reconciliation.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="badge-pill">Advanced SQL</span>
-              <span class="badge-pill">MariaDB</span>
-              <span class="badge-pill">OracleDB</span>
-              <span class="badge-pill">Window Functions</span>
-              <span class="badge-pill">CTEs</span>
-              <span class="badge-pill">Index Tuning</span>
-              <span class="badge-pill">ETL Reconciliation</span>
-            </div>
+        <div class="logsfolio-card p-3 space-y-1.5">
+          <div class="text-[11px] font-mono font-bold text-primary">SQL & DATABASES</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Advanced SQL</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">MariaDB</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">OracleDB</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Window Functions</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">CTEs</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Query Tuning</span>
           </div>
-        </details>
+        </div>
 
-        <!-- Pillar 2: Power BI & Dimensional Modeling -->
-        <details class="logsfolio-dropdown group">
-          <summary class="logsfolio-dropdown-summary p-4">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-mono font-bold text-primary uppercase">Business Intelligence</span>
-                <span class="text-[10px] font-mono text-muted-foreground px-1.5 py-0.5 rounded bg-secondary">Production BI</span>
-              </div>
-              <h3 class="text-base font-bold text-foreground mt-0.5">
-                Power BI & Dimensional Modeling
-              </h3>
-              <p class="text-xs text-muted-foreground mt-0.5">
-                Kimball Star Schema, DAX Measures, Executive Suites
-              </p>
-            </div>
-            <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="logsfolio-dropdown-content space-y-2.5 pt-3">
-            <p class="text-xs text-muted-foreground leading-relaxed">
-              Kimball Star Schema architecture (Fact & Conformed Dimension tables, surrogate keys). Complex DAX measures (CALCULATE, FILTER, time-intelligence, dynamic ranking), multi-level hierarchical drill-downs, and executive dashboard suites in Power BI & Oracle Analytics Cloud.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="badge-pill">Power BI</span>
-              <span class="badge-pill">DAX Measures</span>
-              <span class="badge-pill">Kimball Star Schema</span>
-              <span class="badge-pill">Power Query (M)</span>
-              <span class="badge-pill">Drill-Down Analytics</span>
-              <span class="badge-pill">Oracle Analytics Cloud</span>
-            </div>
+        <div class="logsfolio-card p-3 space-y-1.5">
+          <div class="text-[11px] font-mono font-bold text-primary">BUSINESS INTELLIGENCE</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Power BI</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">DAX Measures</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Star Schema</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Power Query</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Oracle OAC</span>
           </div>
-        </details>
+        </div>
 
-        <!-- Pillar 3: Advanced Excel & Financial Modeling -->
-        <details class="logsfolio-dropdown group">
-          <summary class="logsfolio-dropdown-summary p-4">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-mono font-bold text-primary uppercase">Analytics & Operations</span>
-                <span class="text-[10px] font-mono text-muted-foreground px-1.5 py-0.5 rounded bg-secondary">Auditing</span>
-              </div>
-              <h3 class="text-base font-bold text-foreground mt-0.5">
-                Advanced Excel & Operational Auditing
-              </h3>
-              <p class="text-xs text-muted-foreground mt-0.5">
-                Power Query, Power Pivot, Dynamic Arrays, Scenario Modeling
-              </p>
-            </div>
-            <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="logsfolio-dropdown-content space-y-2.5 pt-3">
-            <p class="text-xs text-muted-foreground leading-relaxed">
-              Advanced operational auditing and financial workbooks. Dynamic Arrays (XLOOKUP, FILTER, UNIQUE), Power Query (M) ETL automated ingestion, Power Pivot relational data models, What-If scenario tables, and automated variance analysis.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="badge-pill">Advanced Excel</span>
-              <span class="badge-pill">Power Pivot</span>
-              <span class="badge-pill">Dynamic Arrays</span>
-              <span class="badge-pill">Scenario Modeling</span>
-              <span class="badge-pill">Operational Auditing</span>
-              <span class="badge-pill">What-If Tables</span>
-            </div>
+        <div class="logsfolio-card p-3 space-y-1.5">
+          <div class="text-[11px] font-mono font-bold text-primary">EXCEL & AUDITING</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Advanced Excel</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Power Pivot</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Dynamic Arrays</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">XLOOKUP</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">What-If Models</span>
           </div>
-        </details>
+        </div>
 
-        <!-- Pillar 4: Python & Predictive Modeling -->
-        <details class="logsfolio-dropdown group">
-          <summary class="logsfolio-dropdown-summary p-4">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-mono font-bold text-primary uppercase">Programming & ML</span>
-                <span class="text-[10px] font-mono text-muted-foreground px-1.5 py-0.5 rounded bg-secondary">Python 3.11</span>
-              </div>
-              <h3 class="text-base font-bold text-foreground mt-0.5">
-                Python, Automation & ML
-              </h3>
-              <p class="text-xs text-muted-foreground mt-0.5">
-                PyTorch, Diffusion Models, Playwright, Pandas, REST APIs
-              </p>
-            </div>
-            <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </summary>
-          <div class="logsfolio-dropdown-content space-y-2.5 pt-3">
-            <p class="text-xs text-muted-foreground leading-relaxed">
-              Automated data ingestion pipelines, headless Playwright browser automation, REST API integration, and pure Python OpenXML compilers. M.Tech thesis research in PyTorch implementing Denoising Diffusion Probabilistic Models (DDPM) with high-precision F1-score.
-            </p>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="badge-pill">Python</span>
-              <span class="badge-pill">Pandas / NumPy</span>
-              <span class="badge-pill">PyTorch</span>
-              <span class="badge-pill">Diffusion Models</span>
-              <span class="badge-pill">Playwright</span>
-              <span class="badge-pill">REST APIs</span>
-            </div>
+        <div class="logsfolio-card p-3 space-y-1.5">
+          <div class="text-[11px] font-mono font-bold text-primary">PYTHON & APPLIED ML</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Python</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">PyTorch</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Diffusion Models</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">Playwright</span>
+            <span class="badge-pill text-[10px] py-0.5 px-1.5">REST APIs</span>
           </div>
-        </details>
+        </div>
 
       </div>
     </section>
 
     <!-- ======================================================================
-         EDUCATION & CREDENTIALS SECTION (Compact Dropdowns)
+         EDUCATION & CREDENTIALS SECTION (Compact 1-Card)
          ====================================================================== -->
-    <section id="education" class="container max-w-5xl mx-auto py-10 md:py-14 px-4 md:px-6 text-left">
-      <div class="space-y-1.5 mb-6">
+    <section id="education" class="container max-w-4xl mx-auto py-5 px-4 md:px-6 text-left">
+      <div class="mb-2">
         <span class="section-index">04 / ACADEMICS</span>
-        <h2 class="font-bold text-2xl md:text-4xl tracking-tight text-foreground">
-          Education & Credentials
-        </h2>
       </div>
 
-      <div class="logsfolio-timeline mb-6">
-
-        <!-- Degree 1: M.Tech -->
-        <div class="logsfolio-timeline-item grid gap-1">
-          <div class="logsfolio-timeline-dot"></div>
-
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-            <h4 class="text-lg font-bold text-foreground">
-              M.Tech in Computer Science and Engineering
-            </h4>
-            <div class="text-muted-foreground font-mono text-xs">
-              2024 – 2026
-            </div>
+      <div class="logsfolio-card p-3.5 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
+        <div class="space-y-1">
+          <div>
+            <strong class="text-foreground font-semibold">M.Tech in Computer Science & Engineering</strong> — IIIT Naya Raipur
+            <span class="font-mono text-muted-foreground ml-1">(7.90 CGPA • 2024–2026)</span>
           </div>
-          <h5 class="text-xs sm:text-sm font-semibold text-primary">
-            International Institute of Information Technology, Naya Raipur (IIIT-NR)
-          </h5>
-          <div class="text-muted-foreground font-mono text-xs">
-            CGPA: <strong class="text-foreground">7.90 / 10.0</strong> • Raipur, India
+          <div>
+            <strong class="text-foreground font-semibold">B.Tech in Computer Science & Engineering</strong> — Amity University Chhattisgarh
+            <span class="font-mono text-muted-foreground ml-1">(7.71 CGPA • 2019–2023)</span>
           </div>
-
-          <!-- Dropdown for M.Tech Thesis & Specialization -->
-          <details class="logsfolio-dropdown mt-2 group">
-            <summary class="logsfolio-dropdown-summary py-2 px-3 text-xs">
-              <span class="text-primary font-mono font-medium">View Thesis & Specialization Details</span>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </summary>
-            <div class="logsfolio-dropdown-content pt-2 text-xs text-muted-foreground leading-relaxed">
-              Specialized in Data Science, Relational Database Systems, Machine Learning, and Advanced Data Structures. M.Tech thesis on <em>5G mmWave Handover Prediction via Diffusion Models</em> implementing spatio-temporal GRU encoders and Denoising Diffusion Probabilistic Models (DDPM/DDIM) in PyTorch.
-            </div>
-          </details>
         </div>
-
-        <!-- Degree 2: B.Tech -->
-        <div class="logsfolio-timeline-item grid gap-1">
-          <div class="logsfolio-timeline-dot"></div>
-
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-            <h4 class="text-lg font-bold text-foreground">
-              B.Tech in Computer Science and Engineering
-            </h4>
-            <div class="text-muted-foreground font-mono text-xs">
-              2019 – 2023
-            </div>
-          </div>
-          <h5 class="text-xs sm:text-sm font-semibold text-primary">
-            Amity University Chhattisgarh
-          </h5>
-          <div class="text-muted-foreground font-mono text-xs">
-            CGPA: <strong class="text-foreground">7.71 / 10.0</strong> • Raipur, India
-          </div>
-
-          <!-- Dropdown for B.Tech Core Coursework -->
-          <details class="logsfolio-dropdown mt-2 group">
-            <summary class="logsfolio-dropdown-summary py-2 px-3 text-xs">
-              <span class="text-primary font-mono font-medium">View Core Coursework Focus</span>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </summary>
-            <div class="logsfolio-dropdown-content pt-2 text-xs text-muted-foreground leading-relaxed">
-              Foundational coursework in Database Management Systems (DBMS), SQL, Object-Oriented Programming (OOP), Data Structures & Algorithms, Computer Networks, and Statistical Data Analysis.
-            </div>
-          </details>
-        </div>
-
-      </div>
-
-      <!-- Standardized Qualifications Banner (Compact 1-Row) -->
-      <div class="logsfolio-card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div class="space-y-0.5">
-          <div class="text-xs font-mono font-bold text-primary uppercase">Standardized Academic Benchmarks</div>
-          <div class="text-xs text-muted-foreground">National & International Exam Certifications</div>
-        </div>
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="px-2.5 py-1 rounded-md bg-secondary border border-border text-xs font-mono text-foreground">
+        <div class="flex flex-wrap items-center gap-2 font-mono shrink-0">
+          <span class="px-2 py-1 rounded bg-secondary border border-border text-foreground text-[11px]">
             <strong>GATE CS 2024:</strong> Qualified
           </span>
-          <span class="px-2.5 py-1 rounded-md bg-secondary border border-border text-xs font-mono text-foreground">
-            <strong>IELTS Academic:</strong> 7.5 Band (C1)
+          <span class="px-2 py-1 rounded bg-secondary border border-border text-foreground text-[11px]">
+            <strong>IELTS:</strong> 7.5 Band (C1)
           </span>
         </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         TARGETED RESUMES SECTION (7-Track Click-Dropdown Accordion)
+         TARGETED RESUMES SECTION (Interactive Single-Widget Track Selector)
          ====================================================================== -->
-    <section id="resumes" class="container max-w-5xl mx-auto py-10 md:py-14 px-4 md:px-6 text-left">
-      <div class="space-y-1.5 mb-6">
-        <div class="flex items-center gap-2">
-          <span class="section-index">05 / RESUMES</span>
-          <span class="text-muted-foreground select-none">•</span>
-          <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400">Pre-Compiled PDF Archive</span>
-        </div>
-        <h2 class="font-bold text-2xl md:text-4xl tracking-tight text-foreground">
-          Curated Resumes (7 Specialized Tracks)
-        </h2>
-        <p class="text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed">
-          Tailor-made and ATS-verified with quantified impact and strict ground truth. Click any track to preview or download.
-        </p>
+    <section id="resumes" class="container max-w-4xl mx-auto py-5 px-4 md:px-6 text-left">
+      <div class="flex items-center justify-between mb-2">
+        <span class="section-index">05 / RESUMES (7 TRACKS)</span>
+        <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400">Pre-Compiled PDF Archive</span>
       </div>
 
-      <!-- 7-Track Dropdown List -->
-      <div class="space-y-2.5">
-
-        <!-- Track 1: Data Analyst -->
-        <details class="logsfolio-dropdown group" name="resume-track">
-          <summary class="logsfolio-dropdown-summary p-3.5 sm:p-4">
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono font-bold text-primary px-2 py-0.5 rounded bg-primary/10">TRACK 01</span>
-              <div>
-                <span class="text-sm font-bold text-foreground">Data Analyst</span>
-                <span class="hidden sm:inline text-xs text-muted-foreground font-mono ml-2">• BI, Advanced Excel & SQL</span>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-500/10 hidden sm:inline">Production</span>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </div>
-          </summary>
-          <div class="logsfolio-dropdown-content pt-3 space-y-3">
-            <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              End-to-end data pipelines, Kimball Star Schema modeling, automated SQL ETL identity resolution, Advanced Excel auditing, and executive Power BI suites.
-            </p>
-            <div class="flex flex-wrap items-center gap-2 pt-1 border-t border-border/40">
-              <button type="button" class="view-resume-btn btn-primary text-xs font-mono py-1 px-3" data-resume="data_analyst">
-                Read Online (ATS) 👁
-              </button>
-              <a href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" download="Rishi_Thakur_Data_Analyst_Resume.pdf" class="btn-secondary text-xs font-mono py-1 px-3">
-                Download PDF ↓
-              </a>
-              <a href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-outline text-xs font-mono py-1 px-3">
-                Open in Tab ↗
-              </a>
-            </div>
+      <div class="logsfolio-card p-3.5 space-y-3">
+        <!-- Selector Bar -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+          <div class="flex items-center gap-2 flex-1">
+            <label for="resumeTrackSelect" class="text-xs font-mono font-bold text-primary shrink-0">SELECT TRACK:</label>
+            <select id="resumeTrackSelect" class="bg-secondary border border-border text-foreground text-xs font-mono rounded-md px-2.5 py-1.5 focus:outline-none focus:border-primary w-full sm:max-w-xs cursor-pointer">
+              <option value="data_analyst">Track 01: Data Analyst (BI, Excel & SQL)</option>
+              <option value="business_analyst">Track 02: Business Analyst (Strategy & Analytics)</option>
+              <option value="sql_developer">Track 03: SQL Developer (Database & Schema Tuning)</option>
+              <option value="powerbi_developer">Track 04: Power BI Data Analyst (DAX & Star Schema)</option>
+              <option value="data_scientist">Track 05: Data Scientist (Statistical Inference & ML)</option>
+              <option value="ml_engineer">Track 06: ML Engineer (PyTorch & Generative Models)</option>
+              <option value="mis_analyst">Track 07: MIS Analyst (Operational Reporting & Automation)</option>
+            </select>
           </div>
-        </details>
-
-        <!-- Track 2: Business Analyst -->
-        <details class="logsfolio-dropdown group" name="resume-track">
-          <summary class="logsfolio-dropdown-summary p-3.5 sm:p-4">
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono font-bold text-primary px-2 py-0.5 rounded bg-primary/10">TRACK 02</span>
-              <div>
-                <span class="text-sm font-bold text-foreground">Business Analyst</span>
-                <span class="hidden sm:inline text-xs text-muted-foreground font-mono ml-2">• Strategy, Excel & SQL</span>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[10px] font-mono text-primary px-2 py-0.5 rounded-full bg-primary/10 hidden sm:inline">Strategy</span>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </div>
-          </summary>
-          <div class="logsfolio-dropdown-content pt-3 space-y-3">
-            <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              Problem decomposition, risk-tiered compliance modeling, financial/ops scenario workbooks in Advanced Excel, schema harmonization with national agencies (NIC), and executive KPI alignment.
-            </p>
-            <div class="flex flex-wrap items-center gap-2 pt-1 border-t border-border/40">
-              <button type="button" class="view-resume-btn btn-primary text-xs font-mono py-1 px-3" data-resume="business_analyst">
-                Read Online (ATS) 👁
-              </button>
-              <a href="assets/Rishi_Thakur_Business_Analyst_Resume.pdf" download="Rishi_Thakur_Business_Analyst_Resume.pdf" class="btn-secondary text-xs font-mono py-1 px-3">
-                Download PDF ↓
-              </a>
-              <a href="assets/Rishi_Thakur_Business_Analyst_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-outline text-xs font-mono py-1 px-3">
-                Open in Tab ↗
-              </a>
-            </div>
-          </div>
-        </details>
-
-        <!-- Track 3: SQL Developer -->
-        <details class="logsfolio-dropdown group" name="resume-track">
-          <summary class="logsfolio-dropdown-summary p-3.5 sm:p-4">
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono font-bold text-primary px-2 py-0.5 rounded bg-primary/10">TRACK 03</span>
-              <div>
-                <span class="text-sm font-bold text-foreground">SQL Developer</span>
-                <span class="hidden sm:inline text-xs text-muted-foreground font-mono ml-2">• Database Design & Schema Tuning</span>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[10px] font-mono text-primary px-2 py-0.5 rounded-full bg-primary/10 hidden sm:inline">Database</span>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </div>
-          </summary>
-          <div class="logsfolio-dropdown-content pt-3 space-y-3">
-            <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              MariaDB, OracleDB, MySQL, and PostgreSQL query optimization, execution plan tuning, complex CTEs, analytical window functions, surrogate key dimensional modeling, and ETL identity resolution.
-            </p>
-            <div class="flex flex-wrap items-center gap-2 pt-1 border-t border-border/40">
-              <button type="button" class="view-resume-btn btn-primary text-xs font-mono py-1 px-3" data-resume="sql_developer">
-                Read Online (ATS) 👁
-              </button>
-              <a href="assets/Rishi_Thakur_SQL_Developer_Resume.pdf" download="Rishi_Thakur_SQL_Developer_Resume.pdf" class="btn-secondary text-xs font-mono py-1 px-3">
-                Download PDF ↓
-              </a>
-              <a href="assets/Rishi_Thakur_SQL_Developer_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-outline text-xs font-mono py-1 px-3">
-                Open in Tab ↗
-              </a>
-            </div>
-          </div>
-        </details>
-
-        <!-- Track 4: Power BI Data Analyst -->
-        <details class="logsfolio-dropdown group" name="resume-track">
-          <summary class="logsfolio-dropdown-summary p-3.5 sm:p-4">
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono font-bold text-primary px-2 py-0.5 rounded bg-primary/10">TRACK 04</span>
-              <div>
-                <span class="text-sm font-bold text-foreground">Power BI Data Analyst</span>
-                <span class="hidden sm:inline text-xs text-muted-foreground font-mono ml-2">• DAX, Star Schema & Dashboards</span>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-500/10 hidden sm:inline">Executive BI</span>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </div>
-          </summary>
-          <div class="logsfolio-dropdown-content pt-3 space-y-3">
-            <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              Kimball Star Schema architecture, complex DAX measures, time-intelligence, multi-level drill-down hierarchy, Power Query transformations, and executive scorecards.
-            </p>
-            <div class="flex flex-wrap items-center gap-2 pt-1 border-t border-border/40">
-              <button type="button" class="view-resume-btn btn-primary text-xs font-mono py-1 px-3" data-resume="powerbi_developer">
-                Read Online (ATS) 👁
-              </button>
-              <a href="assets/Rishi_Thakur_PowerBI_Data_Analyst_Resume.pdf" download="Rishi_Thakur_PowerBI_Data_Analyst_Resume.pdf" class="btn-secondary text-xs font-mono py-1 px-3">
-                Download PDF ↓
-              </a>
-              <a href="assets/Rishi_Thakur_PowerBI_Data_Analyst_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-outline text-xs font-mono py-1 px-3">
-                Open in Tab ↗
-              </a>
-            </div>
-          </div>
-        </details>
-
-        <!-- Track 5: Data Scientist -->
-        <details class="logsfolio-dropdown group" name="resume-track">
-          <summary class="logsfolio-dropdown-summary p-3.5 sm:p-4">
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono font-bold text-primary px-2 py-0.5 rounded bg-primary/10">TRACK 05</span>
-              <div>
-                <span class="text-sm font-bold text-foreground">Data Scientist</span>
-                <span class="hidden sm:inline text-xs text-muted-foreground font-mono ml-2">• Statistical Inference & ML</span>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[10px] font-mono text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded-full bg-amber-500/10 hidden sm:inline">Analytics & ML</span>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </div>
-          </summary>
-          <div class="logsfolio-dropdown-content pt-3 space-y-3">
-            <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              PyTorch, Scikit-learn, BERT, XGBoost, advanced hypothesis testing, SMOTE + Tomek Links extreme class imbalance resolution, and predictive modeling for cellular telemetry.
-            </p>
-            <div class="flex flex-wrap items-center gap-2 pt-1 border-t border-border/40">
-              <button type="button" class="view-resume-btn btn-primary text-xs font-mono py-1 px-3" data-resume="data_scientist">
-                Read Online (ATS) 👁
-              </button>
-              <a href="assets/Rishi_Thakur_Data_Science_Resume.pdf" download="Rishi_Thakur_Data_Science_Resume.pdf" class="btn-secondary text-xs font-mono py-1 px-3">
-                Download PDF ↓
-              </a>
-              <a href="assets/Rishi_Thakur_Data_Science_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-outline text-xs font-mono py-1 px-3">
-                Open in Tab ↗
-              </a>
-            </div>
-          </div>
-        </details>
-
-        <!-- Track 6: Machine Learning Engineer -->
-        <details class="logsfolio-dropdown group" name="resume-track">
-          <summary class="logsfolio-dropdown-summary p-3.5 sm:p-4">
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono font-bold text-primary px-2 py-0.5 rounded bg-primary/10">TRACK 06</span>
-              <div>
-                <span class="text-sm font-bold text-foreground">Machine Learning Engineer</span>
-                <span class="hidden sm:inline text-xs text-muted-foreground font-mono ml-2">• Deep Generative Models & PyTorch</span>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[10px] font-mono text-primary px-2 py-0.5 rounded-full bg-primary/10 hidden sm:inline">Deep Learning</span>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </div>
-          </summary>
-          <div class="logsfolio-dropdown-content pt-3 space-y-3">
-            <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              PyTorch deep learning pipelines, Denoising Diffusion Probabilistic Models (DDPM/DDIM), GRU sequence modeling, transformer attention architectures, and policy classification models.
-            </p>
-            <div class="flex flex-wrap items-center gap-2 pt-1 border-t border-border/40">
-              <button type="button" class="view-resume-btn btn-primary text-xs font-mono py-1 px-3" data-resume="ml_engineer">
-                Read Online (ATS) 👁
-              </button>
-              <a href="assets/Rishi_Thakur_ML_Engineer_Resume.pdf" download="Rishi_Thakur_ML_Engineer_Resume.pdf" class="btn-secondary text-xs font-mono py-1 px-3">
-                Download PDF ↓
-              </a>
-              <a href="assets/Rishi_Thakur_ML_Engineer_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-outline text-xs font-mono py-1 px-3">
-                Open in Tab ↗
-              </a>
-            </div>
-          </div>
-        </details>
-
-        <!-- Track 7: MIS Analyst -->
-        <details class="logsfolio-dropdown group" name="resume-track">
-          <summary class="logsfolio-dropdown-summary p-3.5 sm:p-4">
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono font-bold text-primary px-2 py-0.5 rounded bg-primary/10">TRACK 07</span>
-              <div>
-                <span class="text-sm font-bold text-foreground">MIS Analyst</span>
-                <span class="hidden sm:inline text-xs text-muted-foreground font-mono ml-2">• Operational Reporting & Automation</span>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[10px] font-mono text-muted-foreground px-2 py-0.5 rounded-full bg-secondary hidden sm:inline">Operations</span>
-              <svg class="logsfolio-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </div>
-          </summary>
-          <div class="logsfolio-dropdown-content pt-3 space-y-3">
-            <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              Automated periodic MIS reporting workflows, cross-system operational auditing, discrepancy tracking, and leadership exception packages across statewide public health operations.
-            </p>
-            <div class="flex flex-wrap items-center gap-2 pt-1 border-t border-border/40">
-              <button type="button" class="view-resume-btn btn-primary text-xs font-mono py-1 px-3" data-resume="mis_analyst">
-                Read Online (ATS) 👁
-              </button>
-              <a href="assets/Rishi_Thakur_MIS_Analyst_Resume.pdf" download="Rishi_Thakur_MIS_Analyst_Resume.pdf" class="btn-secondary text-xs font-mono py-1 px-3">
-                Download PDF ↓
-              </a>
-              <a href="assets/Rishi_Thakur_MIS_Analyst_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-outline text-xs font-mono py-1 px-3">
-                Open in Tab ↗
-              </a>
-            </div>
-          </div>
-        </details>
-
-      </div>
-
-      <!-- Master Resume Download Bar (Compact) -->
-      <div class="mt-4 p-4 rounded-xl border border-border bg-secondary/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
-        <div class="space-y-0.5">
-          <div class="text-xs font-mono font-bold text-foreground">Looking for the comprehensive profile?</div>
-          <p class="text-xs text-muted-foreground">Download the Master Resume consolidating all enterprise experience, academic credentials, and project highlights.</p>
+          <a href="assets/Rishi_Thakur_Resume.pdf" download="Rishi_Thakur_Resume.pdf" class="btn-primary text-xs font-mono py-1.5 px-3 shrink-0">
+            Master Resume PDF ↓
+          </a>
         </div>
-        <a href="assets/Rishi_Thakur_Resume.pdf" download="Rishi_Thakur_Resume.pdf" class="btn-primary text-xs font-mono shrink-0 py-1.5 px-4">
-          Download Master PDF ↓
-        </a>
+
+        <!-- Dynamic Active Track Card -->
+        <div id="selectedTrackCard" class="p-3 rounded-lg bg-secondary/40 border border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-0.5">
+            <div id="trackTitle" class="text-xs sm:text-sm font-bold text-foreground">Data Analyst Resume</div>
+            <p id="trackDesc" class="text-xs text-muted-foreground">End-to-end data pipelines, Kimball Star Schema modeling, automated SQL ETL identity resolution, and executive Power BI suites.</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button type="button" id="trackViewAtsBtn" class="view-resume-btn btn-primary text-xs font-mono py-1 px-3" data-resume="data_analyst">
+              Read ATS 👁
+            </button>
+            <a id="trackPdfBtn" href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" download="Rishi_Thakur_Data_Analyst_Resume.pdf" class="btn-secondary text-xs font-mono py-1 px-3">
+              PDF ↓
+            </a>
+            <a id="trackTabBtn" href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-outline text-xs font-mono py-1 px-2.5">
+              Tab ↗
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         CONTACT SECTION (Side-by-Side Compact Grid)
+         CONTACT SECTION (Ultra-Compact Coordinates)
          ====================================================================== -->
-    <section id="contact" class="container max-w-5xl mx-auto py-10 md:py-14 px-4 md:px-6 text-left">
-      <div class="space-y-1.5 mb-6">
+    <section id="contact" class="container max-w-4xl mx-auto py-5 px-4 md:px-6 text-left">
+      <div class="mb-2">
         <span class="section-index">06 / CONTACT</span>
-        <h2 class="font-bold text-2xl md:text-4xl tracking-tight text-foreground">
-          Let's Build Impactful Data Systems
-        </h2>
-        <p class="text-xs sm:text-sm text-muted-foreground max-w-xl leading-relaxed">
-          Open to full-time roles across Data Analytics, Business Intelligence, and Analytics Engineering in Bengaluru, Hybrid, or Remote setups.
-        </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-
-        <!-- Direct Contact Cards (Left 5 Cols) -->
-        <div class="lg:col-span-5 space-y-2.5">
-          <a href="mailto:rishi_th219@proton.me" class="logsfolio-card p-3.5 flex items-center gap-3.5 block hover:border-primary transition-all">
-            <div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            </div>
-            <div>
-              <div class="text-[10px] font-mono text-muted-foreground uppercase">Email Directly</div>
-              <div class="text-xs sm:text-sm font-semibold text-foreground font-mono">rishi_th219@proton.me</div>
-            </div>
-          </a>
-
-          <a href="tel:+918109830219" class="logsfolio-card p-3.5 flex items-center gap-3.5 block hover:border-primary transition-all">
-            <div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-            </div>
-            <div>
-              <div class="text-[10px] font-mono text-muted-foreground uppercase">Phone Call / WhatsApp</div>
-              <div class="text-xs sm:text-sm font-semibold text-foreground font-mono">+91 8109830219</div>
-            </div>
-          </a>
-
-          <a href="https://linkedin.com/in/rishi-thakur-b665a4298" target="_blank" rel="noopener noreferrer" class="logsfolio-card p-3.5 flex items-center gap-3.5 block hover:border-primary transition-all">
-            <div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.863z"/></svg>
-            </div>
-            <div>
-              <div class="text-[10px] font-mono text-muted-foreground uppercase">LinkedIn Network</div>
-              <div class="text-xs sm:text-sm font-semibold text-foreground font-mono">rishi-thakur-b665a4298 ↗</div>
-            </div>
-          </a>
-
-          <div class="logsfolio-card p-3.5 flex items-center gap-3.5">
-            <div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <div>
-              <div class="text-[10px] font-mono text-muted-foreground uppercase">Response Turnaround</div>
-              <div class="text-xs sm:text-sm font-semibold text-foreground font-mono">< 4 Hours • Immediate Joiner</div>
-            </div>
-          </div>
+      <div class="logsfolio-card p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="space-y-1 text-center sm:text-left">
+          <h3 class="text-sm font-bold text-foreground">Available for Immediate Hire</h3>
+          <p class="text-xs text-muted-foreground">Open to Data Analyst & BI Developer roles in Bengaluru, Hybrid, or Remote setups.</p>
         </div>
-
-        <!-- Quick Inquiry Form (Right 7 Cols) -->
-        <div class="lg:col-span-7 logsfolio-card p-5 sm:p-6">
-          <form id="contactForm" class="space-y-3.5 text-left">
-            <div>
-              <label for="senderName" class="block text-xs font-mono font-medium text-foreground mb-1">Your Name</label>
-              <input type="text" id="senderName" required placeholder="Jane Doe" class="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border text-foreground text-xs placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-all">
-            </div>
-
-            <div>
-              <label for="senderEmail" class="block text-xs font-mono font-medium text-foreground mb-1">Your Email</label>
-              <input type="email" id="senderEmail" required placeholder="recruiter@enterprise.com" class="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border text-foreground text-xs placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-all">
-            </div>
-
-            <div>
-              <label for="senderMessage" class="block text-xs font-mono font-medium text-foreground mb-1">Inquiry / Opportunity Details</label>
-              <textarea id="senderMessage" rows="3" required placeholder="Hi Rishi, we have an open Data Analyst / SQL Developer role on our team..." class="w-full px-3 py-2 rounded-lg bg-secondary/50 border border-border text-foreground text-xs placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-all"></textarea>
-            </div>
-
-            <div class="flex items-center justify-between pt-1">
-              <button type="submit" class="btn-primary text-xs font-mono py-2 px-5">
-                <span>Send Direct Inquiry →</span>
-              </button>
-              <span id="contactFormStatus" class="text-xs font-mono text-muted-foreground"></span>
-            </div>
-          </form>
+        <div class="flex flex-wrap items-center justify-center sm:justify-end gap-2 font-mono text-xs">
+          <a href="mailto:rishi_th219@proton.me" class="btn-primary text-xs py-1.5 px-3">
+            rishi_th219@proton.me
+          </a>
+          <a href="tel:+918109830219" class="btn-secondary text-xs py-1.5 px-3">
+            +91 8109830219
+          </a>
+          <a href="https://linkedin.com/in/rishi-thakur-b665a4298" target="_blank" rel="noopener noreferrer" class="btn-outline text-xs py-1.5 px-3">
+            LinkedIn ↗
+          </a>
+          <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="btn-outline text-xs py-1.5 px-3">
+            GitHub ↗
+          </a>
         </div>
-
       </div>
     </section>
 
