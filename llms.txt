@@ -15,28 +15,28 @@
 - Bachelor of Technology (B.Tech) in Computer Science — Amity University Chhattisgarh (CGPA: 7.71, 2019–2023)
 - GATE CS 2024: Qualified Graduate Aptitude Test in Engineering (Computer Science & Information Technology)
 - IELTS Academic Band Score: 7.5
-- Enterprise Public Scale: Architected data models and dashboards spanning 33 districts, 1,000+ healthcare facilities, and bonded medical officer payroll databases.
+- Enterprise Public Scale: Architected data models and dashboards spanning statewide healthcare facilities and bonded medical officer payroll databases.
 
 ## Core Technical Competencies
 - Databases & Querying: Advanced SQL, MariaDB, OracleDB, MySQL, T-SQL, PostgreSQL. Complex multi-table joins, CTEs, Window Functions (ROW_NUMBER, DENSE_RANK, LEAD, LAG), Execution Plan tuning, Indexing.
 - Business Intelligence & Data Modeling: Microsoft Power BI, DAX (Time Intelligence, Dynamic Ratios), Kimball Star Schema (Fact/Dimension modeling), Oracle Analytics Cloud (OAC), Executive KPI dashboards.
 - Advanced Excel & Operations: XLOOKUP, INDEX/MATCH, Dynamic Arrays, Nested Logic, Power Query / M ETL, Power Pivot, Data Modeling, What-If Scenario Modeling, Sensitivity Tables.
 - Data Engineering & Scripting: Python (Pandas, NumPy, Scikit-learn, PyTorch), Automated ETL pipelines, Identity Resolution algorithms, OpenXML generation, Bash scripting, Linux.
-- Business Analysis & Strategy: Problem decomposition, 3-tier defaulter segmentation, Root cause analysis, Schema reconciliation with national agencies (NIC), UAT protocols.
+- Business Analysis & Strategy: Problem decomposition, multi-tier defaulter segmentation, Root cause analysis, Schema reconciliation with national agencies (NIC), UAT protocols.
 
 ## Flagship Enterprise & Engineering Initiatives
 1. Statewide Healthcare Attendance & Payroll Intelligence (CHiPS & Dept. of Health, Govt. of Chhattisgarh):
-   - Engineered automated SQL ETL pipelines joining biometric punch logs across 33 districts with State Treasury payroll codes, resolving employee identity mismatches across MariaDB and OracleDB.
-   - Built a 6-page production Power BI dashboard featuring a 4-tier drill-down hierarchy (District → Facility → Designation → Employee) and custom DAX measures.
-   - Designed a 3-tier defaulter risk model to uncover bonded doctor non-compliance and prevent public fund leakage.
+   - Engineered automated SQL ETL pipelines joining biometric punch logs across statewide public healthcare facilities with State Treasury payroll codes, resolving employee identity mismatches across MariaDB and OracleDB.
+   - Built an executive production Power BI dashboard suite featuring a multi-level drill-down hierarchy (District → Facility → Designation → Employee) and custom DAX measures.
+   - Designed a multi-tier defaulter risk model to uncover bonded doctor non-compliance and prevent public fund leakage.
 
 2. Essential Drug Multi-Criteria ABC/VED/SDE Inventory Matrix (CHiPS):
    - Classified statewide pharmaceutical catalogs using composite ABC, VED, and SDE frameworks in OracleDB and Advanced Excel.
-   - Deployed interactive procurement scorecards in Oracle Analytics Cloud (OAC) across 5 sub-departments to eliminate hospital stockouts.
+   - Deployed interactive procurement scorecards in Oracle Analytics Cloud (OAC) across clinical directorates to eliminate hospital stockouts.
 
 3. Proactive 5G mmWave Handover Prediction via Diffusion Models (M.Tech Thesis):
-   - Engineered a GRU memory network with a Denoising Diffusion Probabilistic Model (DDPM/DDIM) to generate 50 look-forward radio telemetry degradation paths.
-   - Resolved severe 98:2 class imbalance via SMOTE + Tomek Links and deployed a Random Forest policy engine achieving a 97.64% F1-score.
+   - Engineered a GRU memory network with a Denoising Diffusion Probabilistic Model (DDPM/DDIM) to generate forward-looking radio telemetry degradation paths.
+   - Resolved severe class imbalance via SMOTE + Tomek Links and deployed a Random Forest policy engine achieving high-precision F1-score.
 
 4. Career-Ops Autonomous Job Acquisition Bot (Open Source):
    - Python automation pipeline featuring multi-channel ATS API discovery (Greenhouse, Lever, Ashby), concurrent link liveness checks, zero-dependency OpenXML spreadsheet generation, and headless Playwright auto-submission with role-matched resume routing.

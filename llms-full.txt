@@ -40,25 +40,25 @@ Timeline: June 2025 – March 2026
 Location: Raipur, Chhattisgarh, India
 
 Core Project 1: Statewide Biometric Attendance & Payroll Reconciliation
-- Context: Statewide healthcare institutions (over 1,000 facilities across 33 districts) recorded biometric punch records via Aadhaar-Enabled Biometric Attendance System (AEBAS), while salary disbursal was governed by the State Treasury payroll systems.
+- Context: Statewide healthcare institutions and public health facilities recorded biometric punch records via Aadhaar-Enabled Biometric Attendance System (AEBAS), while salary disbursal was governed by the State Treasury payroll systems.
 - Problem: Identity records did not map automatically due to non-standard naming, regional transliteration, and mismatched employee identifiers. Department leadership could not verify actual physical presence or stop salary leakage for non-compliant bonded doctors.
 - Solution: Engineered multi-stage SQL/ETL pipelines using Common Table Expressions (CTEs), multi-table joins, regex string cleansing, and deterministic identity resolution. Consolidated disparate tables from MariaDB and OracleDB.
-- Impact: 100% data reconciliation across 33 districts. Identified salary leakage cases and established continuous compliance monitoring for the Health Department Secretary.
+- Impact: Comprehensive statewide data reconciliation across all administrative districts. Identified salary leakage cases and established continuous compliance monitoring for the Health Department Secretary.
 
-Core Project 2: 3-Tier Defaulter Risk Classification Model
+Core Project 2: Multi-Tier Defaulter Risk Classification Model
 - Designed rule-based risk classification segmenting bonded medical personnel:
   * Tier 1: Non-Reporting (Allocated facility but never showed up).
   * Tier 2: Formal Registration Only (Registered in records but missing regular biometrics).
-  * Tier 3: Severe Attendance Deficit (Active in payroll but attendance < 50% threshold).
+  * Tier 3: Severe Attendance Deficit (Active in payroll but attendance below operational threshold).
 - Generated weekly exception audit workbooks in Advanced Excel with Power Query automation, delivered directly to the Department Secretary.
 
-Core Project 3: 6-Page Production Power BI Suite
+Core Project 3: Production Power BI Executive Suite
 - Designed Kimball Star Schema with central fact table and dimensional tables for districts, facilities, cadres, and dates.
-- Authored custom DAX measures for attendance compliance %, rolling 30-day average work hours, peak late-login trends, and variance metrics.
-- Structured 4-tier drill-down hierarchy: District → Facility → Designation → Individual Employee.
+- Authored custom DAX measures for attendance compliance %, rolling operational average work hours, peak late-login trends, and variance metrics.
+- Structured multi-level drill-down hierarchy: District → Facility → Designation → Individual Employee.
 
 Core Project 4: Pharmaceutical Supply Chain Multi-Criteria ABC/VED/SDE Matrix
-- Categorized statewide essential drug catalogs in OracleDB and Advanced Excel across 5 sub-departments.
+- Categorized statewide essential drug catalogs in OracleDB and Advanced Excel across clinical directorates.
 - Implemented ABC (monetary consumption value), VED (Vital, Essential, Desirable), and SDE (Scarce, Difficult, Easy) classification.
 - Deployed interactive procurement scorecards in Oracle Analytics Cloud (OAC) to eliminate localized drug stockouts and optimize vendor batch lead times.
 
@@ -67,17 +67,17 @@ Core Project 4: Pharmaceutical Supply Chain Multi-Criteria ABC/VED/SDE Matrix
 ================================================================================
 Project 1: Proactive 5G mmWave Handover Prediction via Diffusion Models (M.Tech Thesis)
 - Objective: Replace reactive 5G handover protocols (Time-to-Trigger bottleneck) that cause radio link failures (RLF) in mmWave frequencies.
-- Method: Built a spatio-temporal Gated Recurrent Unit (GRU) encoder combined with a Denoising Diffusion Probabilistic Model (DDPM/DDIM) to generate 50 look-forward signal degradation trajectories (RSRP, RSRQ, CINR).
-- Handled 98:2 class imbalance using SMOTE + Tomek Links and custom dual-masking loss.
-- Evaluated trajectories using an explainable Random Forest policy classifier, achieving 97.64% F1-score.
+- Method: Built a spatio-temporal Gated Recurrent Unit (GRU) encoder combined with a Denoising Diffusion Probabilistic Model (DDPM/DDIM) to generate forward-looking signal degradation trajectories (RSRP, RSRQ, CINR).
+- Handled extreme class imbalance using SMOTE + Tomek Links and custom dual-masking loss.
+- Evaluated trajectories using an explainable Random Forest policy classifier, achieving high-precision F1-score and zero radio link failure rate in simulation.
 
 Project 2: Dual-Engine AI vs. Human Text Classification Pipeline
-- Benchmarked dense 768-dimensional BERT embeddings + XGBoost against a multi-branch deep architecture (Bi-LSTM + Multi-Head Attention Transformers + 1D-CNN).
-- Reached 99% Precision and 98% Recall on synthetic vs. authentic text detection.
+- Benchmarked dense transformer BERT embeddings + XGBoost against a multi-branch deep architecture (Bi-LSTM + Multi-Head Attention Transformers + 1D-CNN).
+- Reached high-precision and high-recall benchmarks on synthetic vs. authentic text detection.
 
 Project 3: Career-Ops Autonomous Job Acquisition & ATS Auto-Apply Pipeline
-- Built an open-source Python recruitment pipeline connecting to 55+ direct ATS endpoints (Greenhouse, Lever, Ashby, SmartRecruiters).
-- Concurrent link liveness auditor with 20+ expiration regex patterns.
+- Built an open-source Python recruitment pipeline connecting to enterprise ATS endpoints (Greenhouse, Lever, Ashby, SmartRecruiters).
+- Concurrent link liveness auditor with multi-pattern expiration heuristics.
 - Pure Python standard library OpenXML spreadsheet engine (zero pip dependencies).
 - Headless Playwright auto-apply runner with stealth anti-bot evasion and visual screenshot audit trails.
 

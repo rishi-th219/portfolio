@@ -5,26 +5,26 @@ const caseStudiesData = {
   healthbi: {
     badge: "SQL ENGINEERING & BUSINESS INTELLIGENCE",
     title: "Statewide Healthcare Attendance & Performance Analytics",
-    subtitle: "Architected an executive 6-page Power BI dashboard suite across 33 districts and 1,000+ facilities with automated SQL/ETL biometric-to-payroll identity resolution and Advanced Excel operational auditing.",
+    subtitle: "Architected an executive Power BI dashboard suite across statewide public healthcare facilities with automated SQL/ETL biometric-to-payroll identity resolution and Advanced Excel operational auditing.",
     clientType: "CHiPS • Dept. of Health & Family Welfare, Govt. of Chhattisgarh",
     timeline: "06/2025 – 03/2026",
     pipeline: "AEBAS Biometrics → Automated SQL Identity Resolution → State Treasury Payroll → Kimball Star Schema → Advanced Excel Auditing → Power BI DAX → Executive Policy Decision",
     metrics: [
-      { label: "Districts Monitored", value: "33 Districts" },
-      { label: "Drill-Down Depth", value: "4-Tier Hierarchy" },
-      { label: "Risk Tiers", value: "3-Tier Compliance Model" },
-      { label: "Dashboard Scope", value: "6 Executive Pages" }
+      { label: "Districts Monitored", value: "Statewide Public Health" },
+      { label: "Drill-Down Depth", value: "Hierarchical Model" },
+      { label: "Risk Tiers", value: "Risk-Tiered Compliance Model" },
+      { label: "Dashboard Scope", value: "Executive Suite" }
     ],
-    problem: "Statewide healthcare facilities (1,000+ health centers, hospitals, and administrative offices across 33 districts) faced severe attendance tracking gaps and doctor service bond non-compliance. Biometric attendance (AEBAS) records were disconnected from State Treasury payroll files and NIC e-Hospital OPD systems, making it impossible for the Department Secretary to verify actual field presence, assess clinical coverage, or detect financial leakage.",
-    solution: "1. Automated SQL Identity Resolution: Engineered complex SQL pipelines (multi-way joins, CTEs, string normalization, and window functions) bridging AEBAS biometric IDs with State Treasury payroll records, resolving discrepancies for bonded doctors.\n2. Cross-Department Schema Reconciliation: Integrated multi-source data across MariaDB, State Treasury, and National NextGen e-Hospital OPD systems, collaborating with NIC engineers to reconcile heterogeneous schemas into a unified reporting layer.\n3. Advanced Excel Operational Auditing: Developed multi-tab analytical Excel workbooks powered by Power Query (M), dynamic arrays (XLOOKUP, INDEX/MATCH), and Power Pivot data models to cross-validate district-level biometric logs with Treasury payroll files, enabling rapid ad-hoc scenario modeling and executive exception tracking.\n4. Star Schema Modeling & DAX: Designed a performant Kimball Star Schema in MariaDB connecting to Power BI, with custom DAX measures for attendance rates, rolling 30-day work hours, and missed login rates across a 4-tier hierarchy (District → Facility → Designation → Employee).\n5. 3-Tier Defaulter Risk Model: Uncovered systemic compliance gaps by categorizing personnel into Non-Joiners, Formal-Only Registrants, and Attendance Defaulters, providing immediate visibility into salary disbursement vs. physical attendance.",
+    problem: "Statewide healthcare facilities (community health centers, district hospitals, and administrative directorates) faced severe attendance tracking gaps and doctor service bond non-compliance. Biometric attendance (AEBAS) records were disconnected from State Treasury payroll files and NIC e-Hospital OPD systems, making it impossible for the Department Secretary to verify actual field presence, assess clinical coverage, or detect financial leakage.",
+    solution: "1. Automated SQL Identity Resolution: Engineered complex SQL pipelines (multi-way joins, CTEs, string normalization, and window functions) bridging AEBAS biometric IDs with State Treasury payroll records, resolving discrepancies for bonded doctors.\n2. Cross-Department Schema Reconciliation: Integrated multi-source data across MariaDB, State Treasury, and National NextGen e-Hospital OPD systems, collaborating with NIC engineers to reconcile heterogeneous schemas into a unified reporting layer.\n3. Advanced Excel Operational Auditing: Developed multi-tab analytical Excel workbooks powered by Power Query (M), dynamic arrays (XLOOKUP, INDEX/MATCH), and Power Pivot data models to cross-validate district-level biometric logs with Treasury payroll files, enabling rapid ad-hoc scenario modeling and executive exception tracking.\n4. Star Schema Modeling & DAX: Designed a performant Kimball Star Schema in MariaDB connecting to Power BI, with custom DAX measures for attendance rates, rolling operational work hours, and missed login rates across a hierarchical drill-down (District → Facility → Designation → Employee).\n5. Multi-Tier Compliance Risk Model: Uncovered systemic compliance gaps by categorizing personnel into Non-Joiners, Formal-Only Registrants, and Attendance Defaulters, providing immediate visibility into salary disbursement vs. physical attendance.",
     stack: ["Advanced SQL", "MariaDB", "OracleDB", "Advanced Excel", "Power Query (M)", "Power Pivot", "Power BI", "DAX", "Kimball Star Schema", "Data Validation"],
     githubUrl: "",
     deliverables: [
-      "Executive 6-page interactive Power BI dashboard suite with 4-tier drill-down hierarchy",
+      "Executive interactive Power BI dashboard suite with hierarchical drill-down",
       "Automated SQL/ETL identity resolution pipeline reconciling biometric IDs with payroll records",
       "Multi-tab Advanced Excel auditing workbooks (Power Query, Dynamic Arrays, Power Pivot) cross-validating payroll vs attendance",
       "Performant Kimball Star Schema data model with custom DAX time-intelligence measures",
-      "3-tier defaulter risk model and weekly executive exception summaries for the Department Secretary",
+      "multi-tier compliance risk model and weekly executive exception summaries for the Department Secretary",
       "Cross-department schema reconciliation specs with NIC engineers for NextGen e-Hospital OPD data",
       "Comprehensive UAT validation protocols and operational data integrity controls"
     ]
@@ -33,17 +33,17 @@ const caseStudiesData = {
   supply_chain: {
     badge: "SQL INVENTORY & SCENARIO ANALYTICS",
     title: "Essential Drug Inventory & Supply Chain Analytics",
-    subtitle: "Executed multi-dimensional ABC, VED, and SDE inventory matrix modeling in OracleDB, Advanced Excel, and Oracle Analytics Cloud to prevent critical hospital stockouts across 5 sub-departments.",
+    subtitle: "Executed multi-dimensional ABC, VED, and SDE inventory matrix modeling in OracleDB, Advanced Excel, and Oracle Analytics Cloud to prevent critical hospital stockouts across statewide clinical departments.",
     clientType: "CHiPS • Dept. of Health & Family Welfare, Govt. of Chhattisgarh",
     timeline: "06/2025 – 03/2026",
     pipeline: "Essential Drug Catalogs → Oracle SQL Aggregations → ABC / VED / SDE Matrix → Advanced Excel Scenario Models → Oracle Analytics Cloud (OAC) → Procurement Allocation",
     metrics: [
-      { label: "Departments", value: "5 Sub-Departments" },
+      { label: "Departments", value: "Clinical Sub-Directorates" },
       { label: "Framework", value: "ABC / VED / SDE Matrix" },
       { label: "Database Engine", value: "OracleDB" },
       { label: "BI Platform", value: "Oracle Analytics Cloud" }
     ],
-    problem: "Procurement teams across 5 healthcare sub-departments struggled to balance pharmaceutical expenditure with life-saving medication availability. Without structured inventory categorization, high-cost non-critical drugs consumed disproportionate budget while essential life-saving drugs experienced localized hospital stockouts.",
+    problem: "Procurement teams across clinical directorates struggled to balance pharmaceutical expenditure with life-saving medication availability. Without structured inventory categorization, high-cost non-critical drugs consumed disproportionate budget while essential life-saving drugs experienced localized hospital stockouts.",
     solution: "1. SQL Data Aggregation: Wrote advanced Oracle SQL queries aggregating multi-year batch consumption, lead times, safety stocks, and reorder triggers across regional medical warehouses.\n2. Multi-Dimensional Categorization: Implemented composite ABC (annual consumption value), VED (Vital, Essential, Desirable criticality), and SDE (Scarce, Difficult, Easy procurement availability) categorization frameworks on statewide drug catalogs.\n3. Advanced Excel Scenario Modeling: Constructed dynamic Excel financial and operational workbooks featuring sensitivity tables, Pivot Tables, and automated reorder threshold models to evaluate lead-time variability and procurement buffer stocks.\n4. Oracle Analytics Cloud (OAC) Dashboards: Built interactive executive scorecards visualizing stock levels, consumption velocity, and procurement lead times with automated color-coded risk alerts.\n5. Decision Support: Delivered actionable procurement recommendations enabling leadership to optimize buffer stock allocations and negotiate consolidated vendor orders.",
     stack: ["OracleDB", "Advanced SQL", "Advanced Excel (Scenario Modeling)", "Power Query", "Oracle Analytics Cloud (OAC)", "ABC/VED/SDE Analysis", "Data Modeling"],
     githubUrl: "",
@@ -59,18 +59,18 @@ const caseStudiesData = {
   telco5g: {
     badge: "PREDICTIVE ML & RESEARCH",
     title: "Proactive 5G mmWave Handover Prediction via Diffusion Models",
-    subtitle: "M.Tech Thesis at IIIT Naya Raipur: Built a GRU-conditioned Denoising Diffusion Probabilistic Model (DDPM/DDIM) achieving a 97.64% F1-score on connection failure prediction.",
+    subtitle: "M.Tech Thesis at IIIT Naya Raipur: Built a GRU-conditioned Denoising Diffusion Probabilistic Model (DDPM/DDIM) achieving high-precision predictive performance on connection failure prediction.",
     clientType: "IIIT Naya Raipur • M.Tech CSE Thesis",
     timeline: "08/2024 – Present (Ongoing Thesis)",
     pipeline: "Radio Telemetry → GRU Temporal Encoder → DDPM / DDIM Trajectory Generation → SMOTE+Tomek Balancing → Random Forest Policy → Proactive Handover",
     metrics: [
-      { label: "F1-Score", value: "97.64%" },
-      { label: "Class Imbalance", value: "98:2 Ratio" },
-      { label: "Trajectories", value: "50 Paths" },
+      { label: "F1-Score", value: "High-Precision" },
+      { label: "Class Imbalance", value: "Severe Telemetry Imbalance" },
+      { label: "Trajectories", value: "Multi-Path Forecasts" },
       { label: "Framework", value: "PyTorch + DDPM" }
     ],
     problem: "In 5G millimeter-wave (mmWave) networks, line-of-sight signal paths are vulnerable to sudden physical blockages (buildings, foliage, human mobility) causing rapid signal degradation within milliseconds. Standard network protocols rely on reactive countdown timers (Time-To-Trigger / TTT), resulting in frequent Radio Link Failures (RLF) and severe throughput drops.",
-    solution: "1. Spatiotemporal Feature Modeling: Processed high-dimensional radio telemetry sequences using a Gated Recurrent Unit (GRU) encoder to extract temporal fading patterns.\n2. Generative Trajectory Diffusion: Conditioned a Denoising Diffusion Probabilistic Model (DDPM with accelerated DDIM sampling) on historical signals to generate 50 plausible future signal degradation trajectories.\n3. Extreme Class Imbalance Remediation: Handled the severe 98:2 normal-to-failure telemetry ratio using an integrated SMOTE + Tomek Links sampling strategy.\n4. Predictive Policy Classifier: Designed an explainable Random Forest ensemble that evaluates forecasted diffusion trajectories to initiate proactive handovers prior to connection collapse, reaching 97.64% F1-score.",
+    solution: "1. Spatiotemporal Feature Modeling: Processed high-dimensional radio telemetry sequences using a Gated Recurrent Unit (GRU) encoder to extract temporal fading patterns.\n2. Generative Trajectory Diffusion: Conditioned a Denoising Diffusion Probabilistic Model (DDPM with accelerated DDIM sampling) on historical signals to generate multiple plausible future signal degradation trajectories.\n3. Extreme Class Imbalance Remediation: Handled the severe normal-to-failure telemetry ratio using an integrated SMOTE + Tomek Links sampling strategy.\n4. Predictive Policy Classifier: Designed an explainable Random Forest ensemble that evaluates forecasted diffusion trajectories to initiate proactive handovers prior to connection collapse, reaching high-precision predictive accuracy.",
     stack: ["Python", "PyTorch", "Diffusion Models (DDPM/DDIM)", "GRU", "Random Forest", "SMOTE + Tomek", "Scikit-Learn", "NumPy", "Pandas"],
     githubUrl: "https://github.com/rishi-th219/Proactive-Handover-Prediction-in-5G-using-Diffusion-Models",
     deliverables: [
@@ -84,18 +84,18 @@ const caseStudiesData = {
   textnlp: {
     badge: "NLP & APPLIED MACHINE LEARNING",
     title: "Dual-Engine AI vs. Human Text Classification Pipeline",
-    subtitle: "Benchmarked dense BERT + XGBoost embeddings against a hybrid Bi-LSTM/CNN/Transformer architecture on massive text corpora, achieving 99% Precision and 98% Recall.",
+    subtitle: "Benchmarked dense BERT + XGBoost embeddings against a hybrid Bi-LSTM/CNN/Transformer architecture on massive text corpora, achieving high precision and recall.",
     clientType: "Applied Machine Learning & NLP",
     timeline: "Applied NLP Project",
-    pipeline: "Raw Text Corpus → Tokenization & Cleansing → BERT [CLS] 768-D Embeddings ∥ Bi-LSTM + Transformer + CNN → XGBoost Classifier → High-Precision Detection",
+    pipeline: "Raw Text Corpus → Tokenization & Cleansing → BERT [CLS] Dense Embeddings ∥ Bi-LSTM + Transformer + CNN → XGBoost Classifier → High-Precision Detection",
     metrics: [
-      { label: "Precision", value: "99.0%" },
-      { label: "Recall", value: "98.0%" },
-      { label: "F1-Score", value: "98.5%" },
-      { label: "Embedding Dim", value: "768-D (BERT)" }
+      { label: "Precision", value: "High-Precision" },
+      { label: "Recall", value: "High-Recall" },
+      { label: "F1-Score", value: "High-F1" },
+      { label: "Embedding Dim", value: "Dense Contextual BERT" }
     ],
     problem: "The rapid adoption of generative Large Language Models has made detecting synthetic text crucial for academic integrity and content authenticity. Existing commercial detectors suffer from unacceptable False Positive rates—falsely penalizing human writers while failing to capture nuanced structural patterns.",
-    solution: "1. Pre-trained Contextual Baseline: Extracted 768-dimensional contextual sentence embeddings from pre-trained BERT [CLS] representations, paired with an optimized XGBoost gradient-boosted classifier for low-latency inference.\n2. Deep Learning Hybrid Engine: Designed a multi-stage neural architecture incorporating custom word embeddings, Bidirectional LSTM (sequential syntactic flow), Multi-Head Self-Attention Transformer blocks (global semantic coherence), and 1D-Convolutional layers (local n-gram anomaly detection).\n3. Regularization & Optimization: Applied spatial dropout (0.5), early stopping, and ReduceLROnPlateau learning rate decay to eliminate overfitting and ensure cross-domain generalization.",
+    solution: "1. Pre-trained Contextual Baseline: Extracted dense contextual sentence embeddings from pre-trained BERT [CLS] representations, paired with an optimized XGBoost gradient-boosted classifier for low-latency inference.\n2. Deep Learning Hybrid Engine: Designed a multi-stage neural architecture incorporating custom word embeddings, Bidirectional LSTM (sequential syntactic flow), Multi-Head Self-Attention Transformer blocks (global semantic coherence), and 1D-Convolutional layers (local n-gram anomaly detection).\n3. Regularization & Optimization: Applied spatial dropout (0.5), early stopping, and ReduceLROnPlateau learning rate decay to eliminate overfitting and ensure cross-domain generalization.",
     stack: ["Python", "TensorFlow / Keras", "BERT", "XGBoost", "Bi-LSTM", "Transformers", "1D-CNN", "Scikit-Learn"],
     githubUrl: "",
     deliverables: [
@@ -113,18 +113,18 @@ const caseStudiesData = {
     timeline: "2026",
     pipeline: "Direct ATS & Remote APIs ∥ Crawl4AI Web Scrapers → Multi-Tier Liveness & Expiry Cleaner → Dependency-Free OpenXML ETL → Role-Matched Resume Selector → Headless Playwright Auto-Apply → Screenshot Audit Trail",
     metrics: [
-      { label: "Active ATS Discovery", value: "55+ Sources" },
-      { label: "Discovery Channels", value: "5 Ingestion Engines" },
+      { label: "Active ATS Discovery", value: "Enterprise ATS Platforms" },
+      { label: "Discovery Channels", value: "Multi-Channel Ingestion Engines" },
       { label: "Spreadsheet Engine", value: "Pure Python Stdlib (Zero-Dep OpenXML)" },
-      { label: "Resume Routing", value: "4-Track Dynamic Matching" }
+      { label: "Resume Routing", value: "Role-Matched Dynamic Selection" }
     ],
     problem: "Navigating tech job searches manually is plagued by high friction: commercial job boards are flooded with stale or closed postings that waste hours, applicant tracking systems (Greenhouse, Lever, Ashby, SmartRecruiters) require redundant data re-entry across complex Single-Page Apps (SPAs) with custom non-standard dropdowns, and traditional job scrapers fail to dynamically match specialized resumes (SQL Developer, Power BI, Business Analyst, Data Analyst) to specific role requirements.",
-    solution: "1. Multi-Channel Ingestion Engine: Built a unified discovery suite combining direct, zero-token REST API scanners for Greenhouse, Lever, Ashby, SmartRecruiters, Jobicy, and Remotive, paired with Crawl4AI headless stealth crawlers for complex SPAs (Naukri, Instahyre) and startup scrapers for Hacker News and Y Combinator directories.\n2. Multi-Tier Link Liveness & Expiry Cleaner: Engineered an automated verification daemon that checks direct ATS board APIs first, then falls back to fast HTTP header checks and regex body inspection across 20+ expiration patterns (e.g., 'job is no longer available', 'applications closed', 'position filled'). Automatically archives dead postings to ensure 100% active pipeline fidelity.\n3. Dependency-Free OpenXML Spreadsheet Engine: Developed a pure Python standard library spreadsheet compiler using zipfile and raw OpenXML generation (opportunities_manager.py) that builds, styles, and indexes opportunities.xlsx and opportunities.csv with custom typography, column widths, and hyperlinks without third-party dependencies.\n4. Dynamic Role-Matched Resume Selector: Engineered a keyword pattern-matching router that analyzes incoming job titles and automatically attaches the corresponding ATS-optimized PDF resume (SQL Developer, Power BI Developer, Business Analyst, or Data Analyst) directly from the verified resume archive.\n5. Headless Playwright Auto-Apply Bot: Automated application submission via Playwright with stealth anti-bot evasion arguments, automatically populating core fields, resolving custom React-select comboboxes, answering screening questions, uploading resumes, and archiving visual proof screenshots in output/confirmations/.\n6. Intelligent Form Autofill & Tailoring Assistant: Created a 1-click headed browser assistant that scrapes live JD text directly from the active posting DOM, dynamically drafts tailored answers to open-ended screening questions grounded in candidate narrative facts, and leaves the browser open for human-in-the-loop review.\n7. Daemon Scheduling & Tracking: Automated the entire discovery-clean-apply cycle with Linux cron scheduling (install_cron.sh), logging every run to status-log.tsv and updating applications.md for end-to-end recruitment pipeline analytics.",
+    solution: "1. Multi-Channel Ingestion Engine: Built a unified discovery suite combining direct, zero-token REST API scanners for Greenhouse, Lever, Ashby, SmartRecruiters, Jobicy, and Remotive, paired with Crawl4AI headless stealth crawlers for complex SPAs (Naukri, Instahyre) and startup scrapers for Hacker News and Y Combinator directories.\n2. Multi-Tier Link Liveness & Expiry Cleaner: Engineered an automated verification daemon that checks direct ATS board APIs first, then falls back to fast HTTP header checks and regex body inspection across comprehensive expiration patterns (e.g., 'job is no longer available', 'applications closed', 'position filled'). Automatically archives dead postings to ensure 100% active pipeline fidelity.\n3. Dependency-Free OpenXML Spreadsheet Engine: Developed a pure Python standard library spreadsheet compiler using zipfile and raw OpenXML generation (opportunities_manager.py) that builds, styles, and indexes opportunities.xlsx and opportunities.csv with custom typography, column widths, and hyperlinks without third-party dependencies.\n4. Dynamic Role-Matched Resume Selector: Engineered a keyword pattern-matching router that analyzes incoming job titles and automatically attaches the corresponding ATS-optimized PDF resume (SQL Developer, Power BI Developer, Business Analyst, or Data Analyst) directly from the verified resume archive.\n5. Headless Playwright Auto-Apply Bot: Automated application submission via Playwright with stealth anti-bot evasion arguments, automatically populating core fields, resolving custom React-select comboboxes, answering screening questions, uploading resumes, and archiving visual proof screenshots in output/confirmations/.\n6. Intelligent Form Autofill & Tailoring Assistant: Created a 1-click headed browser assistant that scrapes live JD text directly from the active posting DOM, dynamically drafts tailored answers to open-ended screening questions grounded in candidate narrative facts, and leaves the browser open for human-in-the-loop review.\n7. Daemon Scheduling & Tracking: Automated the entire discovery-clean-apply cycle with Linux cron scheduling (install_cron.sh), logging every run to status-log.tsv and updating applications.md for end-to-end recruitment pipeline analytics.",
     stack: ["Python", "Playwright", "Crawl4AI", "OpenXML (Pure Python)", "REST APIs", "Regex Engine", "BeautifulSoup", "Bash / Cron", "Git"],
     githubUrl: "https://github.com/rishi-th219/career-ops-bot",
     deliverables: [
       "Master pipeline orchestrator (job_pipeline.py) supporting individual tools or 100% autonomous execution",
-      "Direct ATS API and remote tech ingestion modules scanning 55+ active employer endpoints",
+      "Direct ATS API and remote tech ingestion modules scanning direct enterprise employer endpoints",
       "Concurrent link liveness auditor (clean_expired_jobs.py) with automated dead-link archiving",
       "Pure-Python OpenXML spreadsheet engine (opportunities_manager.py) generating styled .xlsx workbooks",
       "Headless Playwright auto-apply runner (auto_apply_bot.py) with anti-bot evasion and visual screenshot audit trails",
@@ -150,11 +150,11 @@ const resumesData = {
     ],
     "exp_role": "Data Analyst & BI Developer Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
     "exp_bullets": [
-      "<strong>Statewide BI Dashboard Architecture: </strong>Architected an executive 6-page statewide Power BI attendance dashboard across 33 districts, structuring 4-tier top-down drill-downs (District \u2192 Facility \u2192 Designation \u2192 Employee) with custom DAX measures tracking avg. work hours, attendance %, and missed logins.",
+      "<strong>Statewide BI Dashboard Architecture: </strong>Architected an executive statewide Power BI attendance dashboard across statewide public health facilities, structuring hierarchical top-down drill-downs (District \u2192 Facility \u2192 Designation \u2192 Employee) with custom DAX measures tracking avg. work hours, attendance %, and missed logins.",
       "<strong>Advanced Excel Auditing & Operational Analysis: </strong>Developed multi-tab analytical Excel workbooks powered by Power Query, dynamic arrays (XLOOKUP, INDEX/MATCH), and Power Pivot data models to cross-validate district-level biometric logs with Treasury payroll files, enabling rapid ad-hoc scenario modeling and executive exception tracking.",
-      "<strong>Automated SQL/ETL Identity Resolution: </strong>Engineered an automated SQL/ETL pipeline mapping AEBAS biometric attendance IDs to State Treasury payroll records, closing a critical cross-departmental tracking gap and categorizing bonded doctors into 3 actionable compliance tiers.",
+      "<strong>Automated SQL/ETL Identity Resolution: </strong>Engineered an automated SQL/ETL pipeline mapping AEBAS biometric attendance IDs to State Treasury payroll records, closing a critical cross-departmental tracking gap and categorizing bonded doctors into actionable compliance tiers.",
       "<strong>Cross-Department Schema Reconciliation: </strong>Integrated multi-source data across MariaDB, State Treasury, and National NextGen e-Hospital OPD systems, collaborating with NIC engineers to reconcile heterogeneous modular schemas into a unified reporting layer.",
-      "<strong>Supply Chain & Inventory Analytics: </strong>Conducted ABC, VED, and SDE inventory categorization analysis on essential drug catalogs in OracleDB, deploying interactive dashboards to Oracle Analytics Cloud (OAC) to guide statewide procurement decisions across 5 sub-departments."
+      "<strong>Supply Chain & Inventory Analytics: </strong>Conducted ABC, VED, and SDE inventory categorization analysis on essential drug catalogs in OracleDB, deploying interactive dashboards to Oracle Analytics Cloud (OAC) to guide statewide procurement decisions across statewide clinical departments."
     ],
     "projects": [
       {
@@ -162,7 +162,7 @@ const resumesData = {
         "tools": "Python, PyTorch, GRU, DDPM, Scikit-learn",
         "tag": "M.Tech Thesis \u2014 Predictive Analytics",
         "bullets": [
-          "Developed a GRU-conditioned diffusion model (DDPM/DDIM) to forecast radio signal degradation from multivariate spatiotemporal telemetry; addressed 98:2 class imbalance via <strong>SMOTE + Tomek Links</strong> and attained a <strong>97.64% F1-score</strong> on failure classification."
+          "Developed a GRU-conditioned diffusion model (DDPM/DDIM) to forecast radio signal degradation from multivariate spatiotemporal telemetry; addressed severe class imbalance via <strong>SMOTE + Tomek Links</strong> and attained a <strong>high-precision F1-score</strong> on failure classification."
         ]
       },
       {
@@ -170,7 +170,7 @@ const resumesData = {
         "tools": "Python, BERT, XGBoost, Bi-LSTM, Transformers",
         "tag": "Applied Machine Learning & NLP",
         "bullets": [
-          "Designed and benchmarked dual NLP pipelines (BERT + XGBoost and hybrid Bi-LSTM/CNN/Transformer architecture) on large corpora, optimizing decision boundaries to achieve <strong>99% Precision</strong> and <strong>98% Recall</strong>."
+          "Designed and benchmarked dual NLP pipelines (BERT + XGBoost and hybrid Bi-LSTM/CNN/Transformer architecture) on large corpora, optimizing decision boundaries to achieve <strong>high-precision</strong> and <strong>high-recall</strong> benchmarks."
         ]
       }
     ],
@@ -188,7 +188,7 @@ const resumesData = {
     "badge": "STRATEGIC & OPS",
     "role": "Business Analyst",
     "title": "Business Analyst | SQL Developer & Analytics Engineering",
-    "summary": "Business Analyst and SQL Developer with expertise in business problem decomposition, advanced relational database querying, Advanced Excel scenario modeling, and executive leadership alignment. Proven track record partnering directly with the Department Secretary to deconstruct complex statewide operational bottlenecks into 3 structured, data-driven initiatives across 33 districts. Experienced in authoring advanced SQL workflows (CTEs, window functions, schema reconciliation), building dynamic financial/operational models in Excel, and deploying interactive Power BI dashboards that drive data-backed policy decisions.",
+    "summary": "Business Analyst and SQL Developer with expertise in business problem decomposition, advanced relational database querying, Advanced Excel scenario modeling, and executive leadership alignment. Proven track record partnering directly with the Department Secretary to deconstruct complex statewide operational bottlenecks into structured, data-driven initiatives across statewide public health facilities. Experienced in authoring advanced SQL workflows (CTEs, window functions, schema reconciliation), building dynamic financial/operational models in Excel, and deploying interactive Power BI dashboards that drive data-backed policy decisions.",
     "skills": [
       "<strong>Business & Strategy Analytics: </strong>Business Problem Decomposition, Risk & Defaulter Segmentation, Root Cause Analysis, Hypothesis Testing, Metric & KPI Definition, Operational Strategy, Impact Measurement, Executive Decision Support",
       "<strong>Advanced Excel & Financial Modeling: </strong>Advanced Excel (XLOOKUP, INDEX/MATCH, Dynamic Arrays, Complex Nested Formulas, Pivot Tables, Power Pivot, Power Query ETL, What-If Scenario Analysis, Sensitivity Matrices, Financial Modeling, VBA & Macros), Executive Dashboards",
@@ -197,11 +197,11 @@ const resumesData = {
     ],
     "exp_role": "Business Analyst & SQL Developer Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
     "exp_bullets": [
-      "<strong>Problem Decomposition & Leadership Alignment: </strong>Partnered directly with the Department Secretary to deconstruct complex statewide attendance and doctor service bond compliance issues across 33 districts into 3 progressive, data-driven initiatives with defined metrics.",
-      "<strong>Risk & Defaulter Segmentation: </strong>Uncovered systemic compliance gaps by conceptualizing a 3-tier defaulter risk model for bonded personnel (Non-Joiners, Formal-Only Registrants, and Attendance Defaulters), mapping State Treasury payroll data to track financial leakage.",
-      "<strong>Operational Financial Modeling & Excel Analytics: </strong>Built executive scenario modeling workbooks in Advanced Excel combining Power Query ETL and dynamic sensitivity matrices to evaluate payroll discrepancies and bonded doctor compliance rates across 33 districts.",
+      "<strong>Problem Decomposition & Leadership Alignment: </strong>Partnered directly with the Department Secretary to deconstruct complex statewide attendance and doctor service bond compliance issues across statewide public health facilities into progressive, data-driven initiatives with defined metrics.",
+      "<strong>Risk & Defaulter Segmentation: </strong>Uncovered systemic compliance gaps by conceptualizing a multi-tier compliance risk model for bonded personnel (Non-Joiners, Formal-Only Registrants, and Attendance Defaulters), mapping State Treasury payroll data to track financial leakage.",
+      "<strong>Operational Financial Modeling & Excel Analytics: </strong>Built executive scenario modeling workbooks in Advanced Excel combining Power Query ETL and dynamic sensitivity matrices to evaluate payroll discrepancies and bonded doctor compliance rates across statewide public health facilities.",
       "<strong>Advanced SQL Querying & Identity Resolution: </strong>Authored complex SQL pipelines (multi-way joins, CTEs, window functions) bridging AEBAS biometric attendance IDs with State Treasury payroll records, resolving name and designation discrepancies for bonded doctors.",
-      "<strong>Executive Dashboards & Decision Support: </strong>Architected an executive 6-page Power BI dashboard with top-down drill-downs (District \u2192 Facility \u2192 Designation \u2192 Individual) tracking core KPIs, enabling leadership to enforce data-backed policy actions across 5 sub-departments."
+      "<strong>Executive Dashboards & Decision Support: </strong>Architected an executive Power BI dashboard with top-down drill-downs (District \u2192 Facility \u2192 Designation \u2192 Individual) tracking core KPIs, enabling leadership to enforce data-backed policy actions across statewide clinical departments."
     ],
     "projects": [
       {
@@ -209,7 +209,7 @@ const resumesData = {
         "tools": "Python, PyTorch, Scikit-learn",
         "tag": "Predictive Risk Analytics",
         "bullets": [
-          "Engineered an automated proactive decision framework replacing reactive delay-based protocols to predict high-impact system failures before occurrence using multivariate temporal telemetry, attaining a <strong>97.64% F1-score</strong> and handling 98:2 class imbalance via <strong>SMOTE + Tomek Links</strong>."
+          "Engineered an automated proactive decision framework replacing reactive delay-based protocols to predict high-impact system failures before occurrence using multivariate temporal telemetry, attaining a <strong>high-precision F1-score</strong> and handling severe class imbalance via <strong>SMOTE + Tomek Links</strong>."
         ]
       },
       {
@@ -217,7 +217,7 @@ const resumesData = {
         "tools": "Python, BERT, XGBoost",
         "tag": "Applied Analytics",
         "bullets": [
-          "Built and benchmarked dual classification pipelines (BERT + XGBoost and Deep Hybrid Neural Networks) to isolate synthetic and anomalous patterns across large corpora, optimizing decision thresholds to achieve <strong>99% Precision</strong> and <strong>98% Recall</strong>."
+          "Built and benchmarked dual classification pipelines (BERT + XGBoost and Deep Hybrid Neural Networks) to isolate synthetic and anomalous patterns across large corpora, optimizing decision thresholds to achieve <strong>high precision and recall</strong>."
         ]
       }
     ],
@@ -234,7 +234,7 @@ const resumesData = {
     "badge": "DATABASE ENGINEERING",
     "role": "SQL Developer",
     "title": "SQL Developer | Database Engineering & Analytics",
-    "summary": "High-performing SQL Developer and Database Specialist experienced in relational database design, complex analytical querying, and enterprise data reconciliation across state-scale architectures. Proven background engineering high-throughput SQL pipelines (multi-table joins, recursive CTEs, window functions, execution plan optimization) across MariaDB, OracleDB, and MySQL for 33 districts and 1,000+ facilities at CHiPS. Skilled in dimensional Star Schema architecture, multi-source ETL identity resolution, and Advanced Excel data auditing to deliver verified, high-integrity analytical data layers.",
+    "summary": "High-performing SQL Developer and Database Specialist experienced in relational database design, complex analytical querying, and enterprise data reconciliation across state-scale architectures. Proven background engineering high-throughput SQL pipelines (multi-table joins, recursive CTEs, window functions, execution plan optimization) across MariaDB, OracleDB, and MySQL for statewide healthcare facilities at CHiPS. Skilled in dimensional Star Schema architecture, multi-source ETL identity resolution, and Advanced Excel data auditing to deliver verified, high-integrity analytical data layers.",
     "skills": [
       "<strong>Databases & Querying: </strong>Advanced SQL (T-SQL, MySQL, MariaDB, OracleDB, PostgreSQL) \u2014 Complex Multi-Table Joins, Recursive CTEs, Window Functions (ROW_NUMBER, RANK, DENSE_RANK, LEAD/LAG), Subqueries, Aggregations, Execution Plan Tuning, Indexing Strategies, Stored Procedures & Triggers",
       "<strong>Data Modeling & ETL: </strong>Dimensional Modeling (Kimball Star Schema, Fact & Dimension Tables, SCD Types), Multi-Source ETL Pipelines, Identity Resolution Algorithms, Heterogeneous Schema Reconciliation, Data Integrity Controls, Data Cleansing",
@@ -243,10 +243,10 @@ const resumesData = {
     ],
     "exp_role": "SQL Developer & Data Analyst Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
     "exp_bullets": [
-      "<strong>Automated SQL/ETL Identity Resolution: </strong>Engineered an automated SQL/ETL pipeline utilizing complex multi-table CTEs, string normalization, and window functions to bridge disparate AEBAS biometric attendance IDs with State Treasury payroll records, resolving cross-departmental tracking gaps and categorizing doctors into 3 compliance tiers.",
+      "<strong>Automated SQL/ETL Identity Resolution: </strong>Engineered an automated SQL/ETL pipeline utilizing complex multi-table CTEs, string normalization, and window functions to bridge disparate AEBAS biometric attendance IDs with State Treasury payroll records, resolving cross-departmental tracking gaps and categorizing doctors into compliance tiers.",
       "<strong>Heterogeneous Schema Reconciliation: </strong>Collaborated directly with National Informatics Centre (NIC) database engineers to reconcile disparate relational schemas across MariaDB attendance engines, State Treasury databases, and National NextGen e-Hospital OPD systems into a unified dimensional data mart.",
       "<strong>Dimensional Modeling & Performance Tuning: </strong>Designed and maintained performant Kimball Star Schema fact and dimension tables; optimized long-running analytical queries through indexed staging views and CTE refactoring, reducing data extraction latencies for executive BI reporting.",
-      "<strong>Supply Chain & Inventory SQL Workflows: </strong>Authored advanced Oracle SQL queries aggregating multi-year batch consumption, lead times, safety stocks, and reorder triggers on essential drug catalogs in OracleDB; performed multi-dimensional ABC, VED, and SDE matrix classification deployed across 5 sub-departments.",
+      "<strong>Supply Chain & Inventory SQL Workflows: </strong>Authored advanced Oracle SQL queries aggregating multi-year batch consumption, lead times, safety stocks, and reorder triggers on essential drug catalogs in OracleDB; performed multi-dimensional ABC, VED, and SDE matrix classification deployed across statewide clinical departments.",
       "<strong>Advanced Excel Data Auditing & Validation: </strong>Built automated Excel auditing workbooks leveraging Power Query, dynamic array formulas, and Pivot Tables to cross-verify SQL database extracts against field submissions, ensuring 100% data fidelity for executive review by the Department Secretary."
     ],
     "projects": [
@@ -255,7 +255,7 @@ const resumesData = {
         "tools": "Python, PyTorch, Scikit-learn",
         "tag": "M.Tech Thesis \u2014 Predictive ML",
         "bullets": [
-          "Engineered an automated proactive decision framework replacing reactive delay-based protocols using multivariate temporal telemetry; handled 98:2 class imbalance via <strong>SMOTE + Tomek Links</strong> and attained a <strong>97.64% F1-score</strong> on failure classification."
+          "Engineered an automated proactive decision framework replacing reactive delay-based protocols using multivariate temporal telemetry; handled severe class imbalance via <strong>SMOTE + Tomek Links</strong> and attained a <strong>high-precision F1-score</strong> on failure classification."
         ]
       },
       {
@@ -263,7 +263,7 @@ const resumesData = {
         "tools": "Python, BERT, XGBoost, Transformers",
         "tag": "Applied Machine Learning & NLP",
         "bullets": [
-          "Built and benchmarked dual classification pipelines (BERT + XGBoost and Deep Hybrid Neural Networks) to isolate synthetic and anomalous patterns across large corpora, optimizing decision thresholds to achieve <strong>99% Precision</strong> and <strong>98% Recall</strong>."
+          "Built and benchmarked dual classification pipelines (BERT + XGBoost and Deep Hybrid Neural Networks) to isolate synthetic and anomalous patterns across large corpora, optimizing decision thresholds to achieve <strong>high precision and recall</strong>."
         ]
       }
     ],
@@ -281,7 +281,7 @@ const resumesData = {
     "badge": "BI ARCHITECTURE",
     "role": "Power BI Developer",
     "title": "Data Analyst | Power BI Developer & Business Intelligence",
-    "summary": "Results-oriented Data Analyst and Power BI Developer experienced in designing end-to-end business intelligence solutions, dimensional data models, Advanced Excel analytical workbooks, and automated SQL/ETL pipelines. Proven track record architecting enterprise-scale interactive Power BI dashboards across 33 districts, establishing multi-level DAX-powered drill-down hierarchies, and reconciling multi-source datasets across MariaDB, State Treasury, and OracleDB. Skilled in conducting inventory analytics (ABC/VED/SDE), developing complex DAX measures, and delivering actionable visual insights.",
+    "summary": "Results-oriented Data Analyst and Power BI Developer experienced in designing end-to-end business intelligence solutions, dimensional data models, Advanced Excel analytical workbooks, and automated SQL/ETL pipelines. Proven track record architecting enterprise-scale interactive Power BI dashboards across statewide public health facilities, establishing multi-level DAX-powered drill-down hierarchies, and reconciling multi-source datasets across MariaDB, State Treasury, and OracleDB. Skilled in conducting inventory analytics (ABC/VED/SDE), developing complex DAX measures, and delivering actionable visual insights.",
     "skills": [
       "<strong>BI & Data Visualization: </strong>Microsoft Power BI, DAX (Calculated Columns, Measures, Time Intelligence, Compliance Ratios), Power Query (M Language ETL), Oracle Analytics Cloud (OAC), Dynamic KPI Scorecards, Row-Level Security, Interactive Drill-Throughs",
       "<strong>Advanced Excel & Modeling: </strong>Advanced Excel (XLOOKUP, INDEX/MATCH, Dynamic Arrays, Nested Logic, Pivot Tables, Power Pivot Data Modeling, Scenario Modeling, VBA/Macros), Executive Reporting",
@@ -290,10 +290,10 @@ const resumesData = {
     ],
     "exp_role": "Data Analyst & BI Developer Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
     "exp_bullets": [
-      "<strong>Enterprise Power BI Dashboard Architecture: </strong>Architected an executive 6-page statewide Power BI attendance dashboard across 33 districts with 4-tier top-down drill-downs (District \u2192 Facility \u2192 Designation \u2192 Employee), custom DAX measures, and dynamic KPI cards tracking avg. work hours, attendance %, and missed logins.",
+      "<strong>Enterprise Power BI Dashboard Architecture: </strong>Architected an executive statewide Power BI attendance dashboard across statewide public health facilities with hierarchical top-down drill-downs (District \u2192 Facility \u2192 Designation \u2192 Employee), custom DAX measures, and dynamic KPI cards tracking avg. work hours, attendance %, and missed logins.",
       "<strong>Advanced DAX & Star Schema Modeling: </strong>Engineered a performant Star Schema data model with custom DAX time-intelligence and compliance-ratio measures, optimizing data refreshes and interactive filtering across large MariaDB employee datasets with full drill-through capability.",
-      "<strong>Multi-Source SQL/ETL Pipeline: </strong>Developed automated SQL identity-resolution workflows mapping AEBAS biometric attendance IDs to State Treasury payroll codes, closing a critical cross-departmental tracking gap and categorizing bonded doctors into 3 actionable compliance tiers.",
-      "<strong>Supply Chain & Inventory Analytics: </strong>Conducted ABC, VED, and SDE inventory categorization analysis on essential drug catalogs in OracleDB, deploying interactive dashboards to Oracle Analytics Cloud (OAC) to guide statewide procurement decisions across 5 sub-departments.",
+      "<strong>Multi-Source SQL/ETL Pipeline: </strong>Developed automated SQL identity-resolution workflows mapping AEBAS biometric attendance IDs to State Treasury payroll codes, closing a critical cross-departmental tracking gap and categorizing bonded doctors into actionable compliance tiers.",
+      "<strong>Supply Chain & Inventory Analytics: </strong>Conducted ABC, VED, and SDE inventory categorization analysis on essential drug catalogs in OracleDB, deploying interactive dashboards to Oracle Analytics Cloud (OAC) to guide statewide procurement decisions across statewide clinical departments.",
       "<strong>Advanced Excel Auditing & Reconciliation: </strong>Created multi-source Excel validation models with Power Query and Power Pivot to verify database extract parity, eliminating discrepancies before publishing to Power BI Service."
     ],
     "projects": [
@@ -302,7 +302,7 @@ const resumesData = {
         "tools": "Python, PyTorch, GRU, DDPM, Scikit-learn",
         "tag": "M.Tech Thesis \u2014 Predictive Analytics",
         "bullets": [
-          "Developed a GRU-conditioned diffusion model (DDPM/DDIM) to forecast radio signal degradation from multivariate spatiotemporal telemetry; addressed 98:2 class imbalance via <strong>SMOTE + Tomek Links</strong> and attained a <strong>97.64% F1-score</strong> on failure classification."
+          "Developed a GRU-conditioned diffusion model (DDPM/DDIM) to forecast radio signal degradation from multivariate spatiotemporal telemetry; addressed severe class imbalance via <strong>SMOTE + Tomek Links</strong> and attained a <strong>high-precision F1-score</strong> on failure classification."
         ]
       },
       {
@@ -310,7 +310,7 @@ const resumesData = {
         "tools": "Python, BERT, XGBoost, Bi-LSTM, Transformers",
         "tag": "Applied Machine Learning & NLP",
         "bullets": [
-          "Designed and benchmarked dual NLP pipelines (BERT + XGBoost and hybrid Bi-LSTM/CNN/Transformer architecture) on large corpora, optimizing decision boundaries to achieve <strong>99% Precision</strong> and <strong>98% Recall</strong>."
+          "Designed and benchmarked dual NLP pipelines (BERT + XGBoost and hybrid Bi-LSTM/CNN/Transformer architecture) on large corpora, optimizing decision boundaries to achieve <strong>high-precision</strong> and <strong>high-recall</strong> benchmarks."
         ]
       }
     ],
@@ -336,11 +336,11 @@ const resumesData = {
     ],
     "exp_role": "Data Science & Analytics Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
     "exp_bullets": [
-      "<strong>Statewide Exploratory Data Analysis: </strong>Conducted exploratory data analysis (EDA) across 33 districts on healthcare attendance records, addressing schema anomalies and duplicate designations.",
+      "<strong>Statewide Exploratory Data Analysis: </strong>Conducted exploratory data analysis (EDA) across statewide public health facilities on healthcare attendance records, addressing schema anomalies and duplicate designations.",
       "<strong>Automated SQL/ETL Feature Pipeline: </strong>Engineered an automated SQL/ETL feature pipeline mapping AEBAS biometric IDs to State Treasury payroll codes, establishing cross-departmental ground-truth records.",
-      "<strong>3-Tier Risk Classification Model: </strong>Formulated a 3-tier risk classification model tracking bonded medical personnel across facilities, pinpointing critical compliance gaps.",
+      "<strong>Multi-Tier Risk Classification Model: </strong>Formulated a multi-tier risk classification model tracking bonded medical personnel across facilities, pinpointing critical compliance gaps.",
       "<strong>Cross-Source Data Reconciliation: </strong>Reconciled disparate database schemas across MariaDB, State Treasury, and e-Hospital systems with 100% data fidelity.",
-      "<strong>Executive Power BI Dashboard: </strong>Architected an executive 6-page Power BI dashboard featuring 4-tier drill-down hierarchies (District → Facility → Designation → Individual) to present KPIs to leadership."
+      "<strong>Executive Power BI Dashboard: </strong>Architected an executive Power BI dashboard featuring hierarchical drill-downs (District → Facility → Designation → Individual) to present KPIs to leadership."
     ],
     "projects": [
       {
@@ -348,8 +348,8 @@ const resumesData = {
         "tools": "Python, PyTorch, GRU, DDPM/DDIM, Scikit-learn, Random Forest, SMOTE, Tomek Links",
         "tag": "M.Tech Thesis — Predictive Modeling & Telemetry",
         "bullets": [
-          "Architected a predictive engine pairing a <strong>GRU encoder</strong> with a <strong>Diffusion Model (DDPM/DDIM)</strong> simulating 50 paths to forecast signal degradation from multivariate spatiotemporal telemetry.",
-          "Resolved extreme <strong>98%/2% class imbalance</strong> using a hybrid <strong>SMOTE + Tomek Links</strong> pipeline, implementing a two-stage Random Forest classifier to attain a <strong>97.64% F1-score</strong>."
+          "Architected a predictive engine pairing a <strong>GRU encoder</strong> with a <strong>Diffusion Model (DDPM/DDIM)</strong> simulating multiple trajectory paths to forecast signal degradation from multivariate spatiotemporal telemetry.",
+          "Resolved extreme <strong>telemetry class imbalance</strong> using a hybrid <strong>SMOTE + Tomek Links</strong> pipeline, implementing an ensemble Random Forest classifier to attain a <strong>high-precision F1-score</strong>."
         ]
       },
       {
@@ -357,8 +357,8 @@ const resumesData = {
         "tools": "Python, BERT, XGBoost, Bi-LSTM, Transformers, 1D-CNN, TensorFlow, Scikit-learn",
         "tag": "Applied NLP & Deep Learning",
         "bullets": [
-          "Engineered dual NLP classification architectures: extracted 768-dim dense contextual embeddings from pre-trained <strong>BERT</strong> paired with <strong>XGBoost</strong>, and constructed a deep hybrid Bi-LSTM/Transformer network.",
-          "Applied stratified sampling (80/20), text normalization (NFKD), dropout (0.5), and dynamic learning rate decay, achieving <strong>99% Precision</strong> and <strong>98% Recall</strong> in synthetic LLM classification."
+          "Engineered dual NLP classification architectures: extracted dense contextual sentence embeddings from pre-trained <strong>BERT</strong> paired with <strong>XGBoost</strong>, and constructed a deep hybrid Bi-LSTM/Transformer network.",
+          "Applied stratified cross-validation sampling, text normalization (NFKD), dropout (0.5), and dynamic learning rate decay, achieving <strong>high-precision</strong> and <strong>high-recall</strong> benchmarks in synthetic LLM classification."
         ]
       }
     ],
@@ -387,11 +387,11 @@ const resumesData = {
     ],
     "exp_role": "Machine Learning & Data Analyst Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
     "exp_bullets": [
-      "<strong>Automated SQL/ETL Pipelines: </strong>Architected an automated SQL/ETL pipeline integrating biometric punch logs (AEBAS) with State Treasury payroll records across 33 districts.",
-      "<strong>Predictive Risk Modeling: </strong>Engineered a 3-tier risk model classifying compliance behaviors among bonded personnel, resolving identity discrepancies across databases.",
+      "<strong>Automated SQL/ETL Pipelines: </strong>Architected an automated SQL/ETL pipeline integrating biometric punch logs (AEBAS) with State Treasury payroll records across statewide public health facilities.",
+      "<strong>Predictive Risk Modeling: </strong>Engineered a multi-tier risk model classifying compliance behaviors among bonded personnel, resolving identity discrepancies across databases.",
       "<strong>Preprocessing & Outlier Remediation: </strong>Conducted data preprocessing, outlier removal, and categorical normalization across disparate database architectures (MariaDB, OracleDB, e-Hospital APIs).",
       "<strong>Feature Engineering with NIC: </strong>Partnered with National Informatics Centre (NIC) engineers to construct unified feature tables, maintaining 100% data integrity.",
-      "<strong>Interactive Power BI Delivery: </strong>Deployed an interactive Power BI dashboard with 4-tier drill-down hierarchies to visualize predictions and utilization metrics."
+      "<strong>Interactive Power BI Delivery: </strong>Deployed an interactive Power BI dashboard with hierarchical drill-downs to visualize predictions and utilization metrics."
     ],
     "projects": [
       {
@@ -399,8 +399,8 @@ const resumesData = {
         "tools": "Python, PyTorch, GRU, DDPM/DDIM, Scikit-learn, Random Forest, SMOTE, Tomek Links",
         "tag": "M.Tech Thesis — Deep Generative Modeling & Telemetry",
         "bullets": [
-          "Architected a predictive decision engine pairing a <strong>GRU encoder</strong> with a <strong>Diffusion Model (DDPM/DDIM)</strong> simulating 50 paths to forecast signal drops from spatiotemporal telemetry.",
-          "Resolved severe <strong>98%/2% class imbalance</strong> via <strong>SMOTE + Tomek Links</strong>, training a Random Forest policy with custom loss to attain a <strong>97.64% F1-score</strong>."
+          "Architected a predictive decision engine pairing a <strong>GRU encoder</strong> with a <strong>Diffusion Model (DDPM/DDIM)</strong> simulating multiple trajectory paths to forecast signal drops from spatiotemporal telemetry.",
+          "Resolved severe <strong>telemetry class imbalance</strong> via <strong>SMOTE + Tomek Links</strong>, training a Random Forest policy with custom loss to attain a <strong>high-precision F1-score</strong>."
         ]
       },
       {
@@ -408,8 +408,8 @@ const resumesData = {
         "tools": "Python, BERT, XGBoost, Bi-LSTM, Transformers, 1D-CNN, TensorFlow, Scikit-learn",
         "tag": "Applied NLP & Deep Learning",
         "bullets": [
-          "Constructed dual NLP classification pipelines extracting 768-dim dense embeddings from pre-trained <strong>BERT</strong> with <strong>XGBoost</strong>, benchmarked against a deep Bi-LSTM/Transformer/1D-CNN network.",
-          "Applied stratified sampling (80/20), text normalization (NFKD), dropout (0.5), and dynamic learning rate decay, achieving <strong>99% Precision</strong> and <strong>98% Recall</strong> in synthetic LLM text detection."
+          "Constructed dual NLP classification pipelines extracting dense contextual sentence embeddings from pre-trained <strong>BERT</strong> with <strong>XGBoost</strong>, benchmarked against a deep Bi-LSTM/Transformer/1D-CNN network.",
+          "Applied stratified cross-validation sampling, text normalization (NFKD), dropout (0.5), and dynamic learning rate decay, achieving <strong>high-precision</strong> and <strong>high-recall</strong> benchmarks in synthetic LLM text detection."
         ]
       }
     ],
@@ -430,7 +430,7 @@ const resumesData = {
     "badge": "OPERATIONAL & AUDITING",
     "role": "MIS Analyst",
     "title": "MIS Analyst | Management Reporting & Operational Automation",
-    "summary": "Detail-oriented MIS Analyst experienced in developing automated reporting systems, multi-source data reconciliation pipelines, and enterprise BI dashboards. Proven background resolving operational discrepancies across state-scale public databases, linking biometric attendance logs with State Treasury payroll records, and building recurring MIS reports across 33 districts. Backed by M.Tech CSE, GATE CS qualification, Advanced Excel, SQL, and Power BI.",
+    "summary": "Detail-oriented MIS Analyst experienced in developing automated reporting systems, multi-source data reconciliation pipelines, and enterprise BI dashboards. Proven background resolving operational discrepancies across state-scale public databases, linking biometric attendance logs with State Treasury payroll records, and building recurring MIS reports across statewide public health facilities. Backed by M.Tech CSE, GATE CS qualification, Advanced Excel, SQL, and Power BI.",
     "skills": [
       "<strong>Advanced Excel & MIS Reporting: </strong>Advanced Excel (XLOOKUP, INDEX/MATCH, Dynamic Arrays, Pivot Tables, Power Pivot, Power Query, What-If Analysis, Conditional Formatting, Data Validation, Automated Templates, Periodic MIS)",
       "<strong>Databases, Extraction & SQL: </strong>Advanced SQL (MySQL, MariaDB, OracleDB, T-SQL) — Joins, CTEs, Window Functions, Relational Modeling, Data Cleansing, Schema Reconciliation",
@@ -438,11 +438,11 @@ const resumesData = {
     ],
     "exp_role": "MIS & Data Analyst Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
     "exp_bullets": [
-      "<strong>Automated Statewide MIS Workflows: </strong>Automated statewide recurring MIS reporting workflows across 33 districts, consolidating attendance and payroll records into structured management reporting packages.",
+      "<strong>Automated Statewide MIS Workflows: </strong>Automated statewide recurring MIS reporting workflows across statewide public health facilities, consolidating attendance and payroll records into structured management reporting packages.",
       "<strong>SQL/ETL Reconciliation Pipeline: </strong>Engineered an automated SQL/ETL reconciliation pipeline mapping AEBAS biometric punch IDs to State Treasury payroll records, closing a critical audit gap with 100% data fidelity.",
-      "<strong>3-Tier Defaulter Risk Model: </strong>Formulated a 3-tier defaulter risk model in Excel and SQL classifying non-compliant bonded personnel, enabling leadership to initiate targeted recoveries.",
+      "<strong>Multi-Tier Compliance Risk Model: </strong>Formulated a multi-tier compliance risk model in Excel and SQL classifying non-compliant bonded personnel, enabling leadership to initiate targeted recoveries.",
       "<strong>Multi-Source Schema Consolidation: </strong>Reconciled disparate backend database schemas across MariaDB, State Treasury, and National Next-Gen e-Hospital systems, harmonizing staff IDs and OPD operational logs.",
-      "<strong>Executive 6-Page Reporting Suite: </strong>Designed an executive 6-page Power BI reporting suite with 4-tier drill-down hierarchies (District → Facility → Designation → Individual) tracking core KPIs."
+      "<strong>Executive Reporting Suite: </strong>Designed an executive Power BI reporting suite with hierarchical drill-downs (District → Facility → Designation → Individual) tracking core KPIs."
     ],
     "projects": [
       {
@@ -450,8 +450,8 @@ const resumesData = {
         "tools": "Python, PyTorch, Scikit-learn, Random Forest, SMOTE, Tomek Links, Excel",
         "tag": "Predictive Analytics & Telemetry",
         "bullets": [
-          "Built an automated predictive decision model forecasting signal degradation from multivariate spatiotemporal telemetry, addressing 98:2 class imbalance via SMOTE + Tomek Links.",
-          "Integrated an ensemble Random Forest policy evaluating 50 diffusion trajectories, achieving a 97.64% F1-score to proactively prevent operational bottlenecks."
+          "Built an automated predictive decision model forecasting signal degradation from multivariate spatiotemporal telemetry, addressing severe class imbalance via SMOTE + Tomek Links.",
+          "Integrated an ensemble Random Forest policy evaluating multiple diffusion trajectories, achieving high-precision predictive performance to proactively prevent operational bottlenecks."
         ]
       },
       {
@@ -459,7 +459,7 @@ const resumesData = {
         "tools": "Python, Playwright, OpenXML, REST APIs, Regex Engine",
         "tag": "Automation & ETL Pipeline",
         "bullets": [
-          "Constructed a pure-Python OpenXML spreadsheet engine (zero pip dependencies) and link liveness auditor scanning 55+ direct ATS endpoints to automate data ingestion and application tracking."
+          "Constructed a pure-Python OpenXML spreadsheet engine (zero pip dependencies) and link liveness auditor scanning direct enterprise ATS endpoints to automate data ingestion and application tracking."
         ]
       }
     ],
@@ -482,14 +482,14 @@ const architecturesData = {
   health_bi: {
     title: "Statewide Healthcare Biometric-to-Payroll Intelligence",
     badge: "SQL ETL × KIMBALL STAR SCHEMA × POWER BI DAX",
-    description: "End-to-end data pipeline resolving employee identity mismatches between biometric AEBAS machines and State Treasury payroll databases across 33 districts and 1,000+ facilities.",
+    description: "End-to-end data pipeline resolving employee identity mismatches between biometric AEBAS machines and State Treasury payroll databases across statewide public healthcare facilities.",
     steps: [
       {
         num: "01",
         label: "Ingestion",
         title: "Disparate Source Extraction",
         tech: "MariaDB & OracleDB",
-        detail: "Ingested daily biometric punch timestamps from 1,000+ healthcare facilities alongside State Treasury payroll registry codes and NIC NextGen e-Hospital OPD logs."
+        detail: "Ingested daily biometric punch timestamps from statewide healthcare facilities alongside State Treasury payroll registry codes and NIC NextGen e-Hospital OPD logs."
       },
       {
         num: "02",
@@ -508,15 +508,15 @@ const architecturesData = {
       {
         num: "04",
         label: "Auditing",
-        title: "3-Tier Defaulter Risk Engine",
+        title: "Multi-Tier Defaulter Risk Engine",
         tech: "Advanced Excel Power Query & SQL",
-        detail: "Classified bonded medical officers into 3 non-compliance categories (Non-Reporting, Formal Only, Severe Absenteeism) to arrest public fund leakage."
+        detail: "Classified bonded medical officers into non-compliance categories (Non-Reporting, Formal Only, Severe Absenteeism) to arrest public fund leakage."
       },
       {
         num: "05",
         label: "Delivery",
-        title: "Executive 6-Page Power BI Suite",
-        tech: "DAX Time Intelligence & 4-Tier Drilldowns",
+        title: "Executive Power BI Suite",
+        tech: "DAX Time Intelligence & Hierarchical Drilldowns",
         detail: "Delivered interactive dashboards enabling the Health Department Secretary to drill down from District → Facility → Designation → Individual employee."
       }
     ]
@@ -544,21 +544,21 @@ const architecturesData = {
         num: "03",
         label: "Diffusion",
         title: "Generative Trajectory Simulation",
-        tech: "DDPM / DDIM (50 Look-Forward Paths)",
-        detail: "Conditioned diffusion model simulates 50 plausible future signal degradation trajectories under sudden obstacle blockages."
+        tech: "DDPM / DDIM (Multi-Path Trajectories)",
+        detail: "Conditioned diffusion model simulates multiple plausible future signal degradation trajectories under sudden obstacle blockages."
       },
       {
         num: "04",
         label: "Resampling",
         title: "Extreme Imbalance Remediation",
-        tech: "SMOTE + Tomek Links (98:2 Ratio)",
+        tech: "SMOTE + Tomek Links (Severe Telemetry Imbalance)",
         detail: "Eliminated the severe failure-event class imbalance using synthetic minority over-sampling paired with Tomek link boundary cleanup."
       },
       {
         num: "05",
         label: "Policy",
         title: "Random Forest Decision Engine",
-        tech: "Ensemble Policy (97.64% F1-Score)",
+        tech: "Ensemble Policy (High-Precision F1-Score)",
         detail: "Evaluates diffusion trajectories to initiate proactive handovers milliseconds before radio failure occurs."
       }
     ]
@@ -571,7 +571,7 @@ const architecturesData = {
       {
         num: "01",
         label: "Discovery",
-        title: "55+ Direct ATS & Remote APIs",
+        title: "Direct ATS & Remote APIs",
         tech: "Greenhouse, Lever, Ashby, SmartRecruiters",
         detail: "Direct, zero-token REST API scanners bypass commercial board bloat to capture raw employer postings in real time."
       },
@@ -579,7 +579,7 @@ const architecturesData = {
         num: "02",
         label: "Auditing",
         title: "Concurrent Liveness & Expiry Cleaner",
-        tech: "HTTP Header + 20+ Expiration Regexes",
+        tech: "HTTP Header + Expiration Regex Verification",
         detail: "Filters out closed or ghost postings by verifying API status, fast HTTP headers, and DOM body regex patterns."
       },
       {
@@ -608,7 +608,7 @@ const architecturesData = {
   supply_chain: {
     title: "Statewide Essential Drug Inventory Multi-Criteria Matrix",
     badge: "ORACLE SQL × ADVANCED EXCEL × ABC/VED/SDE",
-    description: "Multi-dimensional inventory categorization model in OracleDB and Advanced Excel preventing critical medicine stockouts across 5 healthcare sub-departments.",
+    description: "Multi-dimensional inventory categorization model in OracleDB and Advanced Excel preventing critical medicine stockouts across clinical directorates.",
     steps: [
       {
         num: "01",
@@ -652,16 +652,16 @@ const architecturesData = {
 // Ground-Truth Knowledge Base for "Ask Rishi AI" (Santiago CV-inspired interactive chat assistant)
 const aiKnowledgeBase = [
   {
-    keywords: ["chips", "health", "attendance", "biometric", "aebas", "treasury", "payroll", "33 district", "district", "doctor", "secretar"],
-    response: "At **CHiPS (Chhattisgarh Infotech Promotion Society)** deployed with the **Dept. of Health & Family Welfare, Govt. of Chhattisgarh** (06/2025–03/2026), Rishi led the statewide attendance and payroll intelligence initiative across **33 districts and 1,000+ facilities**:\n\n• **Automated SQL/ETL Identity Resolution:** Built complex SQL pipelines bridging AEBAS biometric punch IDs with State Treasury payroll records, resolving naming and transliteration mismatches with **100% data fidelity**.\n• **3-Tier Defaulter Risk Model:** Conceptualized a risk classification model segmenting bonded medical officers into *Non-Reporting*, *Formal-Only Registrants*, and *Severe Absenteeism*, stopping salary leakage.\n• **6-Page Executive Power BI Suite:** Designed a performant Kimball Star Schema and DAX measures featuring a **4-tier drill-down hierarchy** (*District → Facility → Designation → Individual*).\n• **Executive Impact:** Delivered weekly audit workbooks and ad-hoc scenario models in **Advanced Excel** directly to the Health Department Secretary."
+    keywords: ["chips", "health", "attendance", "biometric", "aebas", "treasury", "payroll", "district", "doctor", "secretar"],
+    response: "At **CHiPS (Chhattisgarh Infotech Promotion Society)** deployed with the **Dept. of Health & Family Welfare, Govt. of Chhattisgarh** (06/2025–03/2026), Rishi led the statewide attendance and payroll intelligence initiative across **statewide healthcare facilities**:\n\n• **Automated SQL/ETL Identity Resolution:** Built complex SQL pipelines bridging AEBAS biometric punch IDs with State Treasury payroll records, resolving naming and transliteration mismatches with **100% data fidelity**.\n• **Multi-Tier Compliance Risk Model:** Conceptualized a risk classification model segmenting bonded medical officers into *Non-Reporting*, *Formal-Only Registrants*, and *Severe Absenteeism*, stopping salary leakage.\n• **Executive Power BI Suite:** Designed a performant Kimball Star Schema and DAX measures featuring a **hierarchical drill-down** (*District → Facility → Designation → Individual*).\n• **Executive Impact:** Delivered weekly audit workbooks and ad-hoc scenario models in **Advanced Excel** directly to the Health Department Secretary."
   },
   {
     keywords: ["5g", "thesis", "diffusion", "mmwave", "handover", "iiit", "naya raipur", "ddpm", "ddim", "gru", "telemetry"],
-    response: "For his **M.Tech Thesis at IIIT Naya Raipur**, Rishi developed **Proactive 5G mmWave Handover Prediction via Diffusion Models**:\n\n• **The Bottleneck:** Standard 5G networks rely on reactive countdown timers (Time-To-Trigger), causing sudden Radio Link Failures (RLF) when mmWave line-of-sight signals are blocked.\n• **The AI Architecture:** Combined a **GRU sequence encoder** (capturing spatio-temporal telemetry: RSRP, RSRQ, CINR) with a **Denoising Diffusion Probabilistic Model (DDPM/DDIM)** simulating 50 look-forward signal degradation paths.\n• **Imbalance & Result:** Remedied severe **98:2 class imbalance** using **SMOTE + Tomek Links**, training a Random Forest policy engine that achieved a **97.64% F1-score** in predicting drops before radio failure occurs."
+    response: "For his **M.Tech Thesis at IIIT Naya Raipur**, Rishi developed **Proactive 5G mmWave Handover Prediction via Diffusion Models**:\n\n• **The Bottleneck:** Standard 5G networks rely on reactive countdown timers (Time-To-Trigger), causing sudden Radio Link Failures (RLF) when mmWave line-of-sight signals are blocked.\n• **The AI Architecture:** Combined a **GRU sequence encoder** (capturing spatio-temporal telemetry: RSRP, RSRQ, CINR) with a **Denoising Diffusion Probabilistic Model (DDPM/DDIM)** simulating look-forward signal degradation paths.\n• **Imbalance & Result:** Remedied severe **severe class imbalance** using **SMOTE + Tomek Links**, training a Random Forest policy engine that achieved a **high-precision F1-score** in predicting drops before radio failure occurs."
   },
   {
     keywords: ["career", "bot", "auto", "playwright", "crawler", "job", "ats", "apply", "openxml"],
-    response: "Rishi built **Career-Ops (`career-ops-bot`)**, an open-source autonomous recruitment and application pipeline:\n\n• **55+ Direct ATS REST APIs:** Scans Greenhouse, Lever, Ashby, and SmartRecruiters endpoints directly, bypassing noisy commercial job boards.\n• **Link Liveness Auditor:** Concurrently checks direct APIs, HTTP headers, and 20+ expiration regex patterns to eliminate ghost postings.\n• **Pure-Python OpenXML Engine:** Generates styled `.xlsx` workbooks using only Python's standard library (`zipfile` + raw OpenXML) with **zero pip dependencies**.\n• **Headless Playwright Auto-Apply:** Automatically handles complex React dropdowns, maps screening answers from candidate ground truth, and archives screenshot audit trails."
+    response: "Rishi built **Career-Ops (`career-ops-bot`)**, an open-source autonomous recruitment and application pipeline:\n\n• **Direct ATS REST APIs:** Scans Greenhouse, Lever, Ashby, and SmartRecruiters endpoints directly, bypassing noisy commercial job boards.\n• **Link Liveness Auditor:** Concurrently checks direct APIs, HTTP headers, and comprehensive expiration regex patterns to eliminate ghost postings.\n• **Pure-Python OpenXML Engine:** Generates styled `.xlsx` workbooks using only Python's standard library (`zipfile` + raw OpenXML) with **zero pip dependencies**.\n• **Headless Playwright Auto-Apply:** Automatically handles complex React dropdowns, maps screening answers from candidate ground truth, and archives screenshot audit trails."
   },
   {
     keywords: ["stack", "sql", "database", "mariadb", "oracle", "power bi", "dax", "tool", "skill", "excel"],
