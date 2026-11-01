@@ -1,59 +1,95 @@
 /* ==========================================================================
    RISHI THAKUR — EXECUTIVE PORTFOLIO DESIGN SYSTEM
-   Editorial Minimalist, Command Center Aesthetics & High-Precision Design
+   Theme & Styling based on Logsfolio / Modern Shadcn UI System
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Theme Variables & Tokens
+   1. Design Tokens & HSL Color System (from Logsfolio)
    -------------------------------------------------------------------------- */
 :root {
-  /* Light Mode: Crisp Paper & Technical Slate */
-  --bg-main: #ffffff;
-  --bg-surface: #f8fafc;
-  --bg-surface-hover: #f1f5f9;
-  --bg-card: #ffffff;
-  --border-subtle: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --border-hover: #0284c7;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --text-faint: #94a3b8;
-  --accent-cyan: #0284c7;
-  --accent-cyan-bg: rgba(2, 132, 199, 0.08);
-  --accent-cyan-border: rgba(2, 132, 199, 0.25);
-  --glass-nav-bg: rgba(255, 255, 255, 0.88);
+  /* Light Mode */
+  --background: 0 0% 100%;
+  --foreground: 224 71.4% 4.1%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 224 71.4% 4.1%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 224 71.4% 4.1%;
+  
+  --primary: 262.1 83.3% 57.8%;            /* Vibrant Violet/Purple #7c3aed */
+  --primary-foreground: 210 20% 98%;
+  
+  --secondary: 220 14.3% 95.9%;            /* Neutral Slate Surface #f1f5f9 */
+  --secondary-foreground: 220.9 39.3% 11%;
+  
+  --muted: 220 14.3% 95.9%;
+  --muted-foreground: 220 8.9% 46.1%;      /* #64748b */
+  
+  --accent: 220 14.3% 95.9%;
+  --accent-foreground: 220.9 39.3% 11%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 20% 98%;
+  
+  --border: 220 13% 91%;                   /* #e2e8f0 */
+  --input: 220 13% 91%;
+  --ring: 262.1 83.3% 57.8%;
+  
+  --radius: 0.75rem;
+
+  /* Grid & Subtle accents */
   --grid-line: rgba(15, 23, 42, 0.04);
+  --glass-nav-bg: rgba(255, 255, 255, 0.85);
 }
 
 .dark {
-  /* Dark Mode: Neutral Deep Obsidian & Precision Cyan */
-  --bg-main: #080a0d;
-  --bg-surface: #0f141c;
-  --bg-surface-hover: #151c27;
-  --bg-card: #11161f;
-  --border-subtle: #1f2733;
-  --border-strong: #2a3545;
-  --border-hover: #38bdf8;
-  --text-main: #f1f5f9;
-  --text-muted: #94a3b8;
-  --text-faint: #64748b;
-  --accent-cyan: #38bdf8;
-  --accent-cyan-bg: rgba(56, 189, 248, 0.08);
-  --accent-cyan-border: rgba(56, 189, 248, 0.25);
-  --glass-nav-bg: rgba(8, 10, 13, 0.88);
+  /* Dark Mode: Deep Cosmic Navy & Glowing Violet */
+  --background: 224 71.4% 4.1%;            /* #020817 Deep Slate Navy */
+  --foreground: 210 20% 98%;               /* #f8fafc */
+  
+  --card: 224 71.4% 4.1%;                  /* Elevated container */
+  --card-foreground: 210 20% 98%;
+  
+  --popover: 224 71.4% 4.1%;
+  --popover-foreground: 210 20% 98%;
+  
+  --primary: 263.4 70% 50.4%;              /* Glowing Electric Violet #8b5cf6 */
+  --primary-foreground: 210 20% 98%;
+  
+  --secondary: 215 27.9% 16.9%;            /* #1e293b Slate 800 */
+  --secondary-foreground: 210 20% 98%;
+  
+  --muted: 215 27.9% 16.9%;
+  --muted-foreground: 217.9 10.6% 64.9%;   /* #94a3b8 */
+  
+  --accent: 215 27.9% 16.9%;
+  --accent-foreground: 210 20% 98%;
+  
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 20% 98%;
+  
+  --border: 215 27.9% 16.9%;               /* #1e293b */
+  --input: 215 27.9% 16.9%;
+  --ring: 263.4 70% 50.4%;
+
+  /* Grid & Subtle accents */
   --grid-line: rgba(255, 255, 255, 0.035);
+  --glass-nav-bg: rgba(2, 8, 23, 0.85);
 }
 
 /* --------------------------------------------------------------------------
-   2. Base Typography & Defaults
+   2. Base Typography & Surface
    -------------------------------------------------------------------------- */
 html {
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.015em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 
 code, pre, .font-mono {
@@ -70,101 +106,296 @@ code, pre, .font-mono {
 }
 
 /* --------------------------------------------------------------------------
-   3. Custom Scrollbar
+   3. Custom Modern Scrollbar
    -------------------------------------------------------------------------- */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-main);
+  background: hsl(var(--background));
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: hsl(var(--muted-foreground) / 0.3);
   border-radius: 9999px;
 }
-.dark ::-webkit-scrollbar-thumb {
-  background: #202731;
-}
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: hsl(var(--muted-foreground) / 0.5);
 }
 
 /* --------------------------------------------------------------------------
-   4. Surface Cards & Analytical Borders
+   4. Logsfolio Navigation Bar
    -------------------------------------------------------------------------- */
-.analytic-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 0.875rem;
-  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.analytic-card:hover {
-  border-color: var(--border-hover);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-}
-
-.dark .analytic-card:hover {
-  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.4);
-}
-
-/* Glass Navigation Bar */
-.glass-nav {
+.logsfolio-nav {
   background: var(--glass-nav-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid hsl(var(--border));
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 /* --------------------------------------------------------------------------
-   5. Technical Badges & Tech Pills
+   5. Logsfolio Card System & Hover Transitions
    -------------------------------------------------------------------------- */
-.tech-pill {
-  font-size: 0.75rem;
-  font-family: "IBM Plex Mono", monospace;
-  padding: 0.25rem 0.6rem;
-  border-radius: 0.375rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-muted);
-  font-weight: 400;
+.logsfolio-card {
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.logsfolio-card:hover {
+  border-color: hsl(var(--primary) / 0.45);
+  box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.12);
+}
+
+.dark .logsfolio-card:hover {
+  box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.22);
+}
+
+/* --------------------------------------------------------------------------
+   6. Logsfolio Badges & Tech Pills
+   -------------------------------------------------------------------------- */
+.badge-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  transition: all 0.15s ease;
+  border-radius: 9999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   line-height: 1.25;
+  transition: all 0.15s ease;
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border: 1px solid transparent;
 }
 
-.tech-pill:hover {
-  border-color: var(--accent-cyan);
-  color: var(--text-main);
+.badge-pill:hover {
+  background-color: hsl(var(--secondary) / 0.8);
+  border-color: hsl(var(--primary) / 0.3);
 }
 
-.accent-pill {
-  background: var(--accent-cyan-bg);
-  border: 1px solid var(--accent-cyan-border);
-  color: var(--accent-cyan);
+.badge-primary {
+  background-color: hsl(var(--primary) / 0.12);
+  color: hsl(var(--primary));
+  border: 1px solid hsl(var(--primary) / 0.25);
 }
 
-/* Section Monospace Index Label (e.g., 01 / CAPABILITIES) */
-.section-index {
+.badge-outline {
+  background-color: transparent;
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+}
+
+/* Monospace technical pill */
+.tech-mono-pill {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--accent-cyan);
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.375rem;
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--muted-foreground));
+  border: 1px solid hsl(var(--border));
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
+  gap: 0.3rem;
+  transition: all 0.15s ease;
 }
 
-/* Status Indicator Dot */
+.tech-mono-pill:hover {
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--primary) / 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   7. Logsfolio Signature Timeline (Experience & Education)
+   -------------------------------------------------------------------------- */
+.logsfolio-timeline {
+  position: relative;
+  padding-left: 2rem;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.logsfolio-timeline::after {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.4375rem;
+  width: 1px;
+  background-color: hsl(var(--border));
+}
+
+.logsfolio-timeline-item {
+  position: relative;
+}
+
+.logsfolio-timeline-dot {
+  position: absolute;
+  left: -2rem;
+  top: 0.375rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 9999px;
+  background-color: hsl(var(--primary));
+  box-shadow: 0 0 0 4px hsl(var(--background));
+  z-index: 10;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logsfolio-timeline-item:hover .logsfolio-timeline-dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 6px hsl(var(--primary) / 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   8. Logsfolio Buttons & Filter Controls
+   -------------------------------------------------------------------------- */
+.btn-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: hsl(var(--primary) / 0.9);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: hsl(var(--secondary) / 0.8);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  border-color: hsl(var(--primary) / 0.4);
+}
+
+.btn-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border-radius: calc(var(--radius) - 2px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border: 1px solid hsl(var(--border));
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-icon:hover {
+  background-color: hsl(var(--secondary) / 0.8);
+  color: hsl(var(--primary));
+  border-color: hsl(var(--primary) / 0.4);
+  transform: translateY(-1px);
+}
+
+/* Filter Buttons */
+.project-filter-btn {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--muted-foreground));
+  border: 1px solid hsl(var(--border));
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  transition: all 0.15s ease;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.project-filter-btn:hover {
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+.project-filter-btn.active {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: 0 2px 10px -2px hsl(var(--primary) / 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   9. Modal Backdrops & Overlays
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.dark .modal-backdrop {
+  background: rgba(2, 8, 23, 0.85);
+}
+
+/* --------------------------------------------------------------------------
+   10. System Architecture Interactive Nodes
+   -------------------------------------------------------------------------- */
+.arch-node {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: hsl(var(--secondary) / 0.5);
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.arch-node:hover, .arch-node.active {
+  border-color: hsl(var(--primary));
+  background-color: hsl(var(--primary) / 0.08);
+  transform: translateY(-2px);
+}
+
+/* Pulse status indicator */
 .pulse-indicator {
   position: relative;
   display: inline-block;
@@ -192,65 +423,20 @@ code, pre, .font-mono {
   100% { transform: scale(2.2); opacity: 0; }
 }
 
-/* --------------------------------------------------------------------------
-   6. Filter Buttons
-   -------------------------------------------------------------------------- */
-.project-filter-btn {
-  background-color: var(--bg-surface);
-  color: var(--text-muted);
-  border: 1px solid var(--border-subtle);
+/* Section Monospace Index Label (e.g., 01 / WORK EXPERIENCE) */
+.section-index {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.75rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: 0.5rem;
-  transition: all 0.15s ease;
-  min-height: 36px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: hsl(var(--primary));
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
+  gap: 0.5rem;
+  font-weight: 600;
 }
 
-.project-filter-btn:hover {
-  border-color: var(--border-strong);
-  color: var(--text-main);
-}
-
-.project-filter-btn.active {
-  background-color: var(--text-main) !important;
-  color: var(--bg-main) !important;
-  border-color: var(--text-main) !important;
-}
-
-.dark .project-filter-btn.active {
-  background-color: #f1f5f9 !important;
-  color: #080a0d !important;
-  border-color: #f1f5f9 !important;
-}
-
-/* --------------------------------------------------------------------------
-   7. Modal Backdrops & Containers
-   -------------------------------------------------------------------------- */
-.modal-backdrop {
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.dark .modal-backdrop {
-  background: rgba(0, 0, 0, 0.82);
-}
-
-/* Architecture Node Styling */
-.arch-node {
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.arch-node.active, .arch-node:hover {
-  border-color: var(--accent-cyan);
-  background: var(--accent-cyan-bg);
-  transform: translateY(-2px);
-}
-
-/* Ensure accessible tap targets on mobile */
+/* Accessible tap targets */
 button, a {
   touch-action: manipulation;
 }

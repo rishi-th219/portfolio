@@ -1,5 +1,6 @@
 // Rishi Thakur — Executive Portfolio Interactivity Engine
 // Data Analyst | Business Intelligence | SQL & Analytics Engineering
+// Designed with Logsfolio / Modern Shadcn UI Patterns
 
 document.addEventListener("DOMContentLoaded", () => {
   setupThemeToggle();
@@ -108,7 +109,7 @@ function setupCaseStudyModals() {
           const cleanPoint = point.trim();
           if (!cleanPoint) return;
           const p = document.createElement("p");
-          p.className = "text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal";
+          p.className = "text-sm text-foreground/90 leading-relaxed font-normal";
           p.textContent = cleanPoint;
           solutionEl.appendChild(p);
         });
@@ -122,10 +123,10 @@ function setupCaseStudyModals() {
           pipelineWrapper.classList.remove("hidden");
           const steps = data.pipeline.split("→").map(s => s.trim());
           pipelineEl.innerHTML = steps.map((step, idx) => `
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-800 dark:text-slate-200">
-              <span class="text-sky-600 dark:text-sky-400 font-semibold">${idx + 1}.</span> ${step}
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-secondary border border-border text-xs font-mono text-foreground">
+              <span class="text-primary font-semibold">${idx + 1}.</span> ${step}
             </span>
-            ${idx < steps.length - 1 ? '<span class="text-slate-400 dark:text-slate-600 font-mono text-xs select-none">→</span>' : ''}
+            ${idx < steps.length - 1 ? '<span class="text-muted-foreground font-mono text-xs select-none">→</span>' : ''}
           `).join(" ");
         } else {
           pipelineWrapper.classList.add("hidden");
@@ -136,7 +137,7 @@ function setupCaseStudyModals() {
       const stackEl = document.getElementById("modalStack");
       if (stackEl && data.stack) {
         stackEl.innerHTML = data.stack.map(tech => `
-          <span class="tech-pill">${tech}</span>
+          <span class="badge-pill">${tech}</span>
         `).join("");
       }
 
@@ -144,8 +145,8 @@ function setupCaseStudyModals() {
       const delivEl = document.getElementById("modalDeliverables");
       if (delivEl && data.deliverables) {
         delivEl.innerHTML = data.deliverables.map(deliv => `
-          <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-normal">
-            <span class="text-sky-600 dark:text-sky-400 font-mono select-none font-semibold">✓</span>
+          <li class="flex items-start gap-2 text-xs sm:text-sm text-foreground/90 font-normal">
+            <span class="text-primary font-mono select-none font-semibold">✓</span>
             <span>${deliv}</span>
           </li>
         `).join("");
@@ -199,12 +200,12 @@ function setupResumeModal() {
     if (typeof resumesData === "undefined" || !resumesData[trackKey]) return;
     const r = resumesData[trackKey];
 
-    // Update active tab buttons
+    // Update active tab buttons with Logsfolio tokens
     tabBtns.forEach(t => {
       if (t.dataset.resumeTab === trackKey) {
-        t.className = "resume-tab-btn px-2.5 py-1 rounded text-xs font-mono transition-colors border bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 border-slate-900 dark:border-slate-100 shadow-sm cursor-pointer";
+        t.className = "resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono transition-all border bg-primary text-primary-foreground border-primary shadow-sm cursor-pointer";
       } else {
-        t.className = "resume-tab-btn px-2.5 py-1 rounded text-xs font-mono transition-colors border bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-slate-400 cursor-pointer";
+        t.className = "resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono transition-all border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer";
       }
     });
 
@@ -218,36 +219,36 @@ function setupResumeModal() {
     modalBody.innerHTML = `
       <div class="space-y-6 max-w-3xl mx-auto">
         <!-- Header -->
-        <div class="text-center pb-4 border-b border-slate-200 dark:border-slate-800">
-          <h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">${r.header.name}</h2>
-          <div class="text-xs font-mono text-slate-600 dark:text-slate-400 mt-1 flex flex-wrap items-center justify-center gap-2">
+        <div class="text-center pb-4 border-b border-border">
+          <h2 class="text-2xl font-bold text-foreground tracking-tight">${r.header.name}</h2>
+          <div class="text-xs font-mono text-muted-foreground mt-1 flex flex-wrap items-center justify-center gap-2">
             <span>${r.header.location}</span>
             <span>•</span>
-            <a href="mailto:${r.header.email}" class="text-sky-600 dark:text-sky-400 hover:underline">${r.header.email}</a>
+            <a href="mailto:${r.header.email}" class="text-primary hover:underline">${r.header.email}</a>
             <span>•</span>
             <span>${r.header.phone}</span>
           </div>
-          <div class="text-xs font-mono text-slate-500 mt-1 flex items-center justify-center gap-2">
-            <a href="${r.header.linkedin}" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn ↗</a>
+          <div class="text-xs font-mono text-muted-foreground mt-1 flex items-center justify-center gap-2">
+            <a href="${r.header.linkedin}" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">LinkedIn ↗</a>
             <span>•</span>
-            <a href="${r.header.github}" target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub ↗</a>
+            <a href="${r.header.github}" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">GitHub ↗</a>
           </div>
         </div>
 
         <!-- Professional Summary -->
         <div class="space-y-2">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-bold border-b border-slate-200 dark:border-slate-800 pb-1">Professional Summary</h3>
-          <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">${r.summary}</p>
+          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Professional Summary</h3>
+          <p class="text-xs sm:text-sm text-foreground/90 leading-relaxed font-normal">${r.summary}</p>
         </div>
 
         <!-- Technical Skills -->
         <div class="space-y-2">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-bold border-b border-slate-200 dark:border-slate-800 pb-1">Technical Skills</h3>
+          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Technical Skills</h3>
           <div class="grid grid-cols-1 gap-1 text-xs">
             ${Object.entries(r.skills).map(([cat, skills]) => `
-              <div class="flex flex-col sm:flex-row sm:items-start gap-1 py-1 border-b border-slate-100 dark:border-slate-800/40">
-                <span class="font-mono text-slate-900 dark:text-slate-100 font-medium sm:w-44 shrink-0">${cat}:</span>
-                <span class="text-slate-600 dark:text-slate-400">${skills}</span>
+              <div class="flex flex-col sm:flex-row sm:items-start gap-1 py-1 border-b border-border/50">
+                <span class="font-mono text-foreground font-medium sm:w-44 shrink-0">${cat}:</span>
+                <span class="text-muted-foreground">${skills}</span>
               </div>
             `).join("")}
           </div>
@@ -255,20 +256,20 @@ function setupResumeModal() {
 
         <!-- Experience -->
         <div class="space-y-4">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-bold border-b border-slate-200 dark:border-slate-800 pb-1">Professional Experience</h3>
+          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Professional Experience</h3>
           ${r.experience.map(exp => `
             <div class="space-y-2 text-left">
               <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                 <div>
-                  <span class="font-bold text-slate-900 dark:text-white text-sm">${exp.role}</span>
-                  <span class="text-xs font-mono text-sky-600 dark:text-sky-400 ml-1">@ ${exp.company}</span>
+                  <span class="font-bold text-foreground text-sm">${exp.role}</span>
+                  <span class="text-xs font-mono text-primary ml-1">@ ${exp.company}</span>
                 </div>
-                <span class="text-xs font-mono text-slate-500">${exp.timeline}</span>
+                <span class="text-xs font-mono text-muted-foreground">${exp.timeline}</span>
               </div>
               <ul class="space-y-1.5 pl-3">
                 ${exp.bullets.map(b => `
-                  <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
-                    <span class="text-slate-400 dark:text-slate-600 font-mono select-none">•</span>
+                  <li class="flex items-start gap-2 text-xs sm:text-sm text-foreground/90 font-normal leading-relaxed">
+                    <span class="text-primary font-mono select-none">•</span>
                     <span>${b}</span>
                   </li>
                 `).join("")}
@@ -279,24 +280,24 @@ function setupResumeModal() {
 
         <!-- Education -->
         <div class="space-y-3">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-bold border-b border-slate-200 dark:border-slate-800 pb-1">Education</h3>
+          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Education</h3>
           <div class="space-y-2 text-xs">
             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
               <div>
-                <span class="font-bold text-slate-900 dark:text-slate-100">${r.education.mtech.degree}</span>
-                <span class="text-slate-500 ml-1">(${r.education.mtech.institute})</span>
+                <span class="font-bold text-foreground">${r.education.mtech.degree}</span>
+                <span class="text-muted-foreground ml-1">(${r.education.mtech.institute})</span>
               </div>
-              <div class="font-mono text-slate-500">
-                <span>${r.education.mtech.score}</span> • <span>${r.education.mtech.timeline}</span>
+              <div class="font-mono text-muted-foreground">
+                <span class="text-foreground font-semibold">${r.education.mtech.score}</span> • <span>${r.education.mtech.timeline}</span>
               </div>
             </div>
             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
               <div>
-                <span class="font-bold text-slate-900 dark:text-slate-100">${r.education.btech.degree}</span>
-                <span class="text-slate-500 ml-1">(${r.education.btech.institute})</span>
+                <span class="font-bold text-foreground">${r.education.btech.degree}</span>
+                <span class="text-muted-foreground ml-1">(${r.education.btech.institute})</span>
               </div>
-              <div class="font-mono text-slate-500">
-                <span>${r.education.btech.score}</span> • <span>${r.education.btech.timeline}</span>
+              <div class="font-mono text-muted-foreground">
+                <span class="text-foreground font-semibold">${r.education.btech.score}</span> • <span>${r.education.btech.timeline}</span>
               </div>
             </div>
           </div>
@@ -304,8 +305,8 @@ function setupResumeModal() {
 
         <!-- Certifications -->
         <div class="space-y-2">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-bold border-b border-slate-200 dark:border-slate-800 pb-1">Certifications & Qualifications</h3>
-          <div class="text-xs text-slate-600 dark:text-slate-400 space-y-1">
+          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Certifications & Qualifications</h3>
+          <div class="text-xs text-muted-foreground space-y-1">
             ${r.certifications.map(c => `<div>• ${c}</div>`).join("")}
           </div>
         </div>
@@ -357,34 +358,34 @@ function setupArchitectureExplorer() {
 
     tabs.forEach(t => {
       if (t.dataset.arch === key) {
-        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 shadow-sm cursor-pointer";
+        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-primary text-primary-foreground shadow-sm cursor-pointer";
       } else {
-        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer";
+        t.className = "arch-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all bg-secondary text-muted-foreground hover:text-foreground cursor-pointer";
       }
     });
 
     container.innerHTML = `
-      <div class="space-y-4">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+      <div class="space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-3">
           <div>
-            <span class="text-[11px] font-mono text-sky-600 dark:text-sky-400 font-semibold tracking-wider uppercase">${data.badge}</span>
-            <h4 class="text-base sm:text-lg font-semibold text-slate-950 dark:text-white mt-0.5">${data.title}</h4>
+            <span class="text-[11px] font-mono text-primary font-semibold tracking-wider uppercase">${data.badge}</span>
+            <h4 class="text-base sm:text-lg font-bold text-foreground mt-0.5">${data.title}</h4>
           </div>
-          <p class="text-xs text-slate-600 dark:text-slate-400 max-w-md font-normal leading-relaxed">${data.description}</p>
+          <p class="text-xs text-muted-foreground max-w-md font-normal leading-relaxed">${data.description}</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 pt-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 pt-1">
           ${data.steps.map((st) => `
-            <div class="arch-node p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-2 relative group">
+            <div class="arch-node p-3.5 flex flex-col justify-between space-y-2 relative group">
               <div>
                 <div class="flex items-center justify-between text-xs font-mono">
-                  <span class="text-sky-600 dark:text-sky-400 font-bold">${st.num}</span>
-                  <span class="text-[10px] uppercase tracking-wider text-slate-400">${st.label}</span>
+                  <span class="text-primary font-bold text-sm">${st.num}</span>
+                  <span class="text-[10px] uppercase tracking-wider text-muted-foreground">${st.label}</span>
                 </div>
-                <h5 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mt-1">${st.title}</h5>
-                <div class="text-[11px] font-mono text-slate-500 mt-0.5 italic">${st.tech}</div>
+                <h5 class="text-xs sm:text-sm font-semibold text-foreground mt-1">${st.title}</h5>
+                <div class="text-[11px] font-mono text-muted-foreground mt-0.5 italic">${st.tech}</div>
               </div>
-              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal pt-1">${st.detail}</p>
+              <p class="text-xs text-muted-foreground leading-relaxed font-normal pt-1">${st.detail}</p>
             </div>
           `).join("")}
         </div>

@@ -140,6 +140,36 @@ Taking architectural cues from Santiago Fernández's AI CV (`https://github.com/
      - Verified all 15 PDF resume asset paths resolve on disk without errors.
      - Confirmed clean UTF-8 encoding across all public files.
 
+### Milestone 8: Logsfolio Design System Adoption & Theme Revamp
+* **User Directive:** "change the theme, and revamp the whole website. Go through the C:\Users\Rishi\Desktop\Jobhunt\portfolio\logsfolio-v1.0.0 once and see for designs"
+* **Design System Analysis (`logsfolio-v1.0.0`):**
+  - Inspected the Tailwind Next.js developer portfolio template (`logsfolio-v1.0.0` by Logging Studio / ThemeWagon).
+  - Extracted the shadcn-style HSL color token system:
+    - Primary: Vibrant Violet/Purple (`hsl(262.1 83.3% 57.8%)` / `#7c3aed` light mode, `hsl(263.4 70% 50.4%)` / `#8b5cf6` dark mode).
+    - Background: Crisp White (`hsl(0 0% 100%)` light mode, Cosmic Deep Slate Navy `hsl(224 71.4% 4.1%)` / `#020817` dark mode).
+    - Secondary / Card: Slate neutral surface (`hsl(220 14.3% 95.9%)` / `#f1f5f9` light mode, Slate 800 `hsl(215 27.9% 16.9%)` / `#1e293b` dark mode).
+    - Radius: `0.75rem` (`rounded-xl` / `rounded-lg`).
+* **Revamp Implementation:**
+  1. **`css/styles.css` Overhaul:**
+     - Replaced legacy cyan tokens with official Logsfolio HSL tokens (`--background`, `--foreground`, `--card`, `--primary`, `--secondary`, `--muted`, `--border`, `--radius`).
+     - Ported Logsfolio component classes: `.logsfolio-card`, `.badge-pill`, `.badge-primary`, `.badge-outline`, `.tech-mono-pill`, `.btn-primary`, `.btn-secondary`, `.btn-outline`, `.btn-icon`.
+     - Engineered Logsfolio signature timeline styling (`.logsfolio-timeline`, `.logsfolio-timeline-item`, `.logsfolio-timeline-dot`).
+  2. **`index.html` Revamp:**
+     - **Navbar:** Sticky glass bar with monogram badge ("RT"), desktop links, theme toggler button, and quick resume CTA.
+     - **Hero Section:** Logsfolio-styled layout with rounded circular portrait badge, status pill ("Available for immediate hire • Bengaluru / Remote"), headline ("Hey 👋, I'm Rishi Thakur"), social icon group (GitHub, LinkedIn, Email, Phone, GEO), and 4 impact metric cards.
+     - **Work Experience:** Transformed CHiPS enterprise experience into Logsfolio's signature vertical timeline with glowing violet node indicators and company link.
+     - **My Projects:** Converted project cards into Logsfolio 2-column flex cards (`flex flex-col lg:flex-row logsfolio-card overflow-hidden`) with cover/metric headers, tech badges, descriptions, and action buttons.
+     - **Data Pipelines:** Integrated architecture explorer matching the new theme.
+     - **Technical Skills:** Structured into Logsfolio card matrix with pill clusters.
+     - **Education:** Transformed M.Tech and B.Tech credentials into Logsfolio's vertical timeline, supplemented by the standardized GATE/IELTS credentials banner.
+     - **Targeted Resumes (7 Tracks):** Modeled after Logsfolio card patterns with direct in-browser ATS modal viewer, PDF download, and new-tab links.
+     - **Contact & Footer:** Clean Logsfolio-style contact section, quick inquiry form, and minimalist footer.
+  3. **`js/app.js` Token Synchronization:**
+     - Updated tab, filter, and modal styling to use semantic HSL tokens (`bg-primary`, `bg-secondary`, `border-primary`, `text-primary`, `text-foreground`).
+  4. **Strict Ground-Truth & Zero Bloat Maintained:**
+     - Preserved 100% factual accuracy (M.Tech CSE IIIT Naya Raipur 7.90 CGPA, GATE CS 2024, IELTS 7.5, CHiPS 33-district enterprise healthcare BI).
+     - Kept private pipelines isolated (`tailoring/` never exposed). Added `logsfolio-v1.0.0/` to `.gitignore`.
+
 ---
 
 ## 3. Current Workspace Structure
