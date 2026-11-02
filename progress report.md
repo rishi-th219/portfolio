@@ -330,6 +330,29 @@ portfolio/
 
 ---
 
+### Milestone 15: Adoption of NewTemplate Minimalist Pitch-Black & Teal Design System and Whitespace Tightening
+- **Completed:** November 2026
+- **Status:** Complete & Production Ready
+- **Key Deliverables & Architectural Enhancements:**
+  1. **NewTemplate Design System & Tokens:**
+     - Transitioned entire theme in `css/styles.css` to NewTemplate Pitch Deep Black (`#09090b`), Pure Crisp White (`#f8fafc`), and Glowing Teal (`#14b8a6`).
+     - Added `.newtemplate-tag` uppercase mono badge styling, `.teal-bullet` glowing circular node bullets, `.card-teal-callout` high-impact solid teal card, and `.chart-line-teal` / `.chart-line-white` SVG telemetry curves.
+  2. **Elimination of Excess Whitespaces:**
+     - Tightened vertical spacing across all sections from bloated `py-20`/`py-24` down to snug, presentation-deck rhythm `py-10 md:py-14`.
+     - Eliminated artificial empty voids, creating a cohesive, high-readability flow.
+  3. **6-Page NewTemplate Layout Alignment:**
+     - **Hero (P1):** Dual-line telemetry chart graphic (teal & white curves with node dots on subtle coordinate gridlines), candidate intro, and direct coordinates.
+     - **About Me & Skills (P2):** Two-column split layout with `Who I Am` and `Skills & Expertise` categorized with glowing teal circular bullets.
+     - **Portfolio Highlights (P3):** Flagship CHiPS Healthcare Attendance ELT & Star Schema project detailed across 4 operational stages (Data Integration, Identity Resolution, Dimensional Analytics, Executive Delivery) with a solid teal callout card and working modal trigger.
+     - **Project Examples (P4):** Key-value structured cards (`Objective:`, `Methods:`, `Results:`) for Drug Inventory Matrix, 5G mmWave Handover Prediction, and Career-Ops Engine.
+     - **Services Offered & Credentials (P5):** 4 core capability blocks with minimalist teal SVG icons plus verified academic credentials (IIIT Naya Raipur 7.90 CGPA, Amity 7.71 CGPA, GATE CS 2024, IELTS 7.5 Band).
+     - **Contact & Single Resume (P6):** Dedicated single Data Analyst Resume card with ATS Modal Preview, PDF Download, and Direct Coordinates (strictly zero phone numbers, zero visible `llms.txt`).
+  4. **Verification & Quality Assurance:**
+     - Ran `scratch/verify_case_studies.py`: All 4 case study modals (`healthbi`, `supply_chain`, `telco5g`, `career_ops_bot`) and ATS resume preview verified.
+     - Ran `scratch/verify_links.py`: All 30 internal links and anchors verified with 0 broken targets.
+     - Ran `scratch/check_numbers.py`: Zero sensitive enterprise metrics exposed.
+
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

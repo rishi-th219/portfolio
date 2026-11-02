@@ -4,7 +4,7 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Design Tokens & HSL Color System (from Logsfolio)
+   1. Design Tokens & HSL Color System (NewTemplate: Pitch Black & Vibrant Teal)
    -------------------------------------------------------------------------- */
 :root {
   /* Light Mode */
@@ -17,7 +17,7 @@
   --popover: 0 0% 100%;
   --popover-foreground: 224 71.4% 4.1%;
   
-  --primary: 262.1 83.3% 57.8%;            /* Vibrant Violet/Purple #7c3aed */
+  --primary: 173 80% 36%;                  /* Deep Teal #0d9488 */
   --primary-foreground: 210 20% 98%;
   
   --secondary: 220 14.3% 95.9%;            /* Neutral Slate Surface #f1f5f9 */
@@ -26,15 +26,15 @@
   --muted: 220 14.3% 95.9%;
   --muted-foreground: 220 8.9% 46.1%;      /* #64748b */
   
-  --accent: 220 14.3% 95.9%;
-  --accent-foreground: 220.9 39.3% 11%;
+  --accent: 173 80% 94%;
+  --accent-foreground: 173 80% 25%;
   
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 20% 98%;
   
   --border: 220 13% 91%;                   /* #e2e8f0 */
   --input: 220 13% 91%;
-  --ring: 262.1 83.3% 57.8%;
+  --ring: 173 80% 36%;
   
   --radius: 0.75rem;
 
@@ -44,38 +44,38 @@
 }
 
 .dark {
-  /* Dark Mode: Deep Cosmic Navy & Glowing Violet */
-  --background: 224 71.4% 4.1%;            /* #020817 Deep Slate Navy */
-  --foreground: 210 20% 98%;               /* #f8fafc */
+  /* Dark Mode: Deep Pitch Black & Glowing Teal (NewTemplate Standard) */
+  --background: 240 10% 3.9%;              /* Deep Black #09090b */
+  --foreground: 210 20% 98%;               /* Pure Crisp White #f8fafc */
   
-  --card: 224 71.4% 4.1%;                  /* Elevated container */
+  --card: 240 10% 6.5%;                    /* Sleek Dark Surface #111114 */
   --card-foreground: 210 20% 98%;
   
-  --popover: 224 71.4% 4.1%;
+  --popover: 240 10% 6.5%;
   --popover-foreground: 210 20% 98%;
   
-  --primary: 263.4 70% 50.4%;              /* Glowing Electric Violet #8b5cf6 */
-  --primary-foreground: 210 20% 98%;
+  --primary: 174 86% 45%;                  /* Vibrant Glowing Teal #14b8a6 */
+  --primary-foreground: 240 10% 3.9%;
   
-  --secondary: 215 27.9% 16.9%;            /* #1e293b Slate 800 */
+  --secondary: 240 6% 12%;                 /* Dark Slate Neutral #1e1e24 */
   --secondary-foreground: 210 20% 98%;
   
-  --muted: 215 27.9% 16.9%;
-  --muted-foreground: 217.9 10.6% 64.9%;   /* #94a3b8 */
+  --muted: 240 6% 12%;
+  --muted-foreground: 215 16% 65%;         /* Cool Silver Slate #94a3b8 */
   
-  --accent: 215 27.9% 16.9%;
-  --accent-foreground: 210 20% 98%;
+  --accent: 174 86% 15%;
+  --accent-foreground: 174 86% 75%;
   
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 20% 98%;
   
-  --border: 215 27.9% 16.9%;               /* #1e293b */
-  --input: 215 27.9% 16.9%;
-  --ring: 263.4 70% 50.4%;
+  --border: 240 6% 16%;                    /* Subtle Border #272730 */
+  --input: 240 6% 16%;
+  --ring: 174 86% 45%;
 
   /* Grid & Subtle accents */
-  --grid-line: rgba(255, 255, 255, 0.035);
-  --glass-nav-bg: rgba(2, 8, 23, 0.85);
+  --grid-line: rgba(255, 255, 255, 0.03);
+  --glass-nav-bg: rgba(9, 9, 11, 0.88);
 }
 
 /* --------------------------------------------------------------------------
@@ -494,3 +494,47 @@ button, a {
   }
 }
 
+
+
+/* ==========================================================================
+   NewTemplate Signature Components
+   ========================================================================== */
+.newtemplate-tag {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: hsl(var(--primary));
+  font-weight: 600;
+}
+
+.teal-bullet {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 9999px;
+  background-color: hsl(var(--primary));
+  display: inline-block;
+  box-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  flex-shrink: 0;
+}
+
+.card-teal-callout {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  font-weight: 500;
+}
+
+.chart-line-teal {
+  stroke: hsl(var(--primary));
+  stroke-width: 2.5;
+  fill: none;
+  filter: drop-shadow(0 0 6px hsl(var(--primary) / 0.4));
+}
+
+.chart-line-white {
+  stroke: rgba(255, 255, 255, 0.85);
+  stroke-width: 1.75;
+  fill: none;
+}
