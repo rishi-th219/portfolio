@@ -352,6 +352,54 @@ portfolio/
      - Ran `scratch/verify_links.py`: All 30 internal links and anchors verified with 0 broken targets.
      - Ran `scratch/check_numbers.py`: Zero sensitive enterprise metrics exposed.
 
+---
+
+### Milestone 16: Adoption of `ai-design-skills` Design System & Modal Recovery
+- **Completed:** November 2026
+- **Status:** Complete & Production Ready
+- **Key Deliverables & Architectural Enhancements:**
+  1. **Typography & Font System (B1 Standard):**
+     - Completely standardized typography on **Geist** (`font-sans`) and **Geist Mono** (`font-mono`).
+     - Purged `Inter` from font imports to strictly adhere to `ai-design-skills` typeface directives.
+     - Enforced `text-wrap: balance` on all headings (`h1` through `h6`) and `text-wrap: pretty` on paragraphs and list elements to eliminate orphaned words.
+  2. **Hero Heading Text Gradient (B5 Standard):**
+     - Integrated subtle text-only gradient on `<h1>`: `#f8fafc` &rarr; `#94a3b8` in dark mode (`#09090b` &rarr; `#64748b` in light mode).
+     - Kept surfaces strictly flat with zero background gradients.
+     - Enforced hero max-width constraint (`max-w-[680px]`) and sentence-case rules with zero terminal periods.
+  3. **Mandatory Tagline Reveal Moment (B11 Standard):**
+     - Engineered section `#tagline-reveal` showcasing Rishi's core data philosophy: *"Turning high-volume operational data into automated ELT pipelines and decision-ready executive cockpits."*
+     - Words illuminate progressively from 28% muted opacity to full crisp color as the section scrolls into view via an accessible `IntersectionObserver`. Fully respects `prefers-reduced-motion`.
+  4. **Motion Curves & Interaction Feedback (B7, B9 Standards):**
+     - Upgraded button, badge, and modal animations to the signature weighted curve: `cubic-bezier(0.22, 1, 0.36, 1)`.
+     - Added physical press feedback (`active:scale-[0.98]`) and visible 2px focus rings (`focus-visible:ring-2 focus-visible:ring-primary`).
+  5. **Modal System Recovery & ATS Data Binding:**
+     - Re-introduced the `#caseStudyModal` dialog markup, enabling all 4 case study buttons (`healthbi`, `supply_chain`, `telco5g`, `career_ops_bot`) to display rich operational workflows, architecture pipelines, and deliverables.
+     - Re-introduced the `#resumeModal` dialog markup with track switcher tabs, single-column ATS typography, and zero phone numbers.
+     - Replaced brittle `r.header` dependencies in `js/app.js` with direct candidate ground-truth rendering.
+  6. **Accessibility & Cross-Platform Support (B10):**
+     - Added keyboard skip link (`Skip to main content`) and inline SVG favicon (`RT` badge on glowing teal).
+     - Upgraded `sync_tailored_resumes.py` with cross-platform detection supporting both Fedora Linux (`~/Desktop/tailoring`) and Windows.
+
+### Milestone 17: Human Designer Aesthetic & Slop Purge (ai-design-skills Elevation)
+- **Status:** COMPLETED
+- **Focus:** Complete elimination of generic AI tropes, implementation of floating glass capsule header, executive bento proof strip, and editorial case study cards.
+- **Key Enhancements Implemented:**
+  1. **Slop Purge & Hero Redesign (ai-design-skills B5, A2):**
+     - Completely eliminated the generic AI title wireframe (`DATA ANALYST PORTFOLIO`) and the decorative mock SVG polyline chart that conveyed zero real information.
+     - Unified candidate identity directly into a commanding Hero H1 (`Rishi Thakur`) using `.hero-gradient-text` (dark: `#f8fafc` to `#94a3b8`, light: `#09090b` to `#64748b`), capped at 680px max width with zero terminal periods.
+     - Added an authentic 4-metric **Executive Telemetry & Ground Truth Bento Strip** (Production BI at CHiPS, Kimball Star Schema modeling, IIIT Naya Raipur 7.90 CGPA, GATE CS 2024 & IELTS 7.5).
+  2. **Floating Glass Capsule Navigation (ai-design-skills B7 Resting State):**
+     - Upgraded the navbar from a rigid full-width bar to an elegant floating glass capsule (`top-3 sm:top-4`, `max-w-5xl`, `rounded-2xl`, `backdrop-blur-md`, subtle border) inspired by top product designs (Linear, Raycast, Vercel).
+  3. **Editorial Case Study Cards (`#projects`):**
+     - Replaced mechanical 3-line `Objective: / Methods: / Results:` table dumps with high-craft editorial case study cards.
+     - Added domain tags, concise problem narratives, 3-column micro-spec strips (Challenge, Methodology, Impact), and interactive `Explore Case Study →` modal triggers.
+     - Applied the nested corner radius formula (`rounded-2xl` outer card with `rounded-lg` inner spec blocks).
+  4. **Professional Taxonomy & Wording Elevation:**
+     - Replaced freelancer agency wording (`SERVICES OFFERED`) with engineering focus: `Technical Core & Methodologies` (`Specializations`).
+     - Purged all hyphens from prose sentences per B1/B8 ("high volume", "decision ready", "state level", "multi tier", "real time").
+  5. **Verification & Delivery:**
+     - 8-point automated Python test suite passed (modals, case study keys, resume keys, navigation anchors, font compliance, zero phone numbers, zero banned words, ground truth metrics).
+     - Local background preview server verified (HTTP 200 on port 8080).
 
 ## 4. Next Steps & Technical Roadmap
 

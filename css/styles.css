@@ -1,6 +1,7 @@
 /* ==========================================================================
    RISHI THAKUR — EXECUTIVE PORTFOLIO DESIGN SYSTEM
-   Theme & Styling based on Logsfolio / Modern Shadcn UI System
+   Theme & Styling based on ai-design-skills & NewTemplate Standards
+   Pitch Black (#09090b), Pure Crisp White (#f8fafc), and Glowing Teal (#14b8a6)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -44,20 +45,20 @@
 }
 
 .dark {
-  /* Dark Mode: Deep Pitch Black & Glowing Teal (NewTemplate Standard) */
+  /* Dark Mode: Deep Pitch Black & Glowing Teal (Strict ai-design-skills Surface) */
   --background: 240 10% 3.9%;              /* Deep Black #09090b */
   --foreground: 210 20% 98%;               /* Pure Crisp White #f8fafc */
   
-  --card: 240 10% 6.5%;                    /* Sleek Dark Surface #111114 */
+  --card: 240 10% 5.5%;                    /* #0f0f12 flat surface */
   --card-foreground: 210 20% 98%;
   
-  --popover: 240 10% 6.5%;
+  --popover: 240 10% 5.5%;
   --popover-foreground: 210 20% 98%;
   
   --primary: 174 86% 45%;                  /* Vibrant Glowing Teal #14b8a6 */
   --primary-foreground: 240 10% 3.9%;
   
-  --secondary: 240 6% 12%;                 /* Dark Slate Neutral #1e1e24 */
+  --secondary: 240 6% 11%;                 /* Flat Slate Neutral #19191e */
   --secondary-foreground: 210 20% 98%;
   
   --muted: 240 6% 12%;
@@ -69,20 +70,20 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 20% 98%;
   
-  --border: 240 6% 16%;                    /* Subtle Border #272730 */
+  --border: 240 6% 16%;                    /* Solid Boundary #272730 */
   --input: 240 6% 16%;
   --ring: 174 86% 45%;
 
   /* Grid & Subtle accents */
-  --grid-line: rgba(255, 255, 255, 0.03);
+  --grid-line: rgba(255, 255, 255, 0.025);
   --glass-nav-bg: rgba(9, 9, 11, 0.88);
 }
 
 /* --------------------------------------------------------------------------
-   2. Base Typography & Surface
+   2. Base Typography & Surface (ai-design-skills B1: Geist + Geist Mono)
    -------------------------------------------------------------------------- */
 html {
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   letter-spacing: -0.015em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -92,9 +93,53 @@ html {
   color: hsl(var(--foreground));
 }
 
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  font-family: "Geist", sans-serif;
+}
+
+p, li, span, label {
+  text-wrap: pretty;
+}
+
 code, pre, .font-mono {
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-family: "Geist Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace !important;
   letter-spacing: -0.02em;
+}
+
+/* Hero Heading Text-Only Gradient (ai-design-skills B5) */
+.hero-gradient-text {
+  background: linear-gradient(135deg, #f8fafc 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:root:not(.dark) .hero-gradient-text {
+  background: linear-gradient(135deg, #09090b 0%, #64748b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Tagline Reveal Moment (ai-design-skills B11) */
+.tagline-word {
+  opacity: 0.28;
+  transform: translateY(2px);
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  display: inline-block;
+  margin-right: 0.28rem;
+}
+
+.tagline-word.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tagline-word {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* Subtle Engineering Grid Background */
@@ -124,14 +169,17 @@ code, pre, .font-mono {
 }
 
 /* --------------------------------------------------------------------------
-   4. Logsfolio Navigation Bar
+   4. Floating Glass Navigation Bar (ai-design-skills B7: Resting State Floating Bar)
    -------------------------------------------------------------------------- */
 .logsfolio-nav {
   background: var(--glass-nav-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid hsl(var(--border));
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+              border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* --------------------------------------------------------------------------
@@ -252,7 +300,7 @@ code, pre, .font-mono {
 }
 
 /* --------------------------------------------------------------------------
-   8. Logsfolio Buttons & Filter Controls
+   8. Buttons, Controls & Focus System (ai-design-skills B7, B9)
    -------------------------------------------------------------------------- */
 .btn-primary {
   background-color: hsl(var(--primary));
@@ -265,7 +313,7 @@ code, pre, .font-mono {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: all 0.15s ease;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   cursor: pointer;
 }
@@ -273,6 +321,18 @@ code, pre, .font-mono {
 .btn-primary:hover {
   background-color: hsl(var(--primary) / 0.9);
   transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-outline:focus-visible,
+.btn-icon:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
 }
 
 .btn-secondary {
@@ -286,12 +346,18 @@ code, pre, .font-mono {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: all 0.15s ease;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
+  border: 1px solid hsl(var(--border));
 }
 
 .btn-secondary:hover {
   background-color: hsl(var(--secondary) / 0.8);
+  border-color: hsl(var(--primary) / 0.4);
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
 }
 
 .btn-outline {
@@ -306,7 +372,7 @@ code, pre, .font-mono {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: all 0.15s ease;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
 }
 
@@ -314,6 +380,10 @@ code, pre, .font-mono {
   background-color: hsl(var(--accent));
   color: hsl(var(--accent-foreground));
   border-color: hsl(var(--primary) / 0.4);
+}
+
+.btn-outline:active {
+  transform: scale(0.98);
 }
 
 .btn-icon {
@@ -327,7 +397,7 @@ code, pre, .font-mono {
   background-color: hsl(var(--secondary));
   color: hsl(var(--secondary-foreground));
   border: 1px solid hsl(var(--border));
-  transition: all 0.15s ease;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
 }
 
@@ -338,16 +408,20 @@ code, pre, .font-mono {
   transform: translateY(-1px);
 }
 
+.btn-icon:active {
+  transform: scale(0.96);
+}
+
 /* Filter Buttons */
 .project-filter-btn {
   background-color: hsl(var(--secondary));
   color: hsl(var(--muted-foreground));
   border: 1px solid hsl(var(--border));
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Geist Mono", monospace;
   font-size: 0.75rem;
   padding: 0.35rem 0.8rem;
   border-radius: 9999px;
-  transition: all 0.15s ease;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   min-height: 32px;
   display: inline-flex;
   align-items: center;
@@ -370,13 +444,13 @@ code, pre, .font-mono {
    9. Modal Backdrops & Overlays
    -------------------------------------------------------------------------- */
 .modal-backdrop {
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .dark .modal-backdrop {
-  background: rgba(2, 8, 23, 0.85);
+  background: rgba(9, 9, 11, 0.88);
 }
 
 /* Pulse status indicator */
@@ -500,7 +574,7 @@ button, a {
    NewTemplate Signature Components
    ========================================================================== */
 .newtemplate-tag {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Geist Mono", "IBM Plex Mono", monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;

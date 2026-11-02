@@ -13,7 +13,10 @@ import shutil
 import sys
 import hashlib
 
-DESKTOP_TAILORING_DIR = r"C:\Users\Rishi\Desktop\tailoring"
+# Support both Fedora Linux and Windows paths
+LINUX_TAILORING_DIR = os.path.expanduser("~/Desktop/tailoring")
+WINDOWS_TAILORING_DIR = r"C:\Users\Rishi\Desktop\tailoring"
+DESKTOP_TAILORING_DIR = LINUX_TAILORING_DIR if os.path.exists(LINUX_TAILORING_DIR) else WINDOWS_TAILORING_DIR
 PORTFOLIO_DIR = os.path.dirname(os.path.abspath(__file__))
 ASSETS_DIR = os.path.join(PORTFOLIO_DIR, "assets")
 
@@ -27,7 +30,7 @@ def file_hash(filepath):
 
 def scan_and_sync():
     print("=" * 65)
-    print("RESUME SYNC ENGINE: Scanning C:\\Users\\Rishi\\Desktop\\tailoring")
+    print(f"RESUME SYNC ENGINE: Scanning {DESKTOP_TAILORING_DIR}")
     print("=" * 65)
 
     if not os.path.exists(DESKTOP_TAILORING_DIR):

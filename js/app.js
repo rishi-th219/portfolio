@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
   setupBackToTop();
   setupContactForm();
+  setupTaglineReveal();
 });
 
 // 1. Theme Toggle Engine (Dark / Light Mode)
@@ -182,7 +183,7 @@ function setupCaseStudyModals() {
   });
 }
 
-// 4. Curated 7-Track ATS Resume Modal Engine
+// 4. Curated 7-Track ATS Resume Modal Engine (ai-design-skills & Zero-Fabrication)
 function setupResumeModal() {
   const modal = document.getElementById("resumeModal");
   const closeBtn = document.getElementById("resumeModalCloseBtn");
@@ -198,7 +199,7 @@ function setupResumeModal() {
     if (typeof resumesData === "undefined" || !resumesData[trackKey]) return;
     const r = resumesData[trackKey];
 
-    // Update active tab buttons with Logsfolio tokens
+    // Update active tab buttons with design tokens
     tabBtns.forEach(t => {
       if (t.dataset.resumeTab === trackKey) {
         t.className = "resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono transition-all border bg-primary text-primary-foreground border-primary shadow-sm cursor-pointer";
@@ -207,107 +208,129 @@ function setupResumeModal() {
       }
     });
 
-    if (modalTitle) modalTitle.textContent = `${r.title} — ATS Resume`;
+    if (modalTitle) modalTitle.textContent = `${r.title || r.role} — ATS Resume`;
     if (pdfDownloadBtn) {
       pdfDownloadBtn.href = r.pdf;
       pdfDownloadBtn.download = r.pdf.split("/").pop();
     }
 
-    // Render formatted ATS content
+    // Render formatted single-column ATS content (strictly 0 phone numbers!)
     modalBody.innerHTML = `
-      <div class="space-y-6 max-w-3xl mx-auto">
+      <div class="space-y-6 max-w-3xl mx-auto text-left">
         <!-- Header -->
         <div class="text-center pb-4 border-b border-border">
-          <h2 class="text-2xl font-bold text-foreground tracking-tight">${r.header.name}</h2>
+          <h2 class="text-2xl font-bold text-foreground tracking-tight">Rishi Thakur</h2>
           <div class="text-xs font-mono text-muted-foreground mt-1 flex flex-wrap items-center justify-center gap-2">
-            <span>${r.header.location}</span>
+            <span>Raipur / Bengaluru, India</span>
             <span>•</span>
-            <a href="mailto:${r.header.email}" class="text-primary hover:underline">${r.header.email}</a>
+            <a href="mailto:rishithakur528@gmail.com" class="text-primary hover:underline">rishithakur528@gmail.com</a>
             <span>•</span>
-            <span>${r.header.phone}</span>
-          </div>
-          <div class="text-xs font-mono text-muted-foreground mt-1 flex items-center justify-center gap-2">
-            <a href="${r.header.linkedin}" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/rishi-thakur-dev/" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">LinkedIn ↗</a>
             <span>•</span>
-            <a href="${r.header.github}" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">GitHub ↗</a>
+            <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">GitHub ↗</a>
           </div>
         </div>
 
         <!-- Professional Summary -->
         <div class="space-y-2">
           <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Professional Summary</h3>
-          <p class="text-xs sm:text-sm text-foreground/90 leading-relaxed font-normal">${r.summary}</p>
+          <p class="text-xs sm:text-sm text-foreground/90 leading-relaxed font-normal">${r.summary || ""}</p>
         </div>
 
         <!-- Technical Skills -->
         <div class="space-y-2">
           <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Technical Skills</h3>
-          <div class="grid grid-cols-1 gap-1 text-xs">
-            ${Object.entries(r.skills).map(([cat, skills]) => `
-              <div class="flex flex-col sm:flex-row sm:items-start gap-1 py-1 border-b border-border/50">
-                <span class="font-mono text-foreground font-medium sm:w-44 shrink-0">${cat}:</span>
-                <span class="text-muted-foreground">${skills}</span>
-              </div>
-            `).join("")}
+          <div class="space-y-1.5 text-xs">
+            ${Array.isArray(r.skills) ? r.skills.map(s => `
+              <div class="py-1 border-b border-border/50 text-foreground/90 leading-relaxed">${s}</div>
+            `).join("") : ""}
           </div>
         </div>
 
-        <!-- Experience -->
+        <!-- Professional Experience -->
         <div class="space-y-4">
           <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Professional Experience</h3>
-          ${r.experience.map(exp => `
-            <div class="space-y-2 text-left">
-              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                <div>
-                  <span class="font-bold text-foreground text-sm">${exp.role}</span>
-                  <span class="text-xs font-mono text-primary ml-1">@ ${exp.company}</span>
-                </div>
-                <span class="text-xs font-mono text-muted-foreground">${exp.timeline}</span>
+          <div class="space-y-2 text-left">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <div>
+                <span class="font-bold text-foreground text-sm">${r.exp_role || "Data Analyst & BI Developer Intern"}</span>
               </div>
-              <ul class="space-y-1.5 pl-3">
-                ${exp.bullets.map(b => `
-                  <li class="flex items-start gap-2 text-xs sm:text-sm text-foreground/90 font-normal leading-relaxed">
-                    <span class="text-primary font-mono select-none">•</span>
-                    <span>${b}</span>
-                  </li>
-                `).join("")}
-              </ul>
+              <span class="text-xs font-mono text-muted-foreground">06/2025 – 03/2026</span>
             </div>
-          `).join("")}
+            <ul class="space-y-1.5 pl-3">
+              ${Array.isArray(r.exp_bullets) ? r.exp_bullets.map(b => `
+                <li class="flex items-start gap-2 text-xs sm:text-sm text-foreground/90 font-normal leading-relaxed">
+                  <span class="text-primary font-mono select-none">•</span>
+                  <span>${b}</span>
+                </li>
+              `).join("") : ""}
+            </ul>
+          </div>
         </div>
+
+        <!-- Flagship Technical Projects -->
+        ${Array.isArray(r.projects) && r.projects.length ? `
+          <div class="space-y-4">
+            <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Key Technical Projects</h3>
+            ${r.projects.map(p => `
+              <div class="space-y-1.5 text-left">
+                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                  <div>
+                    <span class="font-bold text-foreground text-sm">${p.name}</span>
+                    <span class="text-xs font-mono text-muted-foreground ml-1">(${p.tools})</span>
+                  </div>
+                  <span class="text-xs font-mono text-primary">${p.tag || ""}</span>
+                </div>
+                <ul class="space-y-1 pl-3">
+                  ${Array.isArray(p.bullets) ? p.bullets.map(pb => `
+                    <li class="flex items-start gap-2 text-xs sm:text-sm text-foreground/90 font-normal leading-relaxed">
+                      <span class="text-primary font-mono select-none">•</span>
+                      <span>${pb}</span>
+                    </li>
+                  `).join("") : ""}
+                </ul>
+              </div>
+            `).join("")}
+          </div>
+        ` : ""}
 
         <!-- Education -->
         <div class="space-y-3">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Education</h3>
+          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Education & Verified Credentials</h3>
           <div class="space-y-2 text-xs">
             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
               <div>
-                <span class="font-bold text-foreground">${r.education.mtech.degree}</span>
-                <span class="text-muted-foreground ml-1">(${r.education.mtech.institute})</span>
+                <span class="font-bold text-foreground">M.Tech in Computer Science & Engineering</span>
+                <span class="text-muted-foreground ml-1">(IIIT Naya Raipur)</span>
               </div>
               <div class="font-mono text-muted-foreground">
-                <span class="text-foreground font-semibold">${r.education.mtech.score}</span> • <span>${r.education.mtech.timeline}</span>
+                <span class="text-foreground font-semibold">CGPA: 7.90</span> • <span>2024 – 2026</span>
               </div>
             </div>
             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
               <div>
-                <span class="font-bold text-foreground">${r.education.btech.degree}</span>
-                <span class="text-muted-foreground ml-1">(${r.education.btech.institute})</span>
+                <span class="font-bold text-foreground">B.Tech in Computer Science & Engineering</span>
+                <span class="text-muted-foreground ml-1">(Amity University Chhattisgarh)</span>
               </div>
               <div class="font-mono text-muted-foreground">
-                <span class="text-foreground font-semibold">${r.education.btech.score}</span> • <span>${r.education.btech.timeline}</span>
+                <span class="text-foreground font-semibold">CGPA: 7.71</span> • <span>2020 – 2024</span>
               </div>
+            </div>
+            <div class="pt-1 text-muted-foreground">
+              <span class="font-semibold text-foreground">Accreditations: </span>GATE CS 2024 Qualified • IELTS Academic Band 7.5 (CEFR C1)
             </div>
           </div>
         </div>
 
         <!-- Certifications -->
-        <div class="space-y-2">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Certifications & Qualifications</h3>
-          <div class="text-xs text-muted-foreground space-y-1">
-            ${r.certifications.map(c => `<div>• ${c}</div>`).join("")}
+        ${Array.isArray(r.certs) && r.certs.length ? `
+          <div class="space-y-2">
+            <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Certifications</h3>
+            <div class="text-xs text-muted-foreground space-y-1">
+              ${r.certs.map(c => `<div>• ${c}</div>`).join("")}
+            </div>
           </div>
-        </div>
+        ` : ""}
       </div>
     `;
   };
@@ -419,11 +442,11 @@ function setupContactForm() {
     const email = document.getElementById("senderEmail")?.value || "";
     const message = document.getElementById("senderMessage")?.value || "";
 
-    const mailtoLink = `mailto:rishi_th219@proton.me?subject=${encodeURIComponent("Portfolio Inquiry from " + name)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+    const mailtoLink = `mailto:rishithakur528@gmail.com?cc=rishi_th219@proton.me&subject=${encodeURIComponent("Portfolio Inquiry from " + name)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
     window.location.href = mailtoLink;
 
     if (statusMsg) {
-      statusMsg.textContent = "Opening your email client to send message to rishi_th219@proton.me...";
+      statusMsg.textContent = "Opening your email client to send message to rishithakur528@gmail.com...";
       statusMsg.classList.remove("hidden");
       setTimeout(() => statusMsg.classList.add("hidden"), 5000);
     }
