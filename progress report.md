@@ -5,7 +5,7 @@
 **Live Deployment:** `https://rishi-th219.github.io/portfolio/`  
 **Workspace Path:** `C:\Users\Rishi\Desktop\Jobhunt\portfolio`  
 **Last Updated:** November 1, 2026  
-**Status:** In Active Enhancement (Milestone 13 Completed • Balanced Minimal Architecture & Case Study Modals Live)
+**Status:** In Active Enhancement (Milestone 14 Completed • Spacious Minimalist Design & Single Resume Live)
 
 ---
 
@@ -285,6 +285,26 @@ Taking architectural cues from Santiago Fernández's AI CV (`https://github.com/
      - **Skills & Academics:** Clean, minimal high-density cards visible in front with zero clutter.
   3. **Automated Tailoring Sync:**
      - Detected 7 freshly modified PDF resumes in `C:\Users\Rishi\Desktop\tailoring\` and automatically updated them in `portfolio/assets/`.
+
+---
+
+### Milestone 14: Spacious Minimalist Design, LLM Link Removal & Single Data Analyst Resume
+* **User Directive:**
+  > "the site has too much data reduce the amount of text. Also, things like llm.txt and all should not be visible, and don't show 5 resumes on it., just show the main data analyst one. Add whitespaces, stop showing personal details too much"
+* **Deliverables Implemented:**
+  1. **Removed Visible LLM Links:**
+     - Completely removed public UI links to `llms.txt` and `llms-full.txt` from the Hero and Footer. (The root files remain available for direct crawler access).
+  2. **Personal Data Privacy Lockdown:**
+     - Removed raw phone numbers (`+91 8109830219`) from visible Hero coordinates, Contact blocks, and schema metadata.
+     - Kept professional, direct inquiry channels: Email (`rishi_th219@proton.me`), LinkedIn, and GitHub.
+  3. **Single Main Data Analyst Resume:**
+     - Replaced the multi-track resume grid with **one clean, authoritative Data Analyst Resume card** featuring in-browser ATS preview (`Preview ATS 👁`), direct download (`Download PDF ↓`), and new-tab view (`Open in Tab ↗`).
+  4. **Added Generous Whitespace & Breathing Room:**
+     - Replaced cramped vertical padding with generous, elegant spacing (`py-16 md:py-20`), comfortable card padding (`p-6 sm:p-8`), and airy gaps (`space-y-8`).
+  5. **Text & Data Minimization:**
+     - Reduced visible text across the entire site down to ~550 total words, ensuring the site is scannable in under 30 seconds with zero clutter.
+  6. **Automated Tailoring Sync:**
+     - Synchronized 9 tailored resumes (including newly compiled `AI_SDE` and `Python_Developer` tracks) directly from `C:\Users\Rishi\Desktop\tailoring\` into `portfolio/assets/`.
 
 ---
 
