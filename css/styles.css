@@ -671,3 +671,35 @@ button, a {
   font-family: "Geist Mono", monospace;
   font-size: 0.75rem;
 }
+
+/* ==========================================================================
+   Sebastien Graf & Christen Dijoux Inspiration: Gliding Arrows & Editorial Contact
+   ========================================================================== */
+.glide-arrow {
+  display: inline-block;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .glide-arrow,
+a:hover .glide-arrow,
+button:hover .glide-arrow {
+  transform: translate(2px, -2px);
+}
+
+.editorial-contact-link {
+  font-size: clamp(1.35rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: hsl(var(--foreground));
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 6px;
+  text-decoration-color: hsl(var(--border));
+  transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+
+.editorial-contact-link:hover {
+  color: hsl(var(--primary));
+  text-decoration-color: hsl(var(--primary));
+}

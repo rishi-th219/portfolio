@@ -170,27 +170,43 @@
   <main class="container max-w-5xl mx-auto px-4 sm:px-6">
 
     <!-- ----------------------------------------------------------------------
-         PAGE 1: HERO / CANDIDATE IDENTITY & TELEMETRY STRIP
-         (ai-design-skills B5: Max width 680px, text-only gradient, zero fake SVG lines)
+         PAGE 1: HERO / EXECUTIVE DOSSIER & CRAFT STATEMENT
+         (Inspiration: christendijoux.com & sebg.ch bold editorial typography)
          ---------------------------------------------------------------------- -->
     <section id="home" class="pt-28 pb-8 md:pt-36 md:pb-12 space-y-6">
       
-      <!-- Availability Pill -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary border border-border text-xs font-mono text-muted-foreground">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span>Available for immediate hire &bull; Bengaluru / Raipur / Remote</span>
+      <!-- Executive Dossier Metadata Strip (christendijoux.com Inspiration) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3 rounded-2xl bg-secondary/40 border border-border/80 text-xs font-mono">
+        <div>
+          <span class="text-[10px] uppercase text-muted-foreground block">Discipline</span>
+          <span class="text-foreground font-semibold text-xs mt-0.5 block">Analytics Engineering</span>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase text-muted-foreground block">Coordinates</span>
+          <span class="text-foreground font-semibold text-xs mt-0.5 block">Raipur &bull; Bengaluru</span>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase text-muted-foreground block">Credentials</span>
+          <span class="text-foreground font-semibold text-xs mt-0.5 block">IIIT Naya Raipur 7.90</span>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase text-muted-foreground block">Availability</span>
+          <span class="text-emerald-500 font-semibold text-xs mt-0.5 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Immediate Joiner
+          </span>
+        </div>
       </div>
 
-      <!-- Hero Headline & Subhead (Max width 680px per B5) -->
-      <div class="max-w-[680px] space-y-3">
-        <h1 class="hero-gradient-text text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.08]">
+      <!-- Hero Headline & Craft Statement (Max width 680px per B5) -->
+      <div class="max-w-[680px] space-y-3.5">
+        <h1 class="hero-gradient-text text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05]">
           Rishi Thakur
         </h1>
-        <p class="text-lg sm:text-xl md:text-2xl font-medium text-foreground tracking-tight leading-snug">
-          Data analyst and analytics engineer building automated ELT pipelines, dimensional Kimball schemas, and production Power BI cockpits.
+        <p class="text-xl sm:text-2xl font-medium text-foreground tracking-tight leading-snug">
+          I build automated ELT pipelines, dimensional Kimball schemas, and executive Power BI cockpits that turn complex operational chaos into decision clarity.
         </p>
-        <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-1">
-          M.Tech Computer Science scholar at IIIT Naya Raipur. Enterprise experience at CHiPS consolidating statewide healthcare telemetry into executive reporting systems.
+        <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+          M.Tech Computer Science scholar at IIIT Naya Raipur with enterprise experience at CHiPS architecting statewide healthcare intelligence systems. And I care about data fidelity and schema architecture as much as executive cockpit craft.
         </p>
       </div>
 
@@ -200,38 +216,38 @@
           <span>Preview ATS Resume 📄</span>
         </button>
         <a href="#highlights" class="btn-secondary text-xs font-mono">
-          <span>Explore Flagship Work ↓</span>
+          <span>Explore Selected Work ↓</span>
         </a>
         <div class="flex items-center gap-3 pl-2 text-xs font-mono text-muted-foreground">
-          <a href="mailto:rishithakur528@gmail.com" class="hover:text-primary transition-colors">Email</a>
+          <a href="mailto:rishithakur528@gmail.com" class="hover:text-primary transition-colors flex items-center gap-1">Email <span class="text-[11px]">&rarr;</span></a>
           <span>&bull;</span>
-          <a href="https://www.linkedin.com/in/rishi-thakur-dev/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">LinkedIn ↗</a>
+          <a href="https://www.linkedin.com/in/rishi-thakur-dev/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1">LinkedIn <span class="text-[11px]">&nearr;</span></a>
           <span>&bull;</span>
-          <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">GitHub ↗</a>
+          <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1">GitHub <span class="text-[11px]">&nearr;</span></a>
         </div>
       </div>
 
-      <!-- Authentic Telemetry & Ground Truth Bento Strip (Replaces generic mock chart) -->
+      <!-- Authentic Telemetry & Ground Truth Bento Strip -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-3">
-        <div class="p-4 rounded-xl border border-border bg-card/60 space-y-1.5 hover:border-primary/40 transition-colors">
+        <div class="glow-card p-4 rounded-xl border border-border bg-card/60 space-y-1.5">
           <span class="text-[11px] font-mono uppercase tracking-wider text-primary font-semibold block">Production BI</span>
           <p class="text-sm font-semibold text-foreground tracking-tight">CHiPS Healthcare</p>
-          <p class="text-xs text-muted-foreground leading-relaxed">Statewide attendance ELT & multi source consolidation</p>
+          <p class="text-xs text-muted-foreground leading-relaxed">Statewide attendance ELT and multi source consolidation</p>
         </div>
 
-        <div class="p-4 rounded-xl border border-border bg-card/60 space-y-1.5 hover:border-primary/40 transition-colors">
+        <div class="glow-card p-4 rounded-xl border border-border bg-card/60 space-y-1.5">
           <span class="text-[11px] font-mono uppercase tracking-wider text-primary font-semibold block">Data Modeling</span>
           <p class="text-sm font-semibold text-foreground tracking-tight">Kimball Star Schema</p>
-          <p class="text-xs text-muted-foreground leading-relaxed">Normalized dimension models & high performance DAX</p>
+          <p class="text-xs text-muted-foreground leading-relaxed">Normalized dimension models and high performance DAX</p>
         </div>
 
-        <div class="p-4 rounded-xl border border-border bg-card/60 space-y-1.5 hover:border-primary/40 transition-colors">
+        <div class="glow-card p-4 rounded-xl border border-border bg-card/60 space-y-1.5">
           <span class="text-[11px] font-mono uppercase tracking-wider text-primary font-semibold block">Academia</span>
           <p class="text-sm font-semibold text-foreground tracking-tight">IIIT Naya Raipur</p>
           <p class="text-xs text-muted-foreground leading-relaxed">M.Tech Computer Science &bull; 7.90 CGPA</p>
         </div>
 
-        <div class="p-4 rounded-xl border border-border bg-card/60 space-y-1.5 hover:border-primary/40 transition-colors">
+        <div class="glow-card p-4 rounded-xl border border-border bg-card/60 space-y-1.5">
           <span class="text-[11px] font-mono uppercase tracking-wider text-primary font-semibold block">Credentials</span>
           <p class="text-sm font-semibold text-foreground tracking-tight">GATE CS & IELTS</p>
           <p class="text-xs text-muted-foreground leading-relaxed">GATE Qualified 2024 &bull; IELTS Band 7.5</p>
@@ -246,8 +262,8 @@
          ---------------------------------------------------------------------- -->
     <section id="about" class="py-10 md:py-14 border-t border-border/40 space-y-6">
       <div>
-        <span class="newtemplate-tag">Profile & Competencies</span>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Profile & Engineering Focus</h2>
+        <span class="newtemplate-tag">01 / Profile &amp; Focus</span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Profile &amp; Engineering Focus</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
@@ -354,9 +370,12 @@
          ---------------------------------------------------------------------- -->
     <section id="highlights" class="py-10 md:py-14 border-t border-border/40 space-y-6">
       <div>
-        <span class="newtemplate-tag">Featured Case Study</span>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Statewide Healthcare Attendance & Performance BI</h2>
-        <p class="text-xs font-mono text-primary mt-0.5">CHiPS (Chhattisgarh Infotech Promotion Society) &bull; Enterprise Production Deployment</p>
+        <span class="newtemplate-tag">02 / Flagship Production Case Study</span>
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mt-1">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Statewide Healthcare Attendance &amp; Performance BI</h2>
+          <span class="text-xs font-mono text-muted-foreground">CHiPS &bull; 2025–2026</span>
+        </div>
+        <p class="text-xs font-mono text-primary mt-0.5">Enterprise Production Deployment &bull; Kimball Dimensional Architecture</p>
       </div>
 
       <p class="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-3xl">
@@ -569,35 +588,37 @@ RETURN
           </p>
           <p class="text-xs opacity-80 font-mono">— CHiPS Production Impact</p>
         </div>
-        <button class="view-case-study-btn shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-mono font-semibold text-xs transition-all bg-background text-foreground hover:bg-secondary hover:text-primary shadow-sm focus-visible:ring-2 focus-visible:ring-primary" data-study="healthbi">
-          <span>Explore Case Study →</span>
+        <button class="view-case-study-btn shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-mono font-semibold text-xs transition-all bg-background text-foreground hover:bg-secondary hover:text-primary shadow-sm focus-visible:ring-2 focus-visible:ring-primary group" data-study="healthbi">
+          <span>Explore Case Study <span class="glide-arrow text-primary">&rarr;</span></span>
         </button>
       </div>
     </section>
 
     <!-- ----------------------------------------------------------------------
          PAGE 4: FEATURED ANALYTICAL PROJECTS
-         (ai-design-skills: Editorial case study cards, micro-spec strips, nested radius)
+         (ai-design-skills & sebg.ch: Editorial case study cards, year stamps, micro-spec strips)
          ---------------------------------------------------------------------- -->
     <section id="projects" class="py-10 md:py-14 border-t border-border/40 space-y-6">
       <div>
-        <span class="newtemplate-tag">Case Studies</span>
+        <span class="newtemplate-tag">03 / Selected Analytical Projects</span>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Featured Analytical Projects</h2>
+        <p class="text-xs font-mono text-muted-foreground mt-0.5">Applied Data Science &bull; Multi-Tier Optimization &bull; Telemetry Ingestion</p>
       </div>
 
       <div class="space-y-5">
         
         <!-- Project 1: Drug Inventory Matrix -->
-        <div class="p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4 hover:border-primary/50 transition-all duration-300">
+        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-0.5 rounded-md bg-primary/10 text-primary text-[11px] font-mono font-medium border border-primary/20">
                 Healthcare Supply Chain
               </span>
               <span class="text-xs font-mono text-muted-foreground">&bull; Optimization</span>
+              <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2024</span>
             </div>
-            <button class="view-case-study-btn self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200" data-study="supply_chain">
-              <span>Explore Case Study &rarr;</span>
+            <button class="view-case-study-btn self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group" data-study="supply_chain">
+              <span>Explore Case Study <span class="glide-arrow">&rarr;</span></span>
             </button>
           </div>
 
@@ -628,16 +649,17 @@ RETURN
         </div>
 
         <!-- Project 2: 5G mmWave Handover Prediction -->
-        <div class="p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4 hover:border-primary/50 transition-all duration-300">
+        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-0.5 rounded-md bg-primary/10 text-primary text-[11px] font-mono font-medium border border-primary/20">
                 Telecommunications
               </span>
               <span class="text-xs font-mono text-muted-foreground">&bull; Machine Learning</span>
+              <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2024</span>
             </div>
-            <button class="view-case-study-btn self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200" data-study="telco5g">
-              <span>Explore Case Study &rarr;</span>
+            <button class="view-case-study-btn self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group" data-study="telco5g">
+              <span>Explore Case Study <span class="glide-arrow">&rarr;</span></span>
             </button>
           </div>
 
@@ -668,16 +690,17 @@ RETURN
         </div>
 
         <!-- Project 3: Career-Ops Engine -->
-        <div class="p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4 hover:border-primary/50 transition-all duration-300">
+        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-0.5 rounded-md bg-primary/10 text-primary text-[11px] font-mono font-medium border border-primary/20">
                 Data Automation
               </span>
               <span class="text-xs font-mono text-muted-foreground">&bull; NLP & Ingestion</span>
+              <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2025</span>
             </div>
-            <button class="view-case-study-btn self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200" data-study="career_ops_bot">
-              <span>Explore Case Study &rarr;</span>
+            <button class="view-case-study-btn self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group" data-study="career_ops_bot">
+              <span>Explore Case Study <span class="glide-arrow">&rarr;</span></span>
             </button>
           </div>
 
@@ -717,8 +740,8 @@ RETURN
     <section id="capabilities" class="py-10 md:py-14 border-t border-border/40 space-y-6">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
         <div>
-          <span class="newtemplate-tag">Specializations</span>
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Technical Core & Methodologies</h2>
+          <span class="newtemplate-tag">04 / Technical Core &amp; Stack</span>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Technical Core &amp; Methodologies</h2>
           <p class="text-xs font-mono text-primary mt-0.5">Enterprise Analytics Engineering &bull; Interactive Stack</p>
         </div>
 
@@ -852,18 +875,18 @@ RETURN
     </section>
 
     <!-- ----------------------------------------------------------------------
-         PAGE 6: CURATED RESUME & CONTACT
-         (Single Data Analyst ATS card + direct verified coordinates)
+         PAGE 6: CURATED RESUME & HIGH-IMPACT CONTACT
+         (Sebastien Graf Inspiration: Bold Editorial Headline, Oversized Mailto)
          ---------------------------------------------------------------------- -->
     <section id="resume" class="py-10 md:py-14 border-t border-border/40 space-y-6">
       <div>
-        <span class="newtemplate-tag">Curated Resume & Channels</span>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Curated Resume & Direct Contact</h2>
-        <p class="text-xs font-mono text-primary mt-0.5">Available for Immediate Hire</p>
+        <span class="newtemplate-tag">05 / Curated ATS Resume</span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Production Resume &amp; Credentials</h2>
+        <p class="text-xs font-mono text-primary mt-0.5">Verified Experience &bull; Ready for Immediate Join</p>
       </div>
 
       <!-- Single Tailored Data Analyst Resume Card -->
-      <div class="p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4 hover:border-primary/40 transition-colors">
+      <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <h3 class="text-lg font-bold text-foreground tracking-tight">Data Analyst Resume (ATS-Optimized)</h3>
@@ -871,7 +894,7 @@ RETURN
           </div>
           <div class="flex flex-wrap gap-2 text-xs font-mono">
             <span class="px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">Production Verified</span>
-            <span class="px-2 py-0.5 rounded bg-secondary text-secondary-foreground border border-border">ELT & Power BI</span>
+            <span class="px-2 py-0.5 rounded bg-secondary text-secondary-foreground border border-border">ELT &amp; Power BI</span>
           </div>
         </div>
 
@@ -881,67 +904,88 @@ RETURN
 
         <!-- Resume Action Buttons -->
         <div class="flex flex-wrap items-center gap-3 pt-1">
-          <button class="view-resume-btn btn-primary text-xs font-mono" data-resume="data_analyst">
-            <span>Preview ATS 👁</span>
+          <button class="view-resume-btn btn-primary text-xs font-mono group" data-resume="data_analyst">
+            <span>Preview ATS <span class="glide-arrow">👁</span></span>
           </button>
-          <a href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" download="Rishi_Thakur_Data_Analyst.pdf" class="btn-secondary text-xs font-mono">
-            <span>Download PDF ↓</span>
+          <a href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" download="Rishi_Thakur_Data_Analyst.pdf" class="btn-secondary text-xs font-mono group">
+            <span>Download PDF <span class="glide-arrow">&darr;</span></span>
           </a>
-          <a href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono">
-            <span>Open Tab ↗</span>
+          <a href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono group">
+            <span>Open Tab <span class="glide-arrow">&nearr;</span></span>
           </a>
         </div>
       </div>
 
-      <!-- Direct Contact Channels & Quick Message Form -->
-      <div id="contact" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start pt-4">
-        
-        <!-- Left: Direct Coordinates -->
-        <div class="space-y-4">
-          <h3 class="text-base font-bold text-primary tracking-tight">Direct Coordinates</h3>
-          <div class="space-y-3 text-xs sm:text-sm">
+      <!-- High-Impact Editorial Contact Section (Sebastien Graf Inspiration) -->
+      <div id="contact" class="pt-8 sm:pt-12 border-t border-border/40 space-y-8">
+        <div>
+          <span class="newtemplate-tag">06 / Contact &amp; Availability</span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground mt-2 leading-tight">
+            Got an analytical challenge?
+          </h2>
+          <p class="text-base sm:text-lg text-muted-foreground mt-1">
+            Available for immediate hire &bull; Bengaluru / Raipur / Remote
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Left Column: Oversized Mailto & Channel Pills -->
+          <div class="lg:col-span-7 space-y-6">
             <div>
-              <span class="font-bold text-foreground block">Email:</span>
-              <a href="mailto:rishithakur528@gmail.com" class="text-muted-foreground hover:text-primary transition-colors">rishithakur528@gmail.com</a>
+              <span class="text-xs font-mono text-muted-foreground block mb-2">SEND AN INQUIRY DIRECTLY</span>
+              <a href="mailto:rishithakur528@gmail.com" class="editorial-contact-link group inline-flex items-center gap-2 break-all">
+                rishithakur528@gmail.com
+                <span class="glide-arrow text-primary">&nearr;</span>
+              </a>
             </div>
-            <div>
-              <span class="font-bold text-foreground block">Location:</span>
-              <span class="text-muted-foreground">Raipur, Chhattisgarh, India (Open to Bengaluru / Remote)</span>
+
+            <!-- Fast Action & Channel Pills -->
+            <div class="flex flex-wrap items-center gap-2.5 pt-2">
+              <button id="copyEmailBtn" class="btn-secondary text-xs font-mono cursor-pointer transition-all duration-200">
+                <span>Copy email 📋</span>
+              </button>
+              <a href="https://www.linkedin.com/in/rishi-thakur-dev/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono group">
+                <span>LinkedIn <span class="glide-arrow">&nearr;</span></span>
+              </a>
+              <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono group">
+                <span>GitHub <span class="glide-arrow">&nearr;</span></span>
+              </a>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary/60 border border-border/70 text-xs font-mono text-muted-foreground">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Raipur, IN (IST UTC+5:30)</span>
+              </span>
             </div>
-            <div>
-              <span class="font-bold text-foreground block">LinkedIn:</span>
-              <a href="https://www.linkedin.com/in/rishi-thakur-dev/" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-primary transition-colors">linkedin.com/in/rishi-thakur-dev ↗</a>
-            </div>
-            <div>
-              <span class="font-bold text-foreground block">GitHub:</span>
-              <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-primary transition-colors">github.com/rishi-th219 ↗</a>
-            </div>
+
+            <p class="text-xs text-muted-foreground font-mono leading-relaxed max-w-lg">
+              Recruiters and hiring managers: I respond to all legitimate technical and recruitment inquiries within 24 hours. Zero sensitive company data disclosed.
+            </p>
           </div>
-        </div>
 
-        <!-- Right: Quick Message Form -->
-        <div class="p-5 rounded-2xl border border-border bg-card/60 space-y-3">
-          <h3 class="text-base font-bold text-foreground tracking-tight">Send a Direct Message</h3>
-          <form id="contactForm" class="space-y-3">
-            <div>
-              <label for="senderName" class="block text-xs font-mono text-muted-foreground mb-1">Name</label>
-              <input type="text" id="senderName" required class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus:ring-1 focus:ring-primary">
-            </div>
-            <div>
-              <label for="senderEmail" class="block text-xs font-mono text-muted-foreground mb-1">Email</label>
-              <input type="email" id="senderEmail" required class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus:ring-1 focus:ring-primary">
-            </div>
-            <div>
-              <label for="senderMessage" class="block text-xs font-mono text-muted-foreground mb-1">Message</label>
-              <textarea id="senderMessage" rows="3" required class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus:ring-1 focus:ring-primary"></textarea>
-            </div>
-            <button type="submit" class="btn-primary text-xs font-mono w-full justify-center">
-              <span>Send Message</span>
-            </button>
-            <p id="contactFormStatus" class="text-xs font-mono text-center hidden"></p>
-          </form>
-        </div>
+          <!-- Right Column: Polished Direct Message Form -->
+          <div class="lg:col-span-5 glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-3.5 shadow-sm">
+            <h3 class="text-sm font-bold text-foreground font-mono uppercase tracking-wider">Leave a Direct Note</h3>
+            <form id="contactForm" class="space-y-3">
+              <div>
+                <label for="senderName" class="block text-xs font-mono text-muted-foreground mb-1">Your Name</label>
+                <input type="text" id="senderName" required placeholder="Hiring Manager / Team Lead" class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus:ring-1 focus:ring-primary">
+              </div>
+              <div>
+                <label for="senderEmail" class="block text-xs font-mono text-muted-foreground mb-1">Your Email</label>
+                <input type="email" id="senderEmail" required placeholder="team@company.com" class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus:ring-1 focus:ring-primary">
+              </div>
+              <div>
+                <label for="senderMessage" class="block text-xs font-mono text-muted-foreground mb-1">Message</label>
+                <textarea id="senderMessage" rows="3" required placeholder="We are looking for a Data Analyst..." class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus:ring-1 focus:ring-primary"></textarea>
+              </div>
+              <button type="submit" class="btn-primary text-xs font-mono w-full justify-center group">
+                <span>Send Note <span class="glide-arrow">&rarr;</span></span>
+              </button>
+              <p id="contactFormStatus" class="text-xs font-mono text-center hidden"></p>
+            </form>
+          </div>
 
+        </div>
       </div>
     </section>
 

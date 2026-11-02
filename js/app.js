@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupLocalTimeClock();
   setupArchitectureWorkbench();
   setupStackFilter();
+  setupCopyEmail();
 });
 
 // 1. Theme Toggle Engine (Dark / Light Mode)
@@ -564,5 +565,27 @@ function setupStackFilter() {
         }
       });
     });
+  });
+}
+
+// 12. Copy Email to Clipboard with Micro-feedback (Sebastien Graf Inspiration)
+function setupCopyEmail() {
+  const copyBtn = document.getElementById("copyEmailBtn");
+  if (!copyBtn) return;
+
+  copyBtn.addEventListener("click", async () => {
+    const email = "rishithakur528@gmail.com";
+    try {
+      await navigator.clipboard.writeText(email);
+      const originalHTML = copyBtn.innerHTML;
+      copyBtn.innerHTML = `<span>Copied to clipboard! ✓</span>`;
+      copyBtn.classList.add("border-emerald-500", "text-emerald-500");
+      setTimeout(() => {
+        copyBtn.innerHTML = originalHTML;
+        copyBtn.classList.remove("border-emerald-500", "text-emerald-500");
+      }, 2200);
+    } catch {
+      window.location.href = `mailto:${email}`;
+    }
   });
 }

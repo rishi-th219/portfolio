@@ -422,6 +422,34 @@ portfolio/
      - Passed 10-point test suite covering modals, tabs, filters, clock elements, font compliance, zero phone numbers, and candidate ground truth.
      - Local preview verified on port 8080.
 
+### Milestone 19: Christen Dijoux & Sébastien Graf Inspiration (Executive Dossier, Swiss Numbered Editorial Tags & High-Impact Contact)
+- **Status:** COMPLETED
+- **Focus:** Blending Christen Dijoux's executive dossier clarity (`christendijoux.com`) and Sébastien Graf's bold Swiss typography & contact elevation (`sebg.ch`).
+- **Key Enhancements Implemented:**
+  1. **Executive Dossier Metadata Strip (christendijoux.com):**
+     - Replaced generic availability badge with a structured 4-column dossier strip (Discipline: *Analytics Engineering*, Coordinates: *Raipur • Bengaluru*, Credentials: *IIIT Naya Raipur 7.90*, Availability: *Immediate Joiner* with pulsing green status beacon).
+  2. **Authoritative Craft Statement:**
+     - Refined Hero subhead with confident editorial copy: *"I build automated ELT pipelines, dimensional Kimball schemas, and executive Power BI cockpits that turn complex operational chaos into decision clarity... And I care about data fidelity and schema architecture as much as executive cockpit craft."*
+  3. **Swiss Numbered Editorial Taxonomy (sebg.ch):**
+     - Added clean numbered section tags across all core sections:
+       - `01 / Profile & Focus`
+       - `02 / Flagship Production Case Study`
+       - `03 / Selected Analytical Projects`
+       - `04 / Technical Core & Stack`
+       - `05 / Curated ATS Resume`
+       - `06 / Contact & Availability`
+  4. **Project Timeline Stamps & Gliding Arrows:**
+     - Added timeline duration stamps to all project cards (`2025–2026`, `2024`, `2024`, `2025`).
+     - Added `.glide-arrow` utility translating up-right by 2px on hover (`group-hover:translate(2px, -2px)`) for all interactive case study buttons and links.
+  5. **High-Impact Editorial Contact Section (sebg.ch):**
+     - Transformed the contact area with an oversized headline: *"Got an analytical challenge? Available for immediate hire."*
+     - Large interactive mailto link (`.editorial-contact-link`) with custom underline offset and hover color transition.
+     - 1-click clipboard copy button (`#copyEmailBtn`) with micro-feedback (`Copied to clipboard! ✓`).
+     - Polished recruiter note form and direct coordinate pills.
+  6. **Automated Verification:**
+     - Passed 16-point automated verification suite.
+     - Local server tested at `http://127.0.0.1:8080/index.html` (HTTP 200 OK).
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:
