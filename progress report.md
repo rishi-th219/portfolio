@@ -401,6 +401,27 @@ portfolio/
      - 8-point automated Python test suite passed (modals, case study keys, resume keys, navigation anchors, font compliance, zero phone numbers, zero banned words, ground truth metrics).
      - Local background preview server verified (HTTP 200 on port 8080).
 
+### Milestone 18: Poulo.site Inspiration (Interactive Architecture Workbench, Filterable Stack & Live Clock)
+- **Status:** COMPLETED
+- **Focus:** Blending technical builder craft with interactive micro-interactions, inspired by Pouya's Awwwards-nominated portfolio (`poulo.site`).
+- **Key Enhancements Implemented:**
+  1. **Interactive Architecture Workbench (`#highlights`):**
+     - Embedded a hands-on technical workbench inside the CHiPS flagship case study with 3 interactive tabs:
+       - *Tab 1: Dataflow Pipeline* — 4-stage sequential breakdown (Multi-Source Ingestion &rarr; Fuzzy Deduplication &rarr; Kimball Star Schema &rarr; Power BI Executive Cockpit).
+       - *Tab 2: Star Schema Model* — Visual dimensional blueprint showing grain, `Fact_Attendance_Daily` central fact table, and normalized `Dim_Date`, `Dim_Facility`, and `Dim_Employee` dimensions with composite index strategy.
+       - *Tab 3: Production DAX Suite* — Real, sanitized production DAX measures for executive compliance rate calculation and 3-tier defaulter risk classification.
+  2. **Filterable Stack Workbench (`#capabilities`):**
+     - Upgraded the technical core into an interactive builder workbench with category filter buttons (`All Stack`, `ELT & Python`, `SQL & Modeling`, `Power BI & DAX`, `Tools & CLI`).
+     - Added smooth opacity and scale transitions for tech pills on category selection.
+  3. **Live Local Time Clock & Status Indicator (Footer):**
+     - Integrated a real-time updating IST clock (`Asia/Kolkata`) in the footer (`Raipur / Bengaluru, IN • HH:MM:SS AM/PM IST`).
+     - Pulsing green availability beacon.
+  4. **Subtle Glow & Physical Feedback:**
+     - Added `.glow-card` with delicate border glow (`box-shadow: 0 0 25px -5px hsl(var(--primary) / 0.18)`) and slight vertical lift (`translateY(-2px)`) on hover across all case study cards and workbench panels.
+  5. **Verification & Automated QA:**
+     - Passed 10-point test suite covering modals, tabs, filters, clock elements, font compliance, zero phone numbers, and candidate ground truth.
+     - Local preview verified on port 8080.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

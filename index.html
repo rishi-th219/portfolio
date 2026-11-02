@@ -103,12 +103,12 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
+      <!-- Desktop Nav Links (Poulo.site Inspiration: Clean Minimal Hierarchy) -->
       <nav class="hidden md:flex items-center space-x-6 text-xs font-mono uppercase tracking-wider text-muted-foreground">
         <a href="#about" class="transition-colors hover:text-primary">About</a>
-        <a href="#highlights" class="transition-colors hover:text-primary">Highlights</a>
+        <a href="#highlights" class="transition-colors hover:text-primary">Works</a>
         <a href="#projects" class="transition-colors hover:text-primary">Projects</a>
-        <a href="#capabilities" class="transition-colors hover:text-primary">Capabilities</a>
+        <a href="#capabilities" class="transition-colors hover:text-primary">Stack</a>
         <a href="#resume" class="text-primary font-semibold hover:underline">Resume</a>
         <a href="#contact" class="transition-colors hover:text-primary">Contact</a>
       </nav>
@@ -156,9 +156,9 @@
     <!-- Mobile Drawer Menu (Floating blur panel) -->
     <div id="mobileMenu" class="hidden md:hidden mt-2 border border-border bg-background/95 backdrop-blur-md rounded-2xl px-5 py-4 space-y-3 text-left shadow-xl">
       <a href="#about" class="mobile-nav-link block text-sm font-medium text-foreground hover:text-primary">About</a>
-      <a href="#highlights" class="mobile-nav-link block text-sm font-medium text-foreground hover:text-primary">Highlights</a>
+      <a href="#highlights" class="mobile-nav-link block text-sm font-medium text-foreground hover:text-primary">Works (CHiPS BI)</a>
       <a href="#projects" class="mobile-nav-link block text-sm font-medium text-foreground hover:text-primary">Projects</a>
-      <a href="#capabilities" class="mobile-nav-link block text-sm font-medium text-foreground hover:text-primary">Capabilities</a>
+      <a href="#capabilities" class="mobile-nav-link block text-sm font-medium text-foreground hover:text-primary">Stack</a>
       <a href="#resume" class="mobile-nav-link block text-sm font-medium text-primary font-semibold">Resume</a>
       <a href="#contact" class="mobile-nav-link block text-sm font-medium text-foreground hover:text-primary">Contact</a>
     </div>
@@ -400,6 +400,167 @@
 
       </div>
 
+      <!-- Interactive Architecture Workbench (Poulo.site Builder Inspiration) -->
+      <div class="glow-card border border-border/80 bg-card/70 rounded-2xl p-4 sm:p-6 space-y-4 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border/70">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="font-mono text-xs font-semibold uppercase tracking-wider text-primary">Interactive Architecture Workbench</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-1.5">
+            <button class="workbench-tab-btn active" data-tab="pipeline">1. Dataflow Pipeline</button>
+            <button class="workbench-tab-btn" data-tab="schema">2. Star Schema Model</button>
+            <button class="workbench-tab-btn" data-tab="dax">3. Production DAX</button>
+          </div>
+        </div>
+
+        <!-- Panel 1: Dataflow Pipeline -->
+        <div class="workbench-panel block space-y-3" data-panel="pipeline">
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-2.5 text-xs font-mono">
+            <div class="p-3 rounded-xl bg-secondary/60 border border-border/70 space-y-1">
+              <div class="flex items-center justify-between text-muted-foreground text-[10px]">
+                <span>STAGE 01</span>
+                <span class="text-primary font-bold">RAW LOGS</span>
+              </div>
+              <p class="font-bold text-foreground">Multi Source Ingestion</p>
+              <p class="text-[11px] text-muted-foreground">Consolidates daily biometric punch logs and treasury employee records across disparate databases.</p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-secondary/60 border border-border/70 space-y-1">
+              <div class="flex items-center justify-between text-muted-foreground text-[10px]">
+                <span>STAGE 02</span>
+                <span class="text-primary font-bold">CLEANSE</span>
+              </div>
+              <p class="font-bold text-foreground">Fuzzy Deduplication</p>
+              <p class="text-[11px] text-muted-foreground">Automated identity resolution resolving orphan records and employee naming variations without loss.</p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-secondary/60 border border-border/70 space-y-1">
+              <div class="flex items-center justify-between text-muted-foreground text-[10px]">
+                <span>STAGE 03</span>
+                <span class="text-primary font-bold">MODEL</span>
+              </div>
+              <p class="font-bold text-foreground">Kimball Star Schema</p>
+              <p class="text-[11px] text-muted-foreground">Fact attendance table joined to normalized Date, Facility, and Employee dimensions for high speed querying.</p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-secondary/60 border border-border/70 space-y-1">
+              <div class="flex items-center justify-between text-muted-foreground text-[10px]">
+                <span>STAGE 04</span>
+                <span class="text-primary font-bold">DELIVER</span>
+              </div>
+              <p class="font-bold text-foreground">Power BI Cockpit</p>
+              <p class="text-[11px] text-muted-foreground">Interactive drill down reports, compliance heatmaps, and automated weekly leadership briefings.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Star Schema Model -->
+        <div class="workbench-panel hidden space-y-3" data-panel="schema">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
+            <div class="space-y-3">
+              <div class="p-3 rounded-xl bg-secondary/60 border border-border/70">
+                <span class="text-primary text-[10px] uppercase font-bold block mb-1">DIMENSION TABLE</span>
+                <p class="font-bold text-foreground text-sm">Dim_Date</p>
+                <ul class="text-[11px] text-muted-foreground mt-1.5 space-y-0.5">
+                  <li>&bull; Date_Key (PK, Int)</li>
+                  <li>&bull; Calendar_Date (Date)</li>
+                  <li>&bull; Day_Of_Week (Varchar)</li>
+                  <li>&bull; Is_Working_Day (Boolean)</li>
+                  <li>&bull; Fiscal_Quarter (Varchar)</li>
+                </ul>
+              </div>
+              <div class="p-3 rounded-xl bg-secondary/60 border border-border/70">
+                <span class="text-primary text-[10px] uppercase font-bold block mb-1">DIMENSION TABLE</span>
+                <p class="font-bold text-foreground text-sm">Dim_Facility</p>
+                <ul class="text-[11px] text-muted-foreground mt-1.5 space-y-0.5">
+                  <li>&bull; Facility_Key (PK, Int)</li>
+                  <li>&bull; Facility_Type (Varchar)</li>
+                  <li>&bull; Admin_Zone (Varchar)</li>
+                  <li>&bull; Geo_Coordinates (Point)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-primary/5 border border-primary/30 flex flex-col justify-between">
+              <div>
+                <span class="px-2 py-0.5 rounded bg-primary text-primary-foreground text-[10px] uppercase font-bold inline-block mb-1.5">CENTRAL FACT TABLE</span>
+                <p class="font-bold text-foreground text-base">Fact_Attendance_Daily</p>
+                <p class="text-[11px] text-muted-foreground mt-0.5">Grain: One record per employee per day</p>
+                <div class="border-t border-border/60 my-2 pt-2 text-[11px] font-mono space-y-1 text-foreground/90">
+                  <div>&bull; <span class="text-primary font-semibold">Date_Key</span> (FK &rarr; Dim_Date)</div>
+                  <div>&bull; <span class="text-primary font-semibold">Employee_Key</span> (FK &rarr; Dim_Employee)</div>
+                  <div>&bull; <span class="text-primary font-semibold">Facility_Key</span> (FK &rarr; Dim_Facility)</div>
+                  <div>&bull; Check_In_Time (Timestamp)</div>
+                  <div>&bull; Check_Out_Time (Timestamp)</div>
+                  <div>&bull; Is_Present (SmallInt, 0/1)</div>
+                  <div>&bull; Defaulter_Flag (SmallInt, 0/1)</div>
+                  <div>&bull; Shift_Hours (Decimal)</div>
+                </div>
+              </div>
+              <div class="text-[10px] text-primary/80 font-mono mt-2 pt-2 border-t border-border/40">
+                1:N star relations &bull; Zero cyclic dependencies
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="p-3 rounded-xl bg-secondary/60 border border-border/70">
+                <span class="text-primary text-[10px] uppercase font-bold block mb-1">DIMENSION TABLE</span>
+                <p class="font-bold text-foreground text-sm">Dim_Employee</p>
+                <ul class="text-[11px] text-muted-foreground mt-1.5 space-y-0.5">
+                  <li>&bull; Employee_Key (PK, Int)</li>
+                  <li>&bull; Payroll_Identifier (Varchar)</li>
+                  <li>&bull; Department_Role (Varchar)</li>
+                  <li>&bull; Shift_Assignment (Varchar)</li>
+                  <li>&bull; Is_Active_Status (Boolean)</li>
+                </ul>
+              </div>
+              <div class="p-3 rounded-xl bg-secondary/60 border border-border/70 text-[11px] text-muted-foreground space-y-1">
+                <span class="text-foreground font-semibold block text-xs">Query Performance</span>
+                <p>Partitioned by fiscal calendar with composite indexes on Date_Key and Facility_Key for sub second executive DAX aggregations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Production DAX -->
+        <div class="workbench-panel hidden space-y-3" data-panel="dax">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+            <div class="code-preview-block space-y-1.5">
+              <div class="flex items-center justify-between text-muted-foreground text-[10px] border-b border-border/40 pb-1">
+                <span>MEASURE // EXECUTIVE COMPLIANCE</span>
+                <span class="text-primary font-bold">DAX</span>
+              </div>
+              <pre class="text-foreground/90 overflow-x-auto text-[11px]"><code>Compliance_Rate_% = 
+VAR TotalScheduled = COUNTROWS(Fact_Attendance_Daily)
+VAR VerifiedPresent = 
+    CALCULATE(
+        COUNTROWS(Fact_Attendance_Daily),
+        Fact_Attendance_Daily[Is_Present] = 1
+    )
+RETURN
+    DIVIDE(VerifiedPresent, TotalScheduled, 0)</code></pre>
+            </div>
+
+            <div class="code-preview-block space-y-1.5">
+              <div class="flex items-center justify-between text-muted-foreground text-[10px] border-b border-border/40 pb-1">
+                <span>MEASURE // 3-TIER DEFAULTER RISK</span>
+                <span class="text-primary font-bold">DAX</span>
+              </div>
+              <pre class="text-foreground/90 overflow-x-auto text-[11px]"><code>Defaulter_Risk_Tier = 
+VAR ConsecutiveUnexcused = [Rolling_Consecutive_Absences]
+RETURN
+    SWITCH(
+        TRUE(),
+        ConsecutiveUnexcused >= 3, "High Risk Tier 1",
+        ConsecutiveUnexcused >= 1, "Moderate Risk Tier 2",
+        "Compliant"
+    )</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Solid Teal Callout Card -->
       <div class="card-teal-callout flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6">
         <div class="space-y-1">
@@ -550,20 +711,83 @@
     </section>
 
     <!-- ----------------------------------------------------------------------
-         PAGE 5: TECHNICAL CORE & METHODOLOGIES
-         (Professional analytics engineering capabilities & verified credentials)
+         PAGE 5: TECHNICAL CORE & INTERACTIVE STACK WORKBENCH
+         (Poulo.site Inspiration: Filterable Tech Workbench & Verified Credentials)
          ---------------------------------------------------------------------- -->
     <section id="capabilities" class="py-10 md:py-14 border-t border-border/40 space-y-6">
-      <div>
-        <span class="newtemplate-tag">Specializations</span>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Technical Core & Methodologies</h2>
-        <p class="text-xs font-mono text-primary mt-0.5">Enterprise Analytics Engineering</p>
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <span class="newtemplate-tag">Specializations</span>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Technical Core & Methodologies</h2>
+          <p class="text-xs font-mono text-primary mt-0.5">Enterprise Analytics Engineering &bull; Interactive Stack</p>
+        </div>
+
+        <!-- Stack Category Filter Tabs (Poulo.site Inspiration) -->
+        <div class="flex flex-wrap items-center gap-1.5 overflow-x-auto py-1">
+          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-primary text-primary-foreground border-primary shadow-sm cursor-pointer transition-all" data-stack-category="all">All Stack</button>
+          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="elt">ELT &amp; Python</button>
+          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="sql">SQL &amp; Modeling</button>
+          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="bi">Power BI &amp; DAX</button>
+          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="tools">Tools &amp; CLI</button>
+        </div>
+      </div>
+
+      <!-- Interactive Stack Pill Grid (Filtered via JS) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-xs font-mono">
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="elt ml">
+          <span class="font-semibold text-foreground">Python</span>
+          <span class="text-[10px] text-muted-foreground">3.11+</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="elt ml">
+          <span class="font-semibold text-foreground">Pandas &amp; NumPy</span>
+          <span class="text-[10px] text-muted-foreground">ELT</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="sql">
+          <span class="font-semibold text-foreground">PostgreSQL</span>
+          <span class="text-[10px] text-muted-foreground">Relational</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="sql">
+          <span class="font-semibold text-foreground">MySQL &amp; MariaDB</span>
+          <span class="text-[10px] text-muted-foreground">Staging</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="sql bi">
+          <span class="font-semibold text-foreground">Kimball Star Schema</span>
+          <span class="text-[10px] text-muted-foreground">Warehouse</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi">
+          <span class="font-semibold text-foreground">Power BI Desktop</span>
+          <span class="text-[10px] text-muted-foreground">Reporting</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi">
+          <span class="font-semibold text-foreground">DAX Calculated Measures</span>
+          <span class="text-[10px] text-muted-foreground">Analytics</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi elt">
+          <span class="font-semibold text-foreground">Power Query (M)</span>
+          <span class="text-[10px] text-muted-foreground">ETL</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi">
+          <span class="font-semibold text-foreground">Tableau &amp; Excel</span>
+          <span class="text-[10px] text-muted-foreground">BI</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="ml">
+          <span class="font-semibold text-foreground">Scikit Learn</span>
+          <span class="text-[10px] text-muted-foreground">ML</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="tools">
+          <span class="font-semibold text-foreground">Git &amp; GitHub</span>
+          <span class="text-[10px] text-muted-foreground">CI/CD</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="tools">
+          <span class="font-semibold text-foreground">Linux CLI &amp; Bash</span>
+          <span class="text-[10px] text-muted-foreground">Fedora</span>
+        </div>
       </div>
 
       <!-- 4 Capability Blocks Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 pt-2">
         
-        <div class="p-5 rounded-xl border border-border bg-card/60 space-y-2.5 hover:border-primary/40 transition-colors">
+        <div class="glow-card p-5 rounded-xl border border-border bg-card/60 space-y-2.5">
           <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7M4 7c0-2 1.5-3 3.5-3h9c2 0 3.5 1 3.5 3M4 7h16m-16 5h16" />
@@ -575,7 +799,7 @@
           </p>
         </div>
 
-        <div class="p-5 rounded-xl border border-border bg-card/60 space-y-2.5 hover:border-primary/40 transition-colors">
+        <div class="glow-card p-5 rounded-xl border border-border bg-card/60 space-y-2.5">
           <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -587,7 +811,7 @@
           </p>
         </div>
 
-        <div class="p-5 rounded-xl border border-border bg-card/60 space-y-2.5 hover:border-primary/40 transition-colors">
+        <div class="glow-card p-5 rounded-xl border border-border bg-card/60 space-y-2.5">
           <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
@@ -600,7 +824,7 @@
           </p>
         </div>
 
-        <div class="p-5 rounded-xl border border-border bg-card/60 space-y-2.5 hover:border-primary/40 transition-colors">
+        <div class="glow-card p-5 rounded-xl border border-border bg-card/60 space-y-2.5">
           <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -724,21 +948,36 @@
   </main>
 
   <!-- ==========================================================================
-       FOOTER (ai-design-skills B10: Legal, privacy notice, back to top)
+       FOOTER (Poulo.site Inspiration: Live IST Clock, Status Beacon, Back to Top)
        ========================================================================== -->
   <footer class="border-t border-border/40 py-8 mt-12 bg-card/30">
     <div class="container max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted-foreground">
+      
+      <!-- Candidate & Title -->
       <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
         <span>Rishi Thakur &copy; 2026</span>
         <span class="hidden sm:inline">&bull;</span>
         <span>Data Analyst &bull; Analytics Engineer</span>
       </div>
-      <div class="text-[11px] text-muted-foreground/80 text-center sm:text-left">
-        Sanitized public portfolio &bull; Zero sensitive metrics disclosed &bull; Zero fabrication
+
+      <!-- Live Local Time Clock Pill (Poulo.site Inspiration) -->
+      <div class="live-clock-pill">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-foreground">Raipur / Bengaluru, IN</span>
+        <span class="text-muted-foreground">&bull;</span>
+        <span id="localTimeClock" class="text-primary font-semibold">--:--:-- IST</span>
       </div>
+
+      <!-- Back to Top Link -->
       <div class="flex items-center gap-4">
         <a href="#home" class="hover:text-primary transition-colors">Back to top &uarr;</a>
       </div>
+    </div>
+    
+    <!-- Sanitized Transparency Notice -->
+    <div class="container max-w-5xl mx-auto px-4 sm:px-6 pt-3 mt-3 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-muted-foreground/75">
+      <span>Sanitized public portfolio &bull; Zero sensitive operational metrics disclosed &bull; Zero fabrication</span>
+      <span class="mt-1 sm:mt-0">Inspired by technical builder craft</span>
     </div>
   </footer>
 

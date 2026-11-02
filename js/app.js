@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
   setupBackToTop();
   setupContactForm();
   setupTaglineReveal();
+  setupLocalTimeClock();
+  setupArchitectureWorkbench();
+  setupStackFilter();
 });
 
 // 1. Theme Toggle Engine (Dark / Light Mode)
@@ -450,5 +453,116 @@ function setupContactForm() {
       statusMsg.classList.remove("hidden");
       setTimeout(() => statusMsg.classList.add("hidden"), 5000);
     }
+  });
+}
+
+// 8. Tagline Reveal Engine (ai-design-skills B11)
+function setupTaglineReveal() {
+  const words = document.querySelectorAll(".tagline-word");
+  if (!words.length) return;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    words.forEach(w => w.classList.add("is-revealed"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        words.forEach((word, idx) => {
+          setTimeout(() => {
+            word.classList.add("is-revealed");
+          }, idx * 60);
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.25 });
+
+  const section = document.getElementById("tagline-reveal");
+  if (section) observer.observe(section);
+}
+
+// 9. Live Local Time Clock (Poulo.site Inspiration)
+function setupLocalTimeClock() {
+  const clockEl = document.getElementById("localTimeClock");
+  if (!clockEl) return;
+
+  const updateClock = () => {
+    const now = new Date();
+    try {
+      const timeStr = now.toLocaleTimeString("en-US", {
+        timeZone: "Asia/Kolkata",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true
+      });
+      clockEl.textContent = `${timeStr} IST`;
+    } catch {
+      clockEl.textContent = `${now.toTimeString().split(" ")[0]} IST`;
+    }
+  };
+
+  updateClock();
+  setInterval(updateClock, 1000);
+}
+
+// 10. Interactive Architecture Workbench (Poulo.site Inspiration)
+function setupArchitectureWorkbench() {
+  const tabBtns = document.querySelectorAll(".workbench-tab-btn");
+  const panels = document.querySelectorAll(".workbench-panel");
+
+  if (!tabBtns.length || !panels.length) return;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetTab = btn.dataset.tab;
+
+      tabBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      panels.forEach(panel => {
+        if (panel.dataset.panel === targetTab) {
+          panel.classList.remove("hidden");
+          panel.classList.add("block");
+        } else {
+          panel.classList.add("hidden");
+          panel.classList.remove("block");
+        }
+      });
+    });
+  });
+}
+
+// 11. Interactive Stack Filter (Poulo.site Inspiration)
+function setupStackFilter() {
+  const filterBtns = document.querySelectorAll(".stack-filter-btn");
+  const techPills = document.querySelectorAll(".stack-pill");
+
+  if (!filterBtns.length || !techPills.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.stackCategory;
+
+      filterBtns.forEach(b => {
+        b.classList.remove("bg-primary", "text-primary-foreground", "border-primary", "shadow-sm");
+        b.classList.add("bg-secondary", "text-muted-foreground", "border-border");
+      });
+      btn.classList.remove("bg-secondary", "text-muted-foreground", "border-border");
+      btn.classList.add("bg-primary", "text-primary-foreground", "border-primary", "shadow-sm");
+
+      techPills.forEach(pill => {
+        const cat = pill.dataset.category || "";
+        if (filter === "all" || cat.includes(filter)) {
+          pill.classList.remove("opacity-25", "scale-95");
+          pill.classList.add("opacity-100", "scale-100");
+        } else {
+          pill.classList.add("opacity-25", "scale-95");
+          pill.classList.remove("opacity-100", "scale-100");
+        }
+      });
+    });
   });
 }

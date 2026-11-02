@@ -607,8 +607,67 @@ button, a {
   filter: drop-shadow(0 0 6px hsl(var(--primary) / 0.4));
 }
 
-.chart-line-white {
-  stroke: rgba(255, 255, 255, 0.85);
-  stroke-width: 1.75;
-  fill: none;
+/* ==========================================================================
+   Poulo Inspiration: Interactive Micro-Interactions & Architecture Workbench
+   ========================================================================== */
+.glow-card {
+  transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glow-card:hover {
+  border-color: hsl(var(--primary) / 0.5);
+  box-shadow: 0 0 25px -5px hsl(var(--primary) / 0.18);
+  transform: translateY(-2px);
+}
+
+.workbench-tab-btn {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.75rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: calc(var(--radius) - 4px);
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--muted-foreground));
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.workbench-tab-btn:hover {
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--primary) / 0.4);
+}
+
+.workbench-tab-btn.active {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary));
+  box-shadow: 0 2px 10px -2px hsl(var(--primary) / 0.4);
+}
+
+.code-preview-block {
+  background-color: hsl(var(--secondary) / 0.6);
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius) - 2px);
+  padding: 1rem 1.25rem;
+  font-family: "Geist Mono", monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.live-clock-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  background-color: hsl(var(--secondary));
+  border: 1px solid hsl(var(--border));
+  font-family: "Geist Mono", monospace;
+  font-size: 0.75rem;
 }
