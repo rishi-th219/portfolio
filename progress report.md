@@ -450,6 +450,20 @@ portfolio/
      - Passed 16-point automated verification suite.
      - Local server tested at `http://127.0.0.1:8080/index.html` (HTTP 200 OK).
 
+### Milestone 20: Official Coordinates & Communication Channels Realignment
+- **Status:** COMPLETED
+- **Focus:** Complete synchronization of primary recruiter and professional contact channels.
+- **Key Enhancements Implemented:**
+  1. **Primary Email Updated:**
+     - Standardized on `rishi_th219@proton.me` across Hero, ATS Resume Modal, Contact Section, Mailto triggers, copy button (`#copyEmailBtn`), and documentation.
+     - Purged legacy email addresses across all runtime files.
+  2. **LinkedIn URL Standardized:**
+     - Updated to `https://www.linkedin.com/in/rishi-thakur-b665a4298/` across Hero links, ATS Resume Modal, Contact Channel pills, and knowledge base.
+  3. **GitHub URL Verified:**
+     - Confirmed `https://github.com/rishi-th219` active and unified across all portfolio links.
+  4. **Strict Zero Phone Number Compliance:**
+     - Completely removed phone numbers from knowledge base data to maintain public privacy.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

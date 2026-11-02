@@ -693,7 +693,7 @@ const aiKnowledgeBase = [
   },
   {
     keywords: ["contact", "email", "phone", "reach", "hire", "interview", "call", "linkedin", "github"],
-    response: "You can reach Rishi directly via:\n\n• **Email:** [rishi_th219@proton.me](mailto:rishi_th219@proton.me) or [rishiithakur219@gmail.com](mailto:rishiithakur219@gmail.com)\n• **Phone:** [+91 8109830219](tel:+918109830219)\n• **LinkedIn:** [linkedin.com/in/rishi-thakur-b665a4298](https://www.linkedin.com/in/rishi-thakur-b665a4298/)\n• **GitHub:** [github.com/rishi-th219](https://github.com/rishi-th219)\n\nFeel free to send a message using the Contact section below for a direct discovery call."
+    response: "You can reach Rishi directly via:\n\n• **Email:** [rishi_th219@proton.me](mailto:rishi_th219@proton.me)\n• **LinkedIn:** [linkedin.com/in/rishi-thakur-b665a4298](https://www.linkedin.com/in/rishi-thakur-b665a4298/)\n• **GitHub:** [github.com/rishi-th219](https://github.com/rishi-th219)\n\nFeel free to send a message using the Contact section below for a direct discovery call."
   }
 ];
 

@@ -227,9 +227,9 @@ function setupResumeModal() {
           <div class="text-xs font-mono text-muted-foreground mt-1 flex flex-wrap items-center justify-center gap-2">
             <span>Raipur / Bengaluru, India</span>
             <span>•</span>
-            <a href="mailto:rishithakur528@gmail.com" class="text-primary hover:underline">rishithakur528@gmail.com</a>
+            <a href="mailto:rishi_th219@proton.me" class="text-primary hover:underline">rishi_th219@proton.me</a>
             <span>•</span>
-            <a href="https://www.linkedin.com/in/rishi-thakur-dev/" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">LinkedIn ↗</a>
             <span>•</span>
             <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">GitHub ↗</a>
           </div>
@@ -446,11 +446,11 @@ function setupContactForm() {
     const email = document.getElementById("senderEmail")?.value || "";
     const message = document.getElementById("senderMessage")?.value || "";
 
-    const mailtoLink = `mailto:rishithakur528@gmail.com?cc=rishi_th219@proton.me&subject=${encodeURIComponent("Portfolio Inquiry from " + name)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+    const mailtoLink = `mailto:rishi_th219@proton.me?subject=${encodeURIComponent("Portfolio Inquiry from " + name)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
     window.location.href = mailtoLink;
 
     if (statusMsg) {
-      statusMsg.textContent = "Opening your email client to send message to rishithakur528@gmail.com...";
+      statusMsg.textContent = "Opening your email client to send message to rishi_th219@proton.me...";
       statusMsg.classList.remove("hidden");
       setTimeout(() => statusMsg.classList.add("hidden"), 5000);
     }
@@ -574,7 +574,7 @@ function setupCopyEmail() {
   if (!copyBtn) return;
 
   copyBtn.addEventListener("click", async () => {
-    const email = "rishithakur528@gmail.com";
+    const email = "rishi_th219@proton.me";
     try {
       await navigator.clipboard.writeText(email);
       const originalHTML = copyBtn.innerHTML;

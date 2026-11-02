@@ -74,10 +74,10 @@ On Fedora Linux, the projects are organized under `~/Desktop/`:
 
 ### Contact Information
 * **Full Name:** Rishi Thakur
-* **Email:** `rishithakur528@gmail.com` (Portfolio public) / `rishi_th219@proton.me` (Applications)
+* **Email:** `rishi_th219@proton.me`
 * **Location:** Raipur, Chhattisgarh, India / Bengaluru, Karnataka, India
 * **GitHub:** `https://github.com/rishi-th219`
-* **LinkedIn:** `https://www.linkedin.com/in/rishi-thakur-dev/`
+* **LinkedIn:** `https://www.linkedin.com/in/rishi-thakur-b665a4298/`
 * **Portfolio Website:** `https://rishi-th219.github.io/portfolio/`
 
 ### Academic Background
