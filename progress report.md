@@ -464,6 +464,16 @@ portfolio/
   4. **Strict Zero Phone Number Compliance:**
      - Completely removed phone numbers from knowledge base data to maintain public privacy.
 
+### Milestone 21: Location Standardization to Bengaluru
+- **Status:** COMPLETED
+- **Focus:** Unified candidate location strictly to Bengaluru across all UI surfaces and documentation.
+- **Key Enhancements Implemented:**
+  1. **Executive Dossier Coordinates:** Updated to `Bengaluru, India` in the Hero metadata strip.
+  2. **Contact Section Availability:** Updated to `Available for immediate hire • Bengaluru / Remote`.
+  3. **Location Pill & Footer Clock:** Standardized to `Bengaluru, IN (IST UTC+5:30)`.
+  4. **ATS Resume Modal Header:** Aligned to `Bengaluru, India`.
+  5. **Privacy Enforcement:** Stripped remaining phone numbers from `llms.txt`, `llms-full.txt`, and `HANDOVER.md`.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

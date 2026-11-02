@@ -5,7 +5,6 @@
 - Primary Roles: Data Analyst, Business Analyst, SQL Developer, Analytics Engineer, Machine Learning Engineer
 - Location: Bengaluru, Karnataka, India (Open to Remote, Hybrid, and Relocation)
 - Email: rishi_th219@proton.me
-- Phone: +91 8109830219
 - Portfolio Website: https://rishi-th219.github.io/portfolio/
 - LinkedIn: https://linkedin.com/in/rishi-thakur-b665a4298
 - GitHub: https://github.com/rishi-th219

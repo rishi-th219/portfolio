@@ -225,7 +225,7 @@ function setupResumeModal() {
         <div class="text-center pb-4 border-b border-border">
           <h2 class="text-2xl font-bold text-foreground tracking-tight">Rishi Thakur</h2>
           <div class="text-xs font-mono text-muted-foreground mt-1 flex flex-wrap items-center justify-center gap-2">
-            <span>Raipur / Bengaluru, India</span>
+            <span>Bengaluru, India</span>
             <span>•</span>
             <a href="mailto:rishi_th219@proton.me" class="text-primary hover:underline">rishi_th219@proton.me</a>
             <span>•</span>

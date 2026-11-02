@@ -40,8 +40,7 @@ The entire workspace consists of 4 primary components:
 
 ### Contact Information
 - **Full Name:** Rishi Thakur
-- **Email:** `rishi_th219@proton.me` (Professional) / `rishiithakur219@gmail.com`
-- **Phone:** `+91 8109830219`
+- **Email:** `rishi_th219@proton.me`
 - **Location:** Bengaluru, Karnataka, India
 - **GitHub:** `https://github.com/rishi-th219`
 - **LinkedIn:** `https://linkedin.com/in/rishi-thakur-b665a4298`
