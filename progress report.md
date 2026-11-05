@@ -474,6 +474,21 @@ portfolio/
   4. **ATS Resume Modal Header:** Aligned to `Bengaluru, India`.
   5. **Privacy Enforcement:** Stripped remaining phone numbers from `llms.txt`, `llms-full.txt`, and `HANDOVER.md`.
 
+### Milestone 22: Redundancy Purge & Jargon Reduction
+- **Status:** COMPLETED
+- **Focus:** Eliminated repetitive sections ("Core Philosophy" tagline reveal and "Profile & Engineering Focus") and simplified copy across the entire website into grounded, human language.
+- **Key Enhancements Implemented:**
+  1. **Removed "Core Philosophy" Section:** Stripped repetitive `#tagline-reveal` block and cleaned up observer logic in `js/app.js`.
+  2. **Removed "Profile & Engineering Focus" Section:** Stripped `#about` block that duplicated information already presented in the Hero, Bento strip, and Skills section.
+  3. **Streamlined Navigation & Hierarchy:** Updated navbar and mobile drawer to 5 clear sections (`Featured Work`, `Projects`, `Skills`, `Resume`, `Contact`).
+  4. **Jargon Elimination Across Copy:**
+     - Removed corporate buzzwords ("executive cockpits", "decision clarity", "operational chaos", "spatiotemporal trajectory forecasting architecture", "telemetry strip").
+     - Replaced with direct, human explanations of projects, methods, and outcomes.
+     - Rewrote CHiPS flagship case study, architecture tabs, and 3 project cards in plain English.
+  5. **Quality Verification:**
+     - Passed 22-point automated verification suite.
+     - Confirmed HTTP 200 OK on local server.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

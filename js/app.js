@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
   setupBackToTop();
   setupContactForm();
-  setupTaglineReveal();
   setupLocalTimeClock();
   setupArchitectureWorkbench();
   setupStackFilter();
@@ -457,34 +456,7 @@ function setupContactForm() {
   });
 }
 
-// 8. Tagline Reveal Engine (ai-design-skills B11)
-function setupTaglineReveal() {
-  const words = document.querySelectorAll(".tagline-word");
-  if (!words.length) return;
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    words.forEach(w => w.classList.add("is-revealed"));
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        words.forEach((word, idx) => {
-          setTimeout(() => {
-            word.classList.add("is-revealed");
-          }, idx * 60);
-        });
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.25 });
-
-  const section = document.getElementById("tagline-reveal");
-  if (section) observer.observe(section);
-}
-
-// 9. Live Local Time Clock (Poulo.site Inspiration)
+// 8. Live Local Time Clock (Poulo.site Inspiration)
 function setupLocalTimeClock() {
   const clockEl = document.getElementById("localTimeClock");
   if (!clockEl) return;
