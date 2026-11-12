@@ -703,3 +703,82 @@ button:hover .glide-arrow {
   color: hsl(var(--primary));
   text-decoration-color: hsl(var(--primary));
 }
+
+/* ==========================================================================
+   Print Stylesheet (@media print)
+   Clean, ink-friendly export for recruiters & hiring managers
+   ========================================================================== */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  /* Hide interactive, floating and navigational elements */
+  header,
+  footer,
+  #themeToggleBtn,
+  #themeToggleBtnMobileTop,
+  #mobileMenuBtn,
+  #mobileMenu,
+  #backToTopBtn,
+  .btn-icon,
+  .view-resume-btn,
+  .workbench-tab-btn,
+  .stack-filter-btn,
+  .copy-code-btn,
+  #copyEmailBtn,
+  #contactForm,
+  .modal-backdrop {
+    display: none !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  section {
+    padding: 1.25rem 0 !important;
+    page-break-inside: avoid;
+    border-top: 1px solid #e5e7eb !important;
+  }
+
+  .glow-card,
+  .card-teal-callout,
+  .code-preview-block,
+  .workbench-panel {
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 6px !important;
+    padding: 0.75rem !important;
+  }
+
+  /* Always show panel 1 & 4 in print if needed, or maintain content readability */
+  .workbench-panel.hidden {
+    display: none !important;
+  }
+
+  a {
+    color: #0f766e !important;
+    text-decoration: underline;
+  }
+
+  .newtemplate-tag {
+    color: #0f766e !important;
+    border: 1px solid #0f766e !important;
+    background: transparent !important;
+  }
+}

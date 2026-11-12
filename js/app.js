@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupArchitectureWorkbench();
   setupStackFilter();
   setupCopyEmail();
+  setupCopyCodeButtons();
 });
 
 // 1. Theme Toggle Engine (Dark / Light Mode)
@@ -559,5 +560,33 @@ function setupCopyEmail() {
     } catch {
       window.location.href = `mailto:${email}`;
     }
+  });
+}
+
+// 13. Copy Code Snippet (DAX / SQL) with Micro-feedback
+function setupCopyCodeButtons() {
+  const copyBtns = document.querySelectorAll(".copy-code-btn");
+  if (!copyBtns.length) return;
+
+  copyBtns.forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const targetId = btn.getAttribute("data-target");
+      const targetEl = document.getElementById(targetId);
+      if (!targetEl) return;
+
+      const codeText = targetEl.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(codeText);
+        const originalText = btn.textContent;
+        btn.textContent = "Copied! ✓";
+        btn.classList.add("text-emerald-500", "font-bold", "border-emerald-500");
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.classList.remove("text-emerald-500", "font-bold", "border-emerald-500");
+        }, 2000);
+      } catch (err) {
+        console.error("Clipboard copy failed:", err);
+      }
+    });
   });
 }

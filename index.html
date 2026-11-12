@@ -7,10 +7,24 @@
   <meta name="description" content="Data Analyst & Analytics Engineer portfolio of Rishi Thakur. Production ELT pipelines, Kimball Star Schema modeling, and executive Power BI suites.">
   <meta name="author" content="Rishi Thakur">
 
-  <!-- OpenGraph / Twitter Meta Tags -->
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://rishi-th219.github.io/portfolio/">
+
+  <!-- OpenGraph / Social Meta Tags -->
   <meta property="og:title" content="Rishi Thakur | Data Analyst Portfolio">
-  <meta property="og:description" content="Production ELT pipelines, Kimball Star Schema modeling, and Power BI executive analytics.">
+  <meta property="og:description" content="Production data pipelines, Kimball Star Schema modeling, and clear Power BI dashboards. M.Tech CSE IIIT Naya Raipur.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rishi-th219.github.io/portfolio/">
+  <meta property="og:image" content="https://rishi-th219.github.io/portfolio/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Rishi Thakur - Data Analyst & Analytics Engineer">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rishi Thakur | Data Analyst Portfolio">
+  <meta name="twitter:description" content="Production data pipelines, Kimball Star Schema modeling, and clear Power BI dashboards.">
+  <meta name="twitter:image" content="https://rishi-th219.github.io/portfolio/assets/og-image.png">
 
   <!-- Branded SVG Favicon (ai-design-skills B10) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2314b8a6'/><text x='16' y='21' font-family='monospace' font-size='14' font-weight='bold' fill='%2309090b' text-anchor='middle'>RT</text></svg>">
@@ -319,6 +333,7 @@
             <button class="workbench-tab-btn active" data-tab="pipeline">1. Data Pipeline</button>
             <button class="workbench-tab-btn" data-tab="schema">2. Star Schema</button>
             <button class="workbench-tab-btn" data-tab="dax">3. Power BI Measures</button>
+            <button class="workbench-tab-btn" data-tab="dashboard">4. Executive Monitor</button>
           </div>
         </div>
 
@@ -437,9 +452,12 @@
             <div class="code-preview-block space-y-1.5">
               <div class="flex items-center justify-between text-muted-foreground text-[10px] border-b border-border/40 pb-1">
                 <span>MEASURE // ATTENDANCE RATE</span>
-                <span class="text-primary font-bold">DAX</span>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">DAX</span>
+                  <button class="copy-code-btn px-1.5 py-0.5 rounded text-[10px] font-mono bg-secondary hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-target="dax-compliance">Copy</button>
+                </div>
               </div>
-              <pre class="text-foreground/90 overflow-x-auto text-[11px]"><code>Compliance_Rate_% = 
+              <pre id="dax-compliance" class="text-foreground/90 overflow-x-auto text-[11px]"><code>Compliance_Rate_% = 
 VAR TotalScheduled = COUNTROWS(Fact_Attendance_Daily)
 VAR VerifiedPresent = 
     CALCULATE(
@@ -453,9 +471,12 @@ RETURN
             <div class="code-preview-block space-y-1.5">
               <div class="flex items-center justify-between text-muted-foreground text-[10px] border-b border-border/40 pb-1">
                 <span>MEASURE // ABSENCE RISK TIER</span>
-                <span class="text-primary font-bold">DAX</span>
+                <div class="flex items-center gap-2">
+                  <span class="text-primary font-bold">DAX</span>
+                  <button class="copy-code-btn px-1.5 py-0.5 rounded text-[10px] font-mono bg-secondary hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-target="dax-defaulter">Copy</button>
+                </div>
               </div>
-              <pre class="text-foreground/90 overflow-x-auto text-[11px]"><code>Defaulter_Risk_Tier = 
+              <pre id="dax-defaulter" class="text-foreground/90 overflow-x-auto text-[11px]"><code>Defaulter_Risk_Tier = 
 VAR ConsecutiveUnexcused = [Rolling_Consecutive_Absences]
 RETURN
     SWITCH(
@@ -465,6 +486,141 @@ RETURN
         "Compliant"
     )</code></pre>
             </div>
+          </div>
+        </div>
+
+        <!-- Panel 4: Executive Dashboard / Scorecard Preview -->
+        <div class="workbench-panel hidden space-y-3" data-panel="dashboard">
+          <div class="p-4 rounded-xl bg-secondary/50 border border-border/70 space-y-4">
+            <!-- Simulated Power BI Header Bar -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-border/60">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-primary"></span>
+                <span class="text-xs font-mono font-bold text-foreground">CHiPS Statewide Healthcare &bull; Executive Attendance Monitor</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-1.5 text-[10px] font-mono">
+                <span class="px-2 py-0.5 rounded bg-card border border-border text-muted-foreground">FY 2025–26</span>
+                <span class="px-2 py-0.5 rounded bg-card border border-border text-muted-foreground">Statewide Aggregate</span>
+                <span class="px-2 py-0.5 rounded bg-primary/10 border border-primary/30 text-primary font-semibold">Active Model</span>
+              </div>
+            </div>
+
+            <!-- KPI Metric Tiles Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
+              <div class="p-3 rounded-lg bg-card/80 border border-border/80 space-y-1">
+                <span class="text-[10px] text-muted-foreground uppercase block">Reporting Facilities</span>
+                <p class="text-base font-bold text-foreground">100%</p>
+                <span class="text-[10px] text-emerald-500 font-medium flex items-center gap-1">
+                  <span>&bull;</span> All Networks Synced
+                </span>
+              </div>
+
+              <div class="p-3 rounded-lg bg-card/80 border border-border/80 space-y-1">
+                <span class="text-[10px] text-muted-foreground uppercase block">Presence Compliance</span>
+                <p class="text-base font-bold text-foreground">High</p>
+                <span class="text-[10px] text-primary font-medium flex items-center gap-1">
+                  <span>&bull;</span> Star Schema Metric
+                </span>
+              </div>
+
+              <div class="p-3 rounded-lg bg-card/80 border border-border/80 space-y-1">
+                <span class="text-[10px] text-muted-foreground uppercase block">Identity Match</span>
+                <p class="text-base font-bold text-foreground">Deterministic</p>
+                <span class="text-[10px] text-emerald-500 font-medium flex items-center gap-1">
+                  <span>&bull;</span> Biometric-Payroll Link
+                </span>
+              </div>
+
+              <div class="p-3 rounded-lg bg-card/80 border border-border/80 space-y-1">
+                <span class="text-[10px] text-muted-foreground uppercase block">Defaulter Model</span>
+                <p class="text-base font-bold text-foreground">3 Tiers</p>
+                <span class="text-[10px] text-amber-500 font-medium flex items-center gap-1">
+                  <span>&bull;</span> Actionable Alerts
+                </span>
+              </div>
+            </div>
+
+            <!-- Visual Distribution Breakdown -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs font-mono">
+              <!-- Breakdown 1: Facility Reporting Distribution -->
+              <div class="p-3 rounded-lg bg-card/60 border border-border/70 space-y-2">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="text-foreground font-semibold">Facility Ingestion Status</span>
+                  <span class="text-primary font-bold">100% Coverage</span>
+                </div>
+                <div class="space-y-1.5 text-[11px] text-muted-foreground">
+                  <div>
+                    <div class="flex justify-between text-[10px] mb-0.5">
+                      <span>Community Health Centers (CHCs)</span>
+                      <span class="text-foreground">Daily Synchronized</span>
+                    </div>
+                    <div class="w-full h-1.5 rounded-full bg-secondary overflow-hidden">
+                      <div class="h-full bg-primary rounded-full" style="width: 95%;"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-[10px] mb-0.5">
+                      <span>District Hospitals (DHs)</span>
+                      <span class="text-foreground">Daily Synchronized</span>
+                    </div>
+                    <div class="w-full h-1.5 rounded-full bg-secondary overflow-hidden">
+                      <div class="h-full bg-primary rounded-full" style="width: 100%;"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-[10px] mb-0.5">
+                      <span>Directorate Administrative Units</span>
+                      <span class="text-foreground">Daily Synchronized</span>
+                    </div>
+                    <div class="w-full h-1.5 rounded-full bg-secondary overflow-hidden">
+                      <div class="h-full bg-primary rounded-full" style="width: 92%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Breakdown 2: Multi-Tier Defaulter Classification -->
+              <div class="p-3 rounded-lg bg-card/60 border border-border/70 space-y-2">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="text-foreground font-semibold">Attendance Risk Stratification</span>
+                  <span class="text-emerald-500 font-bold">Automated DAX</span>
+                </div>
+                <div class="space-y-1.5 text-[11px] text-muted-foreground">
+                  <div>
+                    <div class="flex justify-between text-[10px] mb-0.5">
+                      <span class="text-emerald-500">Regular Compliant</span>
+                      <span class="text-foreground">Primary Majority</span>
+                    </div>
+                    <div class="w-full h-1.5 rounded-full bg-secondary overflow-hidden">
+                      <div class="h-full bg-emerald-500 rounded-full" style="width: 86%;"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-[10px] mb-0.5">
+                      <span class="text-amber-500">Tier 2 Moderate Watch (1–2 Absences)</span>
+                      <span class="text-foreground">Monitored</span>
+                    </div>
+                    <div class="w-full h-1.5 rounded-full bg-secondary overflow-hidden">
+                      <div class="h-full bg-amber-500 rounded-full" style="width: 10%;"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-[10px] mb-0.5">
+                      <span class="text-rose-500">Tier 1 High Risk Defaulter (&ge;3 Absences)</span>
+                      <span class="text-foreground">Flagged</span>
+                    </div>
+                    <div class="w-full h-1.5 rounded-full bg-secondary overflow-hidden">
+                      <div class="h-full bg-rose-500 rounded-full" style="width: 4%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footnote -->
+            <p class="text-[10px] font-mono text-muted-foreground border-t border-border/40 pt-2">
+              Structured in Power BI with multi-level drill-down (Statewide &rarr; District &rarr; Facility &rarr; Designation) for executive health leadership.
+            </p>
           </div>
         </div>
       </div>
@@ -546,9 +702,14 @@ RETURN
               <span class="text-xs font-mono text-muted-foreground">&bull; Machine Learning</span>
               <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2024</span>
             </div>
-            <button class="view-case-study-btn self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group" data-study="telco5g">
-              <span>Explore Case Study <span class="glide-arrow">&rarr;</span></span>
-            </button>
+            <div class="flex items-center gap-2 self-start sm:self-auto">
+              <a href="https://github.com/rishi-th219/Proactive-Handover-Prediction-in-5G-using-Diffusion-Models" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono text-muted-foreground hover:text-foreground bg-secondary/80 hover:bg-secondary border border-border transition-all duration-200 group">
+                <span>GitHub <span class="glide-arrow">&nearr;</span></span>
+              </a>
+              <button class="view-case-study-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group" data-study="telco5g">
+                <span>Explore Case Study <span class="glide-arrow">&rarr;</span></span>
+              </button>
+            </div>
           </div>
 
           <div>
@@ -587,9 +748,14 @@ RETURN
               <span class="text-xs font-mono text-muted-foreground">&bull; Python &amp; NLP</span>
               <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2025</span>
             </div>
-            <button class="view-case-study-btn self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group" data-study="career_ops_bot">
-              <span>Explore Case Study <span class="glide-arrow">&rarr;</span></span>
-            </button>
+            <div class="flex items-center gap-2 self-start sm:self-auto">
+              <a href="https://github.com/rishi-th219/career-ops-bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono text-muted-foreground hover:text-foreground bg-secondary/80 hover:bg-secondary border border-border transition-all duration-200 group">
+                <span>GitHub <span class="glide-arrow">&nearr;</span></span>
+              </a>
+              <button class="view-case-study-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group" data-study="career_ops_bot">
+                <span>Explore Case Study <span class="glide-arrow">&rarr;</span></span>
+              </button>
+            </div>
           </div>
 
           <div>

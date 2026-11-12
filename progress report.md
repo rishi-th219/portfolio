@@ -489,6 +489,23 @@ portfolio/
      - Passed 22-point automated verification suite.
      - Confirmed HTTP 200 OK on local server.
 
+### Milestone 23: Direct GitHub Links, OpenGraph Preview, KPI Scorecard Monitor & Print Stylesheet
+- **Status:** COMPLETED
+- **Focus:** Recruiter UX elevation, social discoverability, visual BI proof, and ink-friendly print styling.
+- **Key Enhancements Implemented:**
+  1. **Direct GitHub Links on Project Cards:**
+     - Added direct `GitHub ↗` buttons to the **5G mmWave Prediction** (`github.com/rishi-th219/Proactive-Handover-Prediction-in-5G-using-Diffusion-Models`) and **Career-Ops** (`github.com/rishi-th219/career-ops-bot`) project cards.
+  2. **OpenGraph Social Preview Card & Twitter Meta:**
+     - Generated high-resolution 1200x630 `assets/og-image.png` featuring dark theme, RT brandmark, credentials, and coordinates.
+     - Added complete `og:image`, `og:url`, `canonical`, and `twitter:card` tags to `index.html`.
+  3. **Visual KPI Scorecard & Monitor Tab in Architecture Workbench:**
+     - Added Tab 4 (`4. Executive Monitor`) inside `#highlights` displaying a simulated Power BI executive scorecard.
+     - Features 4 KPI tiles (*100% Reporting Facilities*, *High Presence Compliance*, *Deterministic Identity Match*, *3-Tier Defaulter Model*) and visual distribution bars for facility types and compliance risk stratification.
+  4. **1-Click DAX & SQL Snippet Copying:**
+     - Added `.copy-code-btn` with micro-feedback (`Copied! ✓`) on DAX measure cards in `index.html` and `js/app.js`.
+  5. **Clean Print Stylesheet (`@media print`):**
+     - Added printer-friendly CSS rules hiding sticky navigation, dark theme overrides, and interactive buttons for clean PDF saving.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:
