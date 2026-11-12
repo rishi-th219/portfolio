@@ -506,6 +506,15 @@ portfolio/
   5. **Clean Print Stylesheet (`@media print`):**
      - Added printer-friendly CSS rules hiding sticky navigation, dark theme overrides, and interactive buttons for clean PDF saving.
 
+### Milestone 24: Subtle Systems & OS Troubleshooting Capabilities (Fedora & Windows 11)
+- **Status:** COMPLETED
+- **Focus:** Subtly reflecting candidate's operating system versatility (daily driver Fedora Linux and enterprise Windows 11 troubleshooting/PowerShell) while strictly retaining core positioning in Analytics & BI.
+- **Key Enhancements Implemented:**
+  1. **Stack Pills (`#capabilities`):** Added `Fedora Linux` (Daily OS & Shell), `Windows 11` (OS & Diagnostics), and `PowerShell & Bash` (Troubleshooting) under the `Tools & CLI` workbench.
+  2. **Academic Foundation & Verified Credentials Callout:** Added `Systems & OS Troubleshooting: Fedora Linux (Daily Driver • Bash Automation) • Windows 11 (Enterprise Diagnostics • PowerShell)`.
+  3. **Curated ATS Resume Data:** Enriched `data_analyst` skills in `js/chart-data.js` with `Systems & Troubleshooting` (Fedora Linux, Windows 11, PowerShell, Git).
+  4. **Preserved Career Vector:** 100% focus remains anchored on Data Analytics, BI, and Analytics Engineering.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

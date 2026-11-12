@@ -150,7 +150,8 @@ const resumesData = {
       "<strong>Advanced Excel & BI: </strong>Advanced Excel (XLOOKUP, INDEX/MATCH, Dynamic Arrays, Complex Nested Formulas, Pivot Tables, Power Pivot, Data Modeling, Power Query / M ETL, What-If Scenario Analysis, VBA / Macros, Executive KPI Dashboards, Conditional Formatting), Microsoft Power BI, DAX (Measures, Time Intelligence), Oracle Analytics Cloud (OAC), KPI Scorecards",
       "<strong>Databases & Querying: </strong>Advanced SQL (T-SQL, MySQL, MariaDB, OracleDB) \u2014 Complex Multi-Table Joins, CTEs, Window Functions (ROW_NUMBER, RANK, LEAD/LAG), Subqueries, Aggregations, Relational Database Design, Query Execution Plan Tuning",
       "<strong>Data Modeling & ETL: </strong>Dimensional Modeling (Kimball Star Schema), Multi-Source ETL Pipelines, Identity Resolution Algorithms, Heterogeneous Schema Reconciliation, Data Validation & Cleansing, Data Integrity Controls",
-      "<strong>Analytics & Programming: </strong>Python (Pandas, NumPy, Scikit-learn), Inventory Analysis (ABC/VED/SDE), Metric & Dimension Definition, Root Cause Analysis, Trend & Variance Analysis, UAT Protocols, Technical Documentation"
+      "<strong>Analytics & Programming: </strong>Python (Pandas, NumPy, Scikit-learn), Inventory Analysis (ABC/VED/SDE), Metric & Dimension Definition, Root Cause Analysis, Trend & Variance Analysis, UAT Protocols, Technical Documentation",
+      "<strong>Systems & Troubleshooting: </strong>Fedora Linux (daily driver, shell scripting, CLI automation), Windows 11 (enterprise OS troubleshooting, diagnostics, PowerShell), Git & GitHub"
     ],
     "exp_role": "Data Analyst & BI Developer Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
     "exp_bullets": [
