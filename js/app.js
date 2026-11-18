@@ -32,11 +32,14 @@ function setupThemeToggle() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   };
 
+  const themeColorMeta = document.getElementById("themeColorMeta");
   const applyTheme = (theme) => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
+      if (themeColorMeta) themeColorMeta.setAttribute("content", "#09090b");
     } else {
       document.documentElement.classList.remove("dark");
+      if (themeColorMeta) themeColorMeta.setAttribute("content", "#ffffff");
     }
     localStorage.setItem("rishi-portfolio-theme", theme);
   };
@@ -437,6 +440,7 @@ function setupBackToTop() {
 function setupContactForm() {
   const form = document.getElementById("contactForm");
   const statusMsg = document.getElementById("contactFormStatus");
+  const submitBtn = document.getElementById("contactSubmitBtn") || (form ? form.querySelector("button[type='submit']") : null);
 
   if (!form) return;
 
@@ -446,13 +450,24 @@ function setupContactForm() {
     const email = document.getElementById("senderEmail")?.value || "";
     const message = document.getElementById("senderMessage")?.value || "";
 
+    if (submitBtn) {
+      submitBtn.setAttribute("disabled", "true");
+      submitBtn.classList.add("opacity-75");
+    }
+
     const mailtoLink = `mailto:rishi_th219@proton.me?subject=${encodeURIComponent("Portfolio Inquiry from " + name)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
     window.location.href = mailtoLink;
 
     if (statusMsg) {
-      statusMsg.textContent = "Opening your email client to send message to rishi_th219@proton.me...";
+      statusMsg.textContent = "Opening your email client to send message to rishi_th219@proton.me…";
       statusMsg.classList.remove("hidden");
-      setTimeout(() => statusMsg.classList.add("hidden"), 5000);
+      setTimeout(() => {
+        statusMsg.classList.add("hidden");
+        if (submitBtn) {
+          submitBtn.removeAttribute("disabled");
+          submitBtn.classList.remove("opacity-75");
+        }
+      }, 5000);
     }
   });
 }
@@ -482,31 +497,53 @@ function setupLocalTimeClock() {
   setInterval(updateClock, 1000);
 }
 
-// 10. Interactive Architecture Workbench (Poulo.site Inspiration)
+// 10. Interactive Architecture Workbench (Poulo.site Inspiration & web-design-guidelines Deep Linking)
 function setupArchitectureWorkbench() {
   const tabBtns = document.querySelectorAll(".workbench-tab-btn");
   const panels = document.querySelectorAll(".workbench-panel");
 
   if (!tabBtns.length || !panels.length) return;
 
+  const activateTab = (targetTab, updateHistory = true) => {
+    let found = false;
+    tabBtns.forEach(btn => {
+      if (btn.dataset.tab === targetTab) {
+        btn.classList.add("active");
+        found = true;
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+
+    if (!found) return;
+
+    panels.forEach(panel => {
+      if (panel.dataset.panel === targetTab) {
+        panel.classList.remove("hidden");
+        panel.classList.add("block");
+      } else {
+        panel.classList.add("hidden");
+        panel.classList.remove("block");
+      }
+    });
+
+    if (updateHistory && window.history && window.history.replaceState) {
+      window.history.replaceState(null, "", `#tab-${targetTab}`);
+    }
+  };
+
   tabBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      const targetTab = btn.dataset.tab;
-
-      tabBtns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      panels.forEach(panel => {
-        if (panel.dataset.panel === targetTab) {
-          panel.classList.remove("hidden");
-          panel.classList.add("block");
-        } else {
-          panel.classList.add("hidden");
-          panel.classList.remove("block");
-        }
-      });
+      activateTab(btn.dataset.tab, true);
     });
   });
+
+  // Activate tab from URL hash on load (e.g. #tab-schema, #schema)
+  const currentHash = (window.location.hash || "").replace(/^#(?:tab-)?/, "");
+  const validTabs = ["pipeline", "schema", "dax", "dashboard"];
+  if (validTabs.includes(currentHash)) {
+    activateTab(currentHash, false);
+  }
 }
 
 // 11. Interactive Stack Filter (Poulo.site Inspiration)

@@ -8,6 +8,7 @@
    1. Design Tokens & HSL Color System (NewTemplate: Pitch Black & Vibrant Teal)
    -------------------------------------------------------------------------- */
 :root {
+  color-scheme: light;
   /* Light Mode */
   --background: 0 0% 100%;
   --foreground: 224 71.4% 4.1%;
@@ -45,6 +46,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   /* Dark Mode: Deep Pitch Black & Glowing Teal (Strict ai-design-skills Surface) */
   --background: 240 10% 3.9%;              /* Deep Black #09090b */
   --foreground: 210 20% 98%;               /* Pure Crisp White #f8fafc */
@@ -135,11 +137,32 @@ code, pre, .font-mono {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
   .tagline-word {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
+  .animate-pulse {
+    animation: none !important;
+  }
+  .pulse-indicator::after {
+    animation: none !important;
+  }
+}
+
+/* Tabular Numerals for Dynamic Telemetry (web-design-guidelines) */
+.tabular-nums,
+.live-clock-pill,
+#localTimeClock {
+  font-variant-numeric: tabular-nums;
 }
 
 /* Subtle Engineering Grid Background */
@@ -313,7 +336,7 @@ code, pre, .font-mono {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   cursor: pointer;
 }
@@ -346,7 +369,7 @@ code, pre, .font-mono {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
   border: 1px solid hsl(var(--border));
 }
@@ -372,7 +395,7 @@ code, pre, .font-mono {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
 }
 
@@ -447,6 +470,11 @@ code, pre, .font-mono {
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  overscroll-behavior: contain;
+}
+
+.modal-dialog-scroll {
+  overscroll-behavior: contain;
 }
 
 .dark .modal-backdrop {
@@ -630,7 +658,7 @@ button, a {
   border: 1px solid hsl(var(--border));
   background-color: hsl(var(--secondary));
   color: hsl(var(--muted-foreground));
-  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
   display: inline-flex;
   align-items: center;

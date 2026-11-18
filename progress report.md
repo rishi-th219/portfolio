@@ -515,6 +515,28 @@ portfolio/
   3. **Curated ATS Resume Data:** Enriched `data_analyst` skills in `js/chart-data.js` with `Systems & Troubleshooting` (Fedora Linux, Windows 11, PowerShell, Git).
   4. **Preserved Career Vector:** 100% focus remains anchored on Data Analytics, BI, and Analytics Engineering.
 
+### Milestone 25: Vercel Web Interface Guidelines & Anthropic Frontend Design Compliance
+- **Status:** COMPLETED
+- **Focus:** Eliminating generic AI template tells, fixing interaction anti-patterns, adding modal overscroll containment, and implementing deep-linked tab states.
+- **Key Enhancements Implemented:**
+  1. **Aesthetic De-AI-ification (`frontend-design`):**
+     - Purged artificial numbered sequence markers (`01 /`, `02 /`, `03 /`, `04 /`, `05 /`) from topical sections; replaced with descriptive editorial headings (`Featured Production Case Study`, `Selected Analytical Projects`, etc.).
+     - Cut excessive template chrome (middle dots `·` and trailing arrows `→` on every button/badge).
+  2. **Web Interface Guidelines (`web-design-guidelines`):**
+     - Replaced animation anti-pattern `transition: all` with explicit compositor-friendly transitions (`transform`, `opacity`, `background-color`, `border-color`, `color`).
+     - Added comprehensive `@media (prefers-reduced-motion: reduce)` rules stopping infinite loops (e.g. `.animate-pulse`, `.pulse-indicator`).
+     - Added `overscroll-behavior: contain` to modal backdrops and dialog bodies to prevent background page scroll bleed.
+     - Added `<meta name="theme-color">` in `<head>` and dynamically synchronized it in `js/app.js` on dark/light toggle.
+     - Enforced `font-variant-numeric: tabular-nums` on `#localTimeClock` and metric scorecards.
+  3. **Form Accessibility & Polish:**
+     - Added `name`, `autocomplete`, and `spellcheck="false"` on email input in `#contactForm`.
+     - Standardized placeholders with typographical ellipses (`…`).
+     - Added button disabling and active sending feedback on contact note submission.
+  4. **State Reflection & Deep Linking:**
+     - Enabled URL hash synchronization on the Architecture Workbench tabs (`#tab-pipeline`, `#tab-schema`, `#tab-dax`, `#tab-dashboard`) allowing direct sharing of specific architecture views with recruiters.
+  5. **Verification & Testing:**
+     - Passed automated 7-point regression suite with 0 missing anchors, 0 broken case study targets, and 0 phone numbers exposed.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:
