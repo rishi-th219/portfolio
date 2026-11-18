@@ -537,6 +537,26 @@ portfolio/
   5. **Verification & Testing:**
      - Passed automated 7-point regression suite with 0 missing anchors, 0 broken case study targets, and 0 phone numbers exposed.
 
+### Milestone 26: Midnight Analytics & Data Storyteller Design Theme Overhaul
+- **Status:** COMPLETED
+- **Focus:** Transitioning to a sophisticated Midnight Analytics Slate theme, framing the portfolio through the lens of analytical reflection and data storytelling.
+- **Key Enhancements Implemented:**
+  1. **Midnight Analytics Theme System:**
+     - Ported theme to Midnight Slate Navy (`#080c14` dark background, `#0e1422` card surface, `#1e293b` blueprint border) paired with Electric Analytics Cobalt Blue (`#3b82f6` primary), Telemetry Sky Cyan (`#0ea5e9`), and crisp research slate in light mode.
+     - Updated SVG brandmark and favicon to `#3b82f6`.
+  2. **Narrative & Storytelling Hero Overhaul:**
+     - Repositioned headline to *"Analytics Engineer & Data Storyteller turning complex operational chaos into clean dimensional models and executive clarity."*
+     - Engineered a 4-Stage Analytical Proof Strip (*01. Multi-Source Ingestion*, *02. Kimball Dimensional Schema*, *03. DAX Risk Formulations*, *04. Executive BI Cockpits*).
+  3. **Flagship Case Study Story Arc (CHiPS):**
+     - Structured the presentation as a 4-chapter narrative: *The Operational Problem*, *Multi-Source Extraction*, *Deterministic Entity Resolution*, *Kimball Star Schema*, and *Executive Decision Storytelling*.
+     - Added the Executive Finding callout detailing business & public policy impact.
+  4. **Analytical Story Framing for Projects:**
+     - Re-architected project micro-specs into three narrative dimensions: *Analytical Question*, *Modeling Approach*, and *Operational Finding*.
+  5. **4-Pillar Analytical Lifecycle:**
+     - Reorganized capability matrices into the analytical lifecycle: *Forensic Ingestion & Schema Auditing*, *Kimball Star Schema Architecture*, *Metric Formulation & DAX Logic*, and *Executive Visual Storytelling*.
+  6. **Quality & Verification:**
+     - Validated 0 broken anchors, 0 key mismatches, and 0 phone numbers exposed.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

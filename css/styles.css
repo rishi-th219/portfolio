@@ -9,76 +9,76 @@
    -------------------------------------------------------------------------- */
 :root {
   color-scheme: light;
-  /* Light Mode */
-  --background: 0 0% 100%;
-  --foreground: 224 71.4% 4.1%;
+  /* Light Mode: Editorial Data Research Theme */
+  --background: 210 40% 98%;               /* Clean Slate White #f8fafc */
+  --foreground: 222 47% 11%;               /* Deep Analytics Ink #0f172a */
   
-  --card: 0 0% 100%;
-  --card-foreground: 224 71.4% 4.1%;
+  --card: 0 0% 100%;                       /* Crisp White Surface */
+  --card-foreground: 222 47% 11%;
   
   --popover: 0 0% 100%;
-  --popover-foreground: 224 71.4% 4.1%;
+  --popover-foreground: 222 47% 11%;
   
-  --primary: 173 80% 36%;                  /* Deep Teal #0d9488 */
-  --primary-foreground: 210 20% 98%;
+  --primary: 221 83% 53%;                  /* Royal Analytics Blue #2563eb */
+  --primary-foreground: 210 40% 98%;
   
-  --secondary: 220 14.3% 95.9%;            /* Neutral Slate Surface #f1f5f9 */
-  --secondary-foreground: 220.9 39.3% 11%;
+  --secondary: 214 32% 95%;                /* Soft Slate Workbench #f1f5f9 */
+  --secondary-foreground: 222 47% 15%;
   
-  --muted: 220 14.3% 95.9%;
-  --muted-foreground: 220 8.9% 46.1%;      /* #64748b */
+  --muted: 214 32% 91%;                    /* #e2e8f0 */
+  --muted-foreground: 215 16% 47%;          /* #64748b */
   
-  --accent: 173 80% 94%;
-  --accent-foreground: 173 80% 25%;
+  --accent: 199 89% 48%;                   /* Data Cyan #0ea5e9 */
+  --accent-foreground: 0 0% 100%;
   
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 20% 98%;
   
-  --border: 220 13% 91%;                   /* #e2e8f0 */
-  --input: 220 13% 91%;
-  --ring: 173 80% 36%;
+  --border: 214 32% 88%;                   /* Precision Boundary #cbd5e1 */
+  --input: 214 32% 88%;
+  --ring: 221 83% 53%;
   
   --radius: 0.75rem;
 
   /* Grid & Subtle accents */
   --grid-line: rgba(15, 23, 42, 0.04);
-  --glass-nav-bg: rgba(255, 255, 255, 0.85);
+  --glass-nav-bg: rgba(255, 255, 255, 0.88);
 }
 
 .dark {
   color-scheme: dark;
-  /* Dark Mode: Deep Pitch Black & Glowing Teal (Strict ai-design-skills Surface) */
-  --background: 240 10% 3.9%;              /* Deep Black #09090b */
-  --foreground: 210 20% 98%;               /* Pure Crisp White #f8fafc */
+  /* Dark Mode: Deep Midnight Analytics & Storytelling Slate */
+  --background: 222 47% 6%;                /* Deep Midnight Space #080c14 */
+  --foreground: 210 40% 98%;               /* Crisp White Slate #f8fafc */
   
-  --card: 240 10% 5.5%;                    /* #0f0f12 flat surface */
-  --card-foreground: 210 20% 98%;
+  --card: 222 40% 9%;                      /* Observational Navy Slate #0e1422 */
+  --card-foreground: 210 40% 98%;
   
-  --popover: 240 10% 5.5%;
-  --popover-foreground: 210 20% 98%;
+  --popover: 222 40% 9%;
+  --popover-foreground: 210 40% 98%;
   
-  --primary: 174 86% 45%;                  /* Vibrant Glowing Teal #14b8a6 */
-  --primary-foreground: 240 10% 3.9%;
+  --primary: 217 91% 60%;                  /* Electric Analytics Blue #3b82f6 */
+  --primary-foreground: 222 47% 6%;
   
-  --secondary: 240 6% 11%;                 /* Flat Slate Neutral #19191e */
-  --secondary-foreground: 210 20% 98%;
+  --secondary: 222 35% 14%;                /* Deep Navy Workbench #162034 */
+  --secondary-foreground: 213 27% 84%;
   
-  --muted: 240 6% 12%;
-  --muted-foreground: 215 16% 65%;         /* Cool Silver Slate #94a3b8 */
+  --muted: 222 30% 16%;                    /* #1b273f */
+  --muted-foreground: 215 20% 65%;          /* Cool Technical Slate #94a3b8 */
   
-  --accent: 174 86% 15%;
-  --accent-foreground: 174 86% 75%;
+  --accent: 199 89% 48%;                   /* Data Telemetry Cyan #0ea5e9 */
+  --accent-foreground: 0 0% 100%;
   
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 20% 98%;
   
-  --border: 240 6% 16%;                    /* Solid Boundary #272730 */
-  --input: 240 6% 16%;
-  --ring: 174 86% 45%;
+  --border: 222 30% 18%;                   /* Blueprint Rule #1e293b */
+  --input: 222 30% 18%;
+  --ring: 217 91% 60%;
 
   /* Grid & Subtle accents */
-  --grid-line: rgba(255, 255, 255, 0.025);
-  --glass-nav-bg: rgba(9, 9, 11, 0.88);
+  --grid-line: rgba(59, 130, 246, 0.035);
+  --glass-nav-bg: rgba(8, 12, 20, 0.88);
 }
 
 /* --------------------------------------------------------------------------
@@ -109,15 +109,15 @@ code, pre, .font-mono {
   letter-spacing: -0.02em;
 }
 
-/* Hero Heading Text-Only Gradient (ai-design-skills B5) */
+/* Hero Heading Text-Only Gradient (Data Storytelling Focus) */
 .hero-gradient-text {
-  background: linear-gradient(135deg, #f8fafc 0%, #94a3b8 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 55%, #60a5fa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 :root:not(.dark) .hero-gradient-text {
-  background: linear-gradient(135deg, #09090b 0%, #64748b 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -604,28 +604,37 @@ button, a {
 .newtemplate-tag {
   font-family: "Geist Mono", "IBM Plex Mono", monospace;
   font-size: 0.6875rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: hsl(var(--primary));
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  background-color: hsl(var(--primary) / 0.1);
+  border: 1px solid hsl(var(--primary) / 0.22);
 }
 
 .teal-bullet {
-  width: 0.625rem;
-  height: 0.625rem;
+  width: 0.55rem;
+  height: 0.55rem;
   border-radius: 9999px;
   background-color: hsl(var(--primary));
   display: inline-block;
-  box-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  box-shadow: 0 0 10px hsl(var(--primary) / 0.6);
   flex-shrink: 0;
 }
 
 .card-teal-callout {
-  background-color: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--primary) / 0.35);
   border-radius: var(--radius);
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem 1.75rem;
   font-weight: 500;
+  box-shadow: 0 4px 20px -2px rgba(59, 130, 246, 0.12);
 }
 
 .chart-line-teal {
@@ -645,8 +654,8 @@ button, a {
 }
 
 .glow-card:hover {
-  border-color: hsl(var(--primary) / 0.5);
-  box-shadow: 0 0 25px -5px hsl(var(--primary) / 0.18);
+  border-color: hsl(var(--primary) / 0.45);
+  box-shadow: 0 0 25px -5px hsl(var(--primary) / 0.16);
   transform: translateY(-2px);
 }
 
