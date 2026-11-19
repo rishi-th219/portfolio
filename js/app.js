@@ -1,29 +1,31 @@
-// Rishi Thakur — Executive Portfolio Interactivity Engine
-// Data Analyst | Business Intelligence | SQL & Analytics Engineering
-// Designed with Logsfolio / Modern Shadcn UI Patterns
+// Rishi Thakur — Analytics Engineer & Data Storyteller Portfolio
+// Interactivity & Motion Engine (landing-page-design & web-design-guidelines compliant)
 
 document.addEventListener("DOMContentLoaded", () => {
   setupThemeToggle();
-  setupProjectFilters();
+  setupScrollReveals();
+  setupTaglineReveal();
+  setupMobileMenu();
   setupCaseStudyModals();
   setupResumeModal();
   setupResumeTrackSelector();
-  setupMobileMenu();
+  setupPrivacyModal();
+  setupArchitectureWorkbench();
+  setupStackFilter();
   setupBackToTop();
   setupContactForm();
   setupLocalTimeClock();
-  setupArchitectureWorkbench();
-  setupStackFilter();
   setupCopyEmail();
   setupCopyCodeButtons();
 });
 
+// -----------------------------------------------------------------------------
 // 1. Theme Toggle Engine (Dark / Light Mode)
+// -----------------------------------------------------------------------------
 function setupThemeToggle() {
   const toggleBtns = [
     document.getElementById("themeToggleBtn"),
-    document.getElementById("themeToggleBtnMobileTop"),
-    document.getElementById("themeToggleBtnMobile")
+    document.getElementById("themeToggleBtnMobileTop")
   ].filter(Boolean);
 
   const getSavedTheme = () => {
@@ -36,7 +38,7 @@ function setupThemeToggle() {
   const applyTheme = (theme) => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
-      if (themeColorMeta) themeColorMeta.setAttribute("content", "#080c14");
+      if (themeColorMeta) themeColorMeta.setAttribute("content", "#000000");
     } else {
       document.documentElement.classList.remove("dark");
       if (themeColorMeta) themeColorMeta.setAttribute("content", "#f8fafc");
@@ -55,32 +57,123 @@ function setupThemeToggle() {
   });
 }
 
-// 2. Project Category Filter Engine
-function setupProjectFilters() {
-  const filterBtns = document.querySelectorAll(".project-filter-btn");
-  const projectCards = document.querySelectorAll(".project-card");
+// -----------------------------------------------------------------------------
+// 2. Scroll Reveals Engine (landing-page-design B7)
+// -----------------------------------------------------------------------------
+function setupScrollReveals() {
+  const reveals = document.querySelectorAll(".reveal-on-scroll");
+  if (!reveals.length) return;
 
-  if (!filterBtns.length) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    reveals.forEach(el => el.classList.add("is-revealed"));
+    return;
+  }
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      filterBtns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const filter = btn.dataset.filter;
-      projectCards.forEach(card => {
-        const categories = (card.dataset.category || "").split(" ");
-        if (filter === "all" || categories.includes(filter)) {
-          card.classList.remove("hidden");
-        } else {
-          card.classList.add("hidden");
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+          obs.unobserve(entry.target); // Reveal once only per B7
         }
       });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px"
     });
+
+    reveals.forEach(el => observer.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add("is-revealed"));
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 3. Mandatory Tagline Word-by-Word Scroll Reveal (landing-page-design B11)
+// -----------------------------------------------------------------------------
+function setupTaglineReveal() {
+  const words = document.querySelectorAll(".tagline-word");
+  const container = document.getElementById("taglineReveal");
+  if (!words.length || !container) return;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    words.forEach(w => w.classList.add("is-revealed"));
+    return;
+  }
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          words.forEach((word, idx) => {
+            setTimeout(() => {
+              word.classList.add("is-revealed");
+            }, idx * 75);
+          });
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.4
+    });
+
+    observer.observe(container);
+  } else {
+    words.forEach(w => w.classList.add("is-revealed"));
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 4. Full-Height Mobile Navigation Panel (landing-page-design B7)
+// -----------------------------------------------------------------------------
+function setupMobileMenu() {
+  const menuBtn = document.getElementById("mobileMenuBtn");
+  const overlay = document.getElementById("mobileNavOverlay");
+  const closeBtn = document.getElementById("mobileNavCloseBtn");
+  const links = document.querySelectorAll(".mobile-nav-link-item a, a.mobile-nav-link-item");
+  const iconOpen = document.getElementById("mobileMenuIconOpen");
+  const iconClose = document.getElementById("mobileMenuIconClose");
+
+  if (!menuBtn || !overlay) return;
+
+  const openMenu = () => {
+    overlay.classList.remove("hidden");
+    if (iconOpen) iconOpen.classList.add("hidden");
+    if (iconClose) iconClose.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeMenu = () => {
+    overlay.classList.add("hidden");
+    if (iconOpen) iconOpen.classList.remove("hidden");
+    if (iconClose) iconClose.classList.add("hidden");
+    document.body.style.overflow = "";
+  };
+
+  menuBtn.addEventListener("click", () => {
+    if (overlay.classList.contains("hidden")) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+  });
+
+  if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+
+  links.forEach(l => {
+    l.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !overlay.classList.contains("hidden")) {
+      closeMenu();
+    }
   });
 }
 
-// 3. Technical Case Study Modal Engine
+// -----------------------------------------------------------------------------
+// 5. Technical Case Study Modal Engine
+// -----------------------------------------------------------------------------
 function setupCaseStudyModals() {
   const modal = document.getElementById("caseStudyModal");
   const closeBtn = document.getElementById("modalCloseBtn");
@@ -132,7 +225,7 @@ function setupCaseStudyModals() {
             <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-secondary border border-border text-xs font-mono text-foreground">
               <span class="text-primary font-semibold">${idx + 1}.</span> ${step}
             </span>
-            ${idx < steps.length - 1 ? '<span class="text-muted-foreground font-mono text-xs select-none">→</span>' : ''}
+            ${idx < steps.length - 1 ? '<i class="ph ph-arrow-right text-muted-foreground text-xs select-none"></i>' : ''}
           `).join(" ");
         } else {
           pipelineWrapper.classList.add("hidden");
@@ -152,7 +245,7 @@ function setupCaseStudyModals() {
       if (delivEl && data.deliverables) {
         delivEl.innerHTML = data.deliverables.map(deliv => `
           <li class="flex items-start gap-2 text-xs sm:text-sm text-foreground/90 font-normal">
-            <span class="text-primary font-mono select-none font-semibold">✓</span>
+            <i class="ph ph-check text-primary font-bold text-sm mt-0.5"></i>
             <span>${deliv}</span>
           </li>
         `).join("");
@@ -178,7 +271,7 @@ function setupCaseStudyModals() {
   const closeModal = () => {
     modal.classList.add("hidden");
     modal.classList.remove("flex");
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = "";
   };
 
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
@@ -190,7 +283,9 @@ function setupCaseStudyModals() {
   });
 }
 
-// 4. Curated 7-Track ATS Resume Modal Engine (ai-design-skills & Zero-Fabrication)
+// -----------------------------------------------------------------------------
+// 6. Curated ATS Resume Modal Engine (Zero-Fabrication & Zero Phone Numbers)
+// -----------------------------------------------------------------------------
 function setupResumeModal() {
   const modal = document.getElementById("resumeModal");
   const closeBtn = document.getElementById("resumeModalCloseBtn");
@@ -232,9 +327,9 @@ function setupResumeModal() {
             <span>•</span>
             <a href="mailto:rishi_th219@proton.me" class="text-primary hover:underline">rishi_th219@proton.me</a>
             <span>•</span>
-            <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline flex items-center gap-1">LinkedIn <i class="ph ph-arrow-up-right"></i></a>
             <span>•</span>
-            <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline">GitHub ↗</a>
+            <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline flex items-center gap-1">GitHub <i class="ph ph-arrow-up-right"></i></a>
           </div>
         </div>
 
@@ -267,7 +362,7 @@ function setupResumeModal() {
             <ul class="space-y-1.5 pl-3">
               ${Array.isArray(r.exp_bullets) ? r.exp_bullets.map(b => `
                 <li class="flex items-start gap-2 text-xs sm:text-sm text-foreground/90 font-normal leading-relaxed">
-                  <span class="text-primary font-mono select-none">•</span>
+                  <i class="ph ph-dot text-primary text-base select-none"></i>
                   <span>${b}</span>
                 </li>
               `).join("") : ""}
@@ -291,7 +386,7 @@ function setupResumeModal() {
                 <ul class="space-y-1 pl-3">
                   ${Array.isArray(p.bullets) ? p.bullets.map(pb => `
                     <li class="flex items-start gap-2 text-xs sm:text-sm text-foreground/90 font-normal leading-relaxed">
-                      <span class="text-primary font-mono select-none">•</span>
+                      <i class="ph ph-dot text-primary text-base select-none"></i>
                       <span>${pb}</span>
                     </li>
                   `).join("") : ""}
@@ -361,7 +456,7 @@ function setupResumeModal() {
   const closeModal = () => {
     modal.classList.add("hidden");
     modal.classList.remove("flex");
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = "";
   };
 
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
@@ -373,7 +468,9 @@ function setupResumeModal() {
   });
 }
 
-// 4b. Interactive Resume Track Selector Dropdown
+// -----------------------------------------------------------------------------
+// 7. Interactive Resume Track Selector Dropdown
+// -----------------------------------------------------------------------------
 function setupResumeTrackSelector() {
   const select = document.getElementById("resumeTrackSelect");
   if (!select || typeof resumesData === "undefined") return;
@@ -400,104 +497,42 @@ function setupResumeTrackSelector() {
   });
 }
 
-// 5. Mobile Menu Drawer
-function setupMobileMenu() {
-  const menuBtn = document.getElementById("mobileMenuBtn");
-  const menu = document.getElementById("mobileMenu");
-  const links = document.querySelectorAll(".mobile-nav-link");
+// -----------------------------------------------------------------------------
+// 8. Privacy Modal Engine (landing-page-design B10)
+// -----------------------------------------------------------------------------
+function setupPrivacyModal() {
+  const modal = document.getElementById("privacyModal");
+  const triggerBtn = document.getElementById("privacyModalTrigger");
+  const closeBtn = document.getElementById("privacyModalCloseBtn");
 
-  if (!menuBtn || !menu) return;
+  if (!modal || !triggerBtn) return;
 
-  const toggle = () => {
-    menu.classList.toggle("hidden");
+  const open = (e) => {
+    if (e) e.preventDefault();
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    document.body.style.overflow = "hidden";
   };
 
-  menuBtn.addEventListener("click", toggle);
-  links.forEach(l => l.addEventListener("click", () => menu.classList.add("hidden")));
-}
-
-// 6. Back-To-Top Button
-function setupBackToTop() {
-  const btn = document.getElementById("backToTopBtn");
-  if (!btn) return;
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) {
-      btn.classList.remove("hidden");
-      btn.classList.add("flex");
-    } else {
-      btn.classList.add("hidden");
-      btn.classList.remove("flex");
-    }
-  });
-
-  btn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
-// 7. Contact Form Handler
-function setupContactForm() {
-  const form = document.getElementById("contactForm");
-  const statusMsg = document.getElementById("contactFormStatus");
-  const submitBtn = document.getElementById("contactSubmitBtn") || (form ? form.querySelector("button[type='submit']") : null);
-
-  if (!form) return;
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("senderName")?.value || "";
-    const email = document.getElementById("senderEmail")?.value || "";
-    const message = document.getElementById("senderMessage")?.value || "";
-
-    if (submitBtn) {
-      submitBtn.setAttribute("disabled", "true");
-      submitBtn.classList.add("opacity-75");
-    }
-
-    const mailtoLink = `mailto:rishi_th219@proton.me?subject=${encodeURIComponent("Portfolio Inquiry from " + name)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
-    window.location.href = mailtoLink;
-
-    if (statusMsg) {
-      statusMsg.textContent = "Opening your email client to send message to rishi_th219@proton.me…";
-      statusMsg.classList.remove("hidden");
-      setTimeout(() => {
-        statusMsg.classList.add("hidden");
-        if (submitBtn) {
-          submitBtn.removeAttribute("disabled");
-          submitBtn.classList.remove("opacity-75");
-        }
-      }, 5000);
-    }
-  });
-}
-
-// 8. Live Local Time Clock (Poulo.site Inspiration)
-function setupLocalTimeClock() {
-  const clockEl = document.getElementById("localTimeClock");
-  if (!clockEl) return;
-
-  const updateClock = () => {
-    const now = new Date();
-    try {
-      const timeStr = now.toLocaleTimeString("en-US", {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true
-      });
-      clockEl.textContent = `${timeStr} IST`;
-    } catch {
-      clockEl.textContent = `${now.toTimeString().split(" ")[0]} IST`;
-    }
+  const close = () => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "";
   };
 
-  updateClock();
-  setInterval(updateClock, 1000);
+  triggerBtn.addEventListener("click", open);
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) close();
+  });
 }
 
-// 10. Interactive Architecture Workbench (Poulo.site Inspiration & web-design-guidelines Deep Linking)
+// -----------------------------------------------------------------------------
+// 9. Interactive Architecture Workbench (Poulo.site & Deep Linking)
+// -----------------------------------------------------------------------------
 function setupArchitectureWorkbench() {
   const tabBtns = document.querySelectorAll(".workbench-tab-btn");
   const panels = document.querySelectorAll(".workbench-panel");
@@ -538,7 +573,6 @@ function setupArchitectureWorkbench() {
     });
   });
 
-  // Activate tab from URL hash on load (e.g. #tab-schema, #schema)
   const currentHash = (window.location.hash || "").replace(/^#(?:tab-)?/, "");
   const validTabs = ["pipeline", "schema", "dax", "dashboard"];
   if (validTabs.includes(currentHash)) {
@@ -546,7 +580,9 @@ function setupArchitectureWorkbench() {
   }
 }
 
-// 11. Interactive Stack Filter (Poulo.site Inspiration)
+// -----------------------------------------------------------------------------
+// 10. Interactive Stack Filter
+// -----------------------------------------------------------------------------
 function setupStackFilter() {
   const filterBtns = document.querySelectorAll(".stack-filter-btn");
   const techPills = document.querySelectorAll(".stack-pill");
@@ -578,7 +614,118 @@ function setupStackFilter() {
   });
 }
 
-// 12. Copy Email to Clipboard with Micro-feedback (Sebastien Graf Inspiration)
+// -----------------------------------------------------------------------------
+// 11. Back-To-Top Button
+// -----------------------------------------------------------------------------
+function setupBackToTop() {
+  const btn = document.getElementById("backToTopBtn");
+  if (!btn) return;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      btn.classList.remove("hidden");
+      btn.classList.add("flex");
+    } else {
+      btn.classList.add("hidden");
+      btn.classList.remove("flex");
+    }
+  }, { passive: true });
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// -----------------------------------------------------------------------------
+// 12. Direct Contact Form Handler (Client-side validation per B10)
+// -----------------------------------------------------------------------------
+function setupContactForm() {
+  const form = document.getElementById("contactForm");
+  const statusMsg = document.getElementById("contactFormStatus");
+  const submitBtn = document.getElementById("contactSubmitBtn") || (form ? form.querySelector("button[type='submit']") : null);
+
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nameInput = document.getElementById("senderName");
+    const emailInput = document.getElementById("senderEmail");
+    const messageInput = document.getElementById("senderMessage");
+
+    const name = nameInput ? nameInput.value.trim() : "";
+    const email = emailInput ? emailInput.value.trim() : "";
+    const message = messageInput ? messageInput.value.trim() : "";
+
+    // Client-side validation per B10
+    if (!name || !email || !message) {
+      if (statusMsg) {
+        statusMsg.textContent = "Please fill in all fields before sending.";
+        statusMsg.className = "text-xs font-mono text-center text-rose-500 block";
+      }
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      if (statusMsg) {
+        statusMsg.textContent = "Please enter a valid email address.";
+        statusMsg.className = "text-xs font-mono text-center text-rose-500 block";
+      }
+      return;
+    }
+
+    if (submitBtn) {
+      submitBtn.setAttribute("disabled", "true");
+      submitBtn.classList.add("opacity-75");
+    }
+
+    const mailtoLink = `mailto:rishi_th219@proton.me?subject=${encodeURIComponent("Portfolio Inquiry from " + name)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+    window.location.href = mailtoLink;
+
+    if (statusMsg) {
+      statusMsg.textContent = "Opening your default email app to send message to rishi_th219@proton.me…";
+      statusMsg.className = "text-xs font-mono text-center text-emerald-500 block";
+      setTimeout(() => {
+        statusMsg.classList.add("hidden");
+        if (submitBtn) {
+          submitBtn.removeAttribute("disabled");
+          submitBtn.classList.remove("opacity-75");
+        }
+      }, 5000);
+    }
+  });
+}
+
+// -----------------------------------------------------------------------------
+// 13. Live Local Time Clock (Bengaluru IST)
+// -----------------------------------------------------------------------------
+function setupLocalTimeClock() {
+  const clockEl = document.getElementById("localTimeClock");
+  if (!clockEl) return;
+
+  const updateClock = () => {
+    const now = new Date();
+    try {
+      const timeStr = now.toLocaleTimeString("en-US", {
+        timeZone: "Asia/Kolkata",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true
+      });
+      clockEl.textContent = `${timeStr} IST`;
+    } catch {
+      clockEl.textContent = `${now.toTimeString().split(" ")[0]} IST`;
+    }
+  };
+
+  updateClock();
+  setInterval(updateClock, 1000);
+}
+
+// -----------------------------------------------------------------------------
+// 14. Copy Email to Clipboard with Phosphor Micro-feedback
+// -----------------------------------------------------------------------------
 function setupCopyEmail() {
   const copyBtn = document.getElementById("copyEmailBtn");
   if (!copyBtn) return;
@@ -588,7 +735,7 @@ function setupCopyEmail() {
     try {
       await navigator.clipboard.writeText(email);
       const originalHTML = copyBtn.innerHTML;
-      copyBtn.innerHTML = `<span>Copied to clipboard! ✓</span>`;
+      copyBtn.innerHTML = `<i class="ph ph-check text-emerald-500"></i><span>Copied to clipboard!</span>`;
       copyBtn.classList.add("border-emerald-500", "text-emerald-500");
       setTimeout(() => {
         copyBtn.innerHTML = originalHTML;
@@ -600,7 +747,9 @@ function setupCopyEmail() {
   });
 }
 
-// 13. Copy Code Snippet (DAX / SQL) with Micro-feedback
+// -----------------------------------------------------------------------------
+// 15. Copy Code Snippet (DAX / SQL) with Micro-feedback
+// -----------------------------------------------------------------------------
 function setupCopyCodeButtons() {
   const copyBtns = document.querySelectorAll(".copy-code-btn");
   if (!copyBtns.length) return;

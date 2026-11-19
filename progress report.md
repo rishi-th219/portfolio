@@ -557,6 +557,30 @@ portfolio/
   6. **Quality & Verification:**
      - Validated 0 broken anchors, 0 key mismatches, and 0 phone numbers exposed.
 
+### Milestone 27: Full Portfolio Revamp via `landing_page_design.md` Design System
+* **Implementation Date:** November 19, 2026
+* **Key Architecture & Design Upgrades:**
+  1. **Layout Type B (Long-Form Story Arc):**
+     - Shifted from generic multi-intent layout to high-converting long-form story arc: Hook -> Tagline Reveal -> CHiPS Case Study Story -> Capabilities as Evidence -> Selected Projects -> Credentials & Rigor -> Final CTA Block.
+  2. **Single Primary Action Above the Fold:**
+     - Established "Connect on LinkedIn" as the single primary conversion CTA above the fold, supported by verified proof signals (GATE CS 2024, IIIT Naya Raipur 7.90, CHiPS Govt. Internship, IELTS 7.5 C1).
+  3. **Mandatory Tagline Reveal (B11):**
+     - Engineered word-by-word scroll-revealed large-type philosophy section: *"Data without a story is just noise. I build the bridge."* powered by throttled `IntersectionObserver` on the B7 base curve `cubic-bezier(0.22, 1, 0.36, 1)`.
+  4. **Strict Color System (B4):**
+     - Refactored dark mode to approved palette: `#000000` base, `#131209` warm ink card surface, `#1F1F1F` secondary, `#272727` muted, `#313131` border.
+     - Stripped all background gradients to enforce flat surfaces.
+     - Applied text-only hero heading gradient (`#FFFFFF` -> `#9B9B9B` in dark mode, `#000000` -> `#666666` in light mode).
+  5. **Phosphor Icons System (B6):**
+     - Replaced inline SVGs and emojis with Phosphor Icons CDN across navigation, CTAs, case studies, modals, and footer.
+  6. **Motion & Mobile Navigation (B7):**
+     - Replaced dropdown with full-height mobile overlay featuring 60ms staggered link entrances and animated toggle icon.
+     - Integrated single-pass viewport scroll reveals (`.reveal-on-scroll`) using `IntersectionObserver`.
+     - Full accessibility and `prefers-reduced-motion` compliance.
+  7. **Ship Requirements (B10):**
+     - Created branded `404.html` with return routes.
+     - Created Privacy Notice modal (`#privacyModal`) accessible from the footer.
+     - Implemented client-side email format and presence validation on the contact form.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rishi Thakur | Analytics Engineer &amp; Data Storyteller</title>
-  <meta name="description" content="Analytics Engineer & Data Storyteller portfolio of Rishi Thakur. Dimensional Kimball Star Schema modeling, automated SQL pipelines, and executive Power BI suites.">
+  <meta name="description" content="Analytics Engineer and Data Storyteller portfolio of Rishi Thakur. Dimensional Kimball Star Schema modeling, automated SQL pipelines, and executive Power BI suites.">
   <meta name="author" content="Rishi Thakur">
 
   <!-- Canonical URL -->
@@ -18,7 +18,7 @@
   <meta property="og:image" content="https://rishi-th219.github.io/portfolio/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rishi Thakur - Analytics Engineer & Data Storyteller">
+  <meta property="og:image:alt" content="Rishi Thakur - Analytics Engineer and Data Storyteller">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
@@ -27,12 +27,15 @@
   <meta name="twitter:image" content="https://rishi-th219.github.io/portfolio/assets/og-image.png">
 
   <!-- Branded SVG Favicon (Analytics Blue #3b82f6) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82f6'/><text x='16' y='21' font-family='monospace' font-size='14' font-weight='bold' fill='%23ffffff' text-anchor='middle'>RT</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http:%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233b82f6'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3ERT%3C/text%3E%3C/svg%3E">
 
-  <!-- Google Fonts: Geist & Geist Mono (ai-design-skills B1 Standard) -->
+  <!-- Google Fonts: Geist & Geist Mono (landing-page-design B1 Standard) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons (landing-page-design B6 Standard) -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
 
   <!-- Tailwind CSS Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -92,7 +95,7 @@
 
   <!-- Core Theme & Layout Styles -->
   <link rel="stylesheet" href="css/styles.css">
-  <meta name="theme-color" content="#080c14" id="themeColorMeta">
+  <meta name="theme-color" content="#000000" id="themeColorMeta">
 </head>
 <body class="bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary">
 
@@ -102,7 +105,7 @@
   </a>
 
   <!-- ==========================================================================
-       NAVIGATION BAR (ai-design-skills B7: Floating Glass Capsule Header)
+       NAVIGATION BAR (landing-page-design B7: Floating Glass Capsule Header)
        ========================================================================== -->
   <header class="fixed top-3 sm:top-4 inset-x-0 z-50 mx-auto max-w-5xl px-3 sm:px-6">
     <div class="logsfolio-nav flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6 shadow-sm">
@@ -118,201 +121,246 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Links (Clean Minimal Hierarchy) -->
+      <!-- Desktop Nav Links (Clean Story Progression) -->
       <nav class="hidden md:flex items-center space-x-6 text-xs font-mono uppercase tracking-wider text-muted-foreground">
-        <a href="#highlights" class="transition-colors hover:text-primary">Featured</a>
+        <a href="#story" class="transition-colors hover:text-primary">Story</a>
+        <a href="#capabilities" class="transition-colors hover:text-primary">Capabilities</a>
         <a href="#projects" class="transition-colors hover:text-primary">Projects</a>
-        <a href="#capabilities" class="transition-colors hover:text-primary">Skills</a>
-        <a href="#resume" class="text-primary font-semibold hover:underline">Resume</a>
+        <a href="#credentials" class="transition-colors hover:text-primary">Credentials</a>
         <a href="#contact" class="transition-colors hover:text-primary">Contact</a>
       </nav>
 
-      <!-- Desktop Actions: Theme Toggle + Resume CTA + Contact -->
+      <!-- Desktop Actions: Theme Toggle + Resume CTA + Primary LinkedIn -->
       <div class="hidden sm:flex items-center gap-3">
-        <!-- Theme Toggle Button -->
+        <!-- Theme Toggle Button with Phosphor Icons -->
         <button id="themeToggleBtn" aria-label="Toggle visual theme" class="btn-icon">
-          <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
+          <i class="ph ph-sun text-base hidden dark:block"></i>
+          <i class="ph ph-moon text-base block dark:hidden"></i>
         </button>
 
         <button class="view-resume-btn btn-secondary text-xs font-mono" data-resume="data_analyst">
-          <span>Resume 📄</span>
+          <i class="ph ph-file-text text-sm"></i>
+          <span>Resume</span>
         </button>
 
-        <a href="#contact" class="btn-primary text-xs font-mono">
-          <span>Get in touch</span>
+        <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="btn-primary text-xs font-mono group">
+          <i class="ph ph-linkedin-logo text-sm"></i>
+          <span>LinkedIn</span>
         </a>
       </div>
 
       <!-- Mobile Nav Controls -->
       <div class="flex items-center gap-1 sm:hidden">
         <button id="themeToggleBtnMobileTop" aria-label="Toggle theme" class="btn-icon">
-          <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
+          <i class="ph ph-sun text-base hidden dark:block"></i>
+          <i class="ph ph-moon text-base block dark:hidden"></i>
         </button>
         <button id="mobileMenuBtn" aria-label="Toggle Navigation Menu" class="btn-icon">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
+          <i id="mobileMenuIconOpen" class="ph ph-list text-lg block"></i>
+          <i id="mobileMenuIconClose" class="ph ph-x text-lg hidden"></i>
         </button>
       </div>
 
     </div>
 
-    <!-- Mobile Drawer Menu (Floating blur panel) -->
-    <div id="mobileMenu" class="hidden md:hidden mt-2 border border-border bg-background/95 backdrop-blur-md rounded-2xl px-5 py-4 space-y-3 text-left shadow-xl">
-      <a href="#highlights" class="mobile-nav-link block text-sm font-medium text-foreground hover:text-primary">Featured Work</a>
-      <a href="#projects" class="mobile-nav-link block text-sm font-medium text-foreground hover:text-primary">Projects</a>
-      <a href="#capabilities" class="mobile-nav-link block text-sm font-medium text-foreground hover:text-primary">Skills</a>
-      <a href="#resume" class="mobile-nav-link block text-sm font-medium text-primary font-semibold">Resume</a>
-      <a href="#contact" class="mobile-nav-link block text-sm font-medium text-foreground hover:text-primary">Contact</a>
+    <!-- Full-Height Mobile Navigation Panel (landing-page-design B7) -->
+    <div id="mobileNavOverlay" class="mobile-nav-panel hidden">
+      <button id="mobileNavCloseBtn" class="absolute top-6 right-6 p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors" aria-label="Close navigation menu">
+        <i class="ph ph-x text-2xl"></i>
+      </button>
+      <nav class="flex flex-col items-center space-y-6 text-center">
+        <a href="#story" class="mobile-nav-link-item text-2xl font-semibold text-foreground hover:text-primary transition-colors">The Story</a>
+        <a href="#capabilities" class="mobile-nav-link-item text-2xl font-semibold text-foreground hover:text-primary transition-colors">Capabilities</a>
+        <a href="#projects" class="mobile-nav-link-item text-2xl font-semibold text-foreground hover:text-primary transition-colors">Projects</a>
+        <a href="#credentials" class="mobile-nav-link-item text-2xl font-semibold text-foreground hover:text-primary transition-colors">Credentials</a>
+        <a href="#contact" class="mobile-nav-link-item text-2xl font-semibold text-foreground hover:text-primary transition-colors">Contact</a>
+        <div class="mobile-nav-link-item pt-4 flex flex-col items-center gap-3">
+          <button class="view-resume-btn btn-secondary text-sm font-mono w-48 justify-center" data-resume="data_analyst">
+            <i class="ph ph-file-text"></i><span>Preview ATS Resume</span>
+          </button>
+          <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="btn-primary text-sm font-mono w-48 justify-center">
+            <i class="ph ph-linkedin-logo"></i><span>Connect on LinkedIn</span>
+          </a>
+        </div>
+      </nav>
     </div>
   </header>
 
   <!-- ==========================================================================
-       MAIN EDITORIAL CONTENT CONTAINER
+       MAIN EDITORIAL CONTENT CONTAINER (Layout B: Long-Form Story Arc)
        ========================================================================== -->
   <main id="main-content" class="container max-w-5xl mx-auto px-4 sm:px-6">
 
     <!-- ----------------------------------------------------------------------
-         PAGE 1: HERO / EXECUTIVE DOSSIER & CRAFT STATEMENT
-         (Inspiration: christendijoux.com & sebg.ch bold editorial typography)
+         SECTION 1: HERO (PROBLEM-FIRST HOOK & SINGLE PRIMARY ACTION)
          ---------------------------------------------------------------------- -->
-    <section id="home" class="pt-28 pb-8 md:pt-36 md:pb-12 space-y-6">
+    <section id="home" class="pt-28 pb-8 md:pt-36 md:pb-12 space-y-6 reveal-on-scroll">
       
-      <!-- Executive Dossier Metadata Strip (Data Storytelling & Analytics Lens) -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3 rounded-2xl bg-secondary/50 border border-border/80 text-xs font-mono shadow-sm">
+      <!-- Verified Proof Metadata Strip (Technical Rigor & Availability) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3 rounded-2xl bg-secondary/50 border border-border text-xs font-mono">
         <div>
-          <span class="text-[10px] uppercase text-muted-foreground block">Discipline</span>
+          <span class="text-xs uppercase text-muted-foreground block">Discipline</span>
           <span class="text-foreground font-semibold text-xs mt-0.5 block">Analytics Engineering</span>
         </div>
         <div>
-          <span class="text-[10px] uppercase text-muted-foreground block">Specialization</span>
-          <span class="text-foreground font-semibold text-xs mt-0.5 block">SQL • Modeling • BI Story</span>
+          <span class="text-xs uppercase text-muted-foreground block">Specialization</span>
+          <span class="text-foreground font-semibold text-xs mt-0.5 block">SQL · Modeling · BI Story</span>
         </div>
         <div>
-          <span class="text-[10px] uppercase text-muted-foreground block">Academic Rigor</span>
+          <span class="text-xs uppercase text-muted-foreground block">Academic Rigor</span>
           <span class="text-foreground font-semibold text-xs mt-0.5 block">IIIT Naya Raipur 7.90</span>
         </div>
         <div>
-          <span class="text-[10px] uppercase text-muted-foreground block">Availability</span>
+          <span class="text-xs uppercase text-muted-foreground block">Availability</span>
           <span class="text-emerald-500 font-semibold text-xs mt-0.5 flex items-center gap-1.5">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Immediate Joiner
           </span>
         </div>
       </div>
 
-      <!-- Hero Headline & Analytical Summary (Max width 720px) -->
-      <div class="max-w-[720px] space-y-4">
+      <!-- Hero Headline & Analytical Summary (Capped at 680px per B5 rule) -->
+      <div class="max-w-[680px] space-y-4">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/25 text-primary text-xs font-mono">
           <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-          <span>Data-Driven Decision Systems &amp; Visual Analytics</span>
+          <span>Data Analyst · Analytics Engineer · BI Developer</span>
         </div>
-        <h1 class="hero-gradient-text text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-          Rishi Thakur
+        <h1 class="hero-gradient-text heading-1 text-4xl sm:text-6xl md:text-6xl font-semibold tracking-tight">
+          I turn fragmented records into decisions that move systems.
         </h1>
-        <p class="text-xl sm:text-2xl font-medium text-foreground tracking-tight leading-snug">
-          Turning fragmented operational telemetry into robust dimensional models and decision-ready executive stories.
-        </p>
-        <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-          M.Tech in Computer Science from IIIT Naya Raipur. Proven background at CHiPS engineering enterprise pipelines that bridge isolated databases into Kimball Star Schemas and actionable Power BI cockpits for state leadership.
+        <p class="body-3 text-base text-muted-foreground leading-relaxed">
+          M.Tech CSE, IIIT Naya Raipur. At CHiPS I reconciled statewide biometric and payroll data for the Govt. of Chhattisgarh — built the dimensional model, the risk engine, and the executive dashboards that leadership now uses to manage attendance across the state health network.
         </p>
       </div>
 
-      <!-- Action CTAs & Direct Contact Channels -->
+      <!-- Action CTAs: One Primary Action (LinkedIn) per Landing Page Rule A1/A4 -->
       <div class="flex flex-wrap items-center gap-3 pt-1">
-        <button class="view-resume-btn btn-primary text-xs font-mono" data-resume="data_analyst">
-          <span>Preview ATS Resume 📄</span>
-        </button>
-        <a href="#highlights" class="btn-secondary text-xs font-mono">
-          <span>Explore Analytical Story ↓</span>
+        <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="btn-primary button-md font-mono group">
+          <i class="ph ph-linkedin-logo text-base"></i>
+          <span>Connect on LinkedIn</span>
+          <i class="ph ph-arrow-right glide-arrow"></i>
+        </a>
+        <a href="#story" class="btn-secondary button-md font-mono group">
+          <span>Explore Analytical Story</span>
+          <i class="ph ph-arrow-down glide-arrow"></i>
         </a>
         <div class="flex items-center gap-3 pl-2 text-xs font-mono text-muted-foreground">
-          <a href="mailto:rishi_th219@proton.me" class="hover:text-primary transition-colors flex items-center gap-1">Email <span class="text-[11px]">&rarr;</span></a>
+          <a href="mailto:rishi_th219@proton.me" class="hover:text-primary transition-colors flex items-center gap-1">Email <i class="ph ph-arrow-right text-[11px]"></i></a>
           <span class="text-border">|</span>
-          <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1">LinkedIn <span class="text-[11px]">&nearr;</span></a>
-          <span class="text-border">|</span>
-          <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1">GitHub <span class="text-[11px]">&nearr;</span></a>
+          <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1">GitHub <i class="ph ph-arrow-up-right text-[11px]"></i></a>
         </div>
+      </div>
+
+      <!-- Proof Strip: Verified signals beside claim -->
+      <div class="pt-2 text-xs font-mono text-muted-foreground flex flex-wrap items-center gap-2 sm:gap-4 border-t border-border/40">
+        <span class="text-foreground font-semibold">Verified Proof:</span>
+        <span>GATE CS 2024 Qualified</span>
+        <span class="text-border">·</span>
+        <span>IIIT Naya Raipur</span>
+        <span class="text-border">·</span>
+        <span>CHiPS Govt. Internship</span>
+        <span class="text-border">·</span>
+        <span>IELTS 7.5 (C1)</span>
       </div>
 
       <!-- 4-Stage Analytical Proof Strip -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-3">
-        <div class="glow-card p-4 rounded-xl border border-border bg-card/60 space-y-1.5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-2">
+        <div class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono uppercase tracking-wider text-primary font-semibold">01. Pipeline</span>
-            <span class="text-[10px] font-mono text-emerald-500 font-medium">Validated</span>
+            <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">01. Pipeline</span>
+            <span class="text-xs font-mono text-emerald-500 font-medium">Validated</span>
           </div>
-          <p class="text-sm font-semibold text-foreground tracking-tight">Multi-Source Ingestion</p>
-          <p class="text-xs text-muted-foreground leading-relaxed">Reconciled statewide biometrics with treasury payroll across government health facilities</p>
+          <p class="title-4 text-sm font-semibold text-foreground tracking-tight">Multi Source Ingestion</p>
+          <p class="body-6 text-xs text-muted-foreground leading-relaxed">Reconciled statewide biometrics with treasury payroll across government health facilities</p>
         </div>
 
-        <div class="glow-card p-4 rounded-xl border border-border bg-card/60 space-y-1.5">
+        <div class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono uppercase tracking-wider text-primary font-semibold">02. Modeling</span>
-            <span class="text-[10px] font-mono text-primary font-medium">Kimball Star</span>
+            <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">02. Modeling</span>
+            <span class="text-xs font-mono text-primary font-medium">Kimball Star</span>
           </div>
-          <p class="text-sm font-semibold text-foreground tracking-tight">Dimensional Schema</p>
-          <p class="text-xs text-muted-foreground leading-relaxed">Structured Fact &amp; Dimension tables optimized for sub-second query latency and zero cyclic paths</p>
+          <p class="title-4 text-sm font-semibold text-foreground tracking-tight">Dimensional Schema</p>
+          <p class="body-6 text-xs text-muted-foreground leading-relaxed">Structured Fact and Dimension tables optimized for instant query latency and zero cyclic paths</p>
         </div>
 
-        <div class="glow-card p-4 rounded-xl border border-border bg-card/60 space-y-1.5">
+        <div class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono uppercase tracking-wider text-primary font-semibold">03. Metrics</span>
-            <span class="text-[10px] font-mono text-amber-500 font-medium">3 Risk Tiers</span>
+            <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">03. Metrics</span>
+            <span class="text-xs font-mono text-amber-500 font-medium">3 Risk Tiers</span>
           </div>
-          <p class="text-sm font-semibold text-foreground tracking-tight">DAX Risk Formulations</p>
-          <p class="text-xs text-muted-foreground leading-relaxed">Engineered presence compliance formulations and unexcused absence risk stratification models</p>
+          <p class="title-4 text-sm font-semibold text-foreground tracking-tight">DAX Risk Formulations</p>
+          <p class="body-6 text-xs text-muted-foreground leading-relaxed">Engineered presence compliance formulations and unexcused absence risk stratification models</p>
         </div>
 
-        <div class="glow-card p-4 rounded-xl border border-border bg-card/60 space-y-1.5">
+        <div class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono uppercase tracking-wider text-primary font-semibold">04. Storytelling</span>
-            <span class="text-[10px] font-mono text-primary font-medium">Executive BI</span>
+            <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">04. Storytelling</span>
+            <span class="text-xs font-mono text-primary font-medium">Executive BI</span>
           </div>
-          <p class="text-sm font-semibold text-foreground tracking-tight">Executive Cockpits</p>
-          <p class="text-xs text-muted-foreground leading-relaxed">Built multi-level drill-down dashboards giving administrators immediate clarity from state to shift</p>
+          <p class="title-4 text-sm font-semibold text-foreground tracking-tight">Executive Cockpits</p>
+          <p class="body-6 text-xs text-muted-foreground leading-relaxed">Built multi level drilldown dashboards giving administrators immediate clarity from state to shift</p>
         </div>
       </div>
 
     </section>
 
     <!-- ----------------------------------------------------------------------
-         PAGE 2: FEATURED PROJECT (CHiPS HEALTHCARE)
+         SECTION 2: TAGLINE REVEAL (MANDATORY B11)
          ---------------------------------------------------------------------- -->
-    <section id="highlights" class="py-10 md:py-14 border-t border-border/40 space-y-6">
-      <div>
-        <span class="newtemplate-tag">Featured Production Case Study</span>
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mt-1">
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Statewide Healthcare Attendance &amp; Payroll Intelligence</h2>
-          <span class="text-xs font-mono text-muted-foreground">CHiPS • 2025–2026</span>
-        </div>
-        <p class="text-xs font-mono text-primary mt-0.5">Automated Multi-Source ETL • Kimball Star Schema • Power BI Executive Cockpit</p>
+    <section class="py-16 md:py-24 border-t border-border/40 text-center reveal-on-scroll">
+      <div class="max-w-[680px] mx-auto space-y-4">
+        <span class="newtemplate-tag">Core Philosophy</span>
+        <h2 id="taglineReveal" class="heading-3 sm:heading-2 font-semibold tracking-tight text-foreground leading-tight select-none">
+          <span class="tagline-word">Data</span>
+          <span class="tagline-word">without</span>
+          <span class="tagline-word">a</span>
+          <span class="tagline-word">story</span>
+          <span class="tagline-word">is</span>
+          <span class="tagline-word">just</span>
+          <span class="tagline-word">noise.</span>
+          <br>
+          <span class="tagline-word">I</span>
+          <span class="tagline-word">build</span>
+          <span class="tagline-word">the</span>
+          <span class="tagline-word">bridge.</span>
+        </h2>
+        <p class="body-5 text-sm font-mono text-muted-foreground">
+          Analytics Engineer and BI Developer · IIIT Naya Raipur · Bengaluru
+        </p>
       </div>
+    </section>
 
-      <!-- Narrative Introduction -->
-      <div class="p-4 sm:p-5 rounded-xl bg-secondary/30 border border-border/70 space-y-2">
-        <span class="text-[10px] uppercase font-mono tracking-wider text-primary font-bold block">The Operational Problem</span>
-        <p class="text-muted-foreground text-sm sm:text-base leading-relaxed">
-          Statewide public healthcare institutions recorded millions of daily biometric punches (AEBAS), while salary disbursal was managed independently by State Treasury payroll codes. Due to inconsistent transliteration and isolated databases, leadership could not verify true physical presence or stop salary leakage for non-compliant bonded doctors.
+    <!-- ----------------------------------------------------------------------
+         SECTION 3: THE STORY — CHiPS PRODUCTION CASE STUDY
+         (Anchor IDs: #story and #highlights for backwards compatibility)
+         ---------------------------------------------------------------------- -->
+    <section id="story" class="py-10 md:py-14 border-t border-border/40 space-y-8 reveal-on-scroll">
+      <div id="highlights">
+        <span class="newtemplate-tag">Production Narrative Case Study</span>
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mt-1">
+          <h2 class="heading-4 text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
+            Statewide Healthcare Attendance and Payroll Intelligence
+          </h2>
+          <span class="text-xs font-mono text-muted-foreground">CHiPS · 2025–2026</span>
+        </div>
+        <p class="text-xs font-mono text-primary mt-0.5">
+          Automated Multi Source Extraction · Kimball Star Schema · Power BI Executive Cockpit
         </p>
       </div>
 
-      <!-- 4 Sequential Operational Stages / Narrative Chapters -->
-      <div class="space-y-3.5 pt-1">
-        
+      <!-- Narrative Introduction: The Operational Problem -->
+      <div class="p-4 sm:p-5 rounded-xl bg-secondary/50 border border-border space-y-2">
+        <span class="text-xs uppercase font-mono tracking-wider text-primary font-bold block">Part 1: The Operational Problem</span>
+        <p class="body-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
+          Statewide public healthcare institutions recorded millions of daily biometric punches (AEBAS), while salary disbursal was managed independently by State Treasury payroll codes. Due to inconsistent transliteration and isolated databases, leadership could not verify true physical presence or stop salary leakage for non compliant bonded doctors.
+        </p>
+      </div>
+
+      <!-- 4 Sequential Operational Chapters -->
+      <div class="space-y-4 pt-1">
         <div class="flex items-start gap-3.5">
           <span class="teal-bullet mt-1.5"></span>
           <div>
-            <span class="text-foreground font-semibold text-sm">Chapter 1: Multi-Source Automated Extraction:</span>
+            <span class="text-foreground font-semibold text-sm">Chapter 1: Multi Source Extraction:</span>
             <span class="text-muted-foreground text-sm ml-1">Automated daily pulls uniting biometric logs across community health centers, district hospitals, and treasury payroll tables into MariaDB staging.</span>
           </div>
         </div>
@@ -321,7 +369,7 @@
           <span class="teal-bullet mt-1.5"></span>
           <div>
             <span class="text-foreground font-semibold text-sm">Chapter 2: Deterministic Entity Resolution:</span>
-            <span class="text-muted-foreground text-sm ml-1">Engineered complex SQL string cleaning, CTEs, and deterministic key matching to resolve regional name discrepancies and eliminate orphaned payroll entries.</span>
+            <span class="text-muted-foreground text-sm ml-1">Engineered SQL string cleaning, CTEs, and deterministic key matching to resolve regional name discrepancies and eliminate orphaned payroll entries.</span>
           </div>
         </div>
 
@@ -329,7 +377,7 @@
           <span class="teal-bullet mt-1.5"></span>
           <div>
             <span class="text-foreground font-semibold text-sm">Chapter 3: Kimball Star Schema Architecture:</span>
-            <span class="text-muted-foreground text-sm ml-1">Structured <code class="text-xs font-mono text-primary">Fact_Attendance_Daily</code> surrounded by normalized Date, Facility, and Employee dimensions for sub-second query performance.</span>
+            <span class="text-muted-foreground text-sm ml-1">Structured <code class="text-xs font-mono text-primary">Fact_Attendance_Daily</code> surrounded by normalized Date, Facility, and Employee dimensions for instant query performance.</span>
           </div>
         </div>
 
@@ -337,18 +385,17 @@
           <span class="teal-bullet mt-1.5"></span>
           <div>
             <span class="text-foreground font-semibold text-sm">Chapter 4: Executive Decision Storytelling:</span>
-            <span class="text-muted-foreground text-sm ml-1">Formulated DAX compliance ratios and a 3-tier defaulter risk model, presenting an interactive Power BI cockpit with 4-level drill-downs to the Health Department Secretary.</span>
+            <span class="text-muted-foreground text-sm ml-1">Formulated DAX compliance ratios and a 3 tier defaulter risk model, presenting an interactive Power BI cockpit with 4 level drilldowns to the Health Department Secretary.</span>
           </div>
         </div>
-
       </div>
 
-      <!-- Architecture Breakdown -->
-      <div class="glow-card border border-border/80 bg-card/70 rounded-2xl p-4 sm:p-6 space-y-4 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border/70">
+      <!-- Architecture Breakdown Workbench -->
+      <div class="glow-card border border-border bg-card rounded-2xl p-4 sm:p-6 space-y-4 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border">
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="font-mono text-xs font-semibold uppercase tracking-wider text-primary">System Architecture</span>
+            <span class="font-mono text-xs font-semibold uppercase tracking-wider text-primary">System Architecture Workbench</span>
           </div>
           <div class="flex flex-wrap items-center gap-1.5">
             <button class="workbench-tab-btn active" data-tab="pipeline">1. Data Pipeline</button>
@@ -361,40 +408,40 @@
         <!-- Panel 1: Dataflow Pipeline -->
         <div class="workbench-panel block space-y-3" data-panel="pipeline">
           <div class="grid grid-cols-1 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-            <div class="p-3 rounded-xl bg-secondary/60 border border-border/70 space-y-1">
-              <div class="flex items-center justify-between text-muted-foreground text-[10px]">
+            <div class="p-3 rounded-xl bg-secondary/60 border border-border space-y-1">
+              <div class="flex items-center justify-between text-muted-foreground text-xs">
                 <span>STAGE 01</span>
                 <span class="text-primary font-bold">RAW DATA</span>
               </div>
               <p class="font-bold text-foreground">Daily Logs</p>
-              <p class="text-[11px] text-muted-foreground">Gathers daily biometric logs and treasury payroll records across state databases.</p>
+              <p class="text-xs text-muted-foreground">Gathers daily biometric logs and treasury payroll records across state databases.</p>
             </div>
 
-            <div class="p-3 rounded-xl bg-secondary/60 border border-border/70 space-y-1">
-              <div class="flex items-center justify-between text-muted-foreground text-[10px]">
+            <div class="p-3 rounded-xl bg-secondary/60 border border-border space-y-1">
+              <div class="flex items-center justify-between text-muted-foreground text-xs">
                 <span>STAGE 02</span>
                 <span class="text-primary font-bold">CLEANING</span>
               </div>
               <p class="font-bold text-foreground">Deduplication</p>
-              <p class="text-[11px] text-muted-foreground">Automated matching logic that fixes name variations and removes orphan entries.</p>
+              <p class="text-xs text-muted-foreground">Automated matching logic that fixes name variations and removes orphan entries.</p>
             </div>
 
-            <div class="p-3 rounded-xl bg-secondary/60 border border-border/70 space-y-1">
-              <div class="flex items-center justify-between text-muted-foreground text-[10px]">
+            <div class="p-3 rounded-xl bg-secondary/60 border border-border space-y-1">
+              <div class="flex items-center justify-between text-muted-foreground text-xs">
                 <span>STAGE 03</span>
                 <span class="text-primary font-bold">MODELING</span>
               </div>
               <p class="font-bold text-foreground">Star Schema</p>
-              <p class="text-[11px] text-muted-foreground">Structures data into clean Fact and Dimension tables for fast analysis.</p>
+              <p class="text-xs text-muted-foreground">Structures data into clean Fact and Dimension tables for fast analysis.</p>
             </div>
 
-            <div class="p-3 rounded-xl bg-secondary/60 border border-border/70 space-y-1">
-              <div class="flex items-center justify-between text-muted-foreground text-[10px]">
+            <div class="p-3 rounded-xl bg-secondary/60 border border-border space-y-1">
+              <div class="flex items-center justify-between text-muted-foreground text-xs">
                 <span>STAGE 04</span>
                 <span class="text-primary font-bold">REPORTS</span>
               </div>
               <p class="font-bold text-foreground">Power BI</p>
-              <p class="text-[11px] text-muted-foreground">Interactive drill-down reports, compliance tracking, and weekly summaries.</p>
+              <p class="text-xs text-muted-foreground">Interactive drilldown reports, compliance tracking, and weekly summaries.</p>
             </div>
           </div>
         </div>
@@ -403,10 +450,10 @@
         <div class="workbench-panel hidden space-y-3" data-panel="schema">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
             <div class="space-y-3">
-              <div class="p-3 rounded-xl bg-secondary/60 border border-border/70">
-                <span class="text-primary text-[10px] uppercase font-bold block mb-1">DIMENSION TABLE</span>
+              <div class="p-3 rounded-xl bg-secondary/60 border border-border">
+                <span class="text-primary text-xs uppercase font-bold block mb-1">DIMENSION TABLE</span>
                 <p class="font-bold text-foreground text-sm">Dim_Date</p>
-                <ul class="text-[11px] text-muted-foreground mt-1.5 space-y-0.5">
+                <ul class="text-xs text-muted-foreground mt-1.5 space-y-0.5">
                   <li>&bull; Date_Key (PK, Int)</li>
                   <li>&bull; Calendar_Date (Date)</li>
                   <li>&bull; Day_Of_Week (Varchar)</li>
@@ -414,10 +461,10 @@
                   <li>&bull; Fiscal_Quarter (Varchar)</li>
                 </ul>
               </div>
-              <div class="p-3 rounded-xl bg-secondary/60 border border-border/70">
-                <span class="text-primary text-[10px] uppercase font-bold block mb-1">DIMENSION TABLE</span>
+              <div class="p-3 rounded-xl bg-secondary/60 border border-border">
+                <span class="text-primary text-xs uppercase font-bold block mb-1">DIMENSION TABLE</span>
                 <p class="font-bold text-foreground text-sm">Dim_Facility</p>
-                <ul class="text-[11px] text-muted-foreground mt-1.5 space-y-0.5">
+                <ul class="text-xs text-muted-foreground mt-1.5 space-y-0.5">
                   <li>&bull; Facility_Key (PK, Int)</li>
                   <li>&bull; Facility_Type (Varchar)</li>
                   <li>&bull; Admin_Zone (Varchar)</li>
@@ -428,10 +475,10 @@
 
             <div class="p-4 rounded-xl bg-primary/5 border border-primary/30 flex flex-col justify-between">
               <div>
-                <span class="px-2 py-0.5 rounded bg-primary text-primary-foreground text-[10px] uppercase font-bold inline-block mb-1.5">CENTRAL FACT TABLE</span>
+                <span class="px-2 py-0.5 rounded bg-primary text-primary-foreground text-xs uppercase font-bold inline-block mb-1.5">CENTRAL FACT TABLE</span>
                 <p class="font-bold text-foreground text-base">Fact_Attendance_Daily</p>
-                <p class="text-[11px] text-muted-foreground mt-0.5">Grain: One record per employee per day</p>
-                <div class="border-t border-border/60 my-2 pt-2 text-[11px] font-mono space-y-1 text-foreground/90">
+                <p class="text-xs text-muted-foreground mt-0.5">Grain: One record per employee per day</p>
+                <div class="border-t border-border/60 my-2 pt-2 text-xs font-mono space-y-1 text-foreground/90">
                   <div>&bull; <span class="text-primary font-semibold">Date_Key</span> (FK &rarr; Dim_Date)</div>
                   <div>&bull; <span class="text-primary font-semibold">Employee_Key</span> (FK &rarr; Dim_Employee)</div>
                   <div>&bull; <span class="text-primary font-semibold">Facility_Key</span> (FK &rarr; Dim_Facility)</div>
@@ -442,16 +489,16 @@
                   <div>&bull; Shift_Hours (Decimal)</div>
                 </div>
               </div>
-              <div class="text-[10px] text-primary/80 font-mono mt-2 pt-2 border-t border-border/40">
-                1:N star relations &bull; Zero cyclic dependencies
+              <div class="text-xs text-primary/80 font-mono mt-2 pt-2 border-t border-border/40">
+                1:N star relations · Zero cyclic dependencies
               </div>
             </div>
 
             <div class="space-y-3">
-              <div class="p-3 rounded-xl bg-secondary/60 border border-border/70">
-                <span class="text-primary text-[10px] uppercase font-bold block mb-1">DIMENSION TABLE</span>
+              <div class="p-3 rounded-xl bg-secondary/60 border border-border">
+                <span class="text-primary text-xs uppercase font-bold block mb-1">DIMENSION TABLE</span>
                 <p class="font-bold text-foreground text-sm">Dim_Employee</p>
-                <ul class="text-[11px] text-muted-foreground mt-1.5 space-y-0.5">
+                <ul class="text-xs text-muted-foreground mt-1.5 space-y-0.5">
                   <li>&bull; Employee_Key (PK, Int)</li>
                   <li>&bull; Payroll_Identifier (Varchar)</li>
                   <li>&bull; Department_Role (Varchar)</li>
@@ -459,7 +506,7 @@
                   <li>&bull; Is_Active_Status (Boolean)</li>
                 </ul>
               </div>
-              <div class="p-3 rounded-xl bg-secondary/60 border border-border/70 text-[11px] text-muted-foreground space-y-1">
+              <div class="p-3 rounded-xl bg-secondary/60 border border-border text-xs text-muted-foreground space-y-1">
                 <span class="text-foreground font-semibold block text-xs">Query Performance</span>
                 <p>Partitioned by calendar date with indexes on Date_Key and Facility_Key so reports load quickly.</p>
               </div>
@@ -471,14 +518,14 @@
         <div class="workbench-panel hidden space-y-3" data-panel="dax">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
             <div class="code-preview-block space-y-1.5">
-              <div class="flex items-center justify-between text-muted-foreground text-[10px] border-b border-border/40 pb-1">
+              <div class="flex items-center justify-between text-muted-foreground text-xs border-b border-border/40 pb-1">
                 <span>MEASURE // ATTENDANCE RATE</span>
                 <div class="flex items-center gap-2">
                   <span class="text-primary font-bold">DAX</span>
-                  <button class="copy-code-btn px-1.5 py-0.5 rounded text-[10px] font-mono bg-secondary hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-target="dax-compliance">Copy</button>
+                  <button class="copy-code-btn px-1.5 py-0.5 rounded text-xs font-mono bg-secondary hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-target="dax-compliance">Copy</button>
                 </div>
               </div>
-              <pre id="dax-compliance" class="text-foreground/90 overflow-x-auto text-[11px]"><code>Compliance_Rate_% = 
+              <pre id="dax-compliance" class="text-foreground/90 overflow-x-auto text-xs"><code>Compliance_Rate_% = 
 VAR TotalScheduled = COUNTROWS(Fact_Attendance_Daily)
 VAR VerifiedPresent = 
     CALCULATE(
@@ -490,14 +537,14 @@ RETURN
             </div>
 
             <div class="code-preview-block space-y-1.5">
-              <div class="flex items-center justify-between text-muted-foreground text-[10px] border-b border-border/40 pb-1">
+              <div class="flex items-center justify-between text-muted-foreground text-xs border-b border-border/40 pb-1">
                 <span>MEASURE // ABSENCE RISK TIER</span>
                 <div class="flex items-center gap-2">
                   <span class="text-primary font-bold">DAX</span>
-                  <button class="copy-code-btn px-1.5 py-0.5 rounded text-[10px] font-mono bg-secondary hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-target="dax-defaulter">Copy</button>
+                  <button class="copy-code-btn px-1.5 py-0.5 rounded text-xs font-mono bg-secondary hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-target="dax-defaulter">Copy</button>
                 </div>
               </div>
-              <pre id="dax-defaulter" class="text-foreground/90 overflow-x-auto text-[11px]"><code>Defaulter_Risk_Tier = 
+              <pre id="dax-defaulter" class="text-foreground/90 overflow-x-auto text-xs"><code>Defaulter_Risk_Tier = 
 VAR ConsecutiveUnexcused = [Rolling_Consecutive_Absences]
 RETURN
     SWITCH(
@@ -512,14 +559,14 @@ RETURN
 
         <!-- Panel 4: Executive Dashboard / Scorecard Preview -->
         <div class="workbench-panel hidden space-y-3" data-panel="dashboard">
-          <div class="p-4 rounded-xl bg-secondary/50 border border-border/70 space-y-4">
+          <div class="p-4 rounded-xl bg-secondary/50 border border-border space-y-4">
             <!-- Simulated Power BI Header Bar -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-border/60">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-primary"></span>
-                <span class="text-xs font-mono font-bold text-foreground">CHiPS Statewide Healthcare &bull; Executive Attendance Monitor</span>
+                <span class="text-xs font-mono font-bold text-foreground">CHiPS Statewide Healthcare · Executive Attendance Monitor</span>
               </div>
-              <div class="flex flex-wrap items-center gap-1.5 text-[10px] font-mono">
+              <div class="flex flex-wrap items-center gap-1.5 text-xs font-mono">
                 <span class="px-2 py-0.5 rounded bg-card border border-border text-muted-foreground">FY 2025–26</span>
                 <span class="px-2 py-0.5 rounded bg-card border border-border text-muted-foreground">Statewide Aggregate</span>
                 <span class="px-2 py-0.5 rounded bg-primary/10 border border-primary/30 text-primary font-semibold">Active Model</span>
@@ -528,34 +575,34 @@ RETURN
 
             <!-- KPI Metric Tiles Grid -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-              <div class="p-3 rounded-lg bg-card/80 border border-border/80 space-y-1">
-                <span class="text-[10px] text-muted-foreground uppercase block">Reporting Facilities</span>
+              <div class="p-3 rounded-lg bg-card border border-border space-y-1">
+                <span class="text-xs text-muted-foreground uppercase block">Reporting Facilities</span>
                 <p class="text-base font-bold text-foreground">100%</p>
-                <span class="text-[10px] text-emerald-500 font-medium flex items-center gap-1">
+                <span class="text-xs text-emerald-500 font-medium flex items-center gap-1">
                   <span>&bull;</span> All Networks Synced
                 </span>
               </div>
 
-              <div class="p-3 rounded-lg bg-card/80 border border-border/80 space-y-1">
-                <span class="text-[10px] text-muted-foreground uppercase block">Presence Compliance</span>
+              <div class="p-3 rounded-lg bg-card border border-border space-y-1">
+                <span class="text-xs text-muted-foreground uppercase block">Presence Compliance</span>
                 <p class="text-base font-bold text-foreground">High</p>
-                <span class="text-[10px] text-primary font-medium flex items-center gap-1">
+                <span class="text-xs text-primary font-medium flex items-center gap-1">
                   <span>&bull;</span> Star Schema Metric
                 </span>
               </div>
 
-              <div class="p-3 rounded-lg bg-card/80 border border-border/80 space-y-1">
-                <span class="text-[10px] text-muted-foreground uppercase block">Identity Match</span>
+              <div class="p-3 rounded-lg bg-card border border-border space-y-1">
+                <span class="text-xs text-muted-foreground uppercase block">Identity Match</span>
                 <p class="text-base font-bold text-foreground">Deterministic</p>
-                <span class="text-[10px] text-emerald-500 font-medium flex items-center gap-1">
-                  <span>&bull;</span> Biometric-Payroll Link
+                <span class="text-xs text-emerald-500 font-medium flex items-center gap-1">
+                  <span>&bull;</span> Biometric Payroll Link
                 </span>
               </div>
 
-              <div class="p-3 rounded-lg bg-card/80 border border-border/80 space-y-1">
-                <span class="text-[10px] text-muted-foreground uppercase block">Defaulter Model</span>
+              <div class="p-3 rounded-lg bg-card border border-border space-y-1">
+                <span class="text-xs text-muted-foreground uppercase block">Defaulter Model</span>
                 <p class="text-base font-bold text-foreground">3 Tiers</p>
-                <span class="text-[10px] text-amber-500 font-medium flex items-center gap-1">
+                <span class="text-xs text-amber-500 font-medium flex items-center gap-1">
                   <span>&bull;</span> Actionable Alerts
                 </span>
               </div>
@@ -563,16 +610,15 @@ RETURN
 
             <!-- Visual Distribution Breakdown -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs font-mono">
-              <!-- Breakdown 1: Facility Reporting Distribution -->
-              <div class="p-3 rounded-lg bg-card/60 border border-border/70 space-y-2">
-                <div class="flex items-center justify-between text-[11px]">
+              <div class="p-3 rounded-lg bg-card border border-border space-y-2">
+                <div class="flex items-center justify-between text-xs">
                   <span class="text-foreground font-semibold">Facility Ingestion Status</span>
                   <span class="text-primary font-bold">100% Coverage</span>
                 </div>
-                <div class="space-y-1.5 text-[11px] text-muted-foreground">
+                <div class="space-y-1.5 text-xs text-muted-foreground">
                   <div>
-                    <div class="flex justify-between text-[10px] mb-0.5">
-                      <span>Community Health Centers (CHCs)</span>
+                    <div class="flex justify-between text-xs mb-0.5">
+                      <span>Community Health Centers</span>
                       <span class="text-foreground">Daily Synchronized</span>
                     </div>
                     <div class="w-full h-1.5 rounded-full bg-secondary overflow-hidden">
@@ -580,8 +626,8 @@ RETURN
                     </div>
                   </div>
                   <div>
-                    <div class="flex justify-between text-[10px] mb-0.5">
-                      <span>District Hospitals (DHs)</span>
+                    <div class="flex justify-between text-xs mb-0.5">
+                      <span>District Hospitals</span>
                       <span class="text-foreground">Daily Synchronized</span>
                     </div>
                     <div class="w-full h-1.5 rounded-full bg-secondary overflow-hidden">
@@ -589,7 +635,7 @@ RETURN
                     </div>
                   </div>
                   <div>
-                    <div class="flex justify-between text-[10px] mb-0.5">
+                    <div class="flex justify-between text-xs mb-0.5">
                       <span>Directorate Administrative Units</span>
                       <span class="text-foreground">Daily Synchronized</span>
                     </div>
@@ -600,15 +646,14 @@ RETURN
                 </div>
               </div>
 
-              <!-- Breakdown 2: Multi-Tier Defaulter Classification -->
-              <div class="p-3 rounded-lg bg-card/60 border border-border/70 space-y-2">
-                <div class="flex items-center justify-between text-[11px]">
+              <div class="p-3 rounded-lg bg-card border border-border space-y-2">
+                <div class="flex items-center justify-between text-xs">
                   <span class="text-foreground font-semibold">Attendance Risk Stratification</span>
                   <span class="text-emerald-500 font-bold">Automated DAX</span>
                 </div>
-                <div class="space-y-1.5 text-[11px] text-muted-foreground">
+                <div class="space-y-1.5 text-xs text-muted-foreground">
                   <div>
-                    <div class="flex justify-between text-[10px] mb-0.5">
+                    <div class="flex justify-between text-xs mb-0.5">
                       <span class="text-emerald-500">Regular Compliant</span>
                       <span class="text-foreground">Primary Majority</span>
                     </div>
@@ -617,7 +662,7 @@ RETURN
                     </div>
                   </div>
                   <div>
-                    <div class="flex justify-between text-[10px] mb-0.5">
+                    <div class="flex justify-between text-xs mb-0.5">
                       <span class="text-amber-500">Tier 2 Moderate Watch (1–2 Absences)</span>
                       <span class="text-foreground">Monitored</span>
                     </div>
@@ -626,7 +671,7 @@ RETURN
                     </div>
                   </div>
                   <div>
-                    <div class="flex justify-between text-[10px] mb-0.5">
+                    <div class="flex justify-between text-xs mb-0.5">
                       <span class="text-rose-500">Tier 1 High Risk Defaulter (&ge;3 Absences)</span>
                       <span class="text-foreground">Flagged</span>
                     </div>
@@ -639,171 +684,330 @@ RETURN
             </div>
 
             <!-- Footnote -->
-            <p class="text-[10px] font-mono text-muted-foreground border-t border-border/40 pt-2">
-              Structured in Power BI with multi-level drill-down (Statewide &rarr; District &rarr; Facility &rarr; Designation) for executive health leadership.
+            <p class="text-xs font-mono text-muted-foreground border-t border-border/40 pt-2">
+              Structured in Power BI with multi level drilldown (Statewide &rarr; District &rarr; Facility &rarr; Designation) for executive health leadership.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Storytelling Finding Callout Card -->
+      <!-- Part 3c: The Business & Public Policy Impact -->
       <div class="card-teal-callout flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6">
         <div class="space-y-1.5 max-w-2xl">
           <div class="flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-            <span class="text-xs font-mono uppercase tracking-wider text-primary font-bold">The Business &amp; Public Policy Impact</span>
+            <span class="text-xs font-mono uppercase tracking-wider text-primary font-bold">Part 3: The Public Policy and Administrative Impact</span>
           </div>
           <p class="text-sm font-semibold tracking-tight text-foreground">
             "Eliminated operational blind spots by bridging millions of unverified records into an authoritative single source of truth, enabling executive health leadership to detect critical doctor deficits and prevent public payroll leakage."
           </p>
-          <p class="text-xs text-muted-foreground font-mono">— Enterprise Case Study • CHiPS Dept. of Health</p>
+          <p class="text-xs text-muted-foreground font-mono">— Enterprise Case Study · CHiPS Dept. of Health</p>
         </div>
         <button class="view-case-study-btn shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-mono font-semibold text-xs transition-colors bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm focus-visible:ring-2 focus-visible:ring-primary group cursor-pointer" data-study="healthbi">
-          <span>Explore Full Case Study <span class="glide-arrow text-primary-foreground">&rarr;</span></span>
+          <span>Explore Full Case Study</span>
+          <i class="ph ph-arrow-right glide-arrow"></i>
         </button>
       </div>
     </section>
 
     <!-- ----------------------------------------------------------------------
-         PAGE 3: SELECTED ANALYTICAL PROJECTS
+         SECTION 4: CAPABILITIES — SKILLS AS OUTCOME-DRIVEN EVIDENCE
          ---------------------------------------------------------------------- -->
-    <section id="projects" class="py-10 md:py-14 border-t border-border/40 space-y-6">
+    <section id="capabilities" class="py-10 md:py-14 border-t border-border/40 space-y-6 reveal-on-scroll">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <span class="newtemplate-tag">Capabilities and Architecture</span>
+          <h2 class="heading-4 text-2xl sm:text-3xl font-semibold tracking-tight text-foreground mt-1">Capabilities as Evidence</h2>
+          <p class="body-5 text-xs font-mono text-muted-foreground mt-0.5">The four engineering disciplines I use to solve enterprise data problems</p>
+        </div>
+
+        <!-- Stack Category Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-1.5 overflow-x-auto py-1">
+          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-primary text-primary-foreground border-primary shadow-sm cursor-pointer transition-all" data-stack-category="all">All Stack</button>
+          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="elt">Python &amp; ETL</button>
+          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="sql">SQL &amp; Modeling</button>
+          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="bi">Power BI &amp; Reports</button>
+          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="tools">Tools &amp; Shell</button>
+        </div>
+      </div>
+
+      <!-- 4 Outcome-Driven Pillar Blocks -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 pt-2">
+        
+        <div class="glow-card p-5 rounded-xl border border-border bg-card space-y-2.5">
+          <div class="flex items-center justify-between">
+            <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-mono font-bold text-xs">
+              01
+            </div>
+            <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">Data Ingestion</span>
+          </div>
+          <h3 class="title-3 text-base font-semibold text-foreground tracking-tight">Pipeline Engineering</h3>
+          <p class="body-5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            Extracting raw feeds across MariaDB, OracleDB, and APIs. Diagnosing schema drift, resolving transliteration mismatches, and engineering deterministic SQL identity matching.
+          </p>
+          <div class="text-xs font-mono text-primary/80 pt-1">
+            <span>Tools: SQL CTEs · Python · MariaDB · Automated Staging</span>
+          </div>
+        </div>
+
+        <div class="glow-card p-5 rounded-xl border border-border bg-card space-y-2.5">
+          <div class="flex items-center justify-between">
+            <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-mono font-bold text-xs">
+              02
+            </div>
+            <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">Schema Design</span>
+          </div>
+          <h3 class="title-3 text-base font-semibold text-foreground tracking-tight">Dimensional Modeling</h3>
+          <p class="body-5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            Designing clean Fact and Dimension tables around business grain. Implementing surrogate keys, composite indexing, and eliminating cyclic schema paths for instant queries.
+          </p>
+          <div class="text-xs font-mono text-primary/80 pt-1">
+            <span>Tools: Kimball Star Schema · Fact Daily · PostgreSQL · Indexing</span>
+          </div>
+        </div>
+
+        <div class="glow-card p-5 rounded-xl border border-border bg-card space-y-2.5">
+          <div class="flex items-center justify-between">
+            <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-mono font-bold text-xs">
+              03
+            </div>
+            <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">Executive BI</span>
+          </div>
+          <h3 class="title-3 text-base font-semibold text-foreground tracking-tight">BI Storytelling</h3>
+          <p class="body-5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            Building high cognitive efficiency Power BI suites with multi level drilldown hierarchies (Statewide &rarr; District &rarr; Facility &rarr; Role) for fast, data backed administrative decisions.
+          </p>
+          <div class="text-xs font-mono text-primary/80 pt-1">
+            <span>Tools: Power BI Desktop · DAX Measures · Power Query · Drillthrough</span>
+          </div>
+        </div>
+
+        <div class="glow-card p-5 rounded-xl border border-border bg-card space-y-2.5">
+          <div class="flex items-center justify-between">
+            <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-mono font-bold text-xs">
+              04
+            </div>
+            <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">Risk Engine</span>
+          </div>
+          <h3 class="title-3 text-base font-semibold text-foreground tracking-tight">Data Governance and Risk</h3>
+          <p class="body-5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            Formulating complex business metrics, time intelligence rolling averages, and custom DAX risk stratification tiers that automatically flag operational non compliance.
+          </p>
+          <div class="text-xs font-mono text-primary/80 pt-1">
+            <span>Tools: 3 Tier Defaulter Model · Compliance Rates · Alert Triggers</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Interactive Stack Pill Grid (Filtered via JS) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2 text-xs font-mono">
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="elt ml">
+          <span class="font-semibold text-foreground">Python</span>
+          <span class="text-xs text-muted-foreground">3.11+</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="elt ml">
+          <span class="font-semibold text-foreground">Pandas and NumPy</span>
+          <span class="text-xs text-muted-foreground">ETL</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="sql">
+          <span class="font-semibold text-foreground">PostgreSQL</span>
+          <span class="text-xs text-muted-foreground">Relational</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="sql">
+          <span class="font-semibold text-foreground">MySQL and MariaDB</span>
+          <span class="text-xs text-muted-foreground">Database</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="sql bi">
+          <span class="font-semibold text-foreground">Star Schema Design</span>
+          <span class="text-xs text-muted-foreground">Warehouse</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi">
+          <span class="font-semibold text-foreground">Power BI Desktop</span>
+          <span class="text-xs text-muted-foreground">Reporting</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi">
+          <span class="font-semibold text-foreground">DAX Measures</span>
+          <span class="text-xs text-muted-foreground">Calculations</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi elt">
+          <span class="font-semibold text-foreground">Power Query</span>
+          <span class="text-xs text-muted-foreground">ETL</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi">
+          <span class="font-semibold text-foreground">Tableau and Excel</span>
+          <span class="text-xs text-muted-foreground">Dashboards</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="ml">
+          <span class="font-semibold text-foreground">Scikit learn</span>
+          <span class="text-xs text-muted-foreground">ML</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="tools">
+          <span class="font-semibold text-foreground">Git and GitHub</span>
+          <span class="text-xs text-muted-foreground">Version Control</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="tools">
+          <span class="font-semibold text-foreground">Fedora Linux</span>
+          <span class="text-xs text-muted-foreground">Daily OS and Shell</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="tools">
+          <span class="font-semibold text-foreground">Windows 11</span>
+          <span class="text-xs text-muted-foreground">OS and Diagnostics</span>
+        </div>
+        <div class="stack-pill glow-card p-3 rounded-xl bg-card border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="tools">
+          <span class="font-semibold text-foreground">PowerShell and Bash</span>
+          <span class="text-xs text-muted-foreground">Troubleshooting</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         SECTION 5: SELECTED ANALYTICAL PROJECTS
+         ---------------------------------------------------------------------- -->
+    <section id="projects" class="py-10 md:py-14 border-t border-border/40 space-y-6 reveal-on-scroll">
       <div>
         <span class="newtemplate-tag">Selected Analytical Projects</span>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Analytical Projects</h2>
-        <p class="text-xs font-mono text-muted-foreground mt-0.5">Practical data analysis, machine learning, and automation.</p>
+        <h2 class="heading-4 text-2xl sm:text-3xl font-semibold tracking-tight text-foreground mt-1">Analytical Projects</h2>
+        <p class="body-5 text-xs font-mono text-muted-foreground mt-0.5">Practical data analysis, machine learning, and automation</p>
       </div>
 
       <div class="space-y-5">
         
         <!-- Project 1: Drug Inventory Matrix -->
-        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4">
+        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-md bg-primary/10 text-primary text-[11px] font-mono font-medium border border-primary/20">
+              <span class="px-2.5 py-0.5 rounded-md bg-primary/10 text-primary text-xs font-mono font-medium border border-primary/20">
                 Healthcare Logistics &amp; SQL
               </span>
               <span class="text-xs font-mono text-muted-foreground">Inventory Analytics</span>
               <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2024</span>
             </div>
             <button class="view-case-study-btn self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group cursor-pointer" data-study="supply_chain">
-              <span>Read Case Study <span class="glide-arrow">&rarr;</span></span>
+              <span>Read Case Study</span>
+              <i class="ph ph-arrow-right glide-arrow"></i>
             </button>
           </div>
 
           <div>
-            <h3 class="text-base sm:text-lg font-bold text-foreground tracking-tight">
-              Hospital Medicine Inventory Optimization &amp; Criticality Matrix
+            <h3 class="title-3 text-base sm:text-lg font-semibold text-foreground tracking-tight">
+              Hospital Medicine Inventory Optimization and Criticality Matrix
             </h3>
-            <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1.5">
-              Classified statewide pharmaceutical inventory using multi-dimensional ABC, VED, and SDE frameworks in OracleDB and Advanced Excel to prevent life-saving drug shortages without inflating budget.
+            <p class="body-5 text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1.5">
+              Classified statewide pharmaceutical inventory using multi dimensional ABC, VED, and SDE frameworks in OracleDB and Advanced Excel to prevent life saving drug shortages without inflating budget.
             </p>
           </div>
 
           <!-- Analytical Micro-spec Strip -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs font-mono">
-            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border/60">
-              <span class="text-muted-foreground uppercase text-[10px] block">Analytical Question</span>
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Analytical Question</span>
               <span class="text-foreground font-medium mt-0.5 block">Balancing spending while guaranteeing critical medicine availability</span>
             </div>
-            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border/60">
-              <span class="text-muted-foreground uppercase text-[10px] block">Modeling Approach</span>
-              <span class="text-foreground font-medium mt-0.5 block">ABC / VED classification and reorder threshold models in SQL</span>
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Modeling Approach</span>
+              <span class="text-foreground font-medium mt-0.5 block">ABC and VED classification and reorder threshold models in SQL</span>
             </div>
-            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border/60">
-              <span class="text-muted-foreground uppercase text-[10px] block">Operational Finding</span>
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Operational Finding</span>
               <span class="text-foreground font-medium mt-0.5 block">Automated buffer triggers that eliminated localized hospital stockouts</span>
             </div>
           </div>
         </div>
 
         <!-- Project 2: 5G mmWave Handover Prediction -->
-        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4">
+        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-md bg-primary/10 text-primary text-[11px] font-mono font-medium border border-primary/20">
+              <span class="px-2.5 py-0.5 rounded-md bg-primary/10 text-primary text-xs font-mono font-medium border border-primary/20">
                 Telecommunications &amp; ML
               </span>
               <span class="text-xs font-mono text-muted-foreground">Predictive Telemetry</span>
               <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2024</span>
             </div>
             <div class="flex items-center gap-2 self-start sm:self-auto">
-              <a href="https://github.com/rishi-th219/Proactive-Handover-Prediction-in-5G-using-Diffusion-Models" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono text-muted-foreground hover:text-foreground bg-secondary/80 hover:bg-secondary border border-border transition-all duration-200 group">
-                <span>GitHub <span class="glide-arrow">&nearr;</span></span>
+              <a href="https://github.com/rishi-th219/Proactive-Handover-Prediction-in-5G-using-Diffusion-Models" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono text-muted-foreground hover:text-foreground bg-secondary hover:bg-secondary/80 border border-border transition-all duration-200 group">
+                <i class="ph ph-github-logo"></i>
+                <span>GitHub</span>
+                <i class="ph ph-arrow-up-right glide-arrow"></i>
               </a>
               <button class="view-case-study-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group cursor-pointer" data-study="telco5g">
-                <span>Read Case Study <span class="glide-arrow">&rarr;</span></span>
+                <span>Read Case Study</span>
+                <i class="ph ph-arrow-right glide-arrow"></i>
               </button>
             </div>
           </div>
 
           <div>
-            <h3 class="text-base sm:text-lg font-bold text-foreground tracking-tight">
-              Predictive 5G Handover &amp; Signal Forecasting via Diffusion Models
+            <h3 class="title-3 text-base sm:text-lg font-semibold text-foreground tracking-tight">
+              Predictive 5G Handover and Signal Forecasting via Diffusion Models
             </h3>
-            <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1.5">
-              M.Tech thesis at IIIT Naya Raipur. Engineered deep generative diffusion models in PyTorch to forecast mobile signal drops in 5G mmWave networks, overcoming severe 98:2 class imbalance to trigger proactive handovers.
+            <p class="body-5 text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1.5">
+              M.Tech thesis at IIIT Naya Raipur. Engineered deep generative diffusion models in PyTorch to forecast mobile signal drops in 5G mmWave networks, overcoming class imbalance to trigger proactive handovers.
             </p>
           </div>
 
           <!-- Analytical Micro-spec Strip -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs font-mono">
-            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border/60">
-              <span class="text-muted-foreground uppercase text-[10px] block">Analytical Question</span>
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Analytical Question</span>
               <span class="text-foreground font-medium mt-0.5 block">Forecasting sudden mmWave signal collapse before call disconnection</span>
             </div>
-            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border/60">
-              <span class="text-muted-foreground uppercase text-[10px] block">Modeling Approach</span>
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Modeling Approach</span>
               <span class="text-foreground font-medium mt-0.5 block">GRU temporal sequence encoders with DDPM diffusion in PyTorch</span>
             </div>
-            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border/60">
-              <span class="text-muted-foreground uppercase text-[10px] block">Operational Finding</span>
-              <span class="text-foreground font-medium mt-0.5 block">High-precision F1 predictive accuracy enabling proactive connection switching</span>
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Operational Finding</span>
+              <span class="text-foreground font-medium mt-0.5 block">High precision predictive accuracy enabling proactive connection switching</span>
             </div>
           </div>
         </div>
 
         <!-- Project 3: Career-Ops Engine -->
-        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4">
+        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-md bg-primary/10 text-primary text-[11px] font-mono font-medium border border-primary/20">
+              <span class="px-2.5 py-0.5 rounded-md bg-primary/10 text-primary text-xs font-mono font-medium border border-primary/20">
                 Data Engineering &amp; Automation
               </span>
               <span class="text-xs font-mono text-muted-foreground">Market Intelligence</span>
               <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2025</span>
             </div>
             <div class="flex items-center gap-2 self-start sm:self-auto">
-              <a href="https://github.com/rishi-th219/career-ops-bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono text-muted-foreground hover:text-foreground bg-secondary/80 hover:bg-secondary border border-border transition-all duration-200 group">
-                <span>GitHub <span class="glide-arrow">&nearr;</span></span>
+              <a href="https://github.com/rishi-th219/career-ops-bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono text-muted-foreground hover:text-foreground bg-secondary hover:bg-secondary/80 border border-border transition-all duration-200 group">
+                <i class="ph ph-github-logo"></i>
+                <span>GitHub</span>
+                <i class="ph ph-arrow-up-right glide-arrow"></i>
               </a>
               <button class="view-case-study-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group cursor-pointer" data-study="career_ops_bot">
-                <span>Read Case Study <span class="glide-arrow">&rarr;</span></span>
+                <span>Read Case Study</span>
+                <i class="ph ph-arrow-right glide-arrow"></i>
               </button>
             </div>
           </div>
 
           <div>
-            <h3 class="text-base sm:text-lg font-bold text-foreground tracking-tight">
-              Career-Ops Automated Job Acquisition &amp; Hiring Signal Pipeline
+            <h3 class="title-3 text-base sm:text-lg font-semibold text-foreground tracking-tight">
+              Career Ops Automated Job Acquisition and Hiring Signal Pipeline
             </h3>
-            <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1.5">
-              An automated recruitment intelligence engine that scrapes enterprise ATS endpoints (Greenhouse, Lever, Ashby), evaluates text similarity against resume embeddings, and tracks application status in automated spreadsheets.
+            <p class="body-5 text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1.5">
+              An automated recruitment intelligence engine that scrapes enterprise ATS endpoints, evaluates text similarity against resume embeddings, and tracks application status in automated spreadsheets.
             </p>
           </div>
 
           <!-- Analytical Micro-spec Strip -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs font-mono">
-            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border/60">
-              <span class="text-muted-foreground uppercase text-[10px] block">Analytical Question</span>
-              <span class="text-foreground font-medium mt-0.5 block">Aggregating and scoring daily hiring signals across 50+ ATS sources</span>
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Analytical Question</span>
+              <span class="text-foreground font-medium mt-0.5 block">Aggregating and scoring daily hiring signals across multiple ATS sources</span>
             </div>
-            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border/60">
-              <span class="text-muted-foreground uppercase text-[10px] block">Modeling Approach</span>
-              <span class="text-foreground font-medium mt-0.5 block">Async endpoint polling, text vector scoring, and zero-dep OpenXML</span>
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Modeling Approach</span>
+              <span class="text-foreground font-medium mt-0.5 block">Async endpoint polling, text vector scoring, and zero dependency OpenXML</span>
             </div>
-            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border/60">
-              <span class="text-muted-foreground uppercase text-[10px] block">Operational Finding</span>
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Operational Finding</span>
               <span class="text-foreground font-medium mt-0.5 block">Eliminated manual search by automatically filtering top relevant roles</span>
             </div>
           </div>
@@ -813,173 +1017,101 @@ RETURN
     </section>
 
     <!-- ----------------------------------------------------------------------
-         PAGE 4: TECHNICAL SKILLS & STACK
+         SECTION 6: CREDENTIALS & RIGOR (EDUCATION, GATE, ATS RESUME)
+         (Anchor IDs: #credentials and #resume)
          ---------------------------------------------------------------------- -->
-    <section id="capabilities" class="py-10 md:py-14 border-t border-border/40 space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-        <div>
-          <span class="newtemplate-tag">Technical Stack &amp; Capabilities</span>
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Technical Skills &amp; Tools</h2>
-          <p class="text-xs font-mono text-muted-foreground mt-0.5">Tools, databases, and reporting software I work with daily</p>
-        </div>
-
-        <!-- Stack Category Filter Tabs (Poulo.site Inspiration) -->
-        <div class="flex flex-wrap items-center gap-1.5 overflow-x-auto py-1">
-          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-primary text-primary-foreground border-primary shadow-sm cursor-pointer transition-all" data-stack-category="all">All Stack</button>
-          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="elt">Python &amp; ETL</button>
-          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="sql">SQL &amp; Modeling</button>
-          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="bi">Power BI &amp; Reports</button>
-          <button class="stack-filter-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer transition-all" data-stack-category="tools">Tools &amp; CLI</button>
-        </div>
+    <section id="credentials" class="py-10 md:py-14 border-t border-border/40 space-y-6 reveal-on-scroll">
+      <div id="resume">
+        <span class="newtemplate-tag">Education and Accreditations</span>
+        <h2 class="heading-4 text-2xl sm:text-3xl font-semibold tracking-tight text-foreground mt-1">Credentials &amp; Rigor</h2>
+        <p class="body-5 text-xs font-mono text-muted-foreground mt-0.5">Academic background, competitive qualifications, and verified ATS resumes</p>
       </div>
 
-      <!-- Interactive Stack Pill Grid (Filtered via JS) -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-xs font-mono">
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="elt ml">
-          <span class="font-semibold text-foreground">Python</span>
-          <span class="text-[10px] text-muted-foreground">3.11+</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="elt ml">
-          <span class="font-semibold text-foreground">Pandas &amp; NumPy</span>
-          <span class="text-[10px] text-muted-foreground">ETL</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="sql">
-          <span class="font-semibold text-foreground">PostgreSQL</span>
-          <span class="text-[10px] text-muted-foreground">Relational</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="sql">
-          <span class="font-semibold text-foreground">MySQL &amp; MariaDB</span>
-          <span class="text-[10px] text-muted-foreground">Database</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="sql bi">
-          <span class="font-semibold text-foreground">Star Schema Design</span>
-          <span class="text-[10px] text-muted-foreground">Warehouse</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi">
-          <span class="font-semibold text-foreground">Power BI Desktop</span>
-          <span class="text-[10px] text-muted-foreground">Reporting</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi">
-          <span class="font-semibold text-foreground">DAX Measures</span>
-          <span class="text-[10px] text-muted-foreground">Calculations</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi elt">
-          <span class="font-semibold text-foreground">Power Query (M)</span>
-          <span class="text-[10px] text-muted-foreground">ETL</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="bi">
-          <span class="font-semibold text-foreground">Tableau &amp; Excel</span>
-          <span class="text-[10px] text-muted-foreground">Dashboards</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="ml">
-          <span class="font-semibold text-foreground">Scikit-learn</span>
-          <span class="text-[10px] text-muted-foreground">ML</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="tools">
-          <span class="font-semibold text-foreground">Git &amp; GitHub</span>
-          <span class="text-[10px] text-muted-foreground">Version Control</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="tools">
-          <span class="font-semibold text-foreground">Fedora Linux</span>
-          <span class="text-[10px] text-muted-foreground">Daily OS &amp; Shell</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="tools">
-          <span class="font-semibold text-foreground">Windows 11</span>
-          <span class="text-[10px] text-muted-foreground">OS &amp; Diagnostics</span>
-        </div>
-        <div class="stack-pill glow-card p-3 rounded-xl bg-card/60 border border-border flex items-center justify-between gap-2 transition-all duration-300" data-category="tools">
-          <span class="font-semibold text-foreground">PowerShell &amp; Bash</span>
-          <span class="text-[10px] text-muted-foreground">Troubleshooting</span>
-        </div>
-      </div>
-
-      <!-- 4-Pillar Analytical Lifecycle & Methodology -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 pt-2">
+      <!-- Two-Column Timeline Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         
-        <div class="glow-card p-5 rounded-xl border border-border bg-card/60 space-y-2.5">
-          <div class="flex items-center justify-between">
-            <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-mono font-bold text-xs">
-              01
-            </div>
-            <span class="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold">Discovery &amp; Extraction</span>
+        <!-- Left Column: Formal Education -->
+        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card space-y-4">
+          <div class="flex items-center gap-2 pb-2 border-b border-border">
+            <i class="ph ph-graduation-cap text-primary text-lg"></i>
+            <h3 class="title-3 text-base font-semibold text-foreground">Formal Education</h3>
           </div>
-          <h3 class="text-base font-bold text-foreground tracking-tight">Forensic Ingestion &amp; Schema Auditing</h3>
-          <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Extracting raw feeds across MariaDB, OracleDB, and APIs. Diagnosing schema drift, resolving transliteration mismatches, and engineering deterministic SQL identity matching.
-          </p>
+
+          <div class="space-y-4">
+            <div class="space-y-1">
+              <div class="flex justify-between items-baseline">
+                <h4 class="title-4 text-sm font-semibold text-foreground">M.Tech in Computer Science &amp; Engineering</h4>
+                <span class="text-xs font-mono text-primary font-semibold">CGPA 7.90</span>
+              </div>
+              <p class="text-xs font-mono text-muted-foreground">IIIT Naya Raipur · 2024–2026</p>
+              <p class="body-6 text-xs text-muted-foreground leading-relaxed">
+                Thesis on Deep Generative Diffusion Models for Predictive Telemetry. Coursework in Advanced Algorithms, Database Systems, and Applied Machine Learning.
+              </p>
+            </div>
+
+            <div class="space-y-1 border-t border-border/40 pt-3">
+              <div class="flex justify-between items-baseline">
+                <h4 class="title-4 text-sm font-semibold text-foreground">B.Tech in Computer Science &amp; Engineering</h4>
+                <span class="text-xs font-mono text-primary font-semibold">CGPA 7.71</span>
+              </div>
+              <p class="text-xs font-mono text-muted-foreground">Amity University Chhattisgarh · 2020–2024</p>
+              <p class="body-6 text-xs text-muted-foreground leading-relaxed">
+                Foundations in Data Structures, Relational Database Management Systems (SQL), Operating Systems, and Object Oriented Programming.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="glow-card p-5 rounded-xl border border-border bg-card/60 space-y-2.5">
-          <div class="flex items-center justify-between">
-            <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-mono font-bold text-xs">
-              02
-            </div>
-            <span class="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold">Data Modeling</span>
+        <!-- Right Column: Verified Qualifications & Systems -->
+        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card space-y-4">
+          <div class="flex items-center gap-2 pb-2 border-b border-border">
+            <i class="ph ph-certificate text-primary text-lg"></i>
+            <h3 class="title-3 text-base font-semibold text-foreground">Verified Accreditations</h3>
           </div>
-          <h3 class="text-base font-bold text-foreground tracking-tight">Kimball Star Schema Architecture</h3>
-          <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Designing clean Fact and Dimension tables around business grain. Implementing surrogate keys, composite date/facility indexing, and eliminating cyclic schema paths for sub-second queries.
-          </p>
-        </div>
 
-        <div class="glow-card p-5 rounded-xl border border-border bg-card/60 space-y-2.5">
-          <div class="flex items-center justify-between">
-            <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-mono font-bold text-xs">
-              03
+          <div class="space-y-4">
+            <div class="space-y-1">
+              <div class="flex justify-between items-baseline">
+                <h4 class="title-4 text-sm font-semibold text-foreground">GATE Computer Science &amp; IT</h4>
+                <span class="text-xs font-mono text-emerald-500 font-semibold">Qualified</span>
+              </div>
+              <p class="text-xs font-mono text-muted-foreground">National Level Benchmark · 2024</p>
+              <p class="body-6 text-xs text-muted-foreground leading-relaxed">
+                Evaluated across DBMS, Theory of Computation, Algorithms, and Discrete Mathematics.
+              </p>
             </div>
-            <span class="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold">Metrics &amp; Logic</span>
-          </div>
-          <h3 class="text-base font-bold text-foreground tracking-tight">Metric Formulation &amp; DAX Logic</h3>
-          <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Formulating complex business metrics, time-intelligence rolling averages, and custom DAX risk stratification tiers that automatically flag operational non-compliance.
-          </p>
-        </div>
 
-        <div class="glow-card p-5 rounded-xl border border-border bg-card/60 space-y-2.5">
-          <div class="flex items-center justify-between">
-            <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-mono font-bold text-xs">
-              04
+            <div class="space-y-1 border-t border-border/40 pt-3">
+              <div class="flex justify-between items-baseline">
+                <h4 class="title-4 text-sm font-semibold text-foreground">IELTS Academic (English Proficiency)</h4>
+                <span class="text-xs font-mono text-primary font-semibold">Band 7.5 (C1)</span>
+              </div>
+              <p class="text-xs font-mono text-muted-foreground">IDP Education · CEFR Level C1</p>
+              <p class="body-6 text-xs text-muted-foreground leading-relaxed">
+                Validated professional communication proficiency for international technical collaboration.
+              </p>
             </div>
-            <span class="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold">Decision Support</span>
+
+            <div class="space-y-1 border-t border-border/40 pt-3">
+              <div class="flex justify-between items-baseline">
+                <h4 class="title-4 text-sm font-semibold text-foreground">Systems and OS Troubleshooting</h4>
+                <span class="text-xs font-mono text-muted-foreground">Linux &amp; Windows</span>
+              </div>
+              <p class="body-6 text-xs text-muted-foreground leading-relaxed">
+                Fedora Linux (Daily OS and Bash automation) · Windows 11 (Enterprise diagnostics and PowerShell).
+              </p>
+            </div>
           </div>
-          <h3 class="text-base font-bold text-foreground tracking-tight">Executive Visual Storytelling</h3>
-          <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Building high-cognitive-efficiency Power BI suites with multi-level drill-down hierarchies (Statewide &rarr; District &rarr; Facility &rarr; Role) for fast, data-backed administrative decisions.
-          </p>
         </div>
 
       </div>
 
-      <!-- Academic Foundation & Credentials Callout -->
-      <div class="p-5 sm:p-6 rounded-xl border border-border bg-card/60 space-y-3">
-        <h3 class="text-base font-bold text-foreground tracking-tight">
-          Academic Foundation & Verified Credentials
-        </h3>
-        <div class="space-y-2 text-xs sm:text-sm text-muted-foreground">
-          <p><strong class="text-foreground">M.Tech in Computer Science & Engineering</strong> &bull; International Institute of Information Technology (IIIT) Naya Raipur (2024–2026 | CGPA: 7.90)</p>
-          <p><strong class="text-foreground">B.Tech in Computer Science & Engineering</strong> &bull; Amity University Chhattisgarh (2020–2024 | CGPA: 7.71)</p>
-          <p><strong class="text-foreground">Accreditations:</strong> GATE CS 2024 Qualified &bull; IELTS Academic Band 7.5 (CEFR C1)</p>
-          <p><strong class="text-foreground">Systems &amp; OS Troubleshooting:</strong> Fedora Linux (Daily Driver &bull; Bash Automation) &bull; Windows 11 (Enterprise Diagnostics &bull; PowerShell)</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ----------------------------------------------------------------------
-         PAGE 5: RESUME & CONTACT
-         ---------------------------------------------------------------------- -->
-    <section id="resume" class="py-10 md:py-14 border-t border-border/40 space-y-6">
-      <div>
-        <span class="newtemplate-tag">Curated ATS Resume</span>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mt-1">Resume &amp; Experience</h2>
-        <p class="text-xs font-mono text-muted-foreground mt-0.5">Tailored for Data Analyst, Business Intelligence, and Analytics Engineer roles</p>
-      </div>
-
-      <!-- Single Tailored Data Analyst Resume Card -->
-      <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-4">
+      <!-- Curated ATS Resume Card -->
+      <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card space-y-4 mt-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h3 class="text-lg font-bold text-foreground tracking-tight">Data Analyst Resume</h3>
-            <p class="text-xs text-muted-foreground font-mono mt-0.5">ATS-Optimized &bull; Updated 2026</p>
+            <h3 class="title-3 text-lg font-semibold text-foreground tracking-tight">Curated ATS Resumes</h3>
+            <p class="text-xs text-muted-foreground font-mono mt-0.5">Tailored for Data Analyst, BI Developer, and Analytics Engineering roles</p>
           </div>
           <div class="flex flex-wrap gap-2 text-xs font-mono">
             <span class="px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">Verified Work</span>
@@ -987,113 +1119,125 @@ RETURN
           </div>
         </div>
 
-        <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-          Comprehensive resume highlighting data pipeline work at CHiPS, star schema design in SQL, Power BI dashboard design, and Python scripting.
+        <p class="body-5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+          Comprehensive resume highlighting enterprise ETL pipelines at CHiPS, dimensional Kimball star schemas in SQL, Power BI executive dashboards, and Python automation.
         </p>
 
         <!-- Resume Action Buttons -->
         <div class="flex flex-wrap items-center gap-3 pt-1">
-          <button class="view-resume-btn btn-primary text-xs font-mono group" data-resume="data_analyst">
-            <span>Preview ATS <span class="glide-arrow">👁</span></span>
+          <button class="view-resume-btn btn-primary button-md font-mono group" data-resume="data_analyst">
+            <i class="ph ph-file-text"></i>
+            <span>Preview ATS Resume</span>
+            <i class="ph ph-arrow-up-right glide-arrow"></i>
           </button>
-          <a href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" download="Rishi_Thakur_Data_Analyst.pdf" class="btn-secondary text-xs font-mono group">
-            <span>Download PDF <span class="glide-arrow">&darr;</span></span>
+          <a href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" download="Rishi_Thakur_Data_Analyst.pdf" class="btn-secondary button-md font-mono group">
+            <i class="ph ph-download-simple"></i>
+            <span>Download PDF</span>
           </a>
-          <a href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono group">
-            <span>Open Tab <span class="glide-arrow">&nearr;</span></span>
+          <a href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary button-md font-mono group">
+            <span>Open in Tab</span>
+            <i class="ph ph-arrow-up-right glide-arrow"></i>
           </a>
         </div>
       </div>
+    </section>
 
-      <!-- Editorial Contact Section -->
-      <div id="contact" class="pt-8 sm:pt-12 border-t border-border/40 space-y-8">
-        <div>
-          <span class="newtemplate-tag">Contact &amp; Availability</span>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground mt-2 leading-tight">
-            Let's work together.
-          </h2>
-          <p class="text-base sm:text-lg text-muted-foreground mt-1">
-            Available for immediate hire &bull; Bengaluru / Remote
+    <!-- ----------------------------------------------------------------------
+         SECTION 7: FINAL CTA BLOCK & CONTACT
+         ---------------------------------------------------------------------- -->
+    <section id="contact" class="py-12 md:py-16 border-t border-border/40 space-y-8 reveal-on-scroll">
+      <div>
+        <span class="newtemplate-tag">Contact and Availability</span>
+        <h2 class="heading-3 sm:heading-2 font-semibold tracking-tight text-foreground mt-2 leading-tight">
+          Let's build something that makes sense of your data.
+        </h2>
+        <p class="body-3 text-base sm:text-lg text-muted-foreground mt-1">
+          Available immediately for full-time roles · Bengaluru, India (IST UTC+5:30)
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Column: Oversized Mailto & Channel Pills -->
+        <div class="lg:col-span-7 space-y-6">
+          <div>
+            <span class="text-xs font-mono text-muted-foreground block mb-2">SEND AN EMAIL DIRECTLY</span>
+            <a href="mailto:rishi_th219@proton.me" class="editorial-contact-link group inline-flex items-center gap-2 break-all">
+              rishi_th219@proton.me
+              <i class="ph ph-arrow-up-right glide-arrow text-primary"></i>
+            </a>
+          </div>
+
+          <!-- Channel Action Pills -->
+          <div class="flex flex-wrap items-center gap-2.5 pt-2">
+            <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="btn-primary button-md font-mono group">
+              <i class="ph ph-linkedin-logo text-base"></i>
+              <span>Connect on LinkedIn</span>
+              <i class="ph ph-arrow-up-right glide-arrow"></i>
+            </a>
+            <button id="copyEmailBtn" class="btn-secondary button-md font-mono cursor-pointer transition-all duration-200">
+              <i class="ph ph-copy"></i>
+              <span>Copy email</span>
+            </button>
+            <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="btn-secondary button-md font-mono group">
+              <i class="ph ph-github-logo"></i>
+              <span>GitHub</span>
+              <i class="ph ph-arrow-up-right glide-arrow"></i>
+            </a>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary border border-border text-xs font-mono text-muted-foreground">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Bengaluru, IN (IST UTC+5:30)</span>
+            </span>
+          </div>
+
+          <p class="body-5 text-xs text-muted-foreground font-mono leading-relaxed max-w-lg">
+            Feel free to reach out for full-time data analyst and analytics engineering positions. I reply promptly within 24 hours.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          <!-- Left Column: Oversized Mailto & Channel Pills -->
-          <div class="lg:col-span-7 space-y-6">
+        <!-- Right Column: Direct Message Form with Client-Side Validation -->
+        <div class="lg:col-span-5 glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card space-y-3.5 shadow-sm">
+          <h3 class="title-4 text-sm font-bold text-foreground font-mono uppercase tracking-wider">Leave a Quick Note</h3>
+          <form id="contactForm" class="space-y-3" novalidate>
             <div>
-              <span class="text-xs font-mono text-muted-foreground block mb-2">SEND AN EMAIL DIRECTLY</span>
-              <a href="mailto:rishi_th219@proton.me" class="editorial-contact-link group inline-flex items-center gap-2 break-all">
-                rishi_th219@proton.me
-                <span class="glide-arrow text-primary">&nearr;</span>
-              </a>
+              <label for="senderName" class="block text-xs font-mono text-muted-foreground mb-1">Your Name</label>
+              <input type="text" id="senderName" name="senderName" autocomplete="name" required placeholder="e.g. Alex Morgan…" class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
             </div>
-
-            <!-- Fast Action & Channel Pills -->
-            <div class="flex flex-wrap items-center gap-2.5 pt-2">
-              <button id="copyEmailBtn" class="btn-secondary text-xs font-mono cursor-pointer transition-all duration-200">
-                <span>Copy email 📋</span>
-              </button>
-              <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono group">
-                <span>LinkedIn <span class="glide-arrow">&nearr;</span></span>
-              </a>
-              <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono group">
-                <span>GitHub <span class="glide-arrow">&nearr;</span></span>
-              </a>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary/60 border border-border/70 text-xs font-mono text-muted-foreground">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>Bengaluru, IN (IST UTC+5:30)</span>
-              </span>
+            <div>
+              <label for="senderEmail" class="block text-xs font-mono text-muted-foreground mb-1">Your Email</label>
+              <input type="email" id="senderEmail" name="senderEmail" autocomplete="email" spellcheck="false" required placeholder="alex@company.com…" class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
             </div>
-
-            <p class="text-xs text-muted-foreground font-mono leading-relaxed max-w-lg">
-              Feel free to reach out for full-time data analyst and analytics engineering roles. I reply within 24 hours.
-            </p>
-          </div>
-
-          <!-- Right Column: Polished Direct Message Form -->
-          <div class="lg:col-span-5 glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card/60 space-y-3.5 shadow-sm">
-            <h3 class="text-sm font-bold text-foreground font-mono uppercase tracking-wider">Leave a Quick Note</h3>
-            <form id="contactForm" class="space-y-3">
-              <div>
-                <label for="senderName" class="block text-xs font-mono text-muted-foreground mb-1">Your Name</label>
-                <input type="text" id="senderName" name="senderName" autocomplete="name" required placeholder="e.g. Alex Morgan…" class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-              </div>
-              <div>
-                <label for="senderEmail" class="block text-xs font-mono text-muted-foreground mb-1">Your Email</label>
-                <input type="email" id="senderEmail" name="senderEmail" autocomplete="email" spellcheck="false" required placeholder="alex@company.com…" class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-              </div>
-              <div>
-                <label for="senderMessage" class="block text-xs font-mono text-muted-foreground mb-1">Message</label>
-                <textarea id="senderMessage" name="senderMessage" rows="3" required placeholder="Hi Rishi, we'd like to discuss a data role…" class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"></textarea>
-              </div>
-              <button id="contactSubmitBtn" type="submit" class="btn-primary text-xs font-mono w-full justify-center group">
-                <span>Send Note <span class="glide-arrow">&rarr;</span></span>
-              </button>
-              <p id="contactFormStatus" class="text-xs font-mono text-center hidden" aria-live="polite"></p>
-            </form>
-          </div>
-
+            <div>
+              <label for="senderMessage" class="block text-xs font-mono text-muted-foreground mb-1">Message</label>
+              <textarea id="senderMessage" name="senderMessage" rows="3" required placeholder="Hi Rishi, we would like to discuss a data role…" class="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"></textarea>
+            </div>
+            <button id="contactSubmitBtn" type="submit" class="btn-primary button-md font-mono w-full justify-center group">
+              <span>Send Note</span>
+              <i class="ph ph-paper-plane-tilt glide-arrow"></i>
+            </button>
+            <p id="contactFormStatus" class="text-xs font-mono text-center hidden" aria-live="polite"></p>
+          </form>
         </div>
+
       </div>
     </section>
 
   </main>
 
   <!-- ==========================================================================
-       FOOTER (Poulo.site Inspiration: Live IST Clock, Status Beacon, Back to Top)
+       FOOTER (Live IST Clock, Privacy Policy Link, Back to Top)
        ========================================================================== -->
-  <footer class="border-t border-border/40 py-8 mt-12 bg-card/30">
+  <footer class="border-t border-border/40 py-8 mt-12 bg-card">
     <div class="container max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted-foreground">
       
       <!-- Candidate & Title -->
       <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
         <span>Rishi Thakur &copy; 2026</span>
         <span class="hidden sm:inline">&bull;</span>
-        <span>Data Analyst &bull; Analytics Engineer</span>
+        <span>Data Analyst · Analytics Engineer</span>
       </div>
 
-      <!-- Live Local Time Clock Pill (Poulo.site Inspiration) -->
+      <!-- Live Local Time Clock Pill -->
       <div class="live-clock-pill">
         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
         <span class="text-foreground">Bengaluru, IN</span>
@@ -1101,47 +1245,47 @@ RETURN
         <span id="localTimeClock" class="text-primary font-semibold">--:--:-- IST</span>
       </div>
 
-      <!-- Back to Top Link -->
+      <!-- Footer Action Links -->
       <div class="flex items-center gap-4">
-        <a href="#home" class="hover:text-primary transition-colors">Back to top &uarr;</a>
+        <button id="privacyModalTrigger" class="hover:text-primary transition-colors cursor-pointer">Privacy Policy</button>
+        <span class="text-border">·</span>
+        <a href="#home" class="hover:text-primary transition-colors flex items-center gap-1">Back to top <i class="ph ph-arrow-up"></i></a>
       </div>
     </div>
     
     <!-- Footer Subtitle -->
-    <div class="container max-w-5xl mx-auto px-4 sm:px-6 pt-3 mt-3 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-muted-foreground/75">
-      <span>Rishi Thakur &bull; Data Analyst &bull; Bengaluru, India</span>
-      <span class="mt-1 sm:mt-0">Open to Full-Time &bull; Immediate Joiner</span>
+    <div class="container max-w-5xl mx-auto px-4 sm:px-6 pt-3 mt-3 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-muted-foreground/75">
+      <span>Rishi Thakur · Data Analyst · Bengaluru, India</span>
+      <span class="mt-1 sm:mt-0">Open to Full-Time · Immediate Joiner</span>
     </div>
   </footer>
 
   <!-- ==========================================================================
-       CASE STUDY DETAIL MODAL (ai-design-skills & NewTemplate Standards)
+       CASE STUDY DETAIL MODAL (landing-page-design Standards)
        ========================================================================== -->
   <div id="caseStudyModal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-3 sm:p-6 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-dialog-scroll bg-card text-card-foreground rounded-2xl max-w-3xl w-full border border-border shadow-2xl relative my-8 p-5 sm:p-8 max-h-[90vh] overflow-y-auto focus:outline-none">
       
       <!-- Close Button -->
       <button id="modalCloseBtn" class="absolute top-5 right-5 p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Close modal">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
+        <i class="ph ph-x text-lg"></i>
       </button>
 
       <!-- Modal Header -->
       <div class="pr-8">
         <span id="modalBadge" class="newtemplate-tag block mb-1.5">CASE STUDY</span>
-        <h3 id="modalTitle" class="text-xl sm:text-2xl font-bold text-foreground tracking-tight"></h3>
-        <p id="modalSubtitle" class="text-xs sm:text-sm text-muted-foreground mt-1.5 leading-relaxed"></p>
+        <h3 id="modalTitle" class="title-2 text-xl sm:text-2xl font-bold text-foreground tracking-tight"></h3>
+        <p id="modalSubtitle" class="body-5 text-xs sm:text-sm text-muted-foreground mt-1.5 leading-relaxed"></p>
       </div>
 
       <!-- Domain & Timeline Metadata -->
       <div class="grid grid-cols-2 gap-3 sm:gap-4 my-4 py-3 border-y border-border/70 text-xs font-mono">
         <div>
-          <span class="text-muted-foreground uppercase text-[11px] block">Client / Domain:</span>
+          <span class="text-muted-foreground uppercase text-xs block">Client / Domain:</span>
           <span id="modalClient" class="text-foreground font-semibold mt-0.5 block"></span>
         </div>
         <div>
-          <span class="text-muted-foreground uppercase text-[11px] block">Engagement Timeline:</span>
+          <span class="text-muted-foreground uppercase text-xs block">Engagement Timeline:</span>
           <span id="modalTimeline" class="text-foreground font-semibold mt-0.5 block"></span>
         </div>
       </div>
@@ -1150,18 +1294,18 @@ RETURN
       <div class="space-y-4 text-xs sm:text-sm">
         <div>
           <h4 class="text-xs font-mono uppercase tracking-wider text-primary font-bold mb-1.5">The Problem</h4>
-          <p id="modalProblem" class="leading-relaxed bg-secondary/50 p-3.5 rounded-lg border border-border/60 text-muted-foreground"></p>
+          <p id="modalProblem" class="leading-relaxed bg-secondary/50 p-3.5 rounded-lg border border-border text-muted-foreground"></p>
         </div>
 
         <div>
           <h4 class="text-xs font-mono uppercase tracking-wider text-primary font-bold mb-1.5">The Solution</h4>
-          <div id="modalSolution" class="space-y-2 bg-secondary/50 p-3.5 rounded-lg border border-border/60"></div>
+          <div id="modalSolution" class="space-y-2 bg-secondary/50 p-3.5 rounded-lg border border-border"></div>
         </div>
 
         <!-- Pipeline Steps Flow -->
         <div id="modalPipelineWrapper">
           <h4 class="text-xs font-mono uppercase tracking-wider text-primary font-bold mb-1.5">Data Pipeline</h4>
-          <div id="modalPipeline" class="flex flex-wrap items-center gap-1.5 p-3 rounded-lg bg-secondary/30 border border-border/50 text-xs font-mono"></div>
+          <div id="modalPipeline" class="flex flex-wrap items-center gap-1.5 p-3 rounded-lg bg-secondary/30 border border-border text-xs font-mono"></div>
         </div>
 
         <div>
@@ -1171,17 +1315,19 @@ RETURN
 
         <div>
           <h4 class="text-xs font-mono uppercase tracking-wider text-primary font-bold mb-1.5">Key Deliverables</h4>
-          <ul id="modalDeliverables" class="space-y-1.5 bg-secondary/50 p-3.5 rounded-lg border border-border/60"></ul>
+          <ul id="modalDeliverables" class="space-y-1.5 bg-secondary/50 p-3.5 rounded-lg border border-border"></ul>
         </div>
       </div>
 
       <!-- Bottom Modal CTA -->
       <div class="mt-6 pt-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-        <a id="modalGithubLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-primary hover:underline font-mono">
-          View on GitHub ↗
+        <a id="modalGithubLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-primary hover:underline font-mono inline-flex items-center gap-1">
+          <span>View on GitHub</span>
+          <i class="ph ph-arrow-up-right"></i>
         </a>
-        <a href="#contact" onclick="document.getElementById('modalCloseBtn').click();" class="btn-primary text-xs font-mono w-full sm:w-auto text-center">
-          <span>Get in touch →</span>
+        <a href="#contact" onclick="document.getElementById('modalCloseBtn').click();" class="btn-primary button-sm font-mono w-full sm:w-auto text-center">
+          <span>Get in touch</span>
+          <i class="ph ph-arrow-right"></i>
         </a>
       </div>
 
@@ -1189,27 +1335,26 @@ RETURN
   </div>
 
   <!-- ==========================================================================
-       CURATED RESUME ATS VIEWER MODAL (ai-design-skills Standards)
+       CURATED RESUME ATS VIEWER MODAL
        ========================================================================== -->
   <div id="resumeModal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-3 sm:p-6 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
     <div class="modal-dialog-scroll bg-card text-card-foreground rounded-2xl max-w-4xl w-full border border-border shadow-2xl relative my-8 p-5 sm:p-8 max-h-[90vh] overflow-y-auto focus:outline-none">
       
       <!-- Close Button -->
       <button id="resumeModalCloseBtn" class="absolute top-5 right-5 p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Close modal">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
+        <i class="ph ph-x text-lg"></i>
       </button>
 
       <!-- Modal Header -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pr-8 pb-4 border-b border-border">
         <div>
           <span class="newtemplate-tag">ATS PREVIEW</span>
-          <h3 id="resumeModalTitle" class="text-xl sm:text-2xl font-bold text-foreground tracking-tight">Data Analyst Resume — ATS Preview</h3>
+          <h3 id="resumeModalTitle" class="title-2 text-xl sm:text-2xl font-bold text-foreground tracking-tight">Data Analyst Resume — ATS Preview</h3>
         </div>
         <div class="flex items-center gap-2">
-          <a id="resumeModalPdfBtn" href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" download="Rishi_Thakur_Data_Analyst.pdf" class="btn-primary text-xs font-mono">
-            <span>Download PDF ↓</span>
+          <a id="resumeModalPdfBtn" href="assets/Rishi_Thakur_Data_Analyst_Resume.pdf" download="Rishi_Thakur_Data_Analyst.pdf" class="btn-primary button-sm font-mono">
+            <i class="ph ph-download-simple"></i>
+            <span>Download PDF</span>
           </a>
         </div>
       </div>
@@ -1232,12 +1377,40 @@ RETURN
     </div>
   </div>
 
+  <!-- ==========================================================================
+       PRIVACY POLICY MODAL (landing-page-design B10 Compliance)
+       ========================================================================== -->
+  <div id="privacyModal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-3 sm:p-6 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+    <div class="modal-dialog-scroll bg-card text-card-foreground rounded-2xl max-w-lg w-full border border-border shadow-2xl relative my-8 p-5 sm:p-7 max-h-[85vh] overflow-y-auto focus:outline-none space-y-4">
+      <button id="privacyModalCloseBtn" class="absolute top-5 right-5 p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors" aria-label="Close privacy modal">
+        <i class="ph ph-x text-lg"></i>
+      </button>
+      <div>
+        <span class="newtemplate-tag">Policy</span>
+        <h3 id="privacyModalTitle" class="title-3 text-lg font-bold text-foreground mt-1">Privacy Notice</h3>
+      </div>
+      <div class="body-5 text-xs sm:text-sm text-muted-foreground space-y-3 leading-relaxed">
+        <p>
+          This portfolio website is a personal showcase of analytics engineering, BI development, and data modeling work by Rishi Thakur.
+        </p>
+        <p>
+          <strong class="text-foreground">Telemetry &amp; Tracking:</strong> Zero analytics trackers, third-party advertising cookies, or behavioral monitoring scripts are deployed on this site.
+        </p>
+        <p>
+          <strong class="text-foreground">Personal Correspondence:</strong> Any communication sent through email or the contact note form is received directly by Rishi Thakur and is kept strictly private for recruitment or professional collaboration purposes.
+        </p>
+      </div>
+      <div class="pt-3 border-t border-border flex justify-end">
+        <button onclick="document.getElementById('privacyModalCloseBtn').click();" class="btn-secondary button-sm font-mono">
+          <span>Close</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Floating Back-to-Top Button -->
-  <button id="backToTopBtn" aria-label="Back to top" class="fixed bottom-6 right-6 z-40 p-2.5 rounded-full bg-primary text-primary-foreground shadow-lg hover:scale-105 transition-all hidden">
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-    </svg>
+  <button id="backToTopBtn" aria-label="Back to top" class="fixed bottom-6 right-6 z-40 p-2.5 rounded-full bg-primary text-primary-foreground shadow-lg hover:scale-105 transition-all hidden cursor-pointer">
+    <i class="ph ph-arrow-up text-base"></i>
   </button>
 
   <!-- Core Scripts -->
