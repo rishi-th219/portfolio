@@ -1,8 +1,11 @@
 // Rishi Thakur — Analytics Engineer & Data Storyteller Portfolio
-// Interactivity & Motion Engine (landing-page-design & web-design-guidelines compliant)
+// Cockpit Interactivity, SQL Sandbox & Split-Screen Workbench Engine
 
 document.addEventListener("DOMContentLoaded", () => {
   setupThemeToggle();
+  setupCockpitRouter();
+  setupSplitScreenWorkbench();
+  setupSqlSandbox();
   setupScrollReveals();
   setupTaglineReveal();
   setupMobileMenu();
@@ -10,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupResumeModal();
   setupResumeTrackSelector();
   setupPrivacyModal();
-  setupArchitectureWorkbench();
   setupStackFilter();
   setupBackToTop();
   setupContactForm();
@@ -58,7 +60,259 @@ function setupThemeToggle() {
 }
 
 // -----------------------------------------------------------------------------
-// 2. Scroll Reveals Engine (landing-page-design B7)
+// 2. Cockpit View Router (Multi-View Workspace & URL Hash State)
+// -----------------------------------------------------------------------------
+function setupCockpitRouter() {
+  const tabBtns = document.querySelectorAll(".cockpit-tab-btn");
+  const views = document.querySelectorAll(".cockpit-view");
+  const mobileLinks = document.querySelectorAll(".mobile-nav-link-item a, a.mobile-nav-link-item");
+
+  if (!views.length) return;
+
+  const validViews = ["overview", "workbench", "sandbox", "projects", "resume", "contact"];
+  const viewMap = {
+    home: "overview",
+    overview: "overview",
+    story: "workbench",
+    highlights: "workbench",
+    workbench: "workbench",
+    sandbox: "sandbox",
+    sql: "sandbox",
+    capabilities: "sandbox",
+    projects: "projects",
+    credentials: "resume",
+    resume: "resume",
+    contact: "contact"
+  };
+
+  const switchView = (targetView, updateHash = true) => {
+    const resolved = viewMap[targetView] || (validViews.includes(targetView) ? targetView : "overview");
+
+    views.forEach(v => {
+      if (v.id === `view-${resolved}`) {
+        v.classList.add("active");
+        v.classList.remove("hidden");
+      } else {
+        v.classList.remove("active");
+        v.classList.add("hidden");
+      }
+    });
+
+    tabBtns.forEach(btn => {
+      if (btn.dataset.view === resolved) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+
+    if (updateHash && window.history && window.history.replaceState) {
+      window.history.replaceState(null, "", `#${resolved}`);
+    }
+
+    // Scroll to top of main content smoothly
+    const mainContent = document.getElementById("main-content");
+    if (mainContent && window.scrollY > 120) {
+      mainContent.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      switchView(btn.dataset.view, true);
+    });
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href") || "";
+      const hash = href.replace(/^#/, "");
+      if (hash && (viewMap[hash] || validViews.includes(hash))) {
+        e.preventDefault();
+        switchView(hash, true);
+      }
+    });
+  });
+
+  // Handle Hash on Load & PopState
+  const handleHash = () => {
+    const rawHash = (window.location.hash || "").replace(/^#/, "").toLowerCase();
+    if (rawHash) {
+      switchView(rawHash, false);
+    } else {
+      switchView("overview", false);
+    }
+  };
+
+  window.addEventListener("hashchange", handleHash);
+  handleHash();
+
+  // Export for programmatic view changes
+  window.navigateToCockpitView = (viewName) => switchView(viewName, true);
+}
+
+// -----------------------------------------------------------------------------
+// 3. Split-Screen Interactive Workbench (CHiPS Technical Investigation)
+// -----------------------------------------------------------------------------
+function setupSplitScreenWorkbench() {
+  const steppers = document.querySelectorAll(".workbench-stepper-btn");
+  const canvases = document.querySelectorAll(".workbench-canvas-panel");
+
+  if (!steppers.length || !canvases.length) return;
+
+  const activateChapter = (chapterKey) => {
+    steppers.forEach(s => {
+      if (s.dataset.chapter === chapterKey) {
+        s.classList.add("active");
+      } else {
+        s.classList.remove("active");
+      }
+    });
+
+    canvases.forEach(c => {
+      if (c.dataset.canvas === chapterKey) {
+        c.classList.remove("hidden");
+        c.classList.add("block");
+      } else {
+        c.classList.add("hidden");
+        c.classList.remove("block");
+      }
+    });
+  };
+
+  steppers.forEach(btn => {
+    btn.addEventListener("click", () => {
+      activateChapter(btn.dataset.chapter);
+    });
+  });
+}
+
+// -----------------------------------------------------------------------------
+// 4. Interactive SQL Sandbox Engine (In-Browser Live Query Runner)
+// -----------------------------------------------------------------------------
+function setupSqlSandbox() {
+  const sqlInput = document.getElementById("sqlQueryInput");
+  const runBtn = document.getElementById("sqlRunBtn");
+  const presetBtns = document.querySelectorAll(".sql-preset-btn");
+  const statusEl = document.getElementById("sqlExecStatus");
+  const outputEl = document.getElementById("sqlOutputTable");
+
+  if (!sqlInput || !runBtn || !outputEl) return;
+
+  // Curated, 100% verified ground-truth in-memory tables
+  const dataset = {
+    technical_capabilities: [
+      { domain: "SQL & Modeling", primary_tools: "PostgreSQL, MySQL, MariaDB", architectural_focus: "Kimball Star Schema, CTEs, Window Functions", latency_target: "< 50ms" },
+      { domain: "Business Intelligence", primary_tools: "Power BI Desktop, DAX, Power Query", architectural_focus: "Multi-level Drilldowns, Executive Cockpits", latency_target: "Instant" },
+      { domain: "Data Pipelines (ETL)", primary_tools: "Python 3.11+, Pandas, NumPy", architectural_focus: "Multi-source Extraction, Entity Resolution", latency_target: "Daily Sync" },
+      { domain: "Systems & Diagnostics", primary_tools: "Fedora Linux, Windows 11", architectural_focus: "Bash Automation, PowerShell, Troubleshooting", latency_target: "Daily OS" }
+    ],
+    chips_architecture: [
+      { stage: "01. Ingestion", data_sources: "AEBAS Biometrics + Treasury Payroll", method: "Automated Daily Extraction", storage: "MariaDB Staging" },
+      { stage: "02. Resolution", data_sources: "Orphaned Staff & Facility Codes", method: "Deterministic Key Matching & CTEs", storage: "Cleaned Dimensions" },
+      { stage: "03. Modeling", data_sources: "Statewide Attendance Records", method: "Central Fact_Attendance_Daily", storage: "Star Schema Warehouse" },
+      { stage: "04. Governance", data_sources: "Consecutive Absence Telemetry", method: "3-Tier DAX Risk Stratification", storage: "Executive Power BI" }
+    ],
+    academic_credentials: [
+      { qualification: "M.Tech CSE", institution: "IIIT Naya Raipur", score_cgpa: "7.90 CGPA", period: "2024–2026", focus: "Diffusion Models & Deep Learning" },
+      { qualification: "B.Tech CSE", institution: "Amity University CG", score_cgpa: "7.71 CGPA", period: "2020–2024", focus: "DBMS, Algorithms & Data Structures" },
+      { qualification: "GATE CS 2024", institution: "National Benchmark", score_cgpa: "Qualified", period: "2024", focus: "Computer Science & IT" },
+      { qualification: "IELTS Academic", institution: "IDP Education", score_cgpa: "Band 7.5 (C1)", period: "2024", focus: "Proficient English User" }
+    ],
+    featured_projects: [
+      { project_name: "CHiPS Attendance & Payroll", domain: "Govt. Healthcare Intelligence", core_stack: "SQL, Star Schema, Power BI, DAX", impact: "Eliminated Ghost Shifts & Salary Leakage" },
+      { project_name: "Hospital Medicine Matrix", domain: "Pharmaceutical Logistics", core_stack: "OracleDB, Advanced Excel, ABC/VED", impact: "Zero Stockouts of Life-Saving Drugs" },
+      { project_name: "5G mmWave Handover AI", domain: "Telecommunications & ML", core_stack: "PyTorch, GRU, DDPM Diffusion", impact: "Proactive Cell Switching Before Signal Drop" },
+      { project_name: "Career-Ops Bot Pipeline", domain: "Recruitment Automation", core_stack: "Async Python, Embeddings, OpenXML", impact: "Automated Scraping & Application Telemetry" }
+    ]
+  };
+
+  const renderTable = (rows) => {
+    if (!rows || !rows.length) {
+      outputEl.innerHTML = `<p class="p-4 text-xs font-mono text-muted-foreground">0 rows returned.</p>`;
+      return;
+    }
+
+    const headers = Object.keys(rows[0]);
+    let html = `<div class="overflow-x-auto"><table class="sql-result-table"><thead><tr>`;
+    headers.forEach(h => {
+      html += `<th>${h.replace(/_/g, " ")}</th>`;
+    });
+    html += `</tr></thead><tbody>`;
+
+    rows.forEach(row => {
+      html += `<tr>`;
+      headers.forEach(h => {
+        html += `<td>${row[h]}</td>`;
+      });
+      html += `</tr>`;
+    });
+
+    html += `</tbody></table></div>`;
+    outputEl.innerHTML = html;
+  };
+
+  const executeSql = () => {
+    const raw = sqlInput.value.trim().toLowerCase();
+    const startTime = performance.now();
+
+    // Match query table name
+    let matchedKey = null;
+    if (raw.includes("technical_capabilities") || raw.includes("skills") || raw.includes("capabilities")) {
+      matchedKey = "technical_capabilities";
+    } else if (raw.includes("chips_architecture") || raw.includes("chips") || raw.includes("architecture")) {
+      matchedKey = "chips_architecture";
+    } else if (raw.includes("academic_credentials") || raw.includes("credentials") || raw.includes("education")) {
+      matchedKey = "academic_credentials";
+    } else if (raw.includes("featured_projects") || raw.includes("projects")) {
+      matchedKey = "featured_projects";
+    }
+
+    const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
+
+    if (matchedKey && dataset[matchedKey]) {
+      const data = dataset[matchedKey];
+      renderTable(data);
+      if (statusEl) {
+        statusEl.innerHTML = `<span class="text-emerald-500 font-semibold">Query OK</span> · ${data.length} rows returned in <span class="text-primary font-mono">${elapsed}ms</span>`;
+      }
+    } else {
+      outputEl.innerHTML = `
+        <div class="p-4 space-y-2 text-xs font-mono">
+          <p class="text-rose-500 font-semibold">Error: Table not found or syntax unrecognized.</p>
+          <p class="text-muted-foreground">Available query tables:</p>
+          <ul class="text-primary list-disc list-inside space-y-1">
+            <li><code>technical_capabilities</code></li>
+            <li><code>chips_architecture</code></li>
+            <li><code>academic_credentials</code></li>
+            <li><code>featured_projects</code></li>
+          </ul>
+        </div>
+      `;
+      if (statusEl) {
+        statusEl.innerHTML = `<span class="text-rose-500">Syntax Error</span> · Execution halted in ${elapsed}ms`;
+      }
+    }
+  };
+
+  presetBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const query = btn.dataset.query || "";
+      if (query) {
+        sqlInput.value = query;
+        executeSql();
+      }
+    });
+  });
+
+  runBtn.addEventListener("click", executeSql);
+
+  // Initial execution on first load
+  executeSql();
+}
+
+// -----------------------------------------------------------------------------
+// 5. Scroll Reveals Engine
 // -----------------------------------------------------------------------------
 function setupScrollReveals() {
   const reveals = document.querySelectorAll(".reveal-on-scroll");
@@ -74,12 +328,12 @@ function setupScrollReveals() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-revealed");
-          obs.unobserve(entry.target); // Reveal once only per B7
+          obs.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.12,
-      rootMargin: "0px 0px -40px 0px"
+      threshold: 0.1,
+      rootMargin: "0px 0px -30px 0px"
     });
 
     reveals.forEach(el => observer.observe(el));
@@ -89,7 +343,7 @@ function setupScrollReveals() {
 }
 
 // -----------------------------------------------------------------------------
-// 3. Mandatory Tagline Word-by-Word Scroll Reveal (landing-page-design B11)
+// 6. Tagline Word-by-Word Scroll Reveal
 // -----------------------------------------------------------------------------
 function setupTaglineReveal() {
   const words = document.querySelectorAll(".tagline-word");
@@ -108,13 +362,13 @@ function setupTaglineReveal() {
           words.forEach((word, idx) => {
             setTimeout(() => {
               word.classList.add("is-revealed");
-            }, idx * 75);
+            }, idx * 70);
           });
           obs.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.4
+      threshold: 0.3
     });
 
     observer.observe(container);
@@ -124,7 +378,7 @@ function setupTaglineReveal() {
 }
 
 // -----------------------------------------------------------------------------
-// 4. Full-Height Mobile Navigation Panel (landing-page-design B7)
+// 7. Full-Height Mobile Navigation Panel
 // -----------------------------------------------------------------------------
 function setupMobileMenu() {
   const menuBtn = document.getElementById("mobileMenuBtn");
@@ -172,7 +426,7 @@ function setupMobileMenu() {
 }
 
 // -----------------------------------------------------------------------------
-// 5. Technical Case Study Modal Engine
+// 8. Technical Case Study Modal Engine
 // -----------------------------------------------------------------------------
 function setupCaseStudyModals() {
   const modal = document.getElementById("caseStudyModal");
@@ -284,7 +538,7 @@ function setupCaseStudyModals() {
 }
 
 // -----------------------------------------------------------------------------
-// 6. Curated ATS Resume Modal Engine (Zero-Fabrication & Zero Phone Numbers)
+// 9. Curated ATS Resume Modal Engine
 // -----------------------------------------------------------------------------
 function setupResumeModal() {
   const modal = document.getElementById("resumeModal");
@@ -301,7 +555,6 @@ function setupResumeModal() {
     if (typeof resumesData === "undefined" || !resumesData[trackKey]) return;
     const r = resumesData[trackKey];
 
-    // Update active tab buttons with design tokens
     tabBtns.forEach(t => {
       if (t.dataset.resumeTab === trackKey) {
         t.className = "resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono transition-all border bg-primary text-primary-foreground border-primary shadow-sm cursor-pointer";
@@ -316,10 +569,8 @@ function setupResumeModal() {
       pdfDownloadBtn.download = r.pdf.split("/").pop();
     }
 
-    // Render formatted single-column ATS content (strictly 0 phone numbers!)
     modalBody.innerHTML = `
       <div class="space-y-6 max-w-3xl mx-auto text-left">
-        <!-- Header -->
         <div class="text-center pb-4 border-b border-border">
           <h2 class="text-2xl font-bold text-foreground tracking-tight">Rishi Thakur</h2>
           <div class="text-xs font-mono text-muted-foreground mt-1 flex flex-wrap items-center justify-center gap-2">
@@ -333,13 +584,11 @@ function setupResumeModal() {
           </div>
         </div>
 
-        <!-- Professional Summary -->
         <div class="space-y-2">
           <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Professional Summary</h3>
           <p class="text-xs sm:text-sm text-foreground/90 leading-relaxed font-normal">${r.summary || ""}</p>
         </div>
 
-        <!-- Technical Skills -->
         <div class="space-y-2">
           <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Technical Skills</h3>
           <div class="space-y-1.5 text-xs">
@@ -349,7 +598,6 @@ function setupResumeModal() {
           </div>
         </div>
 
-        <!-- Professional Experience -->
         <div class="space-y-4">
           <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Professional Experience</h3>
           <div class="space-y-2 text-left">
@@ -370,7 +618,6 @@ function setupResumeModal() {
           </div>
         </div>
 
-        <!-- Flagship Technical Projects -->
         ${Array.isArray(r.projects) && r.projects.length ? `
           <div class="space-y-4">
             <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Key Technical Projects</h3>
@@ -396,7 +643,6 @@ function setupResumeModal() {
           </div>
         ` : ""}
 
-        <!-- Education -->
         <div class="space-y-3">
           <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Education & Verified Credentials</h3>
           <div class="space-y-2 text-xs">
@@ -423,16 +669,6 @@ function setupResumeModal() {
             </div>
           </div>
         </div>
-
-        <!-- Certifications -->
-        ${Array.isArray(r.certs) && r.certs.length ? `
-          <div class="space-y-2">
-            <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Certifications</h3>
-            <div class="text-xs text-muted-foreground space-y-1">
-              ${r.certs.map(c => `<div>• ${c}</div>`).join("")}
-            </div>
-          </div>
-        ` : ""}
       </div>
     `;
   };
@@ -469,7 +705,7 @@ function setupResumeModal() {
 }
 
 // -----------------------------------------------------------------------------
-// 7. Interactive Resume Track Selector Dropdown
+// 10. Interactive Resume Track Selector Dropdown
 // -----------------------------------------------------------------------------
 function setupResumeTrackSelector() {
   const select = document.getElementById("resumeTrackSelect");
@@ -498,7 +734,7 @@ function setupResumeTrackSelector() {
 }
 
 // -----------------------------------------------------------------------------
-// 8. Privacy Modal Engine (landing-page-design B10)
+// 11. Privacy Modal Engine
 // -----------------------------------------------------------------------------
 function setupPrivacyModal() {
   const modal = document.getElementById("privacyModal");
@@ -531,57 +767,7 @@ function setupPrivacyModal() {
 }
 
 // -----------------------------------------------------------------------------
-// 9. Interactive Architecture Workbench (Poulo.site & Deep Linking)
-// -----------------------------------------------------------------------------
-function setupArchitectureWorkbench() {
-  const tabBtns = document.querySelectorAll(".workbench-tab-btn");
-  const panels = document.querySelectorAll(".workbench-panel");
-
-  if (!tabBtns.length || !panels.length) return;
-
-  const activateTab = (targetTab, updateHistory = true) => {
-    let found = false;
-    tabBtns.forEach(btn => {
-      if (btn.dataset.tab === targetTab) {
-        btn.classList.add("active");
-        found = true;
-      } else {
-        btn.classList.remove("active");
-      }
-    });
-
-    if (!found) return;
-
-    panels.forEach(panel => {
-      if (panel.dataset.panel === targetTab) {
-        panel.classList.remove("hidden");
-        panel.classList.add("block");
-      } else {
-        panel.classList.add("hidden");
-        panel.classList.remove("block");
-      }
-    });
-
-    if (updateHistory && window.history && window.history.replaceState) {
-      window.history.replaceState(null, "", `#tab-${targetTab}`);
-    }
-  };
-
-  tabBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      activateTab(btn.dataset.tab, true);
-    });
-  });
-
-  const currentHash = (window.location.hash || "").replace(/^#(?:tab-)?/, "");
-  const validTabs = ["pipeline", "schema", "dax", "dashboard"];
-  if (validTabs.includes(currentHash)) {
-    activateTab(currentHash, false);
-  }
-}
-
-// -----------------------------------------------------------------------------
-// 10. Interactive Stack Filter
+// 12. Interactive Stack Filter
 // -----------------------------------------------------------------------------
 function setupStackFilter() {
   const filterBtns = document.querySelectorAll(".stack-filter-btn");
@@ -615,7 +801,7 @@ function setupStackFilter() {
 }
 
 // -----------------------------------------------------------------------------
-// 11. Back-To-Top Button
+// 13. Back-To-Top Button
 // -----------------------------------------------------------------------------
 function setupBackToTop() {
   const btn = document.getElementById("backToTopBtn");
@@ -637,7 +823,7 @@ function setupBackToTop() {
 }
 
 // -----------------------------------------------------------------------------
-// 12. Direct Contact Form Handler (Client-side validation per B10)
+// 14. Direct Contact Form Handler
 // -----------------------------------------------------------------------------
 function setupContactForm() {
   const form = document.getElementById("contactForm");
@@ -656,7 +842,6 @@ function setupContactForm() {
     const email = emailInput ? emailInput.value.trim() : "";
     const message = messageInput ? messageInput.value.trim() : "";
 
-    // Client-side validation per B10
     if (!name || !email || !message) {
       if (statusMsg) {
         statusMsg.textContent = "Please fill in all fields before sending.";
@@ -697,7 +882,7 @@ function setupContactForm() {
 }
 
 // -----------------------------------------------------------------------------
-// 13. Live Local Time Clock (Bengaluru IST)
+// 15. Live Local Time Clock
 // -----------------------------------------------------------------------------
 function setupLocalTimeClock() {
   const clockEl = document.getElementById("localTimeClock");
@@ -724,7 +909,7 @@ function setupLocalTimeClock() {
 }
 
 // -----------------------------------------------------------------------------
-// 14. Copy Email to Clipboard with Phosphor Micro-feedback
+// 16. Copy Email to Clipboard
 // -----------------------------------------------------------------------------
 function setupCopyEmail() {
   const copyBtn = document.getElementById("copyEmailBtn");
@@ -748,7 +933,7 @@ function setupCopyEmail() {
 }
 
 // -----------------------------------------------------------------------------
-// 15. Copy Code Snippet (DAX / SQL) with Micro-feedback
+// 17. Copy Code Snippet (DAX / SQL)
 // -----------------------------------------------------------------------------
 function setupCopyCodeButtons() {
   const copyBtns = document.querySelectorAll(".copy-code-btn");

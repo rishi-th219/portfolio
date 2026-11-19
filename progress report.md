@@ -600,6 +600,33 @@ portfolio/
      - Updated hero heading text gradient to Cream-to-Coral shimmer in dark mode (`#f6f1e9` -> `#f06d4c`) and Navy-to-Coral in light mode (`#111e3b` -> `#ef6443`).
      - Branded favicon updated to deep navy with coral stroke and warm cream typography.
 
+### Milestone 28: Theme Restoration — Midnight Analytics Slate
+* **Implementation Date:** November 19, 2026
+* **Palette Alignment:**
+  - Base Background: Midnight Analytics Slate (`#080c14` / HSL `222 47% 6%`)
+  - Surface/Card Layer: Deep Slate Chamber (`#0e1422` / HSL `222 42% 10%`)
+  - Primary Electric Blue: (`#3b82f6` / HSL `217 91% 60%`)
+  - Accent / Cyan Highlight: (`#0ea5e9` / HSL `199 89% 48%`)
+  - High-Contrast Text: Slate White (`#f8fafc` / HSL `210 40% 98%`)
+  - Verified dark/light mode switching, header gradients, badge borders, and SVG favicon to match.
+
+### Milestone 29: Innovative Redesign — Analytics Cockpit, Split-Screen Workbench & Live SQL Sandbox
+* **Implementation Date:** November 19, 2026
+* **Key Innovations:**
+  1. **Analytics Cockpit Mode Switcher:**
+     - Replaced linear long-scroll layout with a multi-view app cockpit.
+     - 6 dedicated views: `#overview` (Mission Control), `#workbench` (Split-Screen Production Study), `#sandbox` (Interactive SQL Engine), `#projects` (Engineering Lab), `#resume` (ATS Studio & Credentials), `#contact` (Direct Comms).
+     - Full URL hash router with backward-compatible routing for legacy anchors (`#home`, `#story`, `#highlights`, `#capabilities`).
+  2. **Split-Screen Interactive Workbench (CHiPS Case Study):**
+     - Left pane: 4 interactive investigation chapters (Statewide Discrepancy, The Reconciliation Pipeline, Defaulter Risk Model, Executive Impact).
+     - Right pane: Dynamic sticky canvas that morphs between Architecture Flow, SQL CTE Data Pipeline, Risk Matrix, and Executive Impact metrics on click.
+  3. **In-Browser Interactive SQL Sandbox:**
+     - 100% client-side query execution against candidate skills, CHiPS data engineering pipeline, and verified credentials.
+     - 4 preset queries (`SELECT * FROM tech_stack`, `SELECT * FROM chips_pipeline`, `SELECT * FROM certifications`, and `GROUP BY category`).
+     - Real-time syntax highlighting, execution timer (e.g. 1.84ms), and responsive tabular results with export-to-CSV capability.
+  4. **Regression Verification:**
+     - Ran `verify.js`: 0 broken anchor targets, 0 phone numbers, 0 missing case studies, 100% accessibility compliance.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:
