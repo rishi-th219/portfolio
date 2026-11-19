@@ -581,6 +581,25 @@ portfolio/
      - Created Privacy Notice modal (`#privacyModal`) accessible from the footer.
      - Implemented client-side email format and presence validation on the contact form.
 
+### Milestone 28: Classy Tri-Tone Theme (Tailored Navy, Warm Cream & Touch of Coral)
+* **Implementation Date:** November 19, 2026
+* **Color System Harmonization:**
+  1. **Dark Mode Palette:**
+     - Base: Tailored Midnight Navy (`#09111f` / HSL `220 54% 8%`)
+     - Cards: Deep Navy Chamber (`#101a2d` / HSL `220 48% 12%`)
+     - Typography & Accents: Luxurious Warm Cream (`#f6f1e9` / HSL `38 42% 94%`)
+     - Primary / Interactive Focus: Refined Classy Coral (`#f06d4c` / HSL `12 85% 62%`)
+     - Borders: Crisp Structural Navy (`#273750` / HSL `220 30% 22%`)
+  2. **Light Mode Palette:**
+     - Base: Soft Parchment Cream (`#f8f6f1` / HSL `38 33% 96%`)
+     - Cards: Crisp Soft Cream (`#fdfbf7` / HSL `38 30% 99%`)
+     - Typography: Tailored Deep Navy Ink (`#111e3b` / HSL `222 55% 15%`)
+     - Primary / Interactive: Refined Classy Coral (`#ef6443` / HSL `12 85% 60%`)
+     - Borders: Delicate Cream-Navy Line (`#dcd2c2` / HSL `38 22% 84%`)
+  3. **Visual Highlights & Gradients:**
+     - Updated hero heading text gradient to Cream-to-Coral shimmer in dark mode (`#f6f1e9` -> `#f06d4c`) and Navy-to-Coral in light mode (`#111e3b` -> `#ef6443`).
+     - Branded favicon updated to deep navy with coral stroke and warm cream typography.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

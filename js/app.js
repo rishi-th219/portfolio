@@ -38,10 +38,10 @@ function setupThemeToggle() {
   const applyTheme = (theme) => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
-      if (themeColorMeta) themeColorMeta.setAttribute("content", "#000000");
+      if (themeColorMeta) themeColorMeta.setAttribute("content", "#09111f");
     } else {
       document.documentElement.classList.remove("dark");
-      if (themeColorMeta) themeColorMeta.setAttribute("content", "#f8fafc");
+      if (themeColorMeta) themeColorMeta.setAttribute("content", "#f8f6f1");
     }
     localStorage.setItem("rishi-portfolio-theme", theme);
   };
