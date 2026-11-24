@@ -627,6 +627,14 @@ portfolio/
   4. **Regression Verification:**
      - Ran `verify.js`: 0 broken anchor targets, 0 phone numbers, 0 missing case studies, 100% accessibility compliance.
 
+### Milestone 30: Active Upskilling & Current Focus Integration (AWS Cloud & Data Engineering)
+* **Implementation Date:** November 24, 2026
+* **Key Additions:**
+  1. **Mission Control Telemetry Strip:** Added live "Current Focus" indicator featuring active preparation for AWS Certified Cloud Practitioner (CLF-C02) & AWS Certified Data Engineer - Associate (DEA-C01).
+  2. **Verified Accreditations & Target Cards:** Added dedicated "Target AWS Accreditations" card with clear "Active Upskilling" status tag to maintain ethical transparency and prevent unverified credential claims.
+  3. **SQL Sandbox Virtual Schema:** Updated `technical_capabilities` and `academic_credentials` datasets with AWS Cloud Data Stack (S3, Athena, Glue, Redshift) and target certification metadata.
+  4. **Toolchain Grid:** Added highlighted AWS Cloud Data Stack pill with animated active pulse.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

@@ -205,6 +205,7 @@ function setupSqlSandbox() {
       { domain: "SQL & Modeling", primary_tools: "PostgreSQL, MySQL, MariaDB", architectural_focus: "Kimball Star Schema, CTEs, Window Functions", latency_target: "< 50ms" },
       { domain: "Business Intelligence", primary_tools: "Power BI Desktop, DAX, Power Query", architectural_focus: "Multi-level Drilldowns, Executive Cockpits", latency_target: "Instant" },
       { domain: "Data Pipelines (ETL)", primary_tools: "Python 3.11+, Pandas, NumPy", architectural_focus: "Multi-source Extraction, Entity Resolution", latency_target: "Daily Sync" },
+      { domain: "Cloud Data Engineering", primary_tools: "AWS (S3, Athena, Glue, Redshift)", architectural_focus: "Cloud Lakehouse, CLF-C02 & DEA-C01 Target", latency_target: "In Progress" },
       { domain: "Systems & Diagnostics", primary_tools: "Fedora Linux, Windows 11", architectural_focus: "Bash Automation, PowerShell, Troubleshooting", latency_target: "Daily OS" }
     ],
     chips_architecture: [
@@ -217,7 +218,8 @@ function setupSqlSandbox() {
       { qualification: "M.Tech CSE", institution: "IIIT Naya Raipur", score_cgpa: "7.90 CGPA", period: "2024–2026", focus: "Diffusion Models & Deep Learning" },
       { qualification: "B.Tech CSE", institution: "Amity University CG", score_cgpa: "7.71 CGPA", period: "2020–2024", focus: "DBMS, Algorithms & Data Structures" },
       { qualification: "GATE CS 2024", institution: "National Benchmark", score_cgpa: "Qualified", period: "2024", focus: "Computer Science & IT" },
-      { qualification: "IELTS Academic", institution: "IDP Education", score_cgpa: "Band 7.5 (C1)", period: "2024", focus: "Proficient English User" }
+      { qualification: "IELTS Academic", institution: "IDP Education", score_cgpa: "Band 7.5 (C1)", period: "2024", focus: "Proficient English User" },
+      { qualification: "AWS Certifications (Target)", institution: "Amazon Web Services", score_cgpa: "Active Upskilling", period: "2026", focus: "Cloud Practitioner & Data Engineer Associate" }
     ],
     featured_projects: [
       { project_name: "CHiPS Attendance & Payroll", domain: "Govt. Healthcare Intelligence", core_stack: "SQL, Star Schema, Power BI, DAX", impact: "Eliminated Ghost Shifts & Salary Leakage" },
