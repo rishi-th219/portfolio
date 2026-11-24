@@ -635,6 +635,20 @@ portfolio/
   3. **SQL Sandbox Virtual Schema:** Updated `technical_capabilities` and `academic_credentials` datasets with AWS Cloud Data Stack (S3, Athena, Glue, Redshift) and target certification metadata.
   4. **Toolchain Grid:** Added highlighted AWS Cloud Data Stack pill with animated active pulse.
 
+### Milestone 31: The Spatial Well — Scroll-Driven Three.js Abyss with Web Audio Synthesis
+* **Implementation Date:** November 24, 2026
+* **Architecture & Features:**
+  1. **Scroll-Driven 3D Abyss:** Engineered a standalone experimental experience in `well.html` and `js/well-scene.js`. Features a cylindrical well tapering downwards from radius 18m to 5m, spanning 140m of virtual vertical depth.
+  2. **Narrowing Curved Screen Rings:** 3 concentric rings lined with curved cylindrical screens displaying 9 real-world projects & analytical case studies. Screen rotation speeds accelerate with depth (Ring 1 at 1.0x, Ring 2 at 1.8x, Ring 3 at 3.2x).
+  3. **Scroll Velocity & Dynamic Playback:** Real-time scroll speed drives well descent, ring rotation acceleration, and continuous top-to-bottom texture scroll offsets.
+  4. **Click-to-Unroll Screen Inspection:** Raycast interaction pulls screens toward the camera and unrolls a high-contrast inspection drawer with architecture specs, SQL CTE snippets, and enterprise impact.
+  5. **Prussian-Blue Light Pool & Lone Observer Figure:** At depth Y = -108m, a spotlight illuminates an obsidian humanoid figure that turns its head and torso dynamically to watch whichever screen the visitor observes.
+  6. **Zoetrope Slotted Mechanism:** A revolving mechanical slotted cylinder at the bottom cranks through the 9 projects slit-by-slit.
+  7. **Finale Light Ascension:** Scrolling past the bottom accelerates the camera straight up through the well until the opening contracts into a radiant pinnacle ring of light with kinetic Bodoni Moda typography.
+  8. **Synthesized Web Audio Engine:** "Enter with sound / Enter quietly" gate with zero external audio assets. Synthesizes 55Hz/110Hz binaural room tone, velocity-modulated wind noise, and physical ratchet clatter clicks.
+  9. **Atmospheric FX & Visuals:** Near-black `#050404` and bone `#f2ede4` palette, speed-streak radial lens distortion, film grain noise, Bodoni Moda headlines, and Jost body.
+  10. **Zero Regression / Full Integrity:** Seamlessly integrated into `index.html` via header dock and overview showcase banner while leaving all ATS resumes, SQL sandbox, and verified data 100% operational.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

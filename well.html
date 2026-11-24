@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#050404] text-[#f2ede4] antialiased">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>The Spatial Well · Rishi Thakur · Analytics Engineering</title>
+  <meta name="description" content="A scroll-driven Three.js spatial well lined with rings of curved screens. Explore the data architecture and enterprise intelligence of Rishi Thakur.">
+  <meta name="theme-color" content="#050404">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http:%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050404'%2F%3E%3Ccircle cx='16' cy='16' r='10' stroke='%233b82f6' stroke-width='2' fill='none'%2F%3E%3Ccircle cx='16' cy='16' r='4' fill='%23f2ede4'%2F%3E%3C%2Fsvg%3E">
+
+  <!-- Google Fonts: Bodoni Moda (Headlines) & Jost (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Jost:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+
+  <!-- Tailwind CDN for rapid styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'well-black': '#050404',
+            'well-bone': '#f2ede4',
+            'well-prussian': '#003153',
+            'well-blue': '#3b82f6',
+            'well-cyan': '#0ea5e9'
+          },
+          fontFamily: {
+            serif: ['"Bodoni Moda"', 'serif'],
+            sans: ['"Jost"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Global Reset & Well Aesthetic */
+    * {
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #050404;
+      color: #f2ede4;
+      font-family: 'Jost', sans-serif;
+    }
+
+    /* WebGL Canvas */
+    #webgl-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      outline: none;
+    }
+
+    /* Virtual Scroll Track */
+    #scroll-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 600vh; /* 6 full viewport scrolls of descent */
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Film Grain Shader / Noise Overlay */
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 4;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Speed-streak radial lens vignette */
+    .speed-streak-lens {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background: radial-gradient(circle at center, transparent 40%, rgba(5, 4, 4, 0.4) 75%, rgba(5, 4, 4, 0.95) 100%);
+      mix-blend-mode: multiply;
+      transition: opacity 0.2s ease;
+    }
+
+    /* Kinetic Type Reveal */
+    .kinetic-char {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .kinetic-char.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Audio Gate Overlay */
+    #audio-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: #050404;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+    }
+
+    /* Unrolled Screen Detail Drawer */
+    #screen-inspector {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: rgba(5, 4, 4, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    #screen-inspector.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Custom Scrollbar for Drawer */
+    .custom-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-well-black text-well-bone selection:bg-well-blue/30 selection:text-well-bone">
+
+  <!-- Film Grain & Speed-Streak Lens Layers -->
+  <div class="film-grain"></div>
+  <div id="lens-effect" class="speed-streak-lens"></div>
+
+  <!-- Three.js Canvas -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Virtual Scroll Space -->
+  <div id="scroll-container"></div>
+
+  <!-- ==========================================================================
+       STARTUP GATE: "ENTER WITH SOUND / ENTER QUIETLY"
+       ========================================================================== -->
+  <div id="audio-gate">
+    <div class="max-w-lg w-full text-center space-y-8 p-6 sm:p-10 rounded-2xl border border-well-bone/10 bg-well-black/90 shadow-2xl relative">
+      
+      <!-- Monogram -->
+      <div class="w-12 h-12 mx-auto rounded-xl border border-well-blue/40 bg-well-blue/10 flex items-center justify-center font-mono text-well-blue text-sm font-semibold tracking-wider">
+        RT
+      </div>
+
+      <!-- Title & Kinetic Prompt -->
+      <div class="space-y-3">
+        <span class="text-xs font-mono tracking-widest uppercase text-well-cyan/80">Scroll-Driven Spatial Scene</span>
+        <h1 class="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-well-bone">
+          The Spatial Well
+        </h1>
+        <p class="font-sans text-xs sm:text-sm text-well-bone/70 max-w-sm mx-auto leading-relaxed">
+          A cylindrical 3D abyss lined with rings of curved screens that narrow and turn faster as you descend into enterprise data telemetry.
+        </p>
+      </div>
+
+      <!-- Audio Choices -->
+      <div class="space-y-3 pt-2">
+        <button id="btn-enter-sound" class="w-full py-3.5 px-6 rounded-xl bg-well-bone text-well-black font-sans font-medium text-xs tracking-wider uppercase hover:bg-well-cyan transition-colors flex items-center justify-center gap-2 group cursor-pointer shadow-lg shadow-well-blue/10">
+          <i class="ph ph-speaker-high text-base group-hover:scale-110 transition-transform"></i>
+          <span>Enter with Sound</span>
+        </button>
+        <button id="btn-enter-quiet" class="w-full py-3 px-6 rounded-xl border border-well-bone/20 hover:border-well-bone/50 text-well-bone/80 font-sans text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer">
+          <i class="ph ph-speaker-slash text-base"></i>
+          <span>Enter Quietly</span>
+        </button>
+        <p class="text-[10px] font-mono text-well-bone/40">
+          Synthesized Web Audio: Ambient room tone · Ratchet clatter · Wind velocity
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       HEADS-UP DISPLAY (HUD) & COCKPIT TELEMETRY
+       ========================================================================== -->
+  <header class="fixed top-0 inset-x-0 z-20 flex items-center justify-between p-4 sm:p-6 pointer-events-none">
+    
+    <!-- Left: Brandmark & Cockpit Return Button -->
+    <div class="flex items-center gap-3 pointer-events-auto">
+      <a href="index.html" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-well-bone/15 bg-well-black/70 backdrop-blur-md text-well-bone hover:border-well-blue hover:text-well-blue transition-colors text-xs font-mono group">
+        <i class="ph ph-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+        <span>Return to Cockpit</span>
+      </a>
+      <div class="hidden md:flex items-center gap-2 text-xs font-mono text-well-bone/50">
+        <span>/</span>
+        <span class="text-well-bone/80 font-serif italic">Rishi Thakur</span>
+      </div>
+    </div>
+
+    <!-- Center: Depth & Telemetry Gauge -->
+    <div class="hidden sm:flex items-center gap-3 px-3.5 py-1.5 rounded-full border border-well-bone/15 bg-well-black/70 backdrop-blur-md text-[11px] font-mono text-well-bone/80 pointer-events-auto">
+      <span class="w-2 h-2 rounded-full bg-well-cyan animate-pulse"></span>
+      <span id="hud-depth">Depth: 0m</span>
+      <span class="text-well-bone/30">|</span>
+      <span id="hud-ring">Ring: Surface</span>
+      <span class="text-well-bone/30">|</span>
+      <span id="hud-speed">0.0 km/s</span>
+    </div>
+
+    <!-- Right: Audio Controls & Screen Hints -->
+    <div class="flex items-center gap-2.5 pointer-events-auto">
+      <button id="hud-audio-toggle" class="p-2 rounded-lg border border-well-bone/15 bg-well-black/70 backdrop-blur-md text-well-bone hover:border-well-cyan transition-colors text-sm cursor-pointer" title="Toggle Synthesized Audio">
+        <i id="hud-audio-icon" class="ph ph-speaker-high"></i>
+      </button>
+      <div class="px-3 py-1.5 rounded-lg border border-well-bone/15 bg-well-black/70 backdrop-blur-md text-xs font-mono text-well-cyan flex items-center gap-1.5">
+        <i class="ph ph-cursor-click"></i>
+        <span class="hidden sm:inline">Click Screen to Inspect</span>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Bottom Scroll Guidance Prompt -->
+  <div id="scroll-hint" class="fixed bottom-6 inset-x-0 z-20 flex flex-col items-center justify-center gap-2 pointer-events-none transition-opacity duration-500">
+    <div class="flex items-center gap-2 px-3 py-1 rounded-full border border-well-bone/10 bg-well-black/60 backdrop-blur-sm text-[11px] font-mono text-well-bone/60">
+      <i class="ph ph-arrow-down animate-bounce text-well-cyan"></i>
+      <span>Scroll down to descend into the Well</span>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SCREEN DETAIL INSPECTION DRAWER (Unrolled Screen Flat View)
+       ========================================================================== -->
+  <div id="screen-inspector">
+    <div class="max-w-3xl w-full max-h-[85vh] bg-[#090b10] border border-well-bone/20 rounded-2xl shadow-2xl overflow-hidden flex flex-col relative">
+      
+      <!-- Drawer Header -->
+      <div class="p-5 sm:p-6 border-b border-well-bone/10 flex items-start justify-between gap-4 bg-well-black/60">
+        <div>
+          <span id="inspect-tag" class="text-[10px] font-mono tracking-widest uppercase text-well-cyan block">Production Case Study</span>
+          <h2 id="inspect-title" class="font-serif text-2xl sm:text-3xl font-semibold text-well-bone mt-1">
+            CHiPS Healthcare Attendance &amp; Payroll Intelligence
+          </h2>
+          <p id="inspect-subtitle" class="font-mono text-xs text-well-blue mt-0.5">
+            Kimball Star Schema · MariaDB Staging · 3-Tier Risk Model
+          </p>
+        </div>
+        <button id="btn-close-inspect" class="p-2 rounded-lg border border-well-bone/15 bg-well-black hover:bg-well-bone/10 text-well-bone transition-colors text-base cursor-pointer shrink-0">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Content (Scrollable) -->
+      <div class="p-6 sm:p-8 space-y-6 overflow-y-auto custom-scroll text-well-bone/80 text-xs sm:text-sm font-sans leading-relaxed">
+        
+        <!-- Live Architecture Blueprint -->
+        <div class="space-y-2">
+          <span class="text-xs font-mono uppercase text-well-bone/50 tracking-wider">Engineering Architecture</span>
+          <div id="inspect-code" class="p-4 rounded-xl bg-well-black border border-well-bone/10 font-mono text-[11px] text-well-bone/90 overflow-x-auto leading-relaxed">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Problem & Solution Narrative -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-well-black/40 border border-well-bone/10 space-y-1.5">
+            <h4 class="font-serif text-base font-semibold text-well-bone">The Operational Challenge</h4>
+            <p id="inspect-problem" class="text-xs text-well-bone/70 leading-relaxed">
+              Reconciled statewide biometric attendance (AEBAS) against State Treasury payroll codes across public health institutions to eliminate ghost shifts and salary disbursal leakage.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-well-black/40 border border-well-bone/10 space-y-1.5">
+            <h4 class="font-serif text-base font-semibold text-well-bone">The Dimensional Solution</h4>
+            <p id="inspect-solution" class="text-xs text-well-bone/70 leading-relaxed">
+              Automated extraction into MariaDB staging via SQL CTEs, built a centralized Kimball Star Schema around Fact_Attendance_Daily, and formulated an executive 3-tier attendance risk model.
+            </p>
+          </div>
+        </div>
+
+        <!-- Impact Bar -->
+        <div class="p-4 rounded-xl bg-well-prussian/30 border border-well-blue/30 flex items-center justify-between gap-3 text-xs font-mono">
+          <div class="flex items-center gap-2">
+            <i class="ph ph-chart-line-up text-well-cyan text-base"></i>
+            <span class="text-well-bone font-medium">Enterprise Impact:</span>
+            <span id="inspect-impact" class="text-well-cyan">Zero operational blind spots for state executive leadership</span>
+          </div>
+          <a href="index.html#workbench" class="text-well-bone hover:text-well-blue transition-colors underline shrink-0">Open in Workbench ↗</a>
+        </div>
+
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="p-4 border-t border-well-bone/10 bg-well-black/60 flex items-center justify-between text-xs font-mono text-well-bone/40">
+        <span>Press ESC or click outside to re-roll into the Well</span>
+        <button id="btn-inspect-back" class="text-well-cyan hover:underline cursor-pointer">Re-roll into Wall →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FINALE OVERLAY: ASCENT TO THE RING OF LIGHT
+       ========================================================================== -->
+  <div id="finale-overlay" class="fixed inset-0 z-30 pointer-events-none flex flex-col items-center justify-center p-6 text-center opacity-0 transition-opacity duration-1000 bg-radial from-transparent to-[#050404]">
+    <div class="max-w-xl space-y-6 pointer-events-auto">
+      <div class="w-16 h-16 mx-auto rounded-full border-2 border-well-cyan/80 flex items-center justify-center shadow-[0_0_50px_rgba(14,165,233,0.5)]">
+        <i class="ph ph-sun text-2xl text-well-cyan"></i>
+      </div>
+      <div class="space-y-2">
+        <span class="text-xs font-mono tracking-widest uppercase text-well-cyan">The Well Ascent · Pinnacle Reached</span>
+        <h2 id="finale-title" class="font-serif text-3xl sm:text-5xl font-semibold text-well-bone">
+          Turning fragmented noise into luminous signal.
+        </h2>
+        <p class="font-sans text-xs sm:text-sm text-well-bone/70 max-w-md mx-auto">
+          Rishi Thakur · Analytics Engineer &amp; Data Storyteller · IIIT Naya Raipur
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-4">
+        <a href="index.html#overview" class="py-3 px-6 rounded-xl bg-well-blue text-well-bone font-mono text-xs hover:bg-well-cyan hover:text-well-black transition-colors shadow-lg">
+          Explore Analytics Cockpit ↗
+        </a>
+        <button id="btn-replay-well" class="py-3 px-6 rounded-xl border border-well-bone/20 hover:border-well-bone text-well-bone font-mono text-xs transition-colors cursor-pointer">
+          Descend Again ↓
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDN Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Core 3D Well Engine -->
+  <script src="js/well-scene.js"></script>
+
+</body>
+</html>
