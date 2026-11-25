@@ -47,7 +47,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 - **Markup & Styling**: HTML5, Tailwind CSS Play CDN, `css/styles.css` (`@layer components` + HSL design tokens), Google Fonts (`Geist` + `Geist Mono`)
 - **Interactivity**: Modular vanilla JS (`js/app.js`, `js/chart-data.js`) — zero build step, instant delivery via GitHub Pages
-- **Asset Sync Tool**: `sync_tailored_resumes.py`
 
 ---
 
@@ -65,6 +64,5 @@ portfolio/
 ├── assets/                     # Public sanitized PDFs and OpenGraph social card
 ├── llms.txt                    # Concise LLM/GEO summary
 ├── llms-full.txt               # Detailed technical knowledge base
-├── progress report.md          # Engineering milestone log
 └── README.md                   # Repository overview
 ```

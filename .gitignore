@@ -1,11 +1,25 @@
 __pycache__/
 *.pyc
+.venv/
+.env
 .lo_profile/
 .DS_Store
 *.tar.gz
 *.sha256
+*.docx
+
+# Private & Internal Workspace Assets (Never Push Publicly)
 skills_backup/
 tailoring/
-*.docx
 logsfolio-v1.0.0/
 NewTemplate/
+.agents/
+skills-lock.json
+HANDOVER.md
+progress report.md
+FREELANCE_PLAYBOOK.md
+landing_page_design.md
+backup-for-fedora.ps1
+restore_on_fedora.sh
+setup_fedora_environment.sh
+sync_tailored_resumes.py
