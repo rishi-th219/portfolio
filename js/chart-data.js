@@ -24,7 +24,7 @@ const caseStudiesData = {
       "Automated SQL/ETL identity resolution pipeline reconciling biometric IDs with payroll records",
       "Multi-tab Advanced Excel auditing workbooks (Power Query, Dynamic Arrays, Power Pivot) cross-validating payroll vs attendance",
       "Performant Kimball Star Schema data model with custom DAX time-intelligence measures",
-      "multi-tier compliance risk model and weekly executive exception summaries for the Department Secretary",
+      "Multi-tier compliance risk model and weekly executive exception summaries for the Department Secretary",
       "Cross-department schema reconciliation specs with NIC engineers for NextGen e-Hospital OPD data",
       "Comprehensive UAT validation protocols and operational data integrity controls"
     ]
@@ -97,7 +97,7 @@ const caseStudiesData = {
     problem: "The rapid adoption of generative Large Language Models has made detecting synthetic text crucial for academic integrity and content authenticity. Existing commercial detectors suffer from unacceptable False Positive rates—falsely penalizing human writers while failing to capture nuanced structural patterns.",
     solution: "1. Pre-trained Contextual Baseline: Extracted dense contextual sentence embeddings from pre-trained BERT [CLS] representations, paired with an optimized XGBoost gradient-boosted classifier for low-latency inference.\n2. Deep Learning Hybrid Engine: Designed a multi-stage neural architecture incorporating custom word embeddings, Bidirectional LSTM (sequential syntactic flow), Multi-Head Self-Attention Transformer blocks (global semantic coherence), and 1D-Convolutional layers (local n-gram anomaly detection).\n3. Regularization & Optimization: Applied spatial dropout (0.5), early stopping, and ReduceLROnPlateau learning rate decay to eliminate overfitting and ensure cross-domain generalization.",
     stack: ["Python", "TensorFlow / Keras", "BERT", "XGBoost", "Bi-LSTM", "Transformers", "1D-CNN", "Scikit-Learn"],
-    githubUrl: "",
+    githubUrl: "https://github.com/rishi-th219/AI-Text-Detection",
     deliverables: [
       "Modular text preprocessing, tokenization, and vectorization pipelines",
       "End-to-end training and inference scripts with stratified cross-validation",
@@ -109,7 +109,7 @@ const caseStudiesData = {
     badge: "AUTOMATION PIPELINES & ATS ENGINEERING",
     title: "Career-Ops: Autonomous Job Acquisition & ATS Auto-Apply Pipeline",
     subtitle: "Zero-manual-intervention Python pipeline: multi-channel ATS/API discovery, automated link liveness auditing, dependency-free OpenXML spreadsheet generation, and headless Playwright auto-submission with role-matched resume selection.",
-    clientType: "Personal Engineering Project • Open Source (career-ops-bot)",
+    clientType: "Personal Engineering Project • Open Source (autojobhunt)",
     timeline: "2026",
     pipeline: "Direct ATS & Remote APIs ∥ Crawl4AI Web Scrapers → Multi-Tier Liveness & Expiry Cleaner → Dependency-Free OpenXML ETL → Role-Matched Resume Selector → Headless Playwright Auto-Apply → Screenshot Audit Trail",
     metrics: [
@@ -121,7 +121,7 @@ const caseStudiesData = {
     problem: "Navigating tech job searches manually is plagued by high friction: commercial job boards are flooded with stale or closed postings that waste hours, applicant tracking systems (Greenhouse, Lever, Ashby, SmartRecruiters) require redundant data re-entry across complex Single-Page Apps (SPAs) with custom non-standard dropdowns, and traditional job scrapers fail to dynamically match specialized resumes (SQL Developer, Power BI, Business Analyst, Data Analyst) to specific role requirements.",
     solution: "1. Multi-Channel Ingestion Engine: Built a unified discovery suite combining direct, zero-token REST API scanners for Greenhouse, Lever, Ashby, SmartRecruiters, Jobicy, and Remotive, paired with Crawl4AI headless stealth crawlers for complex SPAs (Naukri, Instahyre) and startup scrapers for Hacker News and Y Combinator directories.\n2. Multi-Tier Link Liveness & Expiry Cleaner: Engineered an automated verification daemon that checks direct ATS board APIs first, then falls back to fast HTTP header checks and regex body inspection across comprehensive expiration patterns (e.g., 'job is no longer available', 'applications closed', 'position filled'). Automatically archives dead postings to ensure 100% active pipeline fidelity.\n3. Dependency-Free OpenXML Spreadsheet Engine: Developed a pure Python standard library spreadsheet compiler using zipfile and raw OpenXML generation (opportunities_manager.py) that builds, styles, and indexes opportunities.xlsx and opportunities.csv with custom typography, column widths, and hyperlinks without third-party dependencies.\n4. Dynamic Role-Matched Resume Selector: Engineered a keyword pattern-matching router that analyzes incoming job titles and automatically attaches the corresponding ATS-optimized PDF resume (SQL Developer, Power BI Developer, Business Analyst, or Data Analyst) directly from the verified resume archive.\n5. Headless Playwright Auto-Apply Bot: Automated application submission via Playwright with stealth anti-bot evasion arguments, automatically populating core fields, resolving custom React-select comboboxes, answering screening questions, uploading resumes, and archiving visual proof screenshots in output/confirmations/.\n6. Intelligent Form Autofill & Tailoring Assistant: Created a 1-click headed browser assistant that scrapes live JD text directly from the active posting DOM, dynamically drafts tailored answers to open-ended screening questions grounded in candidate narrative facts, and leaves the browser open for human-in-the-loop review.\n7. Daemon Scheduling & Tracking: Automated the entire discovery-clean-apply cycle with Linux cron scheduling (install_cron.sh), logging every run to status-log.tsv and updating applications.md for end-to-end recruitment pipeline analytics.",
     stack: ["Python", "Playwright", "Crawl4AI", "OpenXML (Pure Python)", "REST APIs", "Regex Engine", "BeautifulSoup", "Bash / Cron", "Git"],
-    githubUrl: "https://github.com/rishi-th219/career-ops-bot",
+    githubUrl: "https://github.com/rishi-th219/autojobhunt",
     deliverables: [
       "Master pipeline orchestrator (job_pipeline.py) supporting individual tools or 100% autonomous execution",
       "Direct ATS API and remote tech ingestion modules scanning direct enterprise employer endpoints",
@@ -130,6 +130,32 @@ const caseStudiesData = {
       "Headless Playwright auto-apply runner (auto_apply_bot.py) with anti-bot evasion and visual screenshot audit trails",
       "Intelligent browser autofill assistant (autofill_assistant.py) with dynamic JD text extraction and response drafting",
       "Linux cron daemon automation (install_cron.sh) and Markdown/TSV application tracking ledger"
+    ]
+  },
+
+  ecommerce_elt: {
+    badge: "DATA ENGINEERING & DBT WAREHOUSING",
+    title: "Production-Grade Local ELT Data Warehouse (ecommerce-elt-local)",
+    subtitle: "Containerized dual-warehouse ELT pipeline featuring PostgreSQL 16, MSSQL 2025, Apache Airflow orchestration, dbt Kimball SCD2 dimensional models, and Metabase BI.",
+    clientType: "Personal Data Engineering Project • Open Source (ecommerce-elt-local)",
+    timeline: "2026",
+    pipeline: "Raw E-Commerce Streams → Apache Airflow Ingestion → PostgreSQL 16 Staging → dbt-core Transformations (Kimball SCD2) → Automated Schema Tests → Metabase BI",
+    metrics: [
+      { label: "Orchestration", value: "Apache Airflow" },
+      { label: "Transformation", value: "dbt-core (Kimball SCD2)" },
+      { label: "Quality Gate", value: "Automated dbt Tests" },
+      { label: "Warehouses", value: "PostgreSQL & MSSQL" }
+    ],
+    problem: "Teams need reproducible, production-grade Kimball dimensional warehousing, slowly changing dimensions (SCD Type 2), and automated data quality testing without relying on costly proprietary cloud sandboxes.",
+    solution: "1. Containerized Dual-Warehouse Ingestion: Orchestrated raw e-commerce order, session, customer, and product datasets across PostgreSQL 16 and Microsoft SQL Server 2025 using Apache Airflow DAGs.\n2. Kimball Star Schema & SCD2 Snapshots: Engineered dbt models producing conformed dimensions (dim_customers, dim_products) with Type 2 history snapshots and analytical fact tables (fct_sessions, customer_360).\n3. Automated Data Quality Assertions: Enforced strict schema contracts, uniqueness, not-null checks, and referential integrity across dbt test suites before downstream BI exposure.\n4. Executive BI Layer: Connected Metabase scorecards directly to curated marts for cohort retention, funnel conversion, and revenue attribution.",
+    stack: ["dbt-core", "Apache Airflow", "PostgreSQL 16", "MSSQL 2025", "Docker", "Kimball SCD2", "Metabase", "SQL"],
+    githubUrl: "https://github.com/rishi-th219/ecommerce-elt-local",
+    deliverables: [
+      "Containerized ELT stack with reproducible Docker Compose service topology",
+      "Apache Airflow ingestion DAGs with retry logic and schema validation",
+      "dbt transformation project implementing Kimball Star Schema and SCD2 snapshots",
+      "Comprehensive automated dbt test suite validating data integrity end to end",
+      "Metabase executive BI dashboards for retention and funnel analytics"
     ]
   }
 };
@@ -159,7 +185,7 @@ const resumesData = {
       "<strong>Advanced Excel Auditing & Operational Analysis: </strong>Developed multi-tab analytical Excel workbooks powered by Power Query, dynamic arrays (XLOOKUP, INDEX/MATCH), and Power Pivot data models to cross-validate district-level biometric logs with Treasury payroll files, enabling rapid ad-hoc scenario modeling and executive exception tracking.",
       "<strong>Automated SQL/ETL Identity Resolution: </strong>Engineered an automated SQL/ETL pipeline mapping AEBAS biometric attendance IDs to State Treasury payroll records, closing a critical cross-departmental tracking gap and categorizing bonded doctors into actionable compliance tiers.",
       "<strong>Cross-Department Schema Reconciliation: </strong>Integrated multi-source data across MariaDB, State Treasury, and National NextGen e-Hospital OPD systems, collaborating with NIC engineers to reconcile heterogeneous modular schemas into a unified reporting layer.",
-      "<strong>Supply Chain & Inventory Analytics: </strong>Conducted ABC, VED, and SDE inventory categorization analysis on essential drug catalogs in OracleDB, deploying interactive dashboards to Oracle Analytics Cloud (OAC) to guide statewide procurement decisions across statewide clinical departments."
+      "<strong>Supply Chain & Inventory Analytics: </strong>Conducted ABC, VED, and SDE inventory categorization analysis on essential drug catalogs in OracleDB, deploying interactive dashboards to Oracle Analytics Cloud (OAC) to guide procurement decisions across clinical departments."
     ],
     "projects": [
       {
@@ -298,7 +324,7 @@ const resumesData = {
       "<strong>Enterprise Power BI Dashboard Architecture: </strong>Architected an executive statewide Power BI attendance dashboard across statewide public health facilities with hierarchical top-down drill-downs (District \u2192 Facility \u2192 Designation \u2192 Employee), custom DAX measures, and dynamic KPI cards tracking avg. work hours, attendance %, and missed logins.",
       "<strong>Advanced DAX & Star Schema Modeling: </strong>Engineered a performant Star Schema data model with custom DAX time-intelligence and compliance-ratio measures, optimizing data refreshes and interactive filtering across large MariaDB employee datasets with full drill-through capability.",
       "<strong>Multi-Source SQL/ETL Pipeline: </strong>Developed automated SQL identity-resolution workflows mapping AEBAS biometric attendance IDs to State Treasury payroll codes, closing a critical cross-departmental tracking gap and categorizing bonded doctors into actionable compliance tiers.",
-      "<strong>Supply Chain & Inventory Analytics: </strong>Conducted ABC, VED, and SDE inventory categorization analysis on essential drug catalogs in OracleDB, deploying interactive dashboards to Oracle Analytics Cloud (OAC) to guide statewide procurement decisions across statewide clinical departments.",
+      "<strong>Supply Chain & Inventory Analytics: </strong>Conducted ABC, VED, and SDE inventory categorization analysis on essential drug catalogs in OracleDB, deploying interactive dashboards to Oracle Analytics Cloud (OAC) to guide procurement decisions across clinical departments.",
       "<strong>Advanced Excel Auditing & Reconciliation: </strong>Created multi-source Excel validation models with Power Query and Power Pivot to verify database extract parity, eliminating discrepancies before publishing to Power BI Service."
     ],
     "projects": [
@@ -443,7 +469,7 @@ const resumesData = {
     ],
     "exp_role": "MIS & Data Analyst Intern | Chhattisgarh Infotech Promotion Society (CHiPS)",
     "exp_bullets": [
-      "<strong>Automated Statewide MIS Workflows: </strong>Automated statewide recurring MIS reporting workflows across statewide public health facilities, consolidating attendance and payroll records into structured management reporting packages.",
+      "<strong>Automated Statewide MIS Workflows: </strong>Automated recurring MIS reporting workflows across statewide public health facilities, consolidating attendance and payroll records into structured management reporting packages.",
       "<strong>SQL/ETL Reconciliation Pipeline: </strong>Engineered an automated SQL/ETL reconciliation pipeline mapping AEBAS biometric punch IDs to State Treasury payroll records, closing a critical audit gap with 100% data fidelity.",
       "<strong>Multi-Tier Compliance Risk Model: </strong>Formulated a multi-tier compliance risk model in Excel and SQL classifying non-compliant bonded personnel, enabling leadership to initiate targeted recoveries.",
       "<strong>Multi-Source Schema Consolidation: </strong>Reconciled disparate backend database schemas across MariaDB, State Treasury, and National Next-Gen e-Hospital systems, harmonizing staff IDs and OPD operational logs.",
@@ -670,11 +696,11 @@ const aiKnowledgeBase = [
   },
   {
     keywords: ["5g", "thesis", "diffusion", "mmwave", "handover", "iiit", "naya raipur", "ddpm", "ddim", "gru", "telemetry"],
-    response: "For his **M.Tech Thesis at IIIT Naya Raipur**, Rishi developed **Proactive 5G mmWave Handover Prediction via Diffusion Models**:\n\n• **The Bottleneck:** Standard 5G networks rely on reactive countdown timers (Time-To-Trigger), causing sudden Radio Link Failures (RLF) when mmWave line-of-sight signals are blocked.\n• **The AI Architecture:** Combined a **GRU sequence encoder** (capturing spatio-temporal telemetry: RSRP, RSRQ, CINR) with a **Denoising Diffusion Probabilistic Model (DDPM/DDIM)** simulating look-forward signal degradation paths.\n• **Imbalance & Result:** Remedied severe **severe class imbalance** using **SMOTE + Tomek Links**, training a Random Forest policy engine that achieved a **high-precision F1-score** in predicting drops before radio failure occurs."
+    response: "For his **M.Tech Thesis at IIIT Naya Raipur**, Rishi developed **Proactive 5G mmWave Handover Prediction via Diffusion Models**:\n\n• **The Bottleneck:** Standard 5G networks rely on reactive countdown timers (Time-To-Trigger), causing sudden Radio Link Failures (RLF) when mmWave line-of-sight signals are blocked.\n• **The AI Architecture:** Combined a **GRU sequence encoder** (capturing spatio-temporal telemetry: RSRP, RSRQ, CINR) with a **Denoising Diffusion Probabilistic Model (DDPM/DDIM)** simulating look-forward signal degradation paths.\n• **Imbalance & Result:** Remedied **severe class imbalance** using **SMOTE + Tomek Links**, training a Random Forest policy engine that achieved a **high-precision F1-score** in predicting drops before radio failure occurs."
   },
   {
     keywords: ["career", "bot", "auto", "playwright", "crawler", "job", "ats", "apply", "openxml"],
-    response: "Rishi built **Career-Ops (`career-ops-bot`)**, an open-source autonomous recruitment and application pipeline:\n\n• **Direct ATS REST APIs:** Scans Greenhouse, Lever, Ashby, and SmartRecruiters endpoints directly, bypassing noisy commercial job boards.\n• **Link Liveness Auditor:** Concurrently checks direct APIs, HTTP headers, and comprehensive expiration regex patterns to eliminate ghost postings.\n• **Pure-Python OpenXML Engine:** Generates styled `.xlsx` workbooks using only Python's standard library (`zipfile` + raw OpenXML) with **zero pip dependencies**.\n• **Headless Playwright Auto-Apply:** Automatically handles complex React dropdowns, maps screening answers from candidate ground truth, and archives screenshot audit trails."
+    response: "Rishi built **Career-Ops (`autojobhunt`)**, an open-source autonomous recruitment and application pipeline:\n\n• **Direct ATS REST APIs:** Scans Greenhouse, Lever, Ashby, and SmartRecruiters endpoints directly, bypassing noisy commercial job boards.\n• **Link Liveness Auditor:** Concurrently checks direct APIs, HTTP headers, and comprehensive expiration regex patterns to eliminate ghost postings.\n• **Pure-Python OpenXML Engine:** Generates styled `.xlsx` workbooks using only Python's standard library (`zipfile` + raw OpenXML) with **zero pip dependencies**.\n• **Headless Playwright Auto-Apply:** Automatically handles complex React dropdowns, maps screening answers from candidate ground truth, and archives screenshot audit trails."
   },
   {
     keywords: ["stack", "sql", "database", "mariadb", "oracle", "power bi", "dax", "tool", "skill", "excel"],

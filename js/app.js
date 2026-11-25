@@ -6,12 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCockpitRouter();
   setupSplitScreenWorkbench();
   setupSqlSandbox();
-  setupScrollReveals();
   setupTaglineReveal();
   setupMobileMenu();
   setupCaseStudyModals();
   setupResumeModal();
-  setupResumeTrackSelector();
   setupPrivacyModal();
   setupStackFilter();
   setupBackToTop();
@@ -65,7 +63,6 @@ function setupThemeToggle() {
 function setupCockpitRouter() {
   const tabBtns = document.querySelectorAll(".cockpit-tab-btn");
   const views = document.querySelectorAll(".cockpit-view");
-  const mobileLinks = document.querySelectorAll(".mobile-nav-link-item a, a.mobile-nav-link-item");
 
   if (!views.length) return;
 
@@ -85,7 +82,7 @@ function setupCockpitRouter() {
     contact: "contact"
   };
 
-  const switchView = (targetView, updateHash = true) => {
+  const switchView = (targetView, updateHash = true, scrollToTop = true) => {
     const resolved = viewMap[targetView] || (validViews.includes(targetView) ? targetView : "overview");
 
     views.forEach(v => {
@@ -99,48 +96,45 @@ function setupCockpitRouter() {
     });
 
     tabBtns.forEach(btn => {
-      if (btn.dataset.view === resolved) {
-        btn.classList.add("active");
-      } else {
-        btn.classList.remove("active");
-      }
+      const isActive = btn.dataset.view === resolved;
+      btn.classList.toggle("active", isActive);
+      btn.setAttribute("aria-selected", isActive ? "true" : "false");
     });
 
     if (updateHash && window.history && window.history.replaceState) {
       window.history.replaceState(null, "", `#${resolved}`);
     }
 
-    // Scroll to top of main content smoothly
-    const mainContent = document.getElementById("main-content");
-    if (mainContent && window.scrollY > 120) {
-      mainContent.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (scrollToTop && window.scrollY > 40) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   tabBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      switchView(btn.dataset.view, true);
+      switchView(btn.dataset.view, true, true);
     });
   });
 
-  mobileLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href") || "";
-      const hash = href.replace(/^#/, "");
-      if (hash && (viewMap[hash] || validViews.includes(hash))) {
-        e.preventDefault();
-        switchView(hash, true);
-      }
-    });
+  // Handle all internal view anchor links (brandmark, mobile nav, modal CTAs)
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const hash = (link.getAttribute("href") || "").replace(/^#/, "").toLowerCase();
+    if (!hash || hash === "main-content") return;
+    if (viewMap[hash] || validViews.includes(hash)) {
+      e.preventDefault();
+      switchView(hash, true, true);
+    }
   });
 
   // Handle Hash on Load & PopState
   const handleHash = () => {
     const rawHash = (window.location.hash || "").replace(/^#/, "").toLowerCase();
-    if (rawHash) {
-      switchView(rawHash, false);
+    if (rawHash && (viewMap[rawHash] || validViews.includes(rawHash))) {
+      switchView(rawHash, false, false);
     } else {
-      switchView("overview", false);
+      switchView("overview", false, false);
     }
   };
 
@@ -148,7 +142,7 @@ function setupCockpitRouter() {
   handleHash();
 
   // Export for programmatic view changes
-  window.navigateToCockpitView = (viewName) => switchView(viewName, true);
+  window.navigateToCockpitView = (viewName) => switchView(viewName, true, true);
 }
 
 // -----------------------------------------------------------------------------
@@ -193,11 +187,14 @@ function setupSplitScreenWorkbench() {
 function setupSqlSandbox() {
   const sqlInput = document.getElementById("sqlQueryInput");
   const runBtn = document.getElementById("sqlRunBtn");
+  const csvBtn = document.getElementById("sqlCsvBtn");
   const presetBtns = document.querySelectorAll(".sql-preset-btn");
   const statusEl = document.getElementById("sqlExecStatus");
   const outputEl = document.getElementById("sqlOutputTable");
 
   if (!sqlInput || !runBtn || !outputEl) return;
+
+  let lastResultRows = [];
 
   // Curated, 100% verified ground-truth in-memory tables
   const dataset = {
@@ -216,7 +213,7 @@ function setupSqlSandbox() {
     ],
     academic_credentials: [
       { qualification: "M.Tech CSE", institution: "IIIT Naya Raipur", score_cgpa: "7.90 CGPA", period: "2024–2026", focus: "Diffusion Models & Deep Learning" },
-      { qualification: "B.Tech CSE", institution: "Amity University CG", score_cgpa: "7.71 CGPA", period: "2020–2024", focus: "DBMS, Algorithms & Data Structures" },
+      { qualification: "B.Tech CSE", institution: "Amity University CG", score_cgpa: "7.71 CGPA", period: "2019–2023", focus: "DBMS, Algorithms & Data Structures" },
       { qualification: "GATE CS 2024", institution: "National Benchmark", score_cgpa: "Qualified", period: "2024", focus: "Computer Science & IT" },
       { qualification: "IELTS Academic", institution: "IDP Education", score_cgpa: "Band 7.5 (C1)", period: "2024", focus: "Proficient English User" },
       { qualification: "AWS Certifications (Target)", institution: "Amazon Web Services", score_cgpa: "Active Upskilling", period: "2026", focus: "Cloud Practitioner & Data Engineer Associate" }
@@ -224,12 +221,25 @@ function setupSqlSandbox() {
     featured_projects: [
       { project_name: "CHiPS Attendance & Payroll", domain: "Govt. Healthcare Intelligence", core_stack: "SQL, Star Schema, Power BI, DAX", impact: "Eliminated Ghost Shifts & Salary Leakage" },
       { project_name: "Hospital Medicine Matrix", domain: "Pharmaceutical Logistics", core_stack: "OracleDB, Advanced Excel, ABC/VED", impact: "Zero Stockouts of Life-Saving Drugs" },
+      { project_name: "E-Commerce Local ELT", domain: "Analytics Engineering", core_stack: "dbt-core, Airflow, PostgreSQL, Kimball SCD2", impact: "Automated Quality Tests & Dual-Warehouse Sync" },
       { project_name: "5G mmWave Handover AI", domain: "Telecommunications & ML", core_stack: "PyTorch, GRU, DDPM Diffusion", impact: "Proactive Cell Switching Before Signal Drop" },
-      { project_name: "Career-Ops Bot Pipeline", domain: "Recruitment Automation", core_stack: "Async Python, Embeddings, OpenXML", impact: "Automated Scraping & Application Telemetry" }
+      { project_name: "AutoJobHunt Bot Pipeline", domain: "Recruitment Automation", core_stack: "Async Python, Playwright, OpenXML", impact: "Automated ATS Scraping & Application Telemetry" }
     ]
   };
 
+  const escapeHtml = (str) => String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
   const renderTable = (rows) => {
+    lastResultRows = rows || [];
+    if (csvBtn) {
+      csvBtn.disabled = !lastResultRows.length;
+      csvBtn.classList.toggle("opacity-40", !lastResultRows.length);
+    }
+
     if (!rows || !rows.length) {
       outputEl.innerHTML = `<p class="p-4 text-xs font-mono text-muted-foreground">0 rows returned.</p>`;
       return;
@@ -238,14 +248,14 @@ function setupSqlSandbox() {
     const headers = Object.keys(rows[0]);
     let html = `<div class="overflow-x-auto"><table class="sql-result-table"><thead><tr>`;
     headers.forEach(h => {
-      html += `<th>${h.replace(/_/g, " ")}</th>`;
+      html += `<th>${escapeHtml(h.replace(/_/g, " "))}</th>`;
     });
     html += `</tr></thead><tbody>`;
 
     rows.forEach(row => {
       html += `<tr>`;
       headers.forEach(h => {
-        html += `<td>${row[h]}</td>`;
+        html += `<td>${escapeHtml(row[h])}</td>`;
       });
       html += `</tr>`;
     });
@@ -254,34 +264,63 @@ function setupSqlSandbox() {
     outputEl.innerHTML = html;
   };
 
+  const resolveTable = (name) => {
+    const clean = (name || "").toLowerCase().replace(/[`"';]/g, "");
+    if (dataset[clean]) return clean;
+    if (["skills", "capabilities", "tech_stack"].includes(clean)) return "technical_capabilities";
+    if (["chips", "architecture", "chips_pipeline"].includes(clean)) return "chips_architecture";
+    if (["credentials", "education", "certifications"].includes(clean)) return "academic_credentials";
+    if (["projects"].includes(clean)) return "featured_projects";
+    return null;
+  };
+
   const executeSql = () => {
-    const raw = sqlInput.value.trim().toLowerCase();
+    const rawInput = sqlInput.value.trim().replace(/;+\s*$/, "");
+    const lower = rawInput.toLowerCase();
     const startTime = performance.now();
 
-    // Match query table name
-    let matchedKey = null;
-    if (raw.includes("technical_capabilities") || raw.includes("skills") || raw.includes("capabilities")) {
-      matchedKey = "technical_capabilities";
-    } else if (raw.includes("chips_architecture") || raw.includes("chips") || raw.includes("architecture")) {
-      matchedKey = "chips_architecture";
-    } else if (raw.includes("academic_credentials") || raw.includes("credentials") || raw.includes("education")) {
-      matchedKey = "academic_credentials";
-    } else if (raw.includes("featured_projects") || raw.includes("projects")) {
-      matchedKey = "featured_projects";
+    // Support SHOW TABLES or \dt
+    if (lower === "show tables" || lower === "\\dt") {
+      const metaRows = Object.entries(dataset).map(([tableName, tableRows]) => ({
+        table_name: tableName,
+        row_count: tableRows.length,
+        columns: Object.keys(tableRows[0]).join(", ")
+      }));
+      const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
+      renderTable(metaRows);
+      if (statusEl) {
+        statusEl.innerHTML = `<span class="text-emerald-500 font-semibold">Query OK</span> · ${metaRows.length} tables listed in <span class="text-primary font-mono">${elapsed}ms</span>`;
+      }
+      return;
     }
 
-    const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
-
-    if (matchedKey && dataset[matchedKey]) {
-      const data = dataset[matchedKey];
-      renderTable(data);
-      if (statusEl) {
-        statusEl.innerHTML = `<span class="text-emerald-500 font-semibold">Query OK</span> · ${data.length} rows returned in <span class="text-primary font-mono">${elapsed}ms</span>`;
-      }
-    } else {
+    // Parse SELECT <cols> FROM <table> [WHERE ...] [ORDER BY ...] [LIMIT n]
+    const selectMatch = rawInput.match(/^select\s+([\s\S]+?)\s+from\s+([a-zA-Z0-9_`"]+)(?:\s+([\s\S]+))?$/i);
+    if (!selectMatch) {
+      const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
+      renderTable([]);
       outputEl.innerHTML = `
         <div class="p-4 space-y-2 text-xs font-mono">
-          <p class="text-rose-500 font-semibold">Error: Table not found or syntax unrecognized.</p>
+          <p class="text-rose-500 font-semibold">Syntax Error: Expected SELECT &lt;columns&gt; FROM &lt;table&gt; [WHERE ...] [ORDER BY ...] [LIMIT n] or SHOW TABLES.</p>
+          <p class="text-muted-foreground">Available tables: <code class="text-primary">technical_capabilities</code>, <code class="text-primary">chips_architecture</code>, <code class="text-primary">academic_credentials</code>, <code class="text-primary">featured_projects</code></p>
+        </div>
+      `;
+      if (statusEl) {
+        statusEl.innerHTML = `<span class="text-rose-500">Syntax Error</span> · Execution halted in ${elapsed}ms`;
+      }
+      return;
+    }
+
+    const colsRaw = selectMatch[1].trim();
+    const tableKey = resolveTable(selectMatch[2]);
+    const tail = (selectMatch[3] || "").trim();
+
+    if (!tableKey || !dataset[tableKey]) {
+      const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
+      renderTable([]);
+      outputEl.innerHTML = `
+        <div class="p-4 space-y-2 text-xs font-mono">
+          <p class="text-rose-500 font-semibold">Error: Relation "${escapeHtml(selectMatch[2])}" does not exist.</p>
           <p class="text-muted-foreground">Available query tables:</p>
           <ul class="text-primary list-disc list-inside space-y-1">
             <li><code>technical_capabilities</code></li>
@@ -292,8 +331,87 @@ function setupSqlSandbox() {
         </div>
       `;
       if (statusEl) {
-        statusEl.innerHTML = `<span class="text-rose-500">Syntax Error</span> · Execution halted in ${elapsed}ms`;
+        statusEl.innerHTML = `<span class="text-rose-500">Relation Error</span> · Execution halted in ${elapsed}ms`;
       }
+      return;
+    }
+
+    let rows = dataset[tableKey].map(r => ({ ...r }));
+
+    // Optional WHERE col LIKE '%val%' | col = 'val'
+    const whereMatch = tail.match(/\bwhere\s+([a-zA-Z0-9_]+)\s+(=|like)\s+['"]([^'"]*)['"]/i);
+    if (whereMatch) {
+      const [, whereCol, op, val] = whereMatch;
+      const colLower = whereCol.toLowerCase();
+      rows = rows.filter(row => {
+        const matchedProp = Object.keys(row).find(k => k.toLowerCase() === colLower);
+        if (!matchedProp) return false;
+        const cellVal = String(row[matchedProp]).toLowerCase();
+        const needle = val.toLowerCase();
+        if (op.toLowerCase() === "like") {
+          const regexStr = "^" + needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/%/g, ".*").replace(/_/g, ".") + "$";
+          return new RegExp(regexStr, "i").test(cellVal);
+        }
+        return cellVal === needle;
+      });
+    }
+
+    // Optional ORDER BY col [ASC|DESC]
+    const orderMatch = tail.match(/\border\s+by\s+([a-zA-Z0-9_]+)(?:\s+(asc|desc))?/i);
+    if (orderMatch) {
+      const [, orderCol, dir] = orderMatch;
+      const colLower = orderCol.toLowerCase();
+      const desc = (dir || "asc").toLowerCase() === "desc";
+      rows.sort((a, b) => {
+        const prop = Object.keys(a).find(k => k.toLowerCase() === colLower);
+        if (!prop) return 0;
+        return desc
+          ? String(b[prop]).localeCompare(String(a[prop]))
+          : String(a[prop]).localeCompare(String(b[prop]));
+      });
+    }
+
+    // COUNT(*) aggregation
+    if (/^count\(\s*\*\s*\)(?:\s+as\s+([a-zA-Z0-9_]+))?$/i.test(colsRaw)) {
+      const aliasMatch = colsRaw.match(/\bas\s+([a-zA-Z0-9_]+)$/i);
+      const alias = aliasMatch ? aliasMatch[1] : "total_rows";
+      rows = [{ [alias]: rows.length }];
+    } else if (colsRaw !== "*") {
+      // Column projection
+      const requestedCols = colsRaw.split(",").map(c => c.trim().toLowerCase()).filter(Boolean);
+      const sampleKeys = rows.length ? Object.keys(rows[0]) : Object.keys(dataset[tableKey][0]);
+      const validCols = requestedCols
+        .map(rc => sampleKeys.find(k => k.toLowerCase() === rc))
+        .filter(Boolean);
+
+      if (!validCols.length) {
+        const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
+        renderTable([]);
+        outputEl.innerHTML = `<p class="p-4 text-xs font-mono text-rose-500">Error: Requested column(s) not found in ${escapeHtml(tableKey)}. Available: ${escapeHtml(sampleKeys.join(", "))}</p>`;
+        if (statusEl) statusEl.innerHTML = `<span class="text-rose-500">Column Error</span> · ${elapsed}ms`;
+        return;
+      }
+
+      rows = rows.map(row => {
+        const projected = {};
+        validCols.forEach(c => { projected[c] = row[c]; });
+        return projected;
+      });
+    }
+
+    // Optional LIMIT N
+    const limitMatch = tail.match(/\blimit\s+(\d+)/i);
+    if (limitMatch) {
+      const limit = parseInt(limitMatch[1], 10);
+      if (!isNaN(limit) && limit >= 0) {
+        rows = rows.slice(0, limit);
+      }
+    }
+
+    const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
+    renderTable(rows);
+    if (statusEl) {
+      statusEl.innerHTML = `<span class="text-emerald-500 font-semibold">Query OK</span> · ${rows.length} row${rows.length === 1 ? "" : "s"} returned in <span class="text-primary font-mono">${elapsed}ms</span>`;
     }
   };
 
@@ -308,44 +426,41 @@ function setupSqlSandbox() {
   });
 
   runBtn.addEventListener("click", executeSql);
+  sqlInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      executeSql();
+    }
+  });
+
+  if (csvBtn) {
+    csvBtn.addEventListener("click", () => {
+      if (!lastResultRows.length) return;
+      const headers = Object.keys(lastResultRows[0]);
+      const csvLines = [
+        headers.join(","),
+        ...lastResultRows.map(row =>
+          headers.map(h => `"${String(row[h]).replace(/"/g, '""')}"`).join(",")
+        )
+      ];
+      const blob = new Blob([csvLines.join("\n")], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "rishi_thakur_query_result.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+  }
 
   // Initial execution on first load
   executeSql();
 }
 
 // -----------------------------------------------------------------------------
-// 5. Scroll Reveals Engine
-// -----------------------------------------------------------------------------
-function setupScrollReveals() {
-  const reveals = document.querySelectorAll(".reveal-on-scroll");
-  if (!reveals.length) return;
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    reveals.forEach(el => el.classList.add("is-revealed"));
-    return;
-  }
-
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-revealed");
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: "0px 0px -30px 0px"
-    });
-
-    reveals.forEach(el => observer.observe(el));
-  } else {
-    reveals.forEach(el => el.classList.add("is-revealed"));
-  }
-}
-
-// -----------------------------------------------------------------------------
-// 6. Tagline Word-by-Word Scroll Reveal
+// 5. Tagline Word-by-Word Scroll Reveal
 // -----------------------------------------------------------------------------
 function setupTaglineReveal() {
   const words = document.querySelectorAll(".tagline-word");
@@ -437,8 +552,11 @@ function setupCaseStudyModals() {
 
   if (!modal) return;
 
+  let lastFocusedEl = null;
+
   triggerBtns.forEach(btn => {
     btn.addEventListener("click", () => {
+      lastFocusedEl = document.activeElement;
       const studyKey = btn.dataset.study;
       const data = typeof caseStudiesData !== "undefined" ? caseStudiesData[studyKey] : null;
       if (!data) return;
@@ -521,6 +639,7 @@ function setupCaseStudyModals() {
       modal.classList.remove("hidden");
       modal.classList.add("flex");
       document.body.style.overflow = "hidden";
+      if (closeBtn) closeBtn.focus();
     });
   });
 
@@ -528,6 +647,9 @@ function setupCaseStudyModals() {
     modal.classList.add("hidden");
     modal.classList.remove("flex");
     document.body.style.overflow = "";
+    if (lastFocusedEl && typeof lastFocusedEl.focus === "function") {
+      lastFocusedEl.focus();
+    }
   };
 
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
@@ -663,11 +785,11 @@ function setupResumeModal() {
                 <span class="text-muted-foreground ml-1">(Amity University Chhattisgarh)</span>
               </div>
               <div class="font-mono text-muted-foreground">
-                <span class="text-foreground font-semibold">CGPA: 7.71</span> • <span>2020 – 2024</span>
+                <span class="text-foreground font-semibold">CGPA: 7.71</span> • <span>2019 – 2023</span>
               </div>
             </div>
             <div class="pt-1 text-muted-foreground">
-              <span class="font-semibold text-foreground">Accreditations: </span>GATE CS 2024 Qualified • IELTS Academic Band 7.5 (CEFR C1)
+              <span class="font-semibold text-foreground">Accreditations: </span>GATE CS 2024 Qualified • IELTS Academic Band 7.5 (CEFR C1) • Upskilling: AWS Cloud &amp; Data Engineer Associate
             </div>
           </div>
         </div>
@@ -675,13 +797,17 @@ function setupResumeModal() {
     `;
   };
 
+  let lastFocusedResumeEl = null;
+
   triggerBtns.forEach(btn => {
     btn.addEventListener("click", () => {
+      lastFocusedResumeEl = document.activeElement;
       const track = btn.dataset.resume || "data_analyst";
       renderResumeTrack(track);
       modal.classList.remove("hidden");
       modal.classList.add("flex");
       document.body.style.overflow = "hidden";
+      if (closeBtn) closeBtn.focus();
     });
   });
 
@@ -695,6 +821,9 @@ function setupResumeModal() {
     modal.classList.add("hidden");
     modal.classList.remove("flex");
     document.body.style.overflow = "";
+    if (lastFocusedResumeEl && typeof lastFocusedResumeEl.focus === "function") {
+      lastFocusedResumeEl.focus();
+    }
   };
 
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
@@ -707,36 +836,7 @@ function setupResumeModal() {
 }
 
 // -----------------------------------------------------------------------------
-// 10. Interactive Resume Track Selector Dropdown
-// -----------------------------------------------------------------------------
-function setupResumeTrackSelector() {
-  const select = document.getElementById("resumeTrackSelect");
-  if (!select || typeof resumesData === "undefined") return;
-
-  const titleEl = document.getElementById("trackTitle");
-  const descEl = document.getElementById("trackDesc");
-  const viewAtsBtn = document.getElementById("trackViewAtsBtn");
-  const pdfBtn = document.getElementById("trackPdfBtn");
-  const tabBtn = document.getElementById("trackTabBtn");
-
-  select.addEventListener("change", () => {
-    const key = select.value;
-    const r = resumesData[key];
-    if (!r) return;
-
-    if (titleEl) titleEl.textContent = `${r.role} Resume`;
-    if (descEl) descEl.textContent = r.summary || "";
-    if (viewAtsBtn) viewAtsBtn.dataset.resume = key;
-    if (pdfBtn) {
-      pdfBtn.href = r.pdf;
-      pdfBtn.download = r.pdf.split("/").pop();
-    }
-    if (tabBtn) tabBtn.href = r.pdf;
-  });
-}
-
-// -----------------------------------------------------------------------------
-// 11. Privacy Modal Engine
+// 10. Privacy Modal Engine
 // -----------------------------------------------------------------------------
 function setupPrivacyModal() {
   const modal = document.getElementById("privacyModal");
@@ -745,17 +845,24 @@ function setupPrivacyModal() {
 
   if (!modal || !triggerBtn) return;
 
+  let lastFocusedPrivacyEl = null;
+
   const open = (e) => {
     if (e) e.preventDefault();
+    lastFocusedPrivacyEl = document.activeElement;
     modal.classList.remove("hidden");
     modal.classList.add("flex");
     document.body.style.overflow = "hidden";
+    if (closeBtn) closeBtn.focus();
   };
 
   const close = () => {
     modal.classList.add("hidden");
     modal.classList.remove("flex");
     document.body.style.overflow = "";
+    if (lastFocusedPrivacyEl && typeof lastFocusedPrivacyEl.focus === "function") {
+      lastFocusedPrivacyEl.focus();
+    }
   };
 
   triggerBtn.addEventListener("click", open);

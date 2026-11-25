@@ -635,6 +635,15 @@ portfolio/
   3. **SQL Sandbox Virtual Schema:** Updated `technical_capabilities` and `academic_credentials` datasets with AWS Cloud Data Stack (S3, Athena, Glue, Redshift) and target certification metadata.
   4. **Toolchain Grid:** Added highlighted AWS Cloud Data Stack pill with animated active pulse.
 
+### Milestone 31: Full Codebase Audit, Ground-Truth Alignment & SQL Parser Upgrade
+* **Implementation Date:** November 25, 2026
+* **Key Fixes & Improvements:**
+  1. **Ground-Truth & Broken Links Fixed:** Corrected B.Tech graduation dates (`2019–2023`, Amity University Chhattisgarh) across `index.html`, `js/app.js`, and GitHub Profile README; fixed broken `career-ops-bot` GitHub URLs to `autojobhunt`; added `ecommerce-elt-local` to Project Laboratory, `caseStudiesData`, and SQL Sandbox; added `AI-Text-Detection` GitHub URL to `textnlp` case study.
+  2. **Public Repo Hygiene (`README.md`):** Removed stale internal metrics (`33 districts`, `1,000+ facilities`, `5 healthcare departments`, `97.64%`) from `README.md` and updated documentation to match Midnight Analytics Slate & the Analytics Cockpit.
+  3. **Real Client-Side SQL Engine:** Replaced simple substring matching in `js/app.js` with a true client-side SQL parser supporting `SELECT <cols|*|COUNT(*)>`, `WHERE ... LIKE / =`, `ORDER BY`, `LIMIT`, `SHOW TABLES`, `Enter` key execution, and CSV export (`#sqlCsvBtn`).
+  4. **CSS Cascade & Print Fixes:** Wrapped named typography utilities in `@layer components` in `css/styles.css` so Tailwind responsive sizes work cleanly on mobile; removed invalid `sm:heading-2` class; fixed stale print stylesheet selectors; loaded only Phosphor regular stylesheet instead of 6-weight JS injector.
+  5. **Accessibility & Keyboard UX:** Converted interactive `<div>` steppers and capability cards to native `<button type="button">` elements; added focus restoration on modals; added `MIS Analyst` tab to `#resumeModal`; synced `assets/Rishi_Thakur_Resume.pdf` with Data Analyst PDF; removed redundant `.github/workflows/deploy.yml` conflicting with legacy GitHub Pages branch builds.
+
 ## 4. Next Steps & Technical Roadmap
 
 The following incremental enhancements are queued for execution:

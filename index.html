@@ -34,8 +34,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Phosphor Icons CDN -->
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+  <!-- Phosphor Icons CDN (Regular weight only) -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 
   <!-- Tailwind CSS Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -306,48 +306,48 @@
 
       <!-- 4 Analytical Engineering Capabilities Cards -->
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-2">
-        <div class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5 cursor-pointer" onclick="window.navigateToCockpitView('workbench')">
-          <div class="flex items-center justify-between">
+        <button type="button" class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5 cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" onclick="window.navigateToCockpitView('workbench')">
+          <div class="flex items-center justify-between w-full">
             <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">01. Ingestion</span>
             <span class="text-xs font-mono text-emerald-500 font-medium">Validated</span>
           </div>
           <p class="title-4 text-sm font-semibold text-foreground tracking-tight">Multi Source Extraction</p>
           <p class="body-6 text-xs text-muted-foreground leading-relaxed">Reconciled statewide biometric attendance with treasury payroll codes.</p>
-        </div>
+        </button>
 
-        <div class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5 cursor-pointer" onclick="window.navigateToCockpitView('workbench')">
-          <div class="flex items-center justify-between">
+        <button type="button" class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5 cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" onclick="window.navigateToCockpitView('workbench')">
+          <div class="flex items-center justify-between w-full">
             <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">02. Schema</span>
             <span class="text-xs font-mono text-primary font-medium">Kimball Star</span>
           </div>
           <p class="title-4 text-sm font-semibold text-foreground tracking-tight">Dimensional Warehouse</p>
           <p class="body-6 text-xs text-muted-foreground leading-relaxed">Structured Fact and Dimension tables for sub-second analytical reporting.</p>
-        </div>
+        </button>
 
-        <div class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5 cursor-pointer" onclick="window.navigateToCockpitView('workbench')">
-          <div class="flex items-center justify-between">
+        <button type="button" class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5 cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" onclick="window.navigateToCockpitView('workbench')">
+          <div class="flex items-center justify-between w-full">
             <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">03. Logic</span>
             <span class="text-xs font-mono text-amber-500 font-medium">3 Risk Tiers</span>
           </div>
           <p class="title-4 text-sm font-semibold text-foreground tracking-tight">DAX Risk Formulations</p>
           <p class="body-6 text-xs text-muted-foreground leading-relaxed">Engineered presence compliance metrics and consecutive absence alerts.</p>
-        </div>
+        </button>
 
-        <div class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5 cursor-pointer" onclick="window.navigateToCockpitView('workbench')">
-          <div class="flex items-center justify-between">
+        <button type="button" class="glow-card p-4 rounded-xl border border-border bg-card space-y-1.5 cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" onclick="window.navigateToCockpitView('workbench')">
+          <div class="flex items-center justify-between w-full">
             <span class="text-xs font-mono uppercase tracking-wider text-primary font-semibold">04. Visual BI</span>
             <span class="text-xs font-mono text-primary font-medium">Executive BI</span>
           </div>
           <p class="title-4 text-sm font-semibold text-foreground tracking-tight">Executive Cockpits</p>
           <p class="body-6 text-xs text-muted-foreground leading-relaxed">Multi-level drilldown dashboards from state leadership to clinical shifts.</p>
-        </div>
+        </button>
       </div>
 
       <!-- Philosophy Tagline Reveal Moment -->
       <div class="py-12 border-t border-border/40 text-center">
         <div class="max-w-[680px] mx-auto space-y-3">
           <span class="newtemplate-tag">Core Philosophy</span>
-          <h2 id="taglineReveal" class="heading-3 sm:heading-2 font-semibold tracking-tight text-foreground leading-tight select-none">
+          <h2 id="taglineReveal" class="heading-3 text-3xl sm:text-5xl font-semibold tracking-tight text-foreground leading-tight select-none">
             <span class="tagline-word">Data</span>
             <span class="tagline-word">without</span>
             <span class="tagline-word">a</span>
@@ -409,7 +409,7 @@
 
           <!-- Interactive Chapters Stepper -->
           <div class="space-y-2.5">
-            <div class="workbench-stepper-btn stepper-item active p-3 rounded-lg border border-border bg-card/60" data-chapter="pipeline">
+            <button type="button" class="workbench-stepper-btn stepper-item active p-3 rounded-lg border border-border bg-card/60 text-left w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-chapter="pipeline">
               <div class="flex items-center justify-between text-xs font-mono">
                 <span class="text-primary font-bold">Chapter 1</span>
                 <span class="text-muted-foreground text-[11px]">Extraction</span>
@@ -418,9 +418,9 @@
               <p class="body-6 text-xs text-muted-foreground mt-1 leading-relaxed">
                 Automated daily pulls uniting isolated biometric databases and treasury payroll codes into MariaDB staging.
               </p>
-            </div>
+            </button>
 
-            <div class="workbench-stepper-btn stepper-item p-3 rounded-lg border border-border bg-card/60" data-chapter="entity">
+            <button type="button" class="workbench-stepper-btn stepper-item p-3 rounded-lg border border-border bg-card/60 text-left w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-chapter="entity">
               <div class="flex items-center justify-between text-xs font-mono">
                 <span class="text-primary font-bold">Chapter 2</span>
                 <span class="text-muted-foreground text-[11px]">Resolution</span>
@@ -429,9 +429,9 @@
               <p class="body-6 text-xs text-muted-foreground mt-1 leading-relaxed">
                 Engineered complex SQL string cleaning, CTEs, and deterministic key matching to resolve orphaned payroll records.
               </p>
-            </div>
+            </button>
 
-            <div class="workbench-stepper-btn stepper-item p-3 rounded-lg border border-border bg-card/60" data-chapter="schema">
+            <button type="button" class="workbench-stepper-btn stepper-item p-3 rounded-lg border border-border bg-card/60 text-left w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-chapter="schema">
               <div class="flex items-center justify-between text-xs font-mono">
                 <span class="text-primary font-bold">Chapter 3</span>
                 <span class="text-muted-foreground text-[11px]">Modeling</span>
@@ -440,9 +440,9 @@
               <p class="body-6 text-xs text-muted-foreground mt-1 leading-relaxed">
                 Centralized <code class="text-xs font-mono text-primary">Fact_Attendance_Daily</code> surrounded by normalized Date, Facility, and Employee dimensions.
               </p>
-            </div>
+            </button>
 
-            <div class="workbench-stepper-btn stepper-item p-3 rounded-lg border border-border bg-card/60" data-chapter="cockpit">
+            <button type="button" class="workbench-stepper-btn stepper-item p-3 rounded-lg border border-border bg-card/60 text-left w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" data-chapter="cockpit">
               <div class="flex items-center justify-between text-xs font-mono">
                 <span class="text-primary font-bold">Chapter 4</span>
                 <span class="text-muted-foreground text-[11px]">Decision BI</span>
@@ -451,7 +451,7 @@
               <p class="body-6 text-xs text-muted-foreground mt-1 leading-relaxed">
                 DAX compliance ratios and 3-tier defaulter models powering interactive drilldowns for state health leadership.
               </p>
-            </div>
+            </button>
           </div>
 
           <!-- Public Policy Finding Callout -->
@@ -701,19 +701,22 @@ SELECT * FROM MatchedPayroll;</code></pre>
         
         <!-- Preset Query Pills -->
         <div class="space-y-1.5">
-          <span class="text-[11px] font-mono text-muted-foreground uppercase">Query Presets (Click to Execute):</span>
+          <span class="text-[11px] font-mono text-muted-foreground uppercase">Query Presets (Supports SELECT, WHERE, LIKE, ORDER BY, LIMIT, SHOW TABLES):</span>
           <div class="flex flex-wrap items-center gap-1.5">
-            <button class="sql-preset-btn px-2.5 py-1 rounded text-xs font-mono bg-card hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-query="SELECT * FROM technical_capabilities;">
+            <button type="button" class="sql-preset-btn px-2.5 py-1 rounded text-xs font-mono bg-card hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-query="SELECT * FROM technical_capabilities;">
               <span>technical_capabilities</span>
             </button>
-            <button class="sql-preset-btn px-2.5 py-1 rounded text-xs font-mono bg-card hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-query="SELECT * FROM chips_architecture;">
+            <button type="button" class="sql-preset-btn px-2.5 py-1 rounded text-xs font-mono bg-card hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-query="SELECT * FROM chips_architecture;">
               <span>chips_architecture</span>
             </button>
-            <button class="sql-preset-btn px-2.5 py-1 rounded text-xs font-mono bg-card hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-query="SELECT * FROM academic_credentials;">
+            <button type="button" class="sql-preset-btn px-2.5 py-1 rounded text-xs font-mono bg-card hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-query="SELECT * FROM academic_credentials;">
               <span>academic_credentials</span>
             </button>
-            <button class="sql-preset-btn px-2.5 py-1 rounded text-xs font-mono bg-card hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-query="SELECT * FROM featured_projects;">
-              <span>featured_projects</span>
+            <button type="button" class="sql-preset-btn px-2.5 py-1 rounded text-xs font-mono bg-card hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-query="SELECT project_name, domain, core_stack FROM featured_projects ORDER BY project_name ASC LIMIT 4;">
+              <span>featured_projects (filtered)</span>
+            </button>
+            <button type="button" class="sql-preset-btn px-2.5 py-1 rounded text-xs font-mono bg-card hover:bg-primary hover:text-primary-foreground border border-border transition-colors cursor-pointer" data-query="SHOW TABLES;">
+              <span>SHOW TABLES</span>
             </button>
           </div>
         </div>
@@ -721,19 +724,26 @@ SELECT * FROM MatchedPayroll;</code></pre>
         <!-- Query Input Bar -->
         <div class="flex items-center gap-2 pt-2">
           <div class="relative flex-grow">
+            <label for="sqlQueryInput" class="sr-only">SQL Query Input</label>
             <span class="absolute left-3 top-2.5 font-mono text-primary font-bold text-xs">SQL &gt;</span>
-            <input type="text" id="sqlQueryInput" value="SELECT * FROM technical_capabilities;" class="w-full pl-14 pr-3 py-2 rounded-lg bg-card border border-input text-foreground font-mono text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Type SQL query...">
+            <input type="text" id="sqlQueryInput" value="SELECT * FROM technical_capabilities;" class="w-full pl-14 pr-3 py-2 rounded-lg bg-card border border-input text-foreground font-mono text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Type SQL query (press Enter to run)...">
           </div>
-          <button id="sqlRunBtn" class="btn-primary text-xs font-mono px-4 py-2 shrink-0 cursor-pointer">
+          <button type="button" id="sqlRunBtn" class="btn-primary text-xs font-mono px-4 py-2 shrink-0 cursor-pointer">
             <i class="ph ph-play"></i>
             <span>Run Query</span>
           </button>
         </div>
 
         <!-- Execution Status Bar -->
-        <div class="flex items-center justify-between text-xs font-mono border-t border-border/50 pt-2 text-muted-foreground">
+        <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono border-t border-border/50 pt-2 text-muted-foreground">
           <span id="sqlExecStatus">Ready</span>
-          <span>Engine: In-Memory Relational VM</span>
+          <div class="flex items-center gap-3">
+            <button type="button" id="sqlCsvBtn" class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-card border border-border hover:border-primary hover:text-primary transition-colors text-[11px] cursor-pointer">
+              <i class="ph ph-download-simple"></i>
+              <span>Export CSV</span>
+            </button>
+            <span class="hidden sm:inline">Engine: Client SQL Parser</span>
+          </div>
         </div>
 
         <!-- Tabular Output Display -->
@@ -868,7 +878,7 @@ SELECT * FROM MatchedPayroll;</code></pre>
                 Telecommunications &amp; ML
               </span>
               <span class="text-xs font-mono text-muted-foreground">Predictive Telemetry</span>
-              <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2024</span>
+              <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2024–2026</span>
             </div>
             <div class="flex items-center gap-2 self-start sm:self-auto">
               <a href="https://github.com/rishi-th219/Proactive-Handover-Prediction-in-5G-using-Diffusion-Models" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono text-muted-foreground hover:text-foreground bg-secondary hover:bg-secondary/80 border border-border transition-all duration-200 group">
@@ -919,12 +929,12 @@ SELECT * FROM MatchedPayroll;</code></pre>
               <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2025</span>
             </div>
             <div class="flex items-center gap-2 self-start sm:self-auto">
-              <a href="https://github.com/rishi-th219/career-ops-bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono text-muted-foreground hover:text-foreground bg-secondary hover:bg-secondary/80 border border-border transition-all duration-200 group">
+              <a href="https://github.com/rishi-th219/autojobhunt" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono text-muted-foreground hover:text-foreground bg-secondary hover:bg-secondary/80 border border-border transition-all duration-200 group">
                 <i class="ph ph-github-logo"></i>
                 <span>GitHub</span>
                 <i class="ph ph-arrow-up-right glide-arrow"></i>
               </a>
-              <button class="view-case-study-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group cursor-pointer" data-study="career_ops_bot">
+              <button type="button" class="view-case-study-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group cursor-pointer" data-study="career_ops_bot">
                 <span>Read Case Study</span>
                 <i class="ph ph-arrow-right glide-arrow"></i>
               </button>
@@ -952,6 +962,54 @@ SELECT * FROM MatchedPayroll;</code></pre>
             <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
               <span class="text-muted-foreground uppercase text-xs block">Operational Finding</span>
               <span class="text-foreground font-medium mt-0.5 block">Eliminated manual search by automatically filtering top relevant roles</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: E-Commerce Local ELT Warehouse -->
+        <div class="glow-card p-5 sm:p-6 rounded-2xl border border-border bg-card space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-primary/10 text-primary text-xs font-mono font-medium border border-primary/20">
+                Data Engineering &amp; dbt
+              </span>
+              <span class="text-xs font-mono text-muted-foreground">Dimensional Warehouse</span>
+              <span class="text-xs font-mono text-muted-foreground border-l border-border/60 pl-2">2026</span>
+            </div>
+            <div class="flex items-center gap-2 self-start sm:self-auto">
+              <a href="https://github.com/rishi-th219/ecommerce-elt-local" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono text-muted-foreground hover:text-foreground bg-secondary hover:bg-secondary/80 border border-border transition-all duration-200 group">
+                <i class="ph ph-github-logo"></i>
+                <span>GitHub</span>
+                <i class="ph ph-arrow-up-right glide-arrow"></i>
+              </a>
+              <button type="button" class="view-case-study-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground border border-primary/20 transition-all duration-200 group cursor-pointer" data-study="ecommerce_elt">
+                <span>Read Case Study</span>
+                <i class="ph ph-arrow-right glide-arrow"></i>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="title-3 text-base sm:text-lg font-semibold text-foreground tracking-tight">
+              Production-Grade Local ELT Data Warehouse (ecommerce-elt-local)
+            </h3>
+            <p class="body-5 text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1.5">
+              Containerized dual-warehouse ELT pipeline featuring Apache Airflow orchestration, PostgreSQL 16 &amp; MSSQL 2025 storage, dbt-core Kimball SCD Type 2 models, automated data quality tests, and Metabase BI dashboards.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs font-mono">
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Analytical Question</span>
+              <span class="text-foreground font-medium mt-0.5 block">Tracking historical customer &amp; session attribution with SCD Type 2 lineage</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Modeling Approach</span>
+              <span class="text-foreground font-medium mt-0.5 block">Airflow DAGs, dbt-core Kimball dimensional marts, and automated schema assertions</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-secondary/50 border border-border">
+              <span class="text-muted-foreground uppercase text-xs block">Operational Finding</span>
+              <span class="text-foreground font-medium mt-0.5 block">Reproducible containerized warehouse feeding Metabase cohort dashboards</span>
             </div>
           </div>
         </div>
@@ -1003,7 +1061,7 @@ SELECT * FROM MatchedPayroll;</code></pre>
                 <h4 class="title-4 text-sm font-semibold text-foreground">B.Tech in Computer Science &amp; Engineering</h4>
                 <span class="text-xs font-mono text-primary font-semibold">CGPA 7.71</span>
               </div>
-              <p class="text-xs font-mono text-muted-foreground">Amity University Chhattisgarh · 2020–2024</p>
+              <p class="text-xs font-mono text-muted-foreground">Amity University Chhattisgarh · 2019–2023</p>
               <p class="body-6 text-xs text-muted-foreground leading-relaxed">
                 Foundations in Data Structures, Relational Database Management Systems (SQL), Operating Systems, and Object-Oriented Programming.
               </p>
@@ -1309,7 +1367,8 @@ SELECT * FROM MatchedPayroll;</code></pre>
         <button class="resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border" data-resume-tab="sql_developer">SQL Developer</button>
         <button class="resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border" data-resume-tab="powerbi_developer">Power BI</button>
         <button class="resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border" data-resume-tab="data_science">Data Science</button>
-        <button class="resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border" data-resume-tab="ml_engineer">ML Engineer</button>
+        <button type="button" class="resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border" data-resume-tab="ml_engineer">ML Engineer</button>
+        <button type="button" class="resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono border bg-secondary text-muted-foreground border-border" data-resume-tab="mis_analyst">MIS Analyst</button>
       </div>
 
       <div id="resumeModalBody" class="py-5 text-left font-sans">

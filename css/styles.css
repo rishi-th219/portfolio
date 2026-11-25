@@ -1,11 +1,11 @@
 /* ==========================================================================
-   RISHI THAKUR — EXECUTIVE PORTFOLIO DESIGN SYSTEM
-   Theme & Styling based on ai-design-skills & NewTemplate Standards
-   Pitch Black (#09090b), Pure Crisp White (#f8fafc), and Glowing Teal (#14b8a6)
+   RISHI THAKUR — ANALYTICS COCKPIT DESIGN SYSTEM
+   Theme & Styling: Midnight Analytics Slate (#080c14 / #3b82f6 / #0ea5e9)
+   Light Editorial Data Research (#f8fafc / #2563eb / #0ea5e9)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Design Tokens & HSL Color System (NewTemplate: Pitch Black & Vibrant Teal)
+   1. Design Tokens & HSL Color System (Midnight Analytics Slate & Editorial Light)
    -------------------------------------------------------------------------- */
 :root {
   color-scheme: light;
@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Geist", sans-serif;
 }
 
-p, li, span, label {
+p, li {
   text-wrap: pretty;
 }
 
@@ -130,38 +130,40 @@ code, pre, .font-mono {
 }
 
 /* --------------------------------------------------------------------------
-   B1 Named Typography Styles (Tailwind scale snapping, no arbitrary sizes)
+   B1 Named Typography Styles (Layered so responsive Tailwind utilities override cleanly)
    -------------------------------------------------------------------------- */
-.heading-1 { font-size: 3.75rem; line-height: 3.75rem; font-weight: 600; text-wrap: balance; } /* 60 / 60 */
-.heading-2 { font-size: 3rem; line-height: 3rem; font-weight: 600; text-wrap: balance; } /* 48 / 48 */
-.heading-3 { font-size: 2.25rem; line-height: 2.5rem; font-weight: 600; text-wrap: balance; } /* 36 / 40 */
-.heading-4 { font-size: 1.875rem; line-height: 2.25rem; font-weight: 600; text-wrap: balance; } /* 30 / 36 */
-.heading-5 { font-size: 1.5rem; line-height: 2rem; font-weight: 600; text-wrap: balance; } /* 24 / 32 */
-.heading-6 { font-size: 1.25rem; line-height: 1.75rem; font-weight: 600; text-wrap: balance; } /* 20 / 28 */
+@layer components {
+  .heading-1 { font-size: 3.75rem; line-height: 1.05; font-weight: 600; text-wrap: balance; }
+  .heading-2 { font-size: 3rem; line-height: 1.08; font-weight: 600; text-wrap: balance; }
+  .heading-3 { font-size: 2.25rem; line-height: 2.5rem; font-weight: 600; text-wrap: balance; }
+  .heading-4 { font-size: 1.875rem; line-height: 2.25rem; font-weight: 600; text-wrap: balance; }
+  .heading-5 { font-size: 1.5rem; line-height: 2rem; font-weight: 600; text-wrap: balance; }
+  .heading-6 { font-size: 1.25rem; line-height: 1.75rem; font-weight: 600; text-wrap: balance; }
 
-.title-1 { font-size: 1.25rem; line-height: 1.75rem; font-weight: 500; }
-.title-2 { font-size: 1.125rem; line-height: 1.75rem; font-weight: 500; }
-.title-3 { font-size: 1rem; line-height: 1.5rem; font-weight: 500; }
-.title-4 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; }
-.title-5 { font-size: 0.75rem; line-height: 1rem; font-weight: 500; }
+  .title-1 { font-size: 1.25rem; line-height: 1.75rem; font-weight: 500; }
+  .title-2 { font-size: 1.125rem; line-height: 1.75rem; font-weight: 500; }
+  .title-3 { font-size: 1rem; line-height: 1.5rem; font-weight: 500; }
+  .title-4 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; }
+  .title-5 { font-size: 0.75rem; line-height: 1rem; font-weight: 500; }
 
-.body-1 { font-size: 1rem; line-height: 1.5rem; font-weight: 600; text-wrap: pretty; }
-.body-2 { font-size: 1rem; line-height: 1.5rem; font-weight: 500; text-wrap: pretty; }
-.body-3 { font-size: 1rem; line-height: 1.5rem; font-weight: 400; text-wrap: pretty; }
-.body-4 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; text-wrap: pretty; }
-.body-5 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; text-wrap: pretty; }
-.body-6 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 400; text-wrap: pretty; }
+  .body-1 { font-size: 1rem; line-height: 1.5rem; font-weight: 600; text-wrap: pretty; }
+  .body-2 { font-size: 1rem; line-height: 1.5rem; font-weight: 500; text-wrap: pretty; }
+  .body-3 { font-size: 1rem; line-height: 1.5rem; font-weight: 400; text-wrap: pretty; }
+  .body-4 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; text-wrap: pretty; }
+  .body-5 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; text-wrap: pretty; }
+  .body-6 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 400; text-wrap: pretty; }
 
-.button-lg { font-size: 1.125rem; line-height: 1.75rem; font-weight: 600; }
-.button-md { font-size: 1rem; line-height: 1.5rem; font-weight: 600; }
-.button-sm { font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; }
-.button-xsm { font-size: 0.75rem; line-height: 1rem; font-weight: 600; }
+  .button-lg { font-size: 1.125rem; line-height: 1.75rem; font-weight: 600; }
+  .button-md { font-size: 1rem; line-height: 1.5rem; font-weight: 600; }
+  .button-sm { font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; }
+  .button-xsm { font-size: 0.75rem; line-height: 1rem; font-weight: 600; }
 
-.caption-1 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; }
-.caption-2 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 400; }
-.caption-3 { font-size: 0.75rem; line-height: 1rem; font-weight: 600; }
-.caption-4 { font-size: 0.75rem; line-height: 1rem; font-weight: 500; }
-.caption-5 { font-size: 0.75rem; line-height: 1rem; font-weight: 400; }
+  .caption-1 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; }
+  .caption-2 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 400; }
+  .caption-3 { font-size: 0.75rem; line-height: 1rem; font-weight: 600; }
+  .caption-4 { font-size: 0.75rem; line-height: 1rem; font-weight: 500; }
+  .caption-5 { font-size: 0.75rem; line-height: 1rem; font-weight: 400; }
+}
 
 /* --------------------------------------------------------------------------
    B7 Motion System: Base Curve & Scroll Reveals
@@ -236,6 +238,7 @@ code, pre, .font-mono {
 .mobile-nav-panel:not(.hidden) .mobile-nav-link-item:nth-child(4) { transition-delay: 240ms; }
 .mobile-nav-panel:not(.hidden) .mobile-nav-link-item:nth-child(5) { transition-delay: 300ms; }
 .mobile-nav-panel:not(.hidden) .mobile-nav-link-item:nth-child(6) { transition-delay: 360ms; }
+.mobile-nav-panel:not(.hidden) .mobile-nav-link-item:nth-child(7) { transition-delay: 400ms; }
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -984,11 +987,14 @@ button:hover .glide-arrow {
   #themeToggleBtn,
   #themeToggleBtnMobileTop,
   #mobileMenuBtn,
-  #mobileMenu,
+  #mobileNavOverlay,
   #backToTopBtn,
   .btn-icon,
   .view-resume-btn,
-  .workbench-tab-btn,
+  .cockpit-tab-btn,
+  .sql-preset-btn,
+  #sqlRunBtn,
+  #sqlCsvBtn,
   .stack-filter-btn,
   .copy-code-btn,
   #copyEmailBtn,
@@ -1012,15 +1018,14 @@ button:hover .glide-arrow {
   .glow-card,
   .card-teal-callout,
   .code-preview-block,
-  .workbench-panel {
+  .workbench-canvas-panel {
     background: #ffffff !important;
     border: 1px solid #e5e7eb !important;
     border-radius: 6px !important;
     padding: 0.75rem !important;
   }
 
-  /* Always show panel 1 & 4 in print if needed, or maintain content readability */
-  .workbench-panel.hidden {
+  .workbench-canvas-panel.hidden {
     display: none !important;
   }
 
