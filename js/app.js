@@ -1,565 +1,167 @@
-// Rishi Thakur — Analytics Engineer & Data Storyteller Portfolio
-// Cockpit Interactivity, SQL Sandbox & Split-Screen Workbench Engine
+// Rishi Thakur — Editorial Analytics Portfolio
+// Nav scroll frosted state, custom dot cursor, mobile drawer, reveals,
+// Case Study modal, ATS Resume modal, In-Browser SQL Sandbox modal, & Contact form.
 
 document.addEventListener("DOMContentLoaded", () => {
-  setupThemeToggle();
-  setupCockpitRouter();
-  setupSplitScreenWorkbench();
-  setupSqlSandbox();
-  setupTaglineReveal();
-  setupMobileMenu();
-  setupCaseStudyModals();
+  setupNavScroll();
+  setupCustomCursor();
+  setupMobileDrawer();
+  setupScrollReveals();
+  setupCaseStudyModal();
   setupResumeModal();
+  setupSqlModal();
+  setupContactModal();
   setupPrivacyModal();
-  setupStackFilter();
-  setupBackToTop();
-  setupContactForm();
-  setupLocalTimeClock();
   setupCopyEmail();
-  setupCopyCodeButtons();
+  setupLocalTimeClock();
 });
 
 // -----------------------------------------------------------------------------
-// 1. Theme Toggle Engine (Dark / Light Mode)
+// 1. Frosted Navigation Bar & Footer Blur Overlay Handling
 // -----------------------------------------------------------------------------
-function setupThemeToggle() {
-  const toggleBtns = [
-    document.getElementById("themeToggleBtn"),
-    document.getElementById("themeToggleBtnMobileTop")
-  ].filter(Boolean);
+function setupNavScroll() {
+  const nav = document.getElementById("siteNav");
+  const blurOverlay = document.getElementById("blurOverlay");
+  const footer = document.getElementById("siteFooter");
+  if (!nav) return;
 
-  const getSavedTheme = () => {
-    const saved = localStorage.getItem("rishi-portfolio-theme");
-    if (saved) return saved;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  };
+  const updateScrollState = () => {
+    const scrolled = window.scrollY > 24;
+    nav.classList.toggle("is-scrolled", scrolled);
 
-  const themeColorMeta = document.getElementById("themeColorMeta");
-  const applyTheme = (theme) => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-      if (themeColorMeta) themeColorMeta.setAttribute("content", "#080c14");
-    } else {
-      document.documentElement.classList.remove("dark");
-      if (themeColorMeta) themeColorMeta.setAttribute("content", "#f8fafc");
+    if (blurOverlay && footer) {
+      const footerTop = footer.getBoundingClientRect().top;
+      blurOverlay.style.opacity = footerTop < window.innerHeight - 40 ? "0" : "1";
     }
-    localStorage.setItem("rishi-portfolio-theme", theme);
   };
 
-  // Initialize theme
-  applyTheme(getSavedTheme());
+  window.addEventListener("scroll", updateScrollState, { passive: true });
+  updateScrollState();
+}
 
-  toggleBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const isDark = document.documentElement.classList.contains("dark");
-      applyTheme(isDark ? "light" : "dark");
-    });
+// -----------------------------------------------------------------------------
+// 2. Custom Fine-Pointer Dot Cursor
+// -----------------------------------------------------------------------------
+function setupCustomCursor() {
+  const cursor = document.getElementById("customCursor");
+  if (!cursor) return;
+  if (!window.matchMedia("(pointer: fine)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  document.body.classList.add("has-custom-cursor");
+
+  let mouseX = -100;
+  let mouseY = -100;
+  let rafId = null;
+
+  const render = () => {
+    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+    rafId = null;
+  };
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    const target = e.target;
+    const isInteractive = !!(target && target.closest("a, button, input, textarea, [role='button']"));
+    const isDark = !!(target && target.closest("footer, #mobileDrawer"));
+
+    cursor.classList.toggle("is-hover", isInteractive);
+    cursor.classList.toggle("is-dark-surface", isDark);
+
+    if (!rafId) {
+      rafId = requestAnimationFrame(render);
+    }
+  }, { passive: true });
+
+  document.addEventListener("mouseleave", () => {
+    cursor.style.opacity = "0";
+  });
+
+  document.addEventListener("mouseenter", () => {
+    cursor.style.opacity = "1";
   });
 }
 
 // -----------------------------------------------------------------------------
-// 2. Cockpit View Router (Multi-View Workspace & URL Hash State)
+// 3. Full-Screen #171717 Mobile Drawer
 // -----------------------------------------------------------------------------
-function setupCockpitRouter() {
-  const tabBtns = document.querySelectorAll(".cockpit-tab-btn");
-  const views = document.querySelectorAll(".cockpit-view");
+function setupMobileDrawer() {
+  const openBtn = document.getElementById("mobileMenuOpenBtn");
+  const closeBtn = document.getElementById("mobileMenuCloseBtn");
+  const drawer = document.getElementById("mobileDrawer");
+  if (!openBtn || !drawer) return;
 
-  if (!views.length) return;
+  const links = drawer.querySelectorAll(".mobile-drawer-link");
 
-  const validViews = ["overview", "workbench", "sandbox", "projects", "resume", "contact"];
-  const viewMap = {
-    home: "overview",
-    overview: "overview",
-    story: "workbench",
-    highlights: "workbench",
-    workbench: "workbench",
-    sandbox: "sandbox",
-    sql: "sandbox",
-    capabilities: "sandbox",
-    projects: "projects",
-    credentials: "resume",
-    resume: "resume",
-    contact: "contact"
+  const open = () => {
+    drawer.classList.add("is-open");
+    openBtn.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+    if (closeBtn) closeBtn.focus();
   };
 
-  const switchView = (targetView, updateHash = true, scrollToTop = true) => {
-    const resolved = viewMap[targetView] || (validViews.includes(targetView) ? targetView : "overview");
-
-    views.forEach(v => {
-      if (v.id === `view-${resolved}`) {
-        v.classList.add("active");
-        v.classList.remove("hidden");
-      } else {
-        v.classList.remove("active");
-        v.classList.add("hidden");
-      }
-    });
-
-    tabBtns.forEach(btn => {
-      const isActive = btn.dataset.view === resolved;
-      btn.classList.toggle("active", isActive);
-      btn.setAttribute("aria-selected", isActive ? "true" : "false");
-    });
-
-    if (updateHash && window.history && window.history.replaceState) {
-      window.history.replaceState(null, "", `#${resolved}`);
-    }
-
-    if (scrollToTop && window.scrollY > 40) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+  const close = () => {
+    drawer.classList.remove("is-open");
+    openBtn.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    openBtn.focus();
   };
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      switchView(btn.dataset.view, true, true);
-    });
-  });
+  openBtn.addEventListener("click", open);
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  links.forEach(l => l.addEventListener("click", close));
 
-  // Handle all internal view anchor links (brandmark, mobile nav, modal CTAs)
-  document.addEventListener("click", (e) => {
-    const link = e.target.closest('a[href^="#"]');
-    if (!link) return;
-    const hash = (link.getAttribute("href") || "").replace(/^#/, "").toLowerCase();
-    if (!hash || hash === "main-content") return;
-    if (viewMap[hash] || validViews.includes(hash)) {
-      e.preventDefault();
-      switchView(hash, true, true);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && drawer.classList.contains("is-open")) {
+      close();
     }
-  });
-
-  // Handle Hash on Load & PopState
-  const handleHash = () => {
-    const rawHash = (window.location.hash || "").replace(/^#/, "").toLowerCase();
-    if (rawHash && (viewMap[rawHash] || validViews.includes(rawHash))) {
-      switchView(rawHash, false, false);
-    } else {
-      switchView("overview", false, false);
-    }
-  };
-
-  window.addEventListener("hashchange", handleHash);
-  handleHash();
-
-  // Export for programmatic view changes
-  window.navigateToCockpitView = (viewName) => switchView(viewName, true, true);
-}
-
-// -----------------------------------------------------------------------------
-// 3. Split-Screen Interactive Workbench (CHiPS Technical Investigation)
-// -----------------------------------------------------------------------------
-function setupSplitScreenWorkbench() {
-  const steppers = document.querySelectorAll(".workbench-stepper-btn");
-  const canvases = document.querySelectorAll(".workbench-canvas-panel");
-
-  if (!steppers.length || !canvases.length) return;
-
-  const activateChapter = (chapterKey) => {
-    steppers.forEach(s => {
-      if (s.dataset.chapter === chapterKey) {
-        s.classList.add("active");
-      } else {
-        s.classList.remove("active");
-      }
-    });
-
-    canvases.forEach(c => {
-      if (c.dataset.canvas === chapterKey) {
-        c.classList.remove("hidden");
-        c.classList.add("block");
-      } else {
-        c.classList.add("hidden");
-        c.classList.remove("block");
-      }
-    });
-  };
-
-  steppers.forEach(btn => {
-    btn.addEventListener("click", () => {
-      activateChapter(btn.dataset.chapter);
-    });
   });
 }
 
 // -----------------------------------------------------------------------------
-// 4. Interactive SQL Sandbox Engine (In-Browser Live Query Runner)
+// 4. Scroll Reveals (IntersectionObserver)
 // -----------------------------------------------------------------------------
-function setupSqlSandbox() {
-  const sqlInput = document.getElementById("sqlQueryInput");
-  const runBtn = document.getElementById("sqlRunBtn");
-  const csvBtn = document.getElementById("sqlCsvBtn");
-  const presetBtns = document.querySelectorAll(".sql-preset-btn");
-  const statusEl = document.getElementById("sqlExecStatus");
-  const outputEl = document.getElementById("sqlOutputTable");
+function setupScrollReveals() {
+  const els = document.querySelectorAll(".reveal-on-scroll");
+  if (!els.length) return;
 
-  if (!sqlInput || !runBtn || !outputEl) return;
-
-  let lastResultRows = [];
-
-  // Curated, 100% verified ground-truth in-memory tables
-  const dataset = {
-    technical_capabilities: [
-      { domain: "SQL & Modeling", primary_tools: "PostgreSQL, MySQL, MariaDB", architectural_focus: "Kimball Star Schema, CTEs, Window Functions", latency_target: "< 50ms" },
-      { domain: "Business Intelligence", primary_tools: "Power BI Desktop, DAX, Power Query", architectural_focus: "Multi-level Drilldowns, Executive Cockpits", latency_target: "Instant" },
-      { domain: "Data Pipelines (ETL)", primary_tools: "Python 3.11+, Pandas, NumPy", architectural_focus: "Multi-source Extraction, Entity Resolution", latency_target: "Daily Sync" },
-      { domain: "Cloud Data Engineering", primary_tools: "AWS (S3, Athena, Glue, Redshift)", architectural_focus: "Cloud Lakehouse, CLF-C02 & DEA-C01 Target", latency_target: "In Progress" },
-      { domain: "Systems & Diagnostics", primary_tools: "Fedora Linux, Windows 11", architectural_focus: "Bash Automation, PowerShell, Troubleshooting", latency_target: "Daily OS" }
-    ],
-    chips_architecture: [
-      { stage: "01. Ingestion", data_sources: "AEBAS Biometrics + Treasury Payroll", method: "Automated Daily Extraction", storage: "MariaDB Staging" },
-      { stage: "02. Resolution", data_sources: "Orphaned Staff & Facility Codes", method: "Deterministic Key Matching & CTEs", storage: "Cleaned Dimensions" },
-      { stage: "03. Modeling", data_sources: "Statewide Attendance Records", method: "Central Fact_Attendance_Daily", storage: "Star Schema Warehouse" },
-      { stage: "04. Governance", data_sources: "Consecutive Absence Telemetry", method: "3-Tier DAX Risk Stratification", storage: "Executive Power BI" }
-    ],
-    academic_credentials: [
-      { qualification: "M.Tech CSE", institution: "IIIT Naya Raipur", score_cgpa: "7.90 CGPA", period: "2024–2026", focus: "Diffusion Models & Deep Learning" },
-      { qualification: "B.Tech CSE", institution: "Amity University CG", score_cgpa: "7.71 CGPA", period: "2019–2023", focus: "DBMS, Algorithms & Data Structures" },
-      { qualification: "GATE CS 2024", institution: "National Benchmark", score_cgpa: "Qualified", period: "2024", focus: "Computer Science & IT" },
-      { qualification: "IELTS Academic", institution: "IDP Education", score_cgpa: "Band 7.5 (C1)", period: "2024", focus: "Proficient English User" },
-      { qualification: "AWS Certifications (Target)", institution: "Amazon Web Services", score_cgpa: "Active Upskilling", period: "2026", focus: "Cloud Practitioner & Data Engineer Associate" }
-    ],
-    featured_projects: [
-      { project_name: "CHiPS Attendance & Payroll", domain: "Govt. Healthcare Intelligence", core_stack: "SQL, Star Schema, Power BI, DAX", impact: "Eliminated Ghost Shifts & Salary Leakage" },
-      { project_name: "Hospital Medicine Matrix", domain: "Pharmaceutical Logistics", core_stack: "OracleDB, Advanced Excel, ABC/VED", impact: "Zero Stockouts of Life-Saving Drugs" },
-      { project_name: "E-Commerce Local ELT", domain: "Analytics Engineering", core_stack: "dbt-core, Airflow, PostgreSQL, Kimball SCD2", impact: "Automated Quality Tests & Dual-Warehouse Sync" },
-      { project_name: "5G mmWave Handover AI", domain: "Telecommunications & ML", core_stack: "PyTorch, GRU, DDPM Diffusion", impact: "Proactive Cell Switching Before Signal Drop" },
-      { project_name: "AutoJobHunt Bot Pipeline", domain: "Recruitment Automation", core_stack: "Async Python, Playwright, OpenXML", impact: "Automated ATS Scraping & Application Telemetry" }
-    ]
-  };
-
-  const escapeHtml = (str) => String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-
-  const renderTable = (rows) => {
-    lastResultRows = rows || [];
-    if (csvBtn) {
-      csvBtn.disabled = !lastResultRows.length;
-      csvBtn.classList.toggle("opacity-40", !lastResultRows.length);
-    }
-
-    if (!rows || !rows.length) {
-      outputEl.innerHTML = `<p class="p-4 text-xs font-mono text-muted-foreground">0 rows returned.</p>`;
-      return;
-    }
-
-    const headers = Object.keys(rows[0]);
-    let html = `<div class="overflow-x-auto"><table class="sql-result-table"><thead><tr>`;
-    headers.forEach(h => {
-      html += `<th>${escapeHtml(h.replace(/_/g, " "))}</th>`;
-    });
-    html += `</tr></thead><tbody>`;
-
-    rows.forEach(row => {
-      html += `<tr>`;
-      headers.forEach(h => {
-        html += `<td>${escapeHtml(row[h])}</td>`;
-      });
-      html += `</tr>`;
-    });
-
-    html += `</tbody></table></div>`;
-    outputEl.innerHTML = html;
-  };
-
-  const resolveTable = (name) => {
-    const clean = (name || "").toLowerCase().replace(/[`"';]/g, "");
-    if (dataset[clean]) return clean;
-    if (["skills", "capabilities", "tech_stack"].includes(clean)) return "technical_capabilities";
-    if (["chips", "architecture", "chips_pipeline"].includes(clean)) return "chips_architecture";
-    if (["credentials", "education", "certifications"].includes(clean)) return "academic_credentials";
-    if (["projects"].includes(clean)) return "featured_projects";
-    return null;
-  };
-
-  const executeSql = () => {
-    const rawInput = sqlInput.value.trim().replace(/;+\s*$/, "");
-    const lower = rawInput.toLowerCase();
-    const startTime = performance.now();
-
-    // Support SHOW TABLES or \dt
-    if (lower === "show tables" || lower === "\\dt") {
-      const metaRows = Object.entries(dataset).map(([tableName, tableRows]) => ({
-        table_name: tableName,
-        row_count: tableRows.length,
-        columns: Object.keys(tableRows[0]).join(", ")
-      }));
-      const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
-      renderTable(metaRows);
-      if (statusEl) {
-        statusEl.innerHTML = `<span class="text-emerald-500 font-semibold">Query OK</span> · ${metaRows.length} tables listed in <span class="text-primary font-mono">${elapsed}ms</span>`;
-      }
-      return;
-    }
-
-    // Parse SELECT <cols> FROM <table> [WHERE ...] [ORDER BY ...] [LIMIT n]
-    const selectMatch = rawInput.match(/^select\s+([\s\S]+?)\s+from\s+([a-zA-Z0-9_`"]+)(?:\s+([\s\S]+))?$/i);
-    if (!selectMatch) {
-      const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
-      renderTable([]);
-      outputEl.innerHTML = `
-        <div class="p-4 space-y-2 text-xs font-mono">
-          <p class="text-rose-500 font-semibold">Syntax Error: Expected SELECT &lt;columns&gt; FROM &lt;table&gt; [WHERE ...] [ORDER BY ...] [LIMIT n] or SHOW TABLES.</p>
-          <p class="text-muted-foreground">Available tables: <code class="text-primary">technical_capabilities</code>, <code class="text-primary">chips_architecture</code>, <code class="text-primary">academic_credentials</code>, <code class="text-primary">featured_projects</code></p>
-        </div>
-      `;
-      if (statusEl) {
-        statusEl.innerHTML = `<span class="text-rose-500">Syntax Error</span> · Execution halted in ${elapsed}ms`;
-      }
-      return;
-    }
-
-    const colsRaw = selectMatch[1].trim();
-    const tableKey = resolveTable(selectMatch[2]);
-    const tail = (selectMatch[3] || "").trim();
-
-    if (!tableKey || !dataset[tableKey]) {
-      const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
-      renderTable([]);
-      outputEl.innerHTML = `
-        <div class="p-4 space-y-2 text-xs font-mono">
-          <p class="text-rose-500 font-semibold">Error: Relation "${escapeHtml(selectMatch[2])}" does not exist.</p>
-          <p class="text-muted-foreground">Available query tables:</p>
-          <ul class="text-primary list-disc list-inside space-y-1">
-            <li><code>technical_capabilities</code></li>
-            <li><code>chips_architecture</code></li>
-            <li><code>academic_credentials</code></li>
-            <li><code>featured_projects</code></li>
-          </ul>
-        </div>
-      `;
-      if (statusEl) {
-        statusEl.innerHTML = `<span class="text-rose-500">Relation Error</span> · Execution halted in ${elapsed}ms`;
-      }
-      return;
-    }
-
-    let rows = dataset[tableKey].map(r => ({ ...r }));
-
-    // Optional WHERE col LIKE '%val%' | col = 'val'
-    const whereMatch = tail.match(/\bwhere\s+([a-zA-Z0-9_]+)\s+(=|like)\s+['"]([^'"]*)['"]/i);
-    if (whereMatch) {
-      const [, whereCol, op, val] = whereMatch;
-      const colLower = whereCol.toLowerCase();
-      rows = rows.filter(row => {
-        const matchedProp = Object.keys(row).find(k => k.toLowerCase() === colLower);
-        if (!matchedProp) return false;
-        const cellVal = String(row[matchedProp]).toLowerCase();
-        const needle = val.toLowerCase();
-        if (op.toLowerCase() === "like") {
-          const regexStr = "^" + needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/%/g, ".*").replace(/_/g, ".") + "$";
-          return new RegExp(regexStr, "i").test(cellVal);
-        }
-        return cellVal === needle;
-      });
-    }
-
-    // Optional ORDER BY col [ASC|DESC]
-    const orderMatch = tail.match(/\border\s+by\s+([a-zA-Z0-9_]+)(?:\s+(asc|desc))?/i);
-    if (orderMatch) {
-      const [, orderCol, dir] = orderMatch;
-      const colLower = orderCol.toLowerCase();
-      const desc = (dir || "asc").toLowerCase() === "desc";
-      rows.sort((a, b) => {
-        const prop = Object.keys(a).find(k => k.toLowerCase() === colLower);
-        if (!prop) return 0;
-        return desc
-          ? String(b[prop]).localeCompare(String(a[prop]))
-          : String(a[prop]).localeCompare(String(b[prop]));
-      });
-    }
-
-    // COUNT(*) aggregation
-    if (/^count\(\s*\*\s*\)(?:\s+as\s+([a-zA-Z0-9_]+))?$/i.test(colsRaw)) {
-      const aliasMatch = colsRaw.match(/\bas\s+([a-zA-Z0-9_]+)$/i);
-      const alias = aliasMatch ? aliasMatch[1] : "total_rows";
-      rows = [{ [alias]: rows.length }];
-    } else if (colsRaw !== "*") {
-      // Column projection
-      const requestedCols = colsRaw.split(",").map(c => c.trim().toLowerCase()).filter(Boolean);
-      const sampleKeys = rows.length ? Object.keys(rows[0]) : Object.keys(dataset[tableKey][0]);
-      const validCols = requestedCols
-        .map(rc => sampleKeys.find(k => k.toLowerCase() === rc))
-        .filter(Boolean);
-
-      if (!validCols.length) {
-        const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
-        renderTable([]);
-        outputEl.innerHTML = `<p class="p-4 text-xs font-mono text-rose-500">Error: Requested column(s) not found in ${escapeHtml(tableKey)}. Available: ${escapeHtml(sampleKeys.join(", "))}</p>`;
-        if (statusEl) statusEl.innerHTML = `<span class="text-rose-500">Column Error</span> · ${elapsed}ms`;
-        return;
-      }
-
-      rows = rows.map(row => {
-        const projected = {};
-        validCols.forEach(c => { projected[c] = row[c]; });
-        return projected;
-      });
-    }
-
-    // Optional LIMIT N
-    const limitMatch = tail.match(/\blimit\s+(\d+)/i);
-    if (limitMatch) {
-      const limit = parseInt(limitMatch[1], 10);
-      if (!isNaN(limit) && limit >= 0) {
-        rows = rows.slice(0, limit);
-      }
-    }
-
-    const elapsed = (performance.now() - startTime + 0.02).toFixed(2);
-    renderTable(rows);
-    if (statusEl) {
-      statusEl.innerHTML = `<span class="text-emerald-500 font-semibold">Query OK</span> · ${rows.length} row${rows.length === 1 ? "" : "s"} returned in <span class="text-primary font-mono">${elapsed}ms</span>`;
-    }
-  };
-
-  presetBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const query = btn.dataset.query || "";
-      if (query) {
-        sqlInput.value = query;
-        executeSql();
-      }
-    });
-  });
-
-  runBtn.addEventListener("click", executeSql);
-  sqlInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      executeSql();
-    }
-  });
-
-  if (csvBtn) {
-    csvBtn.addEventListener("click", () => {
-      if (!lastResultRows.length) return;
-      const headers = Object.keys(lastResultRows[0]);
-      const csvLines = [
-        headers.join(","),
-        ...lastResultRows.map(row =>
-          headers.map(h => `"${String(row[h]).replace(/"/g, '""')}"`).join(",")
-        )
-      ];
-      const blob = new Blob([csvLines.join("\n")], { type: "text/csv;charset=utf-8;" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "rishi_thakur_query_result.csv";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    });
-  }
-
-  // Initial execution on first load
-  executeSql();
-}
-
-// -----------------------------------------------------------------------------
-// 5. Tagline Word-by-Word Scroll Reveal
-// -----------------------------------------------------------------------------
-function setupTaglineReveal() {
-  const words = document.querySelectorAll(".tagline-word");
-  const container = document.getElementById("taglineReveal");
-  if (!words.length || !container) return;
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    words.forEach(w => w.classList.add("is-revealed"));
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+    els.forEach(el => el.classList.add("is-revealed"));
     return;
   }
 
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          words.forEach((word, idx) => {
-            setTimeout(() => {
-              word.classList.add("is-revealed");
-            }, idx * 70);
-          });
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.3
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-revealed");
+        obs.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.08, rootMargin: "0px 0px -30px 0px" });
 
-    observer.observe(container);
-  } else {
-    words.forEach(w => w.classList.add("is-revealed"));
-  }
+  els.forEach(el => observer.observe(el));
 }
 
 // -----------------------------------------------------------------------------
-// 7. Full-Height Mobile Navigation Panel
+// 5. Case Study Detail Modal
 // -----------------------------------------------------------------------------
-function setupMobileMenu() {
-  const menuBtn = document.getElementById("mobileMenuBtn");
-  const overlay = document.getElementById("mobileNavOverlay");
-  const closeBtn = document.getElementById("mobileNavCloseBtn");
-  const links = document.querySelectorAll(".mobile-nav-link-item a, a.mobile-nav-link-item");
-  const iconOpen = document.getElementById("mobileMenuIconOpen");
-  const iconClose = document.getElementById("mobileMenuIconClose");
-
-  if (!menuBtn || !overlay) return;
-
-  const openMenu = () => {
-    overlay.classList.remove("hidden");
-    if (iconOpen) iconOpen.classList.add("hidden");
-    if (iconClose) iconClose.classList.remove("hidden");
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeMenu = () => {
-    overlay.classList.add("hidden");
-    if (iconOpen) iconOpen.classList.remove("hidden");
-    if (iconClose) iconClose.classList.add("hidden");
-    document.body.style.overflow = "";
-  };
-
-  menuBtn.addEventListener("click", () => {
-    if (overlay.classList.contains("hidden")) {
-      openMenu();
-    } else {
-      closeMenu();
-    }
-  });
-
-  if (closeBtn) closeBtn.addEventListener("click", closeMenu);
-
-  links.forEach(l => {
-    l.addEventListener("click", closeMenu);
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !overlay.classList.contains("hidden")) {
-      closeMenu();
-    }
-  });
-}
-
-// -----------------------------------------------------------------------------
-// 8. Technical Case Study Modal Engine
-// -----------------------------------------------------------------------------
-function setupCaseStudyModals() {
+function setupCaseStudyModal() {
   const modal = document.getElementById("caseStudyModal");
   const closeBtn = document.getElementById("modalCloseBtn");
-  const triggerBtns = document.querySelectorAll(".view-case-study-btn");
-
+  const triggers = document.querySelectorAll(".view-case-study-btn");
   if (!modal) return;
 
-  let lastFocusedEl = null;
+  let lastFocus = null;
 
-  triggerBtns.forEach(btn => {
+  triggers.forEach(btn => {
     btn.addEventListener("click", () => {
-      lastFocusedEl = document.activeElement;
-      const studyKey = btn.dataset.study;
-      const data = typeof caseStudiesData !== "undefined" ? caseStudiesData[studyKey] : null;
+      const key = btn.dataset.study;
+      const data = typeof caseStudiesData !== "undefined" ? caseStudiesData[key] : null;
       if (!data) return;
+
+      lastFocus = document.activeElement;
 
       const setEl = (id, text) => {
         const el = document.getElementById(id);
@@ -573,59 +175,53 @@ function setupCaseStudyModals() {
       setEl("modalTimeline", data.timeline);
       setEl("modalProblem", data.problem);
 
-      // Render Structured Solution Points
       const solutionEl = document.getElementById("modalSolution");
       if (solutionEl) {
         solutionEl.innerHTML = "";
-        const points = (data.solution || "").split(/\n(?=\d+\.\s)/g);
-        points.forEach(point => {
-          const cleanPoint = point.trim();
-          if (!cleanPoint) return;
+        (data.solution || "").split(/\n(?=\d+\.\s)/g).forEach(pt => {
+          const clean = pt.trim();
+          if (!clean) return;
           const p = document.createElement("p");
-          p.className = "text-sm text-foreground/90 leading-relaxed font-normal";
-          p.textContent = cleanPoint;
+          p.className = "text-xs sm:text-sm text-[#111111] leading-relaxed";
+          p.textContent = clean;
           solutionEl.appendChild(p);
         });
       }
 
-      // Render Pipeline Steps Flow
-      const pipelineWrapper = document.getElementById("modalPipelineWrapper");
+      const pipelineWrap = document.getElementById("modalPipelineWrapper");
       const pipelineEl = document.getElementById("modalPipeline");
-      if (pipelineWrapper && pipelineEl) {
+      if (pipelineWrap && pipelineEl) {
         if (data.pipeline) {
-          pipelineWrapper.classList.remove("hidden");
+          pipelineWrap.classList.remove("hidden");
           const steps = data.pipeline.split("→").map(s => s.trim());
-          pipelineEl.innerHTML = steps.map((step, idx) => `
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-secondary border border-border text-xs font-mono text-foreground">
-              <span class="text-primary font-semibold">${idx + 1}.</span> ${step}
+          pipelineEl.innerHTML = steps.map((step, i) => `
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-black/10 text-xs text-[#111111]">
+              <span class="text-[#006b58] font-medium">${i + 1}.</span> ${step}
             </span>
-            ${idx < steps.length - 1 ? '<i class="ph ph-arrow-right text-muted-foreground text-xs select-none"></i>' : ''}
+            ${i < steps.length - 1 ? '<span class="text-[#5a5a5a]" aria-hidden="true">→</span>' : ""}
           `).join(" ");
         } else {
-          pipelineWrapper.classList.add("hidden");
+          pipelineWrap.classList.add("hidden");
         }
       }
 
-      // Render Stack Pills
       const stackEl = document.getElementById("modalStack");
       if (stackEl && data.stack) {
-        stackEl.innerHTML = data.stack.map(tech => `
-          <span class="badge-pill">${tech}</span>
+        stackEl.innerHTML = data.stack.map(t => `
+          <span class="px-2.5 py-1 rounded-full bg-[#f5f5f5] border border-black/10 text-xs text-[#111111]">${t}</span>
         `).join("");
       }
 
-      // Render Deliverables List
       const delivEl = document.getElementById("modalDeliverables");
       if (delivEl && data.deliverables) {
-        delivEl.innerHTML = data.deliverables.map(deliv => `
-          <li class="flex items-start gap-2 text-xs sm:text-sm text-foreground/90 font-normal">
-            <i class="ph ph-check text-primary font-bold text-sm mt-0.5"></i>
-            <span>${deliv}</span>
+        delivEl.innerHTML = data.deliverables.map(d => `
+          <li class="flex items-start gap-2 text-xs sm:text-sm text-[#111111]">
+            <i class="ph ph-check text-[#006b58] text-sm mt-0.5"></i>
+            <span>${d}</span>
           </li>
         `).join("");
       }
 
-      // GitHub Code Link
       const gitLink = document.getElementById("modalGithubLink");
       if (gitLink) {
         if (data.githubUrl) {
@@ -643,121 +239,111 @@ function setupCaseStudyModals() {
     });
   });
 
-  const closeModal = () => {
+  const close = () => {
     modal.classList.add("hidden");
     modal.classList.remove("flex");
     document.body.style.overflow = "";
-    if (lastFocusedEl && typeof lastFocusedEl.focus === "function") {
-      lastFocusedEl.focus();
-    }
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   };
 
-  if (closeBtn) closeBtn.addEventListener("click", closeModal);
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) close();
   });
 }
 
 // -----------------------------------------------------------------------------
-// 9. Curated ATS Resume Modal Engine
+// 6. ATS Resumes Studio Modal
 // -----------------------------------------------------------------------------
 function setupResumeModal() {
   const modal = document.getElementById("resumeModal");
   const closeBtn = document.getElementById("resumeModalCloseBtn");
-  const triggerBtns = document.querySelectorAll(".view-resume-btn");
-  const tabBtns = document.querySelectorAll(".resume-tab-btn");
-  const modalTitle = document.getElementById("resumeModalTitle");
-  const modalBody = document.getElementById("resumeModalBody");
-  const pdfDownloadBtn = document.getElementById("resumeModalPdfBtn");
+  const triggers = document.querySelectorAll(".view-resume-btn");
+  const tabs = document.querySelectorAll(".resume-tab-btn");
+  const titleEl = document.getElementById("resumeModalTitle");
+  const bodyEl = document.getElementById("resumeModalBody");
+  const pdfBtn = document.getElementById("resumeModalPdfBtn");
+  if (!modal || !bodyEl) return;
 
-  if (!modal || !modalBody) return;
+  let lastFocus = null;
 
-  const renderResumeTrack = (trackKey) => {
-    if (typeof resumesData === "undefined" || !resumesData[trackKey]) return;
-    const r = resumesData[trackKey];
+  const renderTrack = (key) => {
+    if (typeof resumesData === "undefined" || !resumesData[key]) return;
+    const r = resumesData[key];
 
-    tabBtns.forEach(t => {
-      if (t.dataset.resumeTab === trackKey) {
-        t.className = "resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono transition-all border bg-primary text-primary-foreground border-primary shadow-sm cursor-pointer";
-      } else {
-        t.className = "resume-tab-btn px-2.5 py-1 rounded-md text-xs font-mono transition-all border bg-secondary text-muted-foreground border-border hover:text-foreground cursor-pointer";
-      }
+    tabs.forEach(t => {
+      const active = t.dataset.resumeTab === key;
+      t.className = active
+        ? "resume-tab-btn px-3 py-1 rounded-full text-xs font-medium bg-[#111111] text-white"
+        : "resume-tab-btn px-3 py-1 rounded-full text-xs font-medium bg-[#f5f5f5] text-[#5a5a5a] hover:text-[#111111]";
     });
 
-    if (modalTitle) modalTitle.textContent = `${r.title || r.role} — ATS Resume`;
-    if (pdfDownloadBtn) {
-      pdfDownloadBtn.href = r.pdf;
-      pdfDownloadBtn.download = r.pdf.split("/").pop();
+    if (titleEl) titleEl.textContent = `${r.title || r.role} — ATS Resume`;
+    if (pdfBtn) {
+      pdfBtn.href = r.pdf;
+      pdfBtn.download = r.pdf.split("/").pop();
     }
 
-    modalBody.innerHTML = `
+    bodyEl.innerHTML = `
       <div class="space-y-6 max-w-3xl mx-auto text-left">
-        <div class="text-center pb-4 border-b border-border">
-          <h2 class="text-2xl font-bold text-foreground tracking-tight">Rishi Thakur</h2>
-          <div class="text-xs font-mono text-muted-foreground mt-1 flex flex-wrap items-center justify-center gap-2">
+        <div class="text-center pb-4 border-b border-black/10">
+          <h2 class="text-2xl font-semibold text-[#111111] tracking-tight">Rishi Thakur</h2>
+          <div class="text-xs font-mono-code text-[#5a5a5a] mt-1 flex flex-wrap items-center justify-center gap-2">
             <span>Bengaluru, India</span>
             <span>•</span>
-            <a href="mailto:rishi_th219@proton.me" class="text-primary hover:underline">rishi_th219@proton.me</a>
+            <a href="mailto:rishi_th219@proton.me" class="text-[#006b58] hover:underline">rishi_th219@proton.me</a>
             <span>•</span>
-            <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline flex items-center gap-1">LinkedIn <i class="ph ph-arrow-up-right"></i></a>
+            <a href="https://www.linkedin.com/in/rishi-thakur-b665a4298/" target="_blank" rel="noopener noreferrer" class="hover:text-[#006b58] underline">LinkedIn ↗</a>
             <span>•</span>
-            <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline flex items-center gap-1">GitHub <i class="ph ph-arrow-up-right"></i></a>
+            <a href="https://github.com/rishi-th219" target="_blank" rel="noopener noreferrer" class="hover:text-[#006b58] underline">GitHub ↗</a>
           </div>
         </div>
 
         <div class="space-y-2">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Professional Summary</h3>
-          <p class="text-xs sm:text-sm text-foreground/90 leading-relaxed font-normal">${r.summary || ""}</p>
+          <h3 class="text-xs font-mono-code uppercase tracking-wider text-[#006b58] font-medium border-b border-black/10 pb-1">Professional Summary</h3>
+          <p class="text-xs sm:text-sm text-[#111111] leading-relaxed">${r.summary || ""}</p>
         </div>
 
         <div class="space-y-2">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Technical Skills</h3>
+          <h3 class="text-xs font-mono-code uppercase tracking-wider text-[#006b58] font-medium border-b border-black/10 pb-1">Technical Skills</h3>
           <div class="space-y-1.5 text-xs">
-            ${Array.isArray(r.skills) ? r.skills.map(s => `
-              <div class="py-1 border-b border-border/50 text-foreground/90 leading-relaxed">${s}</div>
-            `).join("") : ""}
+            ${Array.isArray(r.skills) ? r.skills.map(s => `<div class="py-1 border-b border-black/5 text-[#111111] leading-relaxed">${s}</div>`).join("") : ""}
           </div>
         </div>
 
-        <div class="space-y-4">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Professional Experience</h3>
-          <div class="space-y-2 text-left">
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-              <div>
-                <span class="font-bold text-foreground text-sm">${r.exp_role || "Data Analyst & BI Developer Intern"}</span>
-              </div>
-              <span class="text-xs font-mono text-muted-foreground">06/2025 – 03/2026</span>
-            </div>
-            <ul class="space-y-1.5 pl-3">
-              ${Array.isArray(r.exp_bullets) ? r.exp_bullets.map(b => `
-                <li class="flex items-start gap-2 text-xs sm:text-sm text-foreground/90 font-normal leading-relaxed">
-                  <i class="ph ph-dot text-primary text-base select-none"></i>
-                  <span>${b}</span>
-                </li>
-              `).join("") : ""}
-            </ul>
+        <div class="space-y-3">
+          <h3 class="text-xs font-mono-code uppercase tracking-wider text-[#006b58] font-medium border-b border-black/10 pb-1">Professional Experience</h3>
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+            <span class="font-medium text-[#111111] text-sm">${r.exp_role || "Data Analyst & BI Developer Intern"}</span>
+            <span class="text-xs font-mono-code text-[#5a5a5a]">06/2025 – 03/2026</span>
           </div>
+          <ul class="space-y-1.5 pl-1">
+            ${Array.isArray(r.exp_bullets) ? r.exp_bullets.map(b => `
+              <li class="flex items-start gap-2 text-xs sm:text-sm text-[#111111] leading-relaxed">
+                <i class="ph ph-dot text-[#006b58] text-base select-none"></i>
+                <span>${b}</span>
+              </li>
+            `).join("") : ""}
+          </ul>
         </div>
 
         ${Array.isArray(r.projects) && r.projects.length ? `
-          <div class="space-y-4">
-            <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Key Technical Projects</h3>
+          <div class="space-y-3">
+            <h3 class="text-xs font-mono-code uppercase tracking-wider text-[#006b58] font-medium border-b border-black/10 pb-1">Key Technical Projects</h3>
             ${r.projects.map(p => `
-              <div class="space-y-1.5 text-left">
+              <div class="space-y-1">
                 <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                   <div>
-                    <span class="font-bold text-foreground text-sm">${p.name}</span>
-                    <span class="text-xs font-mono text-muted-foreground ml-1">(${p.tools})</span>
+                    <span class="font-medium text-[#111111] text-sm">${p.name}</span>
+                    <span class="text-xs font-mono-code text-[#5a5a5a] ml-1">(${p.tools})</span>
                   </div>
-                  <span class="text-xs font-mono text-primary">${p.tag || ""}</span>
+                  <span class="text-xs font-mono-code text-[#006b58]">${p.tag || ""}</span>
                 </div>
-                <ul class="space-y-1 pl-3">
+                <ul class="space-y-1 pl-1">
                   ${Array.isArray(p.bullets) ? p.bullets.map(pb => `
-                    <li class="flex items-start gap-2 text-xs sm:text-sm text-foreground/90 font-normal leading-relaxed">
-                      <i class="ph ph-dot text-primary text-base select-none"></i>
+                    <li class="flex items-start gap-2 text-xs sm:text-sm text-[#111111] leading-relaxed">
+                      <i class="ph ph-dot text-[#006b58] text-base select-none"></i>
                       <span>${pb}</span>
                     </li>
                   `).join("") : ""}
@@ -767,29 +353,19 @@ function setupResumeModal() {
           </div>
         ` : ""}
 
-        <div class="space-y-3">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-primary font-bold border-b border-border pb-1">Education & Verified Credentials</h3>
+        <div class="space-y-2.5">
+          <h3 class="text-xs font-mono-code uppercase tracking-wider text-[#006b58] font-medium border-b border-black/10 pb-1">Education &amp; Credentials</h3>
           <div class="space-y-2 text-xs">
             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-              <div>
-                <span class="font-bold text-foreground">M.Tech in Computer Science & Engineering</span>
-                <span class="text-muted-foreground ml-1">(IIIT Naya Raipur)</span>
-              </div>
-              <div class="font-mono text-muted-foreground">
-                <span class="text-foreground font-semibold">CGPA: 7.90</span> • <span>2024 – 2026</span>
-              </div>
+              <span><strong class="text-[#111111]">M.Tech in Computer Science &amp; Engineering</strong> (IIIT Naya Raipur)</span>
+              <span class="font-mono-code text-[#5a5a5a]"><strong class="text-[#111111]">CGPA: 7.90</strong> • 2024–2026</span>
             </div>
             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-              <div>
-                <span class="font-bold text-foreground">B.Tech in Computer Science & Engineering</span>
-                <span class="text-muted-foreground ml-1">(Amity University Chhattisgarh)</span>
-              </div>
-              <div class="font-mono text-muted-foreground">
-                <span class="text-foreground font-semibold">CGPA: 7.71</span> • <span>2019 – 2023</span>
-              </div>
+              <span><strong class="text-[#111111]">B.Tech in Computer Science &amp; Engineering</strong> (Amity University Chhattisgarh)</span>
+              <span class="font-mono-code text-[#5a5a5a]"><strong class="text-[#111111]">CGPA: 7.71</strong> • 2019–2023</span>
             </div>
-            <div class="pt-1 text-muted-foreground">
-              <span class="font-semibold text-foreground">Accreditations: </span>GATE CS 2024 Qualified • IELTS Academic Band 7.5 (CEFR C1) • Upskilling: AWS Cloud &amp; Data Engineer Associate
+            <div class="pt-1 text-[#5a5a5a]">
+              <strong class="text-[#111111]">Accreditations:</strong> GATE CS 2024 Qualified • IELTS Academic Band 7.5 (C1) • Upskilling: AWS Cloud &amp; Data Engineer Associate
             </div>
           </div>
         </div>
@@ -797,13 +373,10 @@ function setupResumeModal() {
     `;
   };
 
-  let lastFocusedResumeEl = null;
-
-  triggerBtns.forEach(btn => {
+  triggers.forEach(btn => {
     btn.addEventListener("click", () => {
-      lastFocusedResumeEl = document.activeElement;
-      const track = btn.dataset.resume || "data_analyst";
-      renderResumeTrack(track);
+      lastFocus = document.activeElement;
+      renderTrack(btn.dataset.resume || "data_analyst");
       modal.classList.remove("hidden");
       modal.classList.add("flex");
       document.body.style.overflow = "hidden";
@@ -811,45 +384,359 @@ function setupResumeModal() {
     });
   });
 
-  tabBtns.forEach(tab => {
-    tab.addEventListener("click", () => {
-      renderResumeTrack(tab.dataset.resumeTab);
-    });
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => renderTrack(tab.dataset.resumeTab));
   });
 
-  const closeModal = () => {
+  const close = () => {
     modal.classList.add("hidden");
     modal.classList.remove("flex");
     document.body.style.overflow = "";
-    if (lastFocusedResumeEl && typeof lastFocusedResumeEl.focus === "function") {
-      lastFocusedResumeEl.focus();
-    }
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   };
 
-  if (closeBtn) closeBtn.addEventListener("click", closeModal);
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) close();
   });
 }
 
 // -----------------------------------------------------------------------------
-// 10. Privacy Modal Engine
+// 7. Interactive Client-Side SQL Sandbox Modal
+// -----------------------------------------------------------------------------
+function setupSqlModal() {
+  const modal = document.getElementById("sqlModal");
+  const closeBtn = document.getElementById("sqlModalCloseBtn");
+  const openBtns = [
+    document.getElementById("openSqlSandboxTopBtn"),
+    document.getElementById("openSqlSandboxMidBtn"),
+    document.getElementById("openSqlSandboxSvcBtn"),
+    document.getElementById("openSqlSandboxProcBtn")
+  ].filter(Boolean);
+
+  const sqlInput = document.getElementById("sqlQueryInput");
+  const runBtn = document.getElementById("sqlRunBtn");
+  const csvBtn = document.getElementById("sqlCsvBtn");
+  const presetBtns = document.querySelectorAll(".sql-preset-btn");
+  const statusEl = document.getElementById("sqlExecStatus");
+  const outputEl = document.getElementById("sqlOutputTable");
+  if (!modal || !sqlInput || !runBtn || !outputEl) return;
+
+  let lastFocus = null;
+  let lastResultRows = [];
+
+  const dataset = {
+    technical_capabilities: [
+      { domain: "SQL & Modeling", primary_tools: "PostgreSQL, MySQL, MariaDB, OracleDB", architectural_focus: "Kimball Star Schema, CTEs, Window Functions", status: "Production" },
+      { domain: "Business Intelligence", primary_tools: "Power BI Desktop, DAX, Power Query", architectural_focus: "Multi-level Drilldowns, Executive Cockpits", status: "Production" },
+      { domain: "Data Pipelines (ELT)", primary_tools: "Python 3.11+, Pandas, Airflow, dbt-core", architectural_focus: "Multi-source Extraction, SCD2 Modeling", status: "Production" },
+      { domain: "Cloud Data Engineering", primary_tools: "AWS (S3, Athena, Glue, Redshift)", architectural_focus: "Cloud Lakehouse, CLF-C02 & DEA-C01 Target", status: "Active Upskilling" },
+      { domain: "Systems & Diagnostics", primary_tools: "Fedora Linux, Windows 11", architectural_focus: "Bash Automation, PowerShell Diagnostics", status: "Daily OS" }
+    ],
+    chips_architecture: [
+      { stage: "01. Ingestion", data_sources: "AEBAS Biometrics + Treasury Payroll", method: "Automated Daily Extraction", storage: "MariaDB Staging" },
+      { stage: "02. Resolution", data_sources: "Orphaned Staff & Facility Codes", method: "Deterministic Key Matching & CTEs", storage: "Cleaned Dimensions" },
+      { stage: "03. Modeling", data_sources: "Statewide Attendance Records", method: "Central Fact_Attendance_Daily", storage: "Star Schema Warehouse" },
+      { stage: "04. Governance", data_sources: "Consecutive Absence Telemetry", method: "3-Tier DAX Risk Stratification", storage: "Executive Power BI" }
+    ],
+    academic_credentials: [
+      { qualification: "M.Tech CSE", institution: "IIIT Naya Raipur", score_cgpa: "7.90 CGPA", period: "2024–2026", focus: "Diffusion Models & Applied ML" },
+      { qualification: "B.Tech CSE", institution: "Amity University CG", score_cgpa: "7.71 CGPA", period: "2019–2023", focus: "DBMS, Algorithms & Data Structures" },
+      { qualification: "GATE CS 2024", institution: "National Benchmark", score_cgpa: "Qualified", period: "2024", focus: "Computer Science & IT" },
+      { qualification: "IELTS Academic", institution: "IDP Education", score_cgpa: "Band 7.5 (C1)", period: "2024", focus: "Proficient English User" },
+      { qualification: "AWS Accreditations", institution: "Amazon Web Services", score_cgpa: "Active Upskilling", period: "2026", focus: "Cloud Practitioner & DEA-C01" }
+    ],
+    featured_projects: [
+      { project_name: "CHiPS Attendance & Payroll", domain: "Govt. Healthcare Intelligence", core_stack: "SQL, Star Schema, Power BI, DAX", impact: "Eliminated Ghost Shifts & Salary Leakage" },
+      { project_name: "E-Commerce Local ELT", domain: "Analytics Engineering", core_stack: "dbt-core, Airflow, PostgreSQL, Kimball SCD2", impact: "Automated Schema Tests & Cohort Marts" },
+      { project_name: "5G mmWave Handover AI", domain: "Telecommunications & ML", core_stack: "PyTorch, GRU, DDPM Diffusion", impact: "Proactive Cell Switching Before Signal Drop" },
+      { project_name: "Hospital Medicine Matrix", domain: "Pharmaceutical Logistics", core_stack: "OracleDB, Advanced Excel, ABC/VED", impact: "Zero Stockouts of Life-Saving Drugs" },
+      { project_name: "AutoJobHunt Pipeline", domain: "Recruitment Automation", core_stack: "Async Python, Playwright, OpenXML", impact: "Automated ATS Scraping & Tracking" }
+    ]
+  };
+
+  const escapeHtml = (s) => String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
+  const renderTable = (rows) => {
+    lastResultRows = rows || [];
+    if (csvBtn) {
+      csvBtn.disabled = !lastResultRows.length;
+      csvBtn.classList.toggle("opacity-40", !lastResultRows.length);
+    }
+    if (!rows || !rows.length) {
+      outputEl.innerHTML = `<p class="p-4 text-xs font-mono-code text-[#5a5a5a]">0 rows returned.</p>`;
+      return;
+    }
+    const headers = Object.keys(rows[0]);
+    let html = `<div class="overflow-x-auto"><table class="sql-result-table"><thead><tr>`;
+    headers.forEach(h => { html += `<th>${escapeHtml(h.replace(/_/g, " "))}</th>`; });
+    html += `</tr></thead><tbody>`;
+    rows.forEach(row => {
+      html += `<tr>`;
+      headers.forEach(h => { html += `<td>${escapeHtml(row[h])}</td>`; });
+      html += `</tr>`;
+    });
+    html += `</tbody></table></div>`;
+    outputEl.innerHTML = html;
+  };
+
+  const resolveTable = (name) => {
+    const clean = (name || "").toLowerCase().replace(/[`"';]/g, "");
+    if (dataset[clean]) return clean;
+    if (["skills", "capabilities", "tech_stack"].includes(clean)) return "technical_capabilities";
+    if (["chips", "architecture", "chips_pipeline"].includes(clean)) return "chips_architecture";
+    if (["credentials", "education", "certifications"].includes(clean)) return "academic_credentials";
+    if (["projects"].includes(clean)) return "featured_projects";
+    return null;
+  };
+
+  const executeSql = () => {
+    const rawInput = sqlInput.value.trim().replace(/;+\s*$/, "");
+    const lower = rawInput.toLowerCase();
+    const t0 = performance.now();
+
+    if (lower === "show tables" || lower === "\\dt") {
+      const metaRows = Object.entries(dataset).map(([tbl, r]) => ({
+        table_name: tbl,
+        row_count: r.length,
+        columns: Object.keys(r[0]).join(", ")
+      }));
+      const ms = (performance.now() - t0 + 0.02).toFixed(2);
+      renderTable(metaRows);
+      if (statusEl) statusEl.innerHTML = `<span class="text-[#006b58] font-medium">Query OK</span> · ${metaRows.length} tables (${ms}ms)`;
+      return;
+    }
+
+    const match = rawInput.match(/^select\s+([\s\S]+?)\s+from\s+([a-zA-Z0-9_`"]+)(?:\s+([\s\S]+))?$/i);
+    if (!match) {
+      const ms = (performance.now() - t0 + 0.02).toFixed(2);
+      renderTable([]);
+      outputEl.innerHTML = `<p class="p-4 text-xs font-mono-code text-rose-700">Syntax Error: Expected SELECT &lt;cols&gt; FROM &lt;table&gt; [WHERE ...] [ORDER BY ...] [LIMIT n] or SHOW TABLES.</p>`;
+      if (statusEl) statusEl.textContent = `Syntax Error · ${ms}ms`;
+      return;
+    }
+
+    const colsRaw = match[1].trim();
+    const tableKey = resolveTable(match[2]);
+    const tail = (match[3] || "").trim();
+
+    if (!tableKey || !dataset[tableKey]) {
+      const ms = (performance.now() - t0 + 0.02).toFixed(2);
+      renderTable([]);
+      outputEl.innerHTML = `<p class="p-4 text-xs font-mono-code text-rose-700">Relation "${escapeHtml(match[2])}" not found. Try: technical_capabilities, chips_architecture, academic_credentials, featured_projects.</p>`;
+      if (statusEl) statusEl.textContent = `Relation Error · ${ms}ms`;
+      return;
+    }
+
+    let rows = dataset[tableKey].map(r => ({ ...r }));
+
+    const whereMatch = tail.match(/\bwhere\s+([a-zA-Z0-9_]+)\s+(=|like)\s+['"]([^'"]*)['"]/i);
+    if (whereMatch) {
+      const [, wCol, op, val] = whereMatch;
+      const colLower = wCol.toLowerCase();
+      rows = rows.filter(row => {
+        const k = Object.keys(row).find(x => x.toLowerCase() === colLower);
+        if (!k) return false;
+        const cell = String(row[k]).toLowerCase();
+        const needle = val.toLowerCase();
+        if (op.toLowerCase() === "like") {
+          const rx = "^" + needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/%/g, ".*").replace(/_/g, ".") + "$";
+          return new RegExp(rx, "i").test(cell);
+        }
+        return cell === needle;
+      });
+    }
+
+    const orderMatch = tail.match(/\border\s+by\s+([a-zA-Z0-9_]+)(?:\s+(asc|desc))?/i);
+    if (orderMatch) {
+      const [, oCol, dir] = orderMatch;
+      const colLower = oCol.toLowerCase();
+      const desc = (dir || "asc").toLowerCase() === "desc";
+      rows.sort((a, b) => {
+        const k = Object.keys(a).find(x => x.toLowerCase() === colLower);
+        if (!k) return 0;
+        return desc ? String(b[k]).localeCompare(String(a[k])) : String(a[k]).localeCompare(String(b[k]));
+      });
+    }
+
+    if (/^count\(\s*\*\s*\)(?:\s+as\s+([a-zA-Z0-9_]+))?$/i.test(colsRaw)) {
+      const aliasMatch = colsRaw.match(/\bas\s+([a-zA-Z0-9_]+)$/i);
+      const alias = aliasMatch ? aliasMatch[1] : "total_rows";
+      rows = [{ [alias]: rows.length }];
+    } else if (colsRaw !== "*") {
+      const req = colsRaw.split(",").map(c => c.trim().toLowerCase()).filter(Boolean);
+      const keys = Object.keys(dataset[tableKey][0]);
+      const valid = req.map(rc => keys.find(k => k.toLowerCase() === rc)).filter(Boolean);
+      if (!valid.length) {
+        renderTable([]);
+        outputEl.innerHTML = `<p class="p-4 text-xs font-mono-code text-rose-700">Column(s) not found. Available: ${escapeHtml(keys.join(", "))}</p>`;
+        return;
+      }
+      rows = rows.map(r => {
+        const p = {};
+        valid.forEach(c => { p[c] = r[c]; });
+        return p;
+      });
+    }
+
+    const limitMatch = tail.match(/\blimit\s+(\d+)/i);
+    if (limitMatch) {
+      const n = parseInt(limitMatch[1], 10);
+      if (!isNaN(n) && n >= 0) rows = rows.slice(0, n);
+    }
+
+    const ms = (performance.now() - t0 + 0.02).toFixed(2);
+    renderTable(rows);
+    if (statusEl) statusEl.innerHTML = `<span class="text-[#006b58] font-medium">Query OK</span> · ${rows.length} row${rows.length === 1 ? "" : "s"} (${ms}ms)`;
+  };
+
+  const open = () => {
+    lastFocus = document.activeElement;
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    document.body.style.overflow = "hidden";
+    executeSql();
+    sqlInput.focus();
+  };
+
+  const close = () => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "";
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+  };
+
+  openBtns.forEach(b => b.addEventListener("click", open));
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) close();
+  });
+
+  presetBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (btn.dataset.query) {
+        sqlInput.value = btn.dataset.query;
+        executeSql();
+      }
+    });
+  });
+
+  runBtn.addEventListener("click", executeSql);
+  sqlInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      executeSql();
+    }
+  });
+
+  if (csvBtn) {
+    csvBtn.addEventListener("click", () => {
+      if (!lastResultRows.length) return;
+      const headers = Object.keys(lastResultRows[0]);
+      const lines = [
+        headers.join(","),
+        ...lastResultRows.map(r => headers.map(h => `"${String(r[h]).replace(/"/g, '""')}"`).join(","))
+      ];
+      const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "rishi_thakur_query_result.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 8. Contact Note Modal & Form Validation
+// -----------------------------------------------------------------------------
+function setupContactModal() {
+  const modal = document.getElementById("contactModal");
+  const openBtn = document.getElementById("openContactModalBtn");
+  const closeBtn = document.getElementById("contactModalCloseBtn");
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("contactFormStatus");
+  if (!modal || !openBtn || !form) return;
+
+  let lastFocus = null;
+
+  const open = () => {
+    lastFocus = document.activeElement;
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    document.body.style.overflow = "hidden";
+    const nameInput = document.getElementById("senderName");
+    if (nameInput) nameInput.focus();
+  };
+
+  const close = () => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "";
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+  };
+
+  openBtn.addEventListener("click", open);
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) close();
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = (document.getElementById("senderName")?.value || "").trim();
+    const email = (document.getElementById("senderEmail")?.value || "").trim();
+    const msg = (document.getElementById("senderMessage")?.value || "").trim();
+
+    if (!name || !email || !msg) {
+      if (statusEl) {
+        statusEl.textContent = "Please fill in your name, email, and message.";
+        statusEl.className = "text-xs text-center text-rose-700 block";
+      }
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (statusEl) {
+        statusEl.textContent = "Please enter a valid email address.";
+        statusEl.className = "text-xs text-center text-rose-700 block";
+      }
+      return;
+    }
+
+    const mailto = `mailto:rishi_th219@proton.me?subject=${encodeURIComponent("Portfolio Inquiry from " + name)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${msg}`)}`;
+    window.location.href = mailto;
+
+    if (statusEl) {
+      statusEl.textContent = "Opening your email client to send message to rishi_th219@proton.me.";
+      statusEl.className = "text-xs text-center text-[#006b58] block";
+    }
+  });
+}
+
+// -----------------------------------------------------------------------------
+// 9. Privacy Notice Modal
 // -----------------------------------------------------------------------------
 function setupPrivacyModal() {
   const modal = document.getElementById("privacyModal");
-  const triggerBtn = document.getElementById("privacyModalTrigger");
+  const trigger = document.getElementById("privacyModalTrigger");
   const closeBtn = document.getElementById("privacyModalCloseBtn");
+  if (!modal || !trigger) return;
 
-  if (!modal || !triggerBtn) return;
+  let lastFocus = null;
 
-  let lastFocusedPrivacyEl = null;
-
-  const open = (e) => {
-    if (e) e.preventDefault();
-    lastFocusedPrivacyEl = document.activeElement;
+  const open = () => {
+    lastFocus = document.activeElement;
     modal.classList.remove("hidden");
     modal.classList.add("flex");
     document.body.style.overflow = "hidden";
@@ -860,213 +747,51 @@ function setupPrivacyModal() {
     modal.classList.add("hidden");
     modal.classList.remove("flex");
     document.body.style.overflow = "";
-    if (lastFocusedPrivacyEl && typeof lastFocusedPrivacyEl.focus === "function") {
-      lastFocusedPrivacyEl.focus();
-    }
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   };
 
-  triggerBtn.addEventListener("click", open);
+  trigger.addEventListener("click", open);
   if (closeBtn) closeBtn.addEventListener("click", close);
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) close();
-  });
+  modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !modal.classList.contains("hidden")) close();
   });
 }
 
 // -----------------------------------------------------------------------------
-// 12. Interactive Stack Filter
-// -----------------------------------------------------------------------------
-function setupStackFilter() {
-  const filterBtns = document.querySelectorAll(".stack-filter-btn");
-  const techPills = document.querySelectorAll(".stack-pill");
-
-  if (!filterBtns.length || !techPills.length) return;
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const filter = btn.dataset.stackCategory;
-
-      filterBtns.forEach(b => {
-        b.classList.remove("bg-primary", "text-primary-foreground", "border-primary", "shadow-sm");
-        b.classList.add("bg-secondary", "text-muted-foreground", "border-border");
-      });
-      btn.classList.remove("bg-secondary", "text-muted-foreground", "border-border");
-      btn.classList.add("bg-primary", "text-primary-foreground", "border-primary", "shadow-sm");
-
-      techPills.forEach(pill => {
-        const cat = pill.dataset.category || "";
-        if (filter === "all" || cat.includes(filter)) {
-          pill.classList.remove("opacity-25", "scale-95");
-          pill.classList.add("opacity-100", "scale-100");
-        } else {
-          pill.classList.add("opacity-25", "scale-95");
-          pill.classList.remove("opacity-100", "scale-100");
-        }
-      });
-    });
-  });
-}
-
-// -----------------------------------------------------------------------------
-// 13. Back-To-Top Button
-// -----------------------------------------------------------------------------
-function setupBackToTop() {
-  const btn = document.getElementById("backToTopBtn");
-  if (!btn) return;
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) {
-      btn.classList.remove("hidden");
-      btn.classList.add("flex");
-    } else {
-      btn.classList.add("hidden");
-      btn.classList.remove("flex");
-    }
-  }, { passive: true });
-
-  btn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
-// -----------------------------------------------------------------------------
-// 14. Direct Contact Form Handler
-// -----------------------------------------------------------------------------
-function setupContactForm() {
-  const form = document.getElementById("contactForm");
-  const statusMsg = document.getElementById("contactFormStatus");
-  const submitBtn = document.getElementById("contactSubmitBtn") || (form ? form.querySelector("button[type='submit']") : null);
-
-  if (!form) return;
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const nameInput = document.getElementById("senderName");
-    const emailInput = document.getElementById("senderEmail");
-    const messageInput = document.getElementById("senderMessage");
-
-    const name = nameInput ? nameInput.value.trim() : "";
-    const email = emailInput ? emailInput.value.trim() : "";
-    const message = messageInput ? messageInput.value.trim() : "";
-
-    if (!name || !email || !message) {
-      if (statusMsg) {
-        statusMsg.textContent = "Please fill in all fields before sending.";
-        statusMsg.className = "text-xs font-mono text-center text-rose-500 block";
-      }
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      if (statusMsg) {
-        statusMsg.textContent = "Please enter a valid email address.";
-        statusMsg.className = "text-xs font-mono text-center text-rose-500 block";
-      }
-      return;
-    }
-
-    if (submitBtn) {
-      submitBtn.setAttribute("disabled", "true");
-      submitBtn.classList.add("opacity-75");
-    }
-
-    const mailtoLink = `mailto:rishi_th219@proton.me?subject=${encodeURIComponent("Portfolio Inquiry from " + name)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
-    window.location.href = mailtoLink;
-
-    if (statusMsg) {
-      statusMsg.textContent = "Opening your default email app to send message to rishi_th219@proton.me…";
-      statusMsg.className = "text-xs font-mono text-center text-emerald-500 block";
-      setTimeout(() => {
-        statusMsg.classList.add("hidden");
-        if (submitBtn) {
-          submitBtn.removeAttribute("disabled");
-          submitBtn.classList.remove("opacity-75");
-        }
-      }, 5000);
-    }
-  });
-}
-
-// -----------------------------------------------------------------------------
-// 15. Live Local Time Clock
-// -----------------------------------------------------------------------------
-function setupLocalTimeClock() {
-  const clockEl = document.getElementById("localTimeClock");
-  if (!clockEl) return;
-
-  const updateClock = () => {
-    const now = new Date();
-    try {
-      const timeStr = now.toLocaleTimeString("en-US", {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true
-      });
-      clockEl.textContent = `${timeStr} IST`;
-    } catch {
-      clockEl.textContent = `${now.toTimeString().split(" ")[0]} IST`;
-    }
-  };
-
-  updateClock();
-  setInterval(updateClock, 1000);
-}
-
-// -----------------------------------------------------------------------------
-// 16. Copy Email to Clipboard
+// 10. Copy Email & IST Clock
 // -----------------------------------------------------------------------------
 function setupCopyEmail() {
-  const copyBtn = document.getElementById("copyEmailBtn");
-  if (!copyBtn) return;
-
-  copyBtn.addEventListener("click", async () => {
+  const btn = document.getElementById("copyEmailBtn");
+  if (!btn) return;
+  btn.addEventListener("click", async () => {
     const email = "rishi_th219@proton.me";
     try {
       await navigator.clipboard.writeText(email);
-      const originalHTML = copyBtn.innerHTML;
-      copyBtn.innerHTML = `<i class="ph ph-check text-emerald-500"></i><span>Copied to clipboard!</span>`;
-      copyBtn.classList.add("border-emerald-500", "text-emerald-500");
-      setTimeout(() => {
-        copyBtn.innerHTML = originalHTML;
-        copyBtn.classList.remove("border-emerald-500", "text-emerald-500");
-      }, 2200);
+      const orig = btn.textContent;
+      btn.textContent = "Copied ✓";
+      setTimeout(() => { btn.textContent = orig; }, 2200);
     } catch {
       window.location.href = `mailto:${email}`;
     }
   });
 }
 
-// -----------------------------------------------------------------------------
-// 17. Copy Code Snippet (DAX / SQL)
-// -----------------------------------------------------------------------------
-function setupCopyCodeButtons() {
-  const copyBtns = document.querySelectorAll(".copy-code-btn");
-  if (!copyBtns.length) return;
-
-  copyBtns.forEach(btn => {
-    btn.addEventListener("click", async () => {
-      const targetId = btn.getAttribute("data-target");
-      const targetEl = document.getElementById(targetId);
-      if (!targetEl) return;
-
-      const codeText = targetEl.textContent.trim();
-      try {
-        await navigator.clipboard.writeText(codeText);
-        const originalText = btn.textContent;
-        btn.textContent = "Copied! ✓";
-        btn.classList.add("text-emerald-500", "font-bold", "border-emerald-500");
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.classList.remove("text-emerald-500", "font-bold", "border-emerald-500");
-        }, 2000);
-      } catch (err) {
-        console.error("Clipboard copy failed:", err);
-      }
-    });
-  });
+function setupLocalTimeClock() {
+  const el = document.getElementById("localTimeClock");
+  if (!el) return;
+  const tick = () => {
+    try {
+      el.textContent = new Date().toLocaleTimeString("en-US", {
+        timeZone: "Asia/Kolkata",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true
+      }) + " IST";
+    } catch {
+      el.textContent = "IST";
+    }
+  };
+  tick();
+  setInterval(tick, 30000);
 }
